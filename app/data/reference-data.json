@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "cardTypes": [
+    {
+      "id": "member",
+      "label": "メンバー"
+    },
+    {
+      "id": "live",
+      "label": "ライブ"
+    }
+  ],
+  "groups": [
+    {
+      "id": "liella",
+      "label": "Liella!",
+      "enabled": true
+    },
+    {
+      "id": "aqours",
+      "label": "Aqours",
+      "enabled": false
+    },
+    {
+      "id": "muse",
+      "label": "μ's",
+      "enabled": false
+    },
+    {
+      "id": "nijigasaki",
+      "label": "虹ヶ咲",
+      "enabled": false
+    },
+    {
+      "id": "hasunosora",
+      "label": "蓮ノ空",
+      "enabled": false
+    }
+  ],
+  "heartColors": [
+    {
+      "id": "pink",
+      "label": "桃"
+    },
+    {
+      "id": "red",
+      "label": "赤"
+    },
+    {
+      "id": "yellow",
+      "label": "黄"
+    },
+    {
+      "id": "green",
+      "label": "緑"
+    },
+    {
+      "id": "blue",
+      "label": "青"
+    },
+    {
+      "id": "purple",
+      "label": "紫"
+    },
+    {
+      "id": "any",
+      "label": "無色"
+    }
+  ],
+  "members": [
+    {
+      "id": "member:32a293bca9c6",
+      "label": "ウィーン・マルガレーテ",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:d665bd99b584",
+      "label": "上原歩夢&澁谷かのん&日野下花帆",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:de5a00678834",
+      "label": "唐 可可",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:e759b833a4a3",
+      "label": "国木田花丸&優木せつ菜&嵐 千砂都",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:0cc944daadab",
+      "label": "嵐 千砂都",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:4123afa8cedf",
+      "label": "嵐 千砂都＆鬼塚夏美",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:fcdfeb01a5fd",
+      "label": "平安名すみれ",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:6b801fd7d1b6",
+      "label": "桜小路きな子",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:1b9064edca8c",
+      "label": "渡辺 曜&鬼塚夏美&大沢瑠璃乃",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:c32e1f5ca467",
+      "label": "澁谷かのん",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:9d2e93f9ddcb",
+      "label": "米女メイ",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:8e5236a23d65",
+      "label": "絢瀬絵里&朝香果林&葉月 恋",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:06e80e019847",
+      "label": "若菜四季",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:6ab4306e95f8",
+      "label": "葉月 恋",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:cef72175e926",
+      "label": "鬼塚冬毬",
+      "groupId": "liella"
+    },
+    {
+      "id": "member:7570c30a7c62",
+      "label": "鬼塚夏美",
+      "groupId": "liella"
+    }
+  ],
+  "products": [
+    {
+      "id": "product:c5ff86398c4c",
+      "label": "PRカード"
+    },
+    {
+      "id": "product:0bb3a96c6a7a",
+      "label": "スタートデッキ ラブライブ！スーパースター!!"
+    },
+    {
+      "id": "product:9fb769bcdff1",
+      "label": "スタートデッキ ラブライブ！スーパースター!! cheer"
+    },
+    {
+      "id": "product:a8d4041e8b82",
+      "label": "ブースターパック Anniversary 2026"
+    },
+    {
+      "id": "product:763068a8ed9b",
+      "label": "ブースターパック MELLOW MOMENT"
+    },
+    {
+      "id": "product:fcb4ff2c1d85",
+      "label": "ブースターパック NEXT STEP"
+    },
+    {
+      "id": "product:87ef464767aa",
+      "label": "ブースターパック SAPPHIRE MOON"
+    },
+    {
+      "id": "product:8cee97be5d17",
+      "label": "ブースターパック vol.1"
+    },
+    {
+      "id": "product:df9035d9276d",
+      "label": "プレミアムブースター ラブライブ！スーパースター!!"
+    },
+    {
+      "id": "product:a32dfc622613",
+      "label": "プレミアムブースター ラブライブ！スーパースター!! DUO"
+    }
+  ]
+}
