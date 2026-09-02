@@ -11,6 +11,7 @@ export type SortKey =
   | 'scoreDesc';
 
 export type HeartValue = { color: string | null; count: number };
+export type PurchaseLink = { shopId: string; label: string; url: string };
 
 export type Card = {
   id: string;
@@ -25,6 +26,7 @@ export type Card = {
   officialUrl: string | null;
   effectText: string | null;
   tags: string[];
+  purchaseLinks?: PurchaseLink[];
   member: {
     cost: number | null;
     hearts: HeartValue[];

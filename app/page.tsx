@@ -116,6 +116,12 @@ export default function Home() {
   const productById = useMemo(() => new Map(references.products.map((item) => [item.id, item.label])), []);
   const selectedMemberIdSet = useMemo(() => new Set(memberIds), [memberIds]);
   const selectedProductIdSet = useMemo(() => new Set(productIds), [productIds]);
+  const availableMembers = useMemo(() => groupId === 'all'
+    ? references.members
+    : references.members.filter((member) => member.groupId === groupId), [groupId]);
+  const memberTotal = useMemo(() => cards.filter((card) => card.cardType === 'member').length, []);
+  const liveTotal = useMemo(() => cards.filter((card) => card.cardType === 'live').length, []);
+  const enabledGroupLabels = useMemo(() => references.groups.filter((group) => group.enabled).map((group) => group.label), []);
   const sortOptions = cardType === 'member'
     ? [...commonSortOptions, ...memberSortOptions]
     : cardType === 'live'
@@ -159,6 +165,14 @@ export default function Home() {
     if (!nextSortOptions.some((option) => option.value === sortKey)) setSortKey(DEFAULT_SORT);
     setVisibleCount(PAGE_SIZE);
   };
+  const changeGroup = (nextGroupId: string) => {
+    setGroupId(nextGroupId);
+    if (nextGroupId !== 'all') {
+      const validMemberIds = new Set(references.members.filter((member) => member.groupId === nextGroupId).map((member) => member.id));
+      setMemberIds((currentIds) => currentIds.filter((id) => validMemberIds.has(id)));
+    }
+    setVisibleCount(PAGE_SIZE);
+  };
   const updateMemberIds = (nextIds: string[]) => { setMemberIds(nextIds); setVisibleCount(PAGE_SIZE); };
   const updateProductIds = (nextIds: string[]) => { setProductIds(nextIds); setVisibleCount(PAGE_SIZE); };
   const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length);
@@ -172,15 +186,15 @@ export default function Home() {
     <section className="intro" id="top"><div>
       <p className="eyebrow"><Sparkles /> LOVE LIVE! OFFICIAL CARD GAME</p>
       <h1>すべての出会いを、<br /><em>ひとつのカードリストに。</em></h1>
-      <p className="intro-copy">グループを横断して、カード番号・名前・効果からすばやく探せます。現在はLiella!の483枚を収録しています。</p>
-    </div><div className="total-card" aria-label="登録カード総数"><small>CARDS IN MASTER</small><strong>{cards.length}</strong><span>メンバー 399 · ライブ 84</span></div></section>
+      <p className="intro-copy">グループを横断して、カード番号・名前・効果からすばやく探せます。現在は{enabledGroupLabels.join('・')}の{cards.length}枚を収録しています。</p>
+    </div><div className="total-card" aria-label="登録カード総数"><small>CARDS IN MASTER</small><strong>{cards.length}</strong><span>メンバー {memberTotal} · ライブ {liveTotal}</span></div></section>
 
     <section className="workspace" aria-label="カード検索">
       <nav className="group-switcher" aria-label="グループを切り替え">
-        <button className={groupId === 'all' ? 'active' : ''} onClick={() => { setGroupId('all'); setVisibleCount(PAGE_SIZE); }}>すべて <span>{cards.length}</span></button>
+        <button className={groupId === 'all' ? 'active' : ''} onClick={() => changeGroup('all')}>すべて <span>{cards.length}</span></button>
         {references.groups.map((group) => {
           const count = cards.filter((card) => card.groupIds.includes(group.id)).length;
-          return <button className={groupId === group.id ? 'active' : ''} disabled={!group.enabled} key={group.id} onClick={() => { setGroupId(group.id); setVisibleCount(PAGE_SIZE); }} title={group.enabled ? `${group.label}だけ表示` : '第2段階以降で追加予定'}>{group.label} <span>{count || '準備中'}</span></button>;
+          return <button className={groupId === group.id ? 'active' : ''} disabled={!group.enabled} key={group.id} onClick={() => changeGroup(group.id)} title={group.enabled ? `${group.label}だけ表示` : '今後追加予定'}>{group.label} <span>{count || '準備中'}</span></button>;
         })}
       </nav>
 
@@ -188,7 +202,7 @@ export default function Home() {
         <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" className="search-input" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
         <div className="select-grid">
           <label className="filter-field"><span className="filter-label">カード種類</span><NativeSelect className="select-control" value={cardType} onChange={(event) => changeCardType(event.target.value)}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="member">メンバー</NativeSelectOption><NativeSelectOption value="live">ライブ</NativeSelectOption></NativeSelect></label>
-          {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" onChange={updateMemberIds} options={references.members} selectedIds={memberIds} />}
+          {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" onChange={updateMemberIds} options={availableMembers} selectedIds={memberIds} />}
           <MultiSelect className="product-filter" emptyLabel="すべての商品" id="product-filter" label="収録商品" onChange={updateProductIds} options={references.products} selectedIds={productIds} />
           <label className="filter-field"><span className="filter-label"><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label>
         </div>

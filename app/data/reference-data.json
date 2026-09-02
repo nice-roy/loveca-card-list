@@ -19,7 +19,7 @@
     {
       "id": "aqours",
       "label": "Aqours",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "muse",
@@ -147,6 +147,51 @@
       "id": "member:7570c30a7c62",
       "label": "鬼塚夏美",
       "groupId": "liella"
+    },
+    {
+      "id": "member:34b0a6f366ee",
+      "label": "高海千歌",
+      "groupId": "aqours"
+    },
+    {
+      "id": "member:6b8508f6237b",
+      "label": "桜内梨子",
+      "groupId": "aqours"
+    },
+    {
+      "id": "member:d56267d765e8",
+      "label": "松浦果南",
+      "groupId": "aqours"
+    },
+    {
+      "id": "member:306f72e58be0",
+      "label": "黒澤ダイヤ",
+      "groupId": "aqours"
+    },
+    {
+      "id": "member:a3195355cc60",
+      "label": "渡辺 曜",
+      "groupId": "aqours"
+    },
+    {
+      "id": "member:7a037f6e55aa",
+      "label": "津島善子",
+      "groupId": "aqours"
+    },
+    {
+      "id": "member:b1ad55b773d9",
+      "label": "国木田花丸",
+      "groupId": "aqours"
+    },
+    {
+      "id": "member:5425d4c4c70e",
+      "label": "小原鞠莉",
+      "groupId": "aqours"
+    },
+    {
+      "id": "member:f89f1fcf3277",
+      "label": "黒澤ルビィ",
+      "groupId": "aqours"
     }
   ],
   "products": [
@@ -189,6 +234,22 @@
     {
       "id": "product:a32dfc622613",
       "label": "プレミアムブースター ラブライブ！スーパースター!! DUO"
+    },
+    {
+      "id": "product:19bff205d7fc",
+      "label": "スタートデッキ ラブライブ！サンシャイン!!"
+    },
+    {
+      "id": "product:d41d2ca57378",
+      "label": "ブースターパック Royal Holiday"
+    },
+    {
+      "id": "product:8e18bc569e72",
+      "label": "ブースターパック　夏、はじまる。"
+    },
+    {
+      "id": "product:dd9764e60c7d",
+      "label": "プレミアムブースター ラブライブ！サンシャイン!!"
     }
   ]
 }
