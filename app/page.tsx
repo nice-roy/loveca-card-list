@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ArrowUpDown, ExternalLink, Layers3, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
+import { ArrowUpDown, ChevronDown, ExternalLink, Layers3, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
 import cardsJson from './data/cards.json';
 import referencesJson from './data/reference-data.json';
 import type { Card, ReferenceData, SortKey } from './data/schema';
@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -51,16 +52,70 @@ function Hearts({ values, blade = false }: { values: { color: string | null; cou
   ))}</span>;
 }
 
+function MultiSelect({
+  id,
+  label,
+  emptyLabel,
+  options,
+  selectedIds,
+  onChange,
+  className = '',
+}: {
+  id: string;
+  label: string;
+  emptyLabel: string;
+  options: { id: string; label: string }[];
+  selectedIds: string[];
+  onChange: (nextIds: string[]) => void;
+  className?: string;
+}) {
+  const selectedOptions = options.filter((option) => selectedIds.includes(option.id));
+  const summary = selectedOptions.length === 0
+    ? emptyLabel
+    : selectedOptions.length === 1
+      ? selectedOptions[0].label
+      : `${selectedOptions.length}件選択中`;
+  const toggle = (optionId: string) => {
+    onChange(selectedIds.includes(optionId)
+      ? selectedIds.filter((selectedId) => selectedId !== optionId)
+      : [...selectedIds, optionId]);
+  };
+
+  return <div className={`filter-field multi-select-field ${className}`}>
+    <span className="filter-label" id={`${id}-label`}>{label}</span>
+    <Popover>
+      <PopoverTrigger aria-labelledby={`${id}-label ${id}-summary`} className="multi-select-trigger">
+        <span id={`${id}-summary`}>{summary}</span><ChevronDown aria-hidden="true" />
+      </PopoverTrigger>
+      <PopoverContent align="start" className="multi-select-menu">
+        <div className="multi-select-header"><span>複数選択できます</span><button disabled={!selectedIds.length} onClick={() => onChange([])} type="button">すべて解除</button></div>
+        <div className="multi-select-options" role="group" aria-labelledby={`${id}-label`}>
+          {options.map((option) => <label className="multi-select-option" key={option.id}>
+            <input checked={selectedIds.includes(option.id)} onChange={() => toggle(option.id)} type="checkbox" />
+            <span>{option.label}</span>
+          </label>)}
+        </div>
+      </PopoverContent>
+    </Popover>
+    {selectedOptions.length > 0 && <div className="selected-chips" aria-label={`${label}の選択中条件`}>
+      <button className="filter-chip clear-all-chip" onClick={() => onChange([])} type="button">すべて解除</button>
+      {selectedOptions.map((option) => <button aria-label={`${option.label}を解除`} className="filter-chip" key={option.id} onClick={() => toggle(option.id)} type="button"><span>{option.label}</span><X aria-hidden="true" /></button>)}
+    </div>}
+  </div>;
+}
+
 export default function Home() {
   const [query, setQuery] = useState('');
   const [groupId, setGroupId] = useState('all');
-  const [memberId, setMemberId] = useState('all');
+  const [memberIds, setMemberIds] = useState<string[]>([]);
   const [cardType, setCardType] = useState('all');
-  const [productId, setProductId] = useState('all');
+  const [productIds, setProductIds] = useState<string[]>([]);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const memberById = useMemo(() => new Map(references.members.map((item) => [item.id, item.label])), []);
   const productById = useMemo(() => new Map(references.products.map((item) => [item.id, item.label])), []);
+  const selectedMemberIdSet = useMemo(() => new Set(memberIds), [memberIds]);
+  const selectedProductIdSet = useMemo(() => new Set(productIds), [productIds]);
   const sortOptions = cardType === 'member'
     ? [...commonSortOptions, ...memberSortOptions]
     : cardType === 'live'
@@ -71,9 +126,9 @@ export default function Home() {
     const needle = query.trim().toLocaleLowerCase('ja');
     return cards
       .filter((card) => groupId === 'all' || card.groupIds.includes(groupId))
-      .filter((card) => memberId === 'all' || card.memberIds.includes(memberId))
+      .filter((card) => selectedMemberIdSet.size === 0 || card.memberIds.some((id) => selectedMemberIdSet.has(id)))
       .filter((card) => cardType === 'all' || card.cardType === cardType)
-      .filter((card) => productId === 'all' || card.productId === productId)
+      .filter((card) => selectedProductIdSet.size === 0 || selectedProductIdSet.has(card.productId))
       .filter((card) => !needle || [card.name, card.cardNumber, card.effectText ?? '', productById.get(card.productId) ?? '', ...card.memberIds.map((id) => memberById.get(id) ?? '')].join(' ').toLocaleLowerCase('ja').includes(needle))
       .sort((left, right) => {
         let result = 0;
@@ -88,10 +143,10 @@ export default function Home() {
         if (sortKey === 'scoreDesc') result = compareNullable(left.live?.score ?? null, right.live?.score ?? null, 'desc');
         return result || compareNullable(left.cardNumber, right.cardNumber);
       });
-  }, [cardType, groupId, memberById, memberId, productById, productId, query, sortKey]);
+  }, [cardType, groupId, memberById, productById, query, selectedMemberIdSet, selectedProductIdSet, sortKey]);
 
   const resetFilters = () => {
-    setQuery(''); setGroupId('all'); setMemberId('all'); setCardType('all'); setProductId('all'); setSortKey(DEFAULT_SORT); setVisibleCount(PAGE_SIZE);
+    setQuery(''); setGroupId('all'); setMemberIds([]); setCardType('all'); setProductIds([]); setSortKey(DEFAULT_SORT); setVisibleCount(PAGE_SIZE);
   };
   const changeCardType = (nextCardType: string) => {
     const nextSortOptions = nextCardType === 'member'
@@ -100,10 +155,13 @@ export default function Home() {
         ? [...commonSortOptions, ...liveSortOptions]
         : commonSortOptions;
     setCardType(nextCardType);
+    if (nextCardType === 'live') setMemberIds([]);
     if (!nextSortOptions.some((option) => option.value === sortKey)) setSortKey(DEFAULT_SORT);
     setVisibleCount(PAGE_SIZE);
   };
-  const hasFilters = Boolean(query || groupId !== 'all' || memberId !== 'all' || cardType !== 'all' || productId !== 'all');
+  const updateMemberIds = (nextIds: string[]) => { setMemberIds(nextIds); setVisibleCount(PAGE_SIZE); };
+  const updateProductIds = (nextIds: string[]) => { setProductIds(nextIds); setVisibleCount(PAGE_SIZE); };
+  const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length);
 
   return <main>
     <header className="site-header"><div className="header-inner">
@@ -129,10 +187,10 @@ export default function Home() {
       <div className="filter-panel">
         <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" className="search-input" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
         <div className="select-grid">
-          <label><span>メンバー</span><NativeSelect className="select-control" value={memberId} onChange={(event) => { setMemberId(event.target.value); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべてのメンバー</NativeSelectOption>{references.members.map((member) => <NativeSelectOption key={member.id} value={member.id}>{member.label}</NativeSelectOption>)}</NativeSelect></label>
-          <label><span>カード種類</span><NativeSelect className="select-control" value={cardType} onChange={(event) => changeCardType(event.target.value)}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="member">メンバー</NativeSelectOption><NativeSelectOption value="live">ライブ</NativeSelectOption></NativeSelect></label>
-          <label><span>収録商品</span><NativeSelect className="select-control" value={productId} onChange={(event) => { setProductId(event.target.value); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべての商品</NativeSelectOption>{references.products.map((product) => <NativeSelectOption key={product.id} value={product.id}>{product.label}</NativeSelectOption>)}</NativeSelect></label>
-          <label><span><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label>
+          <label className="filter-field"><span className="filter-label">カード種類</span><NativeSelect className="select-control" value={cardType} onChange={(event) => changeCardType(event.target.value)}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="member">メンバー</NativeSelectOption><NativeSelectOption value="live">ライブ</NativeSelectOption></NativeSelect></label>
+          {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" onChange={updateMemberIds} options={references.members} selectedIds={memberIds} />}
+          <MultiSelect className="product-filter" emptyLabel="すべての商品" id="product-filter" label="収録商品" onChange={updateProductIds} options={references.products} selectedIds={productIds} />
+          <label className="filter-field"><span className="filter-label"><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label>
         </div>
       </div>
 
