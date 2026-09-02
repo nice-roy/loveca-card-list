@@ -13,15 +13,32 @@ import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
 const PAGE_SIZE = 48;
+const DEFAULT_SORT: SortKey = 'cardNumberAsc';
+const commonSortOptions: { value: SortKey; label: string }[] = [
+  { value: 'cardNumberAsc', label: 'カード番号：昇順' },
+  { value: 'cardNumberDesc', label: 'カード番号：降順' },
+  { value: 'nameAsc', label: 'カード名：昇順' },
+  { value: 'nameDesc', label: 'カード名：降順' },
+  { value: 'productAsc', label: '収録商品：昇順' },
+];
+const memberSortOptions: { value: SortKey; label: string }[] = [
+  { value: 'costAsc', label: 'コスト：低い順' },
+  { value: 'costDesc', label: 'コスト：高い順' },
+];
+const liveSortOptions: { value: SortKey; label: string }[] = [
+  { value: 'scoreAsc', label: 'スコア：低い順' },
+  { value: 'scoreDesc', label: 'スコア：高い順' },
+];
 const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', any: 'heart-any' };
 
-function compareNullable(left: string | number | null, right: string | number | null) {
+function compareNullable(left: string | number | null, right: string | number | null, direction: 'asc' | 'desc' = 'asc') {
   if (left === null && right === null) return 0;
   if (left === null) return 1;
   if (right === null) return -1;
-  return typeof left === 'number' && typeof right === 'number'
+  const result = typeof left === 'number' && typeof right === 'number'
     ? left - right
     : String(left).localeCompare(String(right), 'ja', { numeric: true, sensitivity: 'base' });
+  return direction === 'asc' ? result : -result;
 }
 
 function Hearts({ values, blade = false }: { values: { color: string | null; count: number }[]; blade?: boolean }) {
@@ -40,10 +57,15 @@ export default function Home() {
   const [memberId, setMemberId] = useState('all');
   const [cardType, setCardType] = useState('all');
   const [productId, setProductId] = useState('all');
-  const [sortKey, setSortKey] = useState<SortKey>('cardNumber');
+  const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const memberById = useMemo(() => new Map(references.members.map((item) => [item.id, item.label])), []);
   const productById = useMemo(() => new Map(references.products.map((item) => [item.id, item.label])), []);
+  const sortOptions = cardType === 'member'
+    ? [...commonSortOptions, ...memberSortOptions]
+    : cardType === 'live'
+      ? [...commonSortOptions, ...liveSortOptions]
+      : commonSortOptions;
 
   const filteredCards = useMemo(() => {
     const needle = query.trim().toLocaleLowerCase('ja');
@@ -54,16 +76,32 @@ export default function Home() {
       .filter((card) => productId === 'all' || card.productId === productId)
       .filter((card) => !needle || [card.name, card.cardNumber, card.effectText ?? '', productById.get(card.productId) ?? '', ...card.memberIds.map((id) => memberById.get(id) ?? '')].join(' ').toLocaleLowerCase('ja').includes(needle))
       .sort((left, right) => {
-        if (sortKey === 'name') return compareNullable(left.name, right.name);
-        if (sortKey === 'cost') return compareNullable(left.member?.cost ?? null, right.member?.cost ?? null);
-        if (sortKey === 'score') return compareNullable(right.live?.score ?? null, left.live?.score ?? null);
-        if (sortKey === 'product') return compareNullable(productById.get(left.productId) ?? null, productById.get(right.productId) ?? null);
-        return compareNullable(left.cardNumber, right.cardNumber);
+        let result = 0;
+        if (sortKey === 'cardNumberAsc') result = compareNullable(left.cardNumber, right.cardNumber);
+        if (sortKey === 'cardNumberDesc') result = compareNullable(left.cardNumber, right.cardNumber, 'desc');
+        if (sortKey === 'nameAsc') result = compareNullable(left.name, right.name);
+        if (sortKey === 'nameDesc') result = compareNullable(left.name, right.name, 'desc');
+        if (sortKey === 'productAsc') result = compareNullable(productById.get(left.productId) ?? null, productById.get(right.productId) ?? null);
+        if (sortKey === 'costAsc') result = compareNullable(left.member?.cost ?? null, right.member?.cost ?? null);
+        if (sortKey === 'costDesc') result = compareNullable(left.member?.cost ?? null, right.member?.cost ?? null, 'desc');
+        if (sortKey === 'scoreAsc') result = compareNullable(left.live?.score ?? null, right.live?.score ?? null);
+        if (sortKey === 'scoreDesc') result = compareNullable(left.live?.score ?? null, right.live?.score ?? null, 'desc');
+        return result || compareNullable(left.cardNumber, right.cardNumber);
       });
   }, [cardType, groupId, memberById, memberId, productById, productId, query, sortKey]);
 
   const resetFilters = () => {
-    setQuery(''); setGroupId('all'); setMemberId('all'); setCardType('all'); setProductId('all'); setSortKey('cardNumber'); setVisibleCount(PAGE_SIZE);
+    setQuery(''); setGroupId('all'); setMemberId('all'); setCardType('all'); setProductId('all'); setSortKey(DEFAULT_SORT); setVisibleCount(PAGE_SIZE);
+  };
+  const changeCardType = (nextCardType: string) => {
+    const nextSortOptions = nextCardType === 'member'
+      ? [...commonSortOptions, ...memberSortOptions]
+      : nextCardType === 'live'
+        ? [...commonSortOptions, ...liveSortOptions]
+        : commonSortOptions;
+    setCardType(nextCardType);
+    if (!nextSortOptions.some((option) => option.value === sortKey)) setSortKey(DEFAULT_SORT);
+    setVisibleCount(PAGE_SIZE);
   };
   const hasFilters = Boolean(query || groupId !== 'all' || memberId !== 'all' || cardType !== 'all' || productId !== 'all');
 
@@ -92,9 +130,9 @@ export default function Home() {
         <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" className="search-input" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
         <div className="select-grid">
           <label><span>メンバー</span><NativeSelect className="select-control" value={memberId} onChange={(event) => { setMemberId(event.target.value); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべてのメンバー</NativeSelectOption>{references.members.map((member) => <NativeSelectOption key={member.id} value={member.id}>{member.label}</NativeSelectOption>)}</NativeSelect></label>
-          <label><span>カード種類</span><NativeSelect className="select-control" value={cardType} onChange={(event) => { setCardType(event.target.value); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="member">メンバー</NativeSelectOption><NativeSelectOption value="live">ライブ</NativeSelectOption></NativeSelect></label>
+          <label><span>カード種類</span><NativeSelect className="select-control" value={cardType} onChange={(event) => changeCardType(event.target.value)}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="member">メンバー</NativeSelectOption><NativeSelectOption value="live">ライブ</NativeSelectOption></NativeSelect></label>
           <label><span>収録商品</span><NativeSelect className="select-control" value={productId} onChange={(event) => { setProductId(event.target.value); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべての商品</NativeSelectOption>{references.products.map((product) => <NativeSelectOption key={product.id} value={product.id}>{product.label}</NativeSelectOption>)}</NativeSelect></label>
-          <label><span><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}><NativeSelectOption value="cardNumber">カード番号</NativeSelectOption><NativeSelectOption value="name">カード名</NativeSelectOption><NativeSelectOption value="cost">コスト</NativeSelectOption><NativeSelectOption value="score">スコア（高い順）</NativeSelectOption><NativeSelectOption value="product">収録商品</NativeSelectOption></NativeSelect></label>
+          <label><span><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label>
         </div>
       </div>
 

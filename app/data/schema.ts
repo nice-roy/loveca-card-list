@@ -1,5 +1,14 @@
 export type CardType = 'member' | 'live';
-export type SortKey = 'cardNumber' | 'name' | 'cost' | 'score' | 'product';
+export type SortKey =
+  | 'cardNumberAsc'
+  | 'cardNumberDesc'
+  | 'nameAsc'
+  | 'nameDesc'
+  | 'productAsc'
+  | 'costAsc'
+  | 'costDesc'
+  | 'scoreAsc'
+  | 'scoreDesc';
 
 export type HeartValue = { color: string | null; count: number };
 
