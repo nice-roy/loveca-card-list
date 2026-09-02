@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ArrowUpDown, ExternalLink, ImageOff, Layers3, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
+import { ArrowUpDown, ExternalLink, Layers3, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
 import cardsJson from './data/cards.json';
 import referencesJson from './data/reference-data.json';
 import type { Card, ReferenceData, SortKey } from './data/schema';
@@ -137,14 +137,13 @@ export default function Home() {
       </div>
 
       <div className="result-bar" aria-live="polite"><div><SlidersHorizontal aria-hidden="true" /><strong>{filteredCards.length}</strong><span>枚が見つかりました</span></div>{hasFilters && <Button variant="ghost" onClick={resetFilters}><X /> 条件をクリア</Button>}</div>
-      {filteredCards.length ? <div className="card-grid">{filteredCards.slice(0, visibleCount).map((card) => <article className="card-item" key={card.id}>
-        <div className={`card-visual ${card.cardType}`}>{card.image.url ? <img src={card.image.url} alt={card.image.alt ?? card.name} loading="lazy" /> : <div className="image-placeholder"><ImageOff aria-hidden="true" /><span>画像未登録</span></div>}<Badge className="type-badge" variant="secondary">{card.cardType === 'member' ? 'MEMBER' : 'LIVE'}</Badge></div>
-        <div className="card-body"><div className="card-heading"><div><h2>{card.name}</h2><code>{card.cardNumber}</code></div>{card.member && <span className="metric"><small>COST</small>{card.member.cost ?? '—'}</span>}{card.live && <span className="metric score"><small>SCORE</small>{card.live.score ?? '—'}</span>}</div>
+      {filteredCards.length ? <div className="card-grid">{filteredCards.slice(0, visibleCount).map((card) => <article className={`card-item ${card.cardType}`} key={card.id}>
+        <div className="card-body"><Badge className="type-badge" variant="secondary">{card.cardType === 'member' ? 'MEMBER' : 'LIVE'}</Badge><div className="card-heading"><div><h2>{card.name}</h2><code>{card.cardNumber}</code></div>{card.member && <span className="metric"><small>COST</small>{card.member.cost ?? '—'}</span>}{card.live && <span className="metric score"><small>SCORE</small>{card.live.score ?? '—'}</span>}</div>
           <p className="product-name">{productById.get(card.productId)}</p><dl className="stats">{card.member && <><div><dt>ハート</dt><dd><Hearts values={card.member.hearts} /></dd></div><div><dt>ブレード</dt><dd><Hearts blade values={card.member.bladeHearts} /></dd></div><div><dt>エール</dt><dd>{card.member.yell.count ?? '—'}</dd></div></>}{card.live && <div><dt>必要ハート</dt><dd><Hearts values={card.live.requiredHearts} /></dd></div>}</dl>
           {card.effectText && <p className="effect-text">{card.effectText}</p>}{card.officialUrl && <a className="official-link" href={card.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}
         </div></article>)}</div> : <div className="empty-state"><Search /><h2>該当するカードがありません</h2><p>検索語や絞り込み条件を変更してください。</p><Button onClick={resetFilters}>条件をクリア</Button></div>}
       {visibleCount < filteredCards.length && <div className="load-more"><Button size="lg" variant="outline" onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}>さらに表示 <span>{Math.min(PAGE_SIZE, filteredCards.length - visibleCount)}枚</span></Button></div>}
     </section>
-    <footer><p>非公式ファンメイドカードリスト · エネルギーカードは収録対象外です</p><p>カード画像・レアリティの未登録項目は、確認済み情報のみ順次追加します。</p></footer>
+    <footer><p>非公式ファンメイドカードリスト · エネルギーカードは収録対象外です</p><p>未登録のレアリティは、確認済み情報のみ順次追加します。</p></footer>
   </main>;
 }
