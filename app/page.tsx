@@ -32,6 +32,12 @@ const liveSortOptions: { value: SortKey; label: string }[] = [
 ];
 const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', any: 'heart-any' };
 
+function getProductIdsForGroup(selectedGroupId: string) {
+  return new Set(cards
+    .filter((card) => selectedGroupId === 'all' || card.groupIds.includes(selectedGroupId))
+    .map((card) => card.productId));
+}
+
 function compareNullable(left: string | number | null, right: string | number | null, direction: 'asc' | 'desc' = 'asc') {
   if (left === null && right === null) return 0;
   if (left === null) return 1;
@@ -119,6 +125,10 @@ export default function Home() {
   const availableMembers = useMemo(() => groupId === 'all'
     ? references.members
     : references.members.filter((member) => member.groupId === groupId), [groupId]);
+  const availableProducts = useMemo(() => {
+    const availableProductIds = getProductIdsForGroup(groupId);
+    return references.products.filter((product) => availableProductIds.has(product.id));
+  }, [groupId]);
   const memberTotal = useMemo(() => cards.filter((card) => card.cardType === 'member').length, []);
   const liveTotal = useMemo(() => cards.filter((card) => card.cardType === 'live').length, []);
   const enabledGroupLabels = useMemo(() => references.groups.filter((group) => group.enabled).map((group) => group.label), []);
@@ -167,6 +177,8 @@ export default function Home() {
   };
   const changeGroup = (nextGroupId: string) => {
     setGroupId(nextGroupId);
+    const validProductIds = getProductIdsForGroup(nextGroupId);
+    setProductIds((currentIds) => currentIds.filter((id) => validProductIds.has(id)));
     if (nextGroupId !== 'all') {
       const validMemberIds = new Set(references.members.filter((member) => member.groupId === nextGroupId).map((member) => member.id));
       setMemberIds((currentIds) => currentIds.filter((id) => validMemberIds.has(id)));
@@ -203,7 +215,7 @@ export default function Home() {
         <div className="select-grid">
           <label className="filter-field"><span className="filter-label">カード種類</span><NativeSelect className="select-control" value={cardType} onChange={(event) => changeCardType(event.target.value)}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="member">メンバー</NativeSelectOption><NativeSelectOption value="live">ライブ</NativeSelectOption></NativeSelect></label>
           {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" onChange={updateMemberIds} options={availableMembers} selectedIds={memberIds} />}
-          <MultiSelect className="product-filter" emptyLabel="すべての商品" id="product-filter" label="収録商品" onChange={updateProductIds} options={references.products} selectedIds={productIds} />
+          <MultiSelect className="product-filter" emptyLabel="すべての商品" id="product-filter" label="収録商品" onChange={updateProductIds} options={availableProducts} selectedIds={productIds} />
           <label className="filter-field"><span className="filter-label"><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label>
         </div>
       </div>
