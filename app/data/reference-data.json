@@ -24,7 +24,7 @@
     {
       "id": "muse",
       "label": "μ's",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "nijigasaki",
@@ -192,6 +192,51 @@
       "id": "member:f89f1fcf3277",
       "label": "黒澤ルビィ",
       "groupId": "aqours"
+    },
+    {
+      "id": "member:5f0e308791d5",
+      "label": "高坂穂乃果",
+      "groupId": "muse"
+    },
+    {
+      "id": "member:9a4f1ba7e151",
+      "label": "絢瀬絵里",
+      "groupId": "muse"
+    },
+    {
+      "id": "member:cf0d636df13a",
+      "label": "南ことり",
+      "groupId": "muse"
+    },
+    {
+      "id": "member:79d2cd9a88dd",
+      "label": "園田海未",
+      "groupId": "muse"
+    },
+    {
+      "id": "member:c2569e35db99",
+      "label": "星空凛",
+      "groupId": "muse"
+    },
+    {
+      "id": "member:d9d493d85036",
+      "label": "西木野真姫",
+      "groupId": "muse"
+    },
+    {
+      "id": "member:bd0e44532f6b",
+      "label": "東條希",
+      "groupId": "muse"
+    },
+    {
+      "id": "member:a6c32fc4b309",
+      "label": "小泉花陽",
+      "groupId": "muse"
+    },
+    {
+      "id": "member:41872c3ed00c",
+      "label": "矢澤にこ",
+      "groupId": "muse"
     }
   ],
   "products": [
@@ -250,6 +295,14 @@
     {
       "id": "product:dd9764e60c7d",
       "label": "プレミアムブースター ラブライブ！サンシャイン!!"
+    },
+    {
+      "id": "product:b95a7842f755",
+      "label": "スタートデッキ ラブライブ！"
+    },
+    {
+      "id": "product:8cf67415f883",
+      "label": "プレミアムブースター ラブライブ！"
     }
   ]
 }
