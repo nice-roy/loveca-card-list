@@ -90,6 +90,9 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .heart-pink { color: #e76aae; } .heart-red { color: #d94055; } .heart-yellow { color: #d7a900; } .heart-green { color: #2fa05b; } .heart-blue { color: #3887d1; } .heart-purple { color: #9255c2; } .heart-any { color: #756a72; }
 .muted-dash { color: #ac9ba5; } .effect-text { min-height: 70px; display: -webkit-box; margin: 11px 0 0; overflow: hidden; color: #5c4c56; font-size: .72rem; line-height: 1.65; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
 .official-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 12px; color: #af296b; font-size: .72rem; font-weight: 800; text-decoration: none; } .official-link:hover { text-decoration: underline; } .official-link svg { width: 13px; }
+.card-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-top: 12px; }
+.card-links .official-link,.purchase-link { display: inline-flex; align-items: center; min-height: 44px; gap: 5px; margin-top: 0; color: #af296b; font-size: .72rem; font-weight: 800; text-decoration: none; }
+.purchase-link:hover { text-decoration: underline; } .purchase-link svg { width: 13px; height: 13px; }
 .load-more { display: flex; justify-content: center; padding: 30px 0 10px; } .load-more button { min-width: 210px; border-radius: 999px; background: white; } .load-more button span { color: #a17e91; font-size: .72rem; }
 .empty-state { min-height: 320px; display: grid; place-items: center; align-content: center; padding: 40px; border: 1px dashed #d8c3cf; border-radius: 22px; text-align: center; background: rgba(255,255,255,.6); }
 .empty-state > svg { width: 32px; color: #b59aa9; } .empty-state h2 { margin: 13px 0 5px; font-size: 1.1rem; } .empty-state p { margin: 0 0 18px; color: #7d6975; font-size: .84rem; }
