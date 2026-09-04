@@ -95,6 +95,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .empty-state > svg { width: 32px; color: #b59aa9; } .empty-state h2 { margin: 13px 0 5px; font-size: 1.1rem; } .empty-state p { margin: 0 0 18px; color: #7d6975; font-size: .84rem; }
 footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25px 0 44px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #e7dae2; color: #8f7b87; font-size: .72rem; } footer p { margin: 0; }
 
+@media (min-width:1101px) { .select-grid.with-cost-filter { grid-template-columns: repeat(5,minmax(0,1fr)); } }
 @media (max-width:1100px) { .card-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } .select-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width:760px) {
   .header-inner,.intro,.workspace,footer { width: min(100% - 24px,1440px); } .header-inner { height: 62px; } .scope-note { display: none; }

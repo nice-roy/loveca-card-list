@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -116,6 +117,8 @@ export default function Home() {
   const [memberIds, setMemberIds] = useState<string[]>([]);
   const [cardType, setCardType] = useState('all');
   const [productIds, setProductIds] = useState<string[]>([]);
+  const [costIds, setCostIds] = useState<string[]>([]);
+  const [scoreIds, setScoreIds] = useState<string[]>([]);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const memberById = useMemo(() => new Map(references.members.map((item) => [item.id, item.label])), []);
@@ -129,6 +132,8 @@ export default function Home() {
     const availableProductIds = getProductIdsForGroup(groupId);
     return references.products.filter((product) => availableProductIds.has(product.id));
   }, [groupId]);
+  const availableCosts = useMemo(() => numericOptions(cards, groupId, 'cost'), [groupId]);
+  const availableScores = useMemo(() => numericOptions(cards, groupId, 'score'), [groupId]);
   const memberTotal = useMemo(() => cards.filter((card) => card.cardType === 'member').length, []);
   const liveTotal = useMemo(() => cards.filter((card) => card.cardType === 'live').length, []);
   const enabledGroupLabels = useMemo(() => references.groups.filter((group) => group.enabled).map((group) => group.label), []);
@@ -144,6 +149,8 @@ export default function Home() {
       .filter((card) => groupId === 'all' || card.groupIds.includes(groupId))
       .filter((card) => selectedMemberIdSet.size === 0 || card.memberIds.some((id) => selectedMemberIdSet.has(id)))
       .filter((card) => cardType === 'all' || card.cardType === cardType)
+      .filter((card) => cardType !== 'member' || matchesNumericFilter(card, 'cost', costIds))
+      .filter((card) => cardType !== 'live' || matchesNumericFilter(card, 'score', scoreIds))
       .filter((card) => selectedProductIdSet.size === 0 || selectedProductIdSet.has(card.productId))
       .filter((card) => !needle || [card.name, card.cardNumber, card.effectText ?? '', productById.get(card.productId) ?? '', ...card.memberIds.map((id) => memberById.get(id) ?? '')].join(' ').toLocaleLowerCase('ja').includes(needle))
       .sort((left, right) => {
@@ -159,10 +166,11 @@ export default function Home() {
         if (sortKey === 'scoreDesc') result = compareNullable(left.live?.score ?? null, right.live?.score ?? null, 'desc');
         return result || compareNullable(left.cardNumber, right.cardNumber);
       });
-  }, [cardType, groupId, memberById, productById, query, selectedMemberIdSet, selectedProductIdSet, sortKey]);
+  }, [cardType, costIds, scoreIds, groupId, memberById, productById, query, selectedMemberIdSet, selectedProductIdSet, sortKey]);
 
   const resetFilters = () => {
     setQuery(''); setGroupId('all'); setMemberIds([]); setCardType('all'); setProductIds([]); setSortKey(DEFAULT_SORT); setVisibleCount(PAGE_SIZE);
+    setCostIds([]); setScoreIds([]);
   };
   const changeCardType = (nextCardType: string) => {
     const nextSortOptions = nextCardType === 'member'
@@ -171,12 +179,16 @@ export default function Home() {
         ? [...commonSortOptions, ...liveSortOptions]
         : commonSortOptions;
     setCardType(nextCardType);
+    if (nextCardType !== 'member') setCostIds([]);
+    if (nextCardType !== 'live') setScoreIds([]);
     if (nextCardType === 'live') setMemberIds([]);
     if (!nextSortOptions.some((option) => option.value === sortKey)) setSortKey(DEFAULT_SORT);
     setVisibleCount(PAGE_SIZE);
   };
   const changeGroup = (nextGroupId: string) => {
     setGroupId(nextGroupId);
+    setCostIds((currentIds) => retainAvailableIds(currentIds, numericOptions(cards, nextGroupId, 'cost')));
+    setScoreIds((currentIds) => retainAvailableIds(currentIds, numericOptions(cards, nextGroupId, 'score')));
     const validProductIds = getProductIdsForGroup(nextGroupId);
     setProductIds((currentIds) => currentIds.filter((id) => validProductIds.has(id)));
     if (nextGroupId !== 'all') {
@@ -187,7 +199,9 @@ export default function Home() {
   };
   const updateMemberIds = (nextIds: string[]) => { setMemberIds(nextIds); setVisibleCount(PAGE_SIZE); };
   const updateProductIds = (nextIds: string[]) => { setProductIds(nextIds); setVisibleCount(PAGE_SIZE); };
-  const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length);
+  const updateCostIds = (nextIds: string[]) => { setCostIds(nextIds); setVisibleCount(PAGE_SIZE); };
+  const updateScoreIds = (nextIds: string[]) => { setScoreIds(nextIds); setVisibleCount(PAGE_SIZE); };
+  const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length || costIds.length || scoreIds.length);
 
   return <main>
     <header className="site-header"><div className="header-inner">
@@ -212,9 +226,11 @@ export default function Home() {
 
       <div className="filter-panel">
         <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" className="search-input" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
-        <div className="select-grid">
+        <div className={`select-grid${cardType === 'member' ? ' with-cost-filter' : ''}`}>
           <label className="filter-field"><span className="filter-label">カード種類</span><NativeSelect className="select-control" value={cardType} onChange={(event) => changeCardType(event.target.value)}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="member">メンバー</NativeSelectOption><NativeSelectOption value="live">ライブ</NativeSelectOption></NativeSelect></label>
           {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" onChange={updateMemberIds} options={availableMembers} selectedIds={memberIds} />}
+          {cardType === 'member' && <MultiSelect key="cost" emptyLabel="すべてのコスト" id="cost-filter" label="コスト" onChange={updateCostIds} options={availableCosts} selectedIds={costIds} />}
+          {cardType === 'live' && <MultiSelect key="score" emptyLabel="すべてのスコア" id="score-filter" label="スコア" onChange={updateScoreIds} options={availableScores} selectedIds={scoreIds} />}
           <MultiSelect className="product-filter" emptyLabel="すべての商品" id="product-filter" label="収録商品" onChange={updateProductIds} options={availableProducts} selectedIds={productIds} />
           <label className="filter-field"><span className="filter-label"><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label>
         </div>
