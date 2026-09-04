@@ -19,9 +19,6 @@ const DEFAULT_SORT: SortKey = 'cardNumberAsc';
 const commonSortOptions: { value: SortKey; label: string }[] = [
   { value: 'cardNumberAsc', label: 'カード番号：昇順' },
   { value: 'cardNumberDesc', label: 'カード番号：降順' },
-  { value: 'nameAsc', label: 'カード名：昇順' },
-  { value: 'nameDesc', label: 'カード名：降順' },
-  { value: 'productAsc', label: '収録商品：昇順' },
 ];
 const memberSortOptions: { value: SortKey; label: string }[] = [
   { value: 'costAsc', label: 'コスト：低い順' },
@@ -138,9 +135,9 @@ export default function Home() {
   const liveTotal = useMemo(() => cards.filter((card) => card.cardType === 'live').length, []);
   const enabledGroupLabels = useMemo(() => references.groups.filter((group) => group.enabled).map((group) => group.label), []);
   const sortOptions = cardType === 'member'
-    ? [...commonSortOptions, ...memberSortOptions]
+    ? [...memberSortOptions, ...commonSortOptions]
     : cardType === 'live'
-      ? [...commonSortOptions, ...liveSortOptions]
+      ? [...liveSortOptions, ...commonSortOptions]
       : commonSortOptions;
 
   const filteredCards = useMemo(() => {
@@ -157,9 +154,6 @@ export default function Home() {
         let result = 0;
         if (sortKey === 'cardNumberAsc') result = compareNullable(left.cardNumber, right.cardNumber);
         if (sortKey === 'cardNumberDesc') result = compareNullable(left.cardNumber, right.cardNumber, 'desc');
-        if (sortKey === 'nameAsc') result = compareNullable(left.name, right.name);
-        if (sortKey === 'nameDesc') result = compareNullable(left.name, right.name, 'desc');
-        if (sortKey === 'productAsc') result = compareNullable(productById.get(left.productId) ?? null, productById.get(right.productId) ?? null);
         if (sortKey === 'costAsc') result = compareNullable(left.member?.cost ?? null, right.member?.cost ?? null);
         if (sortKey === 'costDesc') result = compareNullable(left.member?.cost ?? null, right.member?.cost ?? null, 'desc');
         if (sortKey === 'scoreAsc') result = compareNullable(left.live?.score ?? null, right.live?.score ?? null);
@@ -173,16 +167,11 @@ export default function Home() {
     setCostIds([]); setScoreIds([]);
   };
   const changeCardType = (nextCardType: string) => {
-    const nextSortOptions = nextCardType === 'member'
-      ? [...commonSortOptions, ...memberSortOptions]
-      : nextCardType === 'live'
-        ? [...commonSortOptions, ...liveSortOptions]
-        : commonSortOptions;
     setCardType(nextCardType);
     if (nextCardType !== 'member') setCostIds([]);
     if (nextCardType !== 'live') setScoreIds([]);
     if (nextCardType === 'live') setMemberIds([]);
-    if (!nextSortOptions.some((option) => option.value === sortKey)) setSortKey(DEFAULT_SORT);
+    setSortKey(nextCardType === 'member' ? 'costAsc' : nextCardType === 'live' ? 'scoreAsc' : DEFAULT_SORT);
     setVisibleCount(PAGE_SIZE);
   };
   const changeGroup = (nextGroupId: string) => {
