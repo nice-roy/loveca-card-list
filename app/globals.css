@@ -26,6 +26,7 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans-jp); }
 button, input, select { font: inherit; } button { cursor: pointer; }
 body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 8% 3%, rgba(255,131,183,.19), transparent 28rem), radial-gradient(circle at 94% 18%, rgba(77,198,220,.15), transparent 25rem), linear-gradient(180deg,#fffafd 0,#fdf9fc 38rem,#f8f4f8 100%); }
+.catalog-pane { min-width: 0; transition: width .2s ease; }
 
 .site-header { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid rgba(114,65,101,.12); background: rgba(255,251,253,.88); backdrop-filter: blur(18px); }
 .header-inner { width: min(1440px,calc(100% - 40px)); height: 72px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
@@ -189,6 +190,17 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .deck-empty p { margin: 6px 0 0; font-size: .76rem; line-height: 1.6; }
 footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25px 0 44px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #e7dae2; color: #8f7b87; font-size: .72rem; } footer p { margin: 0; }
 
+@media (min-width:1180px) {
+  :root { --desktop-deck-width: clamp(460px,34vw,680px); }
+  .catalog-pane.deck-open { width: calc(100% - var(--desktop-deck-width)); }
+  .catalog-pane.deck-open .header-inner,.catalog-pane.deck-open .intro,.catalog-pane.deck-open .workspace,.catalog-pane.deck-open footer { width: min(100% - 32px,1440px); }
+  .catalog-pane.deck-open .intro { gap: 28px; }
+  .catalog-pane.deck-open .intro h1 { font-size: clamp(2.25rem,4vw,4.5rem); }
+  .catalog-pane.deck-open .card-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  [data-slot="sheet-overlay"] { display: none; }
+  .deck-sheet { width: var(--desktop-deck-width) !important; box-shadow: -10px 0 34px rgba(83,46,70,.12); }
+  .deck-launcher.deck-is-open { display: none; }
+}
 @media (min-width:1101px) { .select-grid.with-cost-filter { grid-template-columns: repeat(5,minmax(0,1fr)); } }
 @media (max-width:1100px) { .card-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } .select-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width:760px) {
