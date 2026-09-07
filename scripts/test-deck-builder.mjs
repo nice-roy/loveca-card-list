@@ -35,9 +35,13 @@ test('single-card removal only occurs after the dedicated confirmation path', ()
 });
 
 test('AI effect text converts only icons supported by token or structured color data', () => {
-  assert.equal(formatEffectTextForAi({ effectText: 'heart02heart02とheart0、heart03ブレードとheart0ブレード', member: null, live: null }), '[赤ハート×2]と[無色ハート]、[黄ブレード]と[ALLブレード]');
-  assert.equal(formatEffectTextForAi({ effectText: '必要ハートは♥♥♥♥♥♥♥♥♥◇◇◇になる。', member: null, live: { requiredHearts: [{ color: 'yellow', count: 1 }, { color: 'any', count: 2 }] } }), '必要ハートは[黄ハート×9][無色ハート×3]になる。');
-  assert.equal(formatEffectTextForAi({ effectText: '♥を得る。', member: null, live: { requiredHearts: [{ color: 'red', count: 1 }, { color: 'purple', count: 1 }] } }), '[色不明ハート]を得る。');
+  assert.equal(formatEffectTextForAi({ effectText: 'heart02heart02とheart0、heart03ブレードとheart0ブレード', member: null, live: null }), '赤ハート×2と無色ハート、黄ブレードとALLブレード');
+  assert.equal(formatEffectTextForAi({ effectText: '♥を得る。', member: null, live: { requiredHearts: [{ color: 'yellow', count: 1 }] } }), '色不明ハートを得る。');
+});
+
+test('AI effect text uses verified icon markup for Hajimari wa Kimi no Sora', () => {
+  const effectText = '【ライブ開始時】自分の成功ライブカード置き場にカードが2枚以上ある場合、このカードのスコアを＋５し、必要ハートは♥♥♥♥♥♥♥♥♥◇◇◇になる。';
+  assert.equal(formatEffectTextForAi({ effectText, member: null, live: { requiredHearts: [{ color: 'yellow', count: 1 }, { color: 'any', count: 2 }] } }), '【ライブ開始時】自分の成功ライブカード置き場にカードが2枚以上ある場合、このカードのスコアを＋５し、必要ハートは赤ハート×3 / 黄ハート×3 / 紫ハート×3 / 無色ハート×3になる。');
 });
 
 test('deck entries are grouped by metric with adopted quantities totaled', () => {

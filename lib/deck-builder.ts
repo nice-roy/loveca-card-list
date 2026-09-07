@@ -108,30 +108,29 @@ const effectBladeTokenLabels: Record<string, string> = {
   heart0: 'ALLブレード',
 };
 
-function onlyStructuredHeartColor(card: Card) {
-  const values = card.live?.requiredHearts ?? card.member?.hearts ?? [];
-  const colors = [...new Set(values.map((value) => value.color).filter((color): color is string => Boolean(color && color !== 'any')))];
-  return colors.length === 1 ? colors[0] : null;
-}
+// Legacy Liella effect text was flattened from structured icon markup into ♥/◇.
+// Keep verified source markup separate from card data so only AI copy uses it.
+const verifiedEffectIconMarkup: Record<string, string> = {
+  '【ライブ開始時】自分の成功ライブカード置き場にカードが2枚以上ある場合、このカードのスコアを＋５し、必要ハートは♥♥♥♥♥♥♥♥♥◇◇◇になる。':
+    '【ライブ開始時】自分の成功ライブカード置き場にカードが2枚以上ある場合、このカードのスコアを＋５し、必要ハートはheart02heart02heart02heart03heart03heart03heart06heart06heart06heart0heart0heart0になる。',
+};
 
 function compactIconRuns(text: string) {
   return text.replace(/\[([^\]]+)\](?:\[\1\])+/g, (run, label: string) => {
     const count = run.split(`[${label}]`).length - 1;
     return `[${label}×${count}]`;
-  });
+  }).replace(/\]\[/g, '] / [').replace(/\[([^\]]+)\]/g, '$1');
 }
 
 export function formatEffectTextForAi(card: Card) {
   if (!card.effectText) return '記載なし';
-  const structuredColor = onlyStructuredHeartColor(card);
-  const structuredHeartLabel = structuredColor ? `${heartColorLabels[structuredColor] ?? structuredColor}ハート` : null;
-  const structuredBladeLabel = structuredColor ? `${heartColorLabels[structuredColor] ?? structuredColor}ブレード` : null;
-  const converted = card.effectText
+  const sourceText = verifiedEffectIconMarkup[card.effectText] ?? card.effectText;
+  const converted = sourceText
     .replace(/(heart0[1-6]|heart0)ブレード/g, (_, token: string) => `[${effectBladeTokenLabels[token]}]`)
-    .replace(/♥ブレード/g, `[${structuredBladeLabel ?? '色不明ブレード'}]`)
+    .replace(/♥ブレード/g, '[色不明ブレード]')
     .replace(/heart0[1-6]|heart0/g, (token) => `[${effectHeartTokenLabels[token]}]`)
     .replace(/◇/g, '[無色ハート]')
-    .replace(/♥/g, `[${structuredHeartLabel ?? '色不明ハート'}]`);
+    .replace(/♥/g, '[色不明ハート]');
   return compactIconRuns(converted);
 }
 
