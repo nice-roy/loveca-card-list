@@ -13,7 +13,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 import { baseCardId, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
-import { BUILDER_STORAGE_KEY, changeDeckQuantity, normalizeBuilderState, type DeckQuantities } from '@/lib/deck-builder';
+import { BUILDER_STORAGE_KEY, changeDeckQuantity, normalizeBuilderState, sortDeckEntries, type DeckQuantities, type DeckSortKey } from '@/lib/deck-builder';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -36,6 +36,18 @@ const memberSortOptions: { value: SortKey; label: string }[] = [
 const liveSortOptions: { value: SortKey; label: string }[] = [
   { value: 'scoreAsc', label: 'スコア：低い順' },
   { value: 'scoreDesc', label: 'スコア：高い順' },
+];
+const deckMemberSortOptions: { value: DeckSortKey; label: string }[] = [
+  { value: 'costAsc', label: 'コスト：低い順' },
+  { value: 'costDesc', label: 'コスト：高い順' },
+  { value: 'cardNumberAsc', label: 'カード番号：昇順' },
+  { value: 'cardNumberDesc', label: 'カード番号：降順' },
+];
+const deckLiveSortOptions: { value: DeckSortKey; label: string }[] = [
+  { value: 'scoreAsc', label: 'スコア：低い順' },
+  { value: 'scoreDesc', label: 'スコア：高い順' },
+  { value: 'cardNumberAsc', label: 'カード番号：昇順' },
+  { value: 'cardNumberDesc', label: 'カード番号：降順' },
 ];
 const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', any: 'heart-any' };
 
@@ -141,6 +153,8 @@ export default function Home() {
   const [initialBuilderState] = useState(readBuilderState);
   const [candidateIds, setCandidateIds] = useState<Set<string>>(() => new Set(initialBuilderState.candidates));
   const [deck, setDeck] = useState<DeckQuantities>(initialBuilderState.deck);
+  const [memberDeckSort, setMemberDeckSort] = useState<DeckSortKey>('costAsc');
+  const [liveDeckSort, setLiveDeckSort] = useState<DeckSortKey>('scoreAsc');
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const memberById = useMemo(() => new Map(references.members.map((item) => [item.id, item.label])), []);
@@ -244,21 +258,24 @@ export default function Home() {
     .map(([id, quantity]) => ({ id, quantity, card: cardsByBuilderId.get(id)?.[0] }))
     .filter((entry): entry is { id: string; quantity: number; card: Card } => Boolean(entry.card))
     .sort((left, right) => compareNullable(left.id, right.id)), [deck]);
-  const memberDeckEntries = deckEntries.filter((entry) => entry.card.cardType === 'member');
-  const liveDeckEntries = deckEntries.filter((entry) => entry.card.cardType === 'live');
+  const memberDeckEntries = sortDeckEntries(deckEntries.filter((entry) => entry.card.cardType === 'member'), memberDeckSort);
+  const liveDeckEntries = sortDeckEntries(deckEntries.filter((entry) => entry.card.cardType === 'live'), liveDeckSort);
   const deckTotal = deckEntries.reduce((sum, entry) => sum + entry.quantity, 0);
   const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length || costIds.length || scoreIds.length || !groupIdenticalCards || candidateOnly);
 
-  const deckSection = (label: string, entries: typeof deckEntries) => entries.length > 0 && <section className="deck-section">
-    <h3>{label}<span>{entries.reduce((sum, entry) => sum + entry.quantity, 0)}枚</span></h3>
-    <div className="deck-list">{entries.map(({ id, quantity, card }) => <article className="deck-row" key={id}>
-      <div><strong>{card.name}</strong><code>{id}</code></div>
+  const deckSection = (label: string, entries: typeof deckEntries, sort: DeckSortKey, setSort: (value: DeckSortKey) => void, sortOptions: { value: DeckSortKey; label: string }[]) => entries.length > 0 && <section className="deck-section">
+    <div className="deck-section-heading"><h3>{label}<span>{entries.reduce((sum, entry) => sum + entry.quantity, 0)}枚</span></h3><label className="deck-sort"><span className="sr-only">{label}の並び順</span><NativeSelect value={sort} onChange={(event) => setSort(event.target.value as DeckSortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label></div>
+    <div className="deck-list">{entries.map(({ id, quantity, card }) => {
+      const versions = cardsByBuilderId.get(id) ?? [card];
+      const memberName = card.memberIds.map((memberId) => memberById.get(memberId)).filter(Boolean).join('・') || card.name;
+      return <article className={`deck-row ${card.cardType}`} key={id}>
+      <details className="deck-card-details"><summary><div className="deck-card-heading"><strong>{card.cardType === 'member' ? memberName : card.name}</strong><code>{id}</code></div><div className="deck-key-info">{card.member && <><span className="deck-main-metric"><small>COST</small><strong>{card.member.cost ?? '—'}</strong></span><span><small>基本ハート</small><Hearts values={card.member.hearts} /></span><span><small>ブレードハート</small><Hearts blade values={card.member.bladeHearts} /></span><span><small>ブレード</small><strong>{card.member.yell.count ?? '—'}</strong></span></>}{card.live && <><span className="deck-main-metric live"><small>SCORE</small><strong>{card.live.score ?? '—'}</strong></span><span><small>必要ハート</small><Hearts values={card.live.requiredHearts} /></span></>}</div>{card.effectText && <p className="deck-effect-preview">{card.effectText}</p>}<span className="deck-detail-hint">詳細を見る <ChevronDown /></span></summary><div className="deck-detail-body"><div className="deck-full-effect"><span>効果</span><p>{card.effectText ?? '—'}</p></div><div className="deck-version-list">{versions.map((version) => <section className="deck-version" key={version.id}><div><strong>{cardVersion(version.cardNumber) ?? version.rarity ?? '通常版'}</strong><code>{version.cardNumber}</code></div><p><span>収録商品</span>{productById.get(version.productId) ?? '—'}</p><div className="card-links">{version.officialUrl && <a className="official-link" href={version.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{version.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div></section>)}</div></div></details>
       <div className="quantity-control" aria-label={`${card.name}の採用枚数`}>
         <button aria-label={`${card.name}を1枚減らす`} onClick={() => updateDeck(id, -1)} type="button"><Minus /></button>
         <output aria-label={`${quantity}枚`}>{quantity}</output>
         <button aria-label={`${card.name}を1枚増やす`} onClick={() => updateDeck(id, 1)} type="button"><Plus /></button>
       </div>
-    </article>)}</div>
+    </article>})}</div>
   </section>;
 
   return <main>
@@ -315,7 +332,7 @@ export default function Home() {
       })}</div> : <div className="empty-state"><Search /><h2>該当するカードがありません</h2><p>検索語や絞り込み条件を変更してください。</p><Button onClick={resetFilters}>条件をクリア</Button></div>}
       {visibleCount < displayGroups.length && <div className="load-more"><Button size="lg" variant="outline" onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}>さらに表示 <span>{Math.min(PAGE_SIZE, displayGroups.length - visibleCount)}種</span></Button></div>}
     </section>
-    <Sheet><SheetTrigger className="deck-launcher" aria-label={`デッキを開く、現在${deckTotal}枚`}><ListPlus /><span>デッキ</span><strong>{deckTotal}</strong></SheetTrigger><SheetContent className="deck-sheet" side="right"><SheetHeader className="deck-header"><SheetTitle>デッキ</SheetTitle><SheetDescription>メンバーとライブを分けて表示しています。</SheetDescription><div className="deck-total"><span>合計</span><strong>{deckTotal}</strong><span>枚</span></div></SheetHeader><div className="deck-scroll">{deckEntries.length ? <>{deckSection('メンバーカード', memberDeckEntries)}{deckSection('ライブカード', liveDeckEntries)}</> : <div className="deck-empty"><ListPlus /><strong>デッキは空です</strong><p>カード一覧の「デッキに追加」から選べます。</p></div>}</div></SheetContent></Sheet>
+    <Sheet><SheetTrigger className="deck-launcher" aria-label={`デッキを開く、現在${deckTotal}枚`}><ListPlus /><span>デッキ</span><strong>{deckTotal}</strong></SheetTrigger><SheetContent className="deck-sheet" side="right"><SheetHeader className="deck-header"><SheetTitle>デッキ</SheetTitle><SheetDescription>メンバーとライブを分けて表示しています。</SheetDescription><div className="deck-total"><span>合計</span><strong>{deckTotal}</strong><span>枚</span></div></SheetHeader><div className="deck-scroll">{deckEntries.length ? <>{deckSection('メンバーカード', memberDeckEntries, memberDeckSort, setMemberDeckSort, deckMemberSortOptions)}{deckSection('ライブカード', liveDeckEntries, liveDeckSort, setLiveDeckSort, deckLiveSortOptions)}</> : <div className="deck-empty"><ListPlus /><strong>デッキは空です</strong><p>カード一覧の「デッキに追加」から選べます。</p></div>}</div></SheetContent></Sheet>
     <footer><p>非公式ファンメイドカードリスト · エネルギーカードは収録対象外です</p><p>未登録のレアリティは、確認済み情報のみ順次追加します。</p></footer>
   </main>;
 }
