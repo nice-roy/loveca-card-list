@@ -9,6 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "start": "vite preview",
+    "test:deck-builder": "node --experimental-strip-types --test scripts/test-deck-builder.mjs",
     "lint": "oxlint",
     "format": "oxfmt"
   },

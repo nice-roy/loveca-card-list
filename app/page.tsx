@@ -1,7 +1,7 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import { ArrowUpDown, ChevronDown, ExternalLink, Layers3, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { ArrowUpDown, Bookmark, Check, ChevronDown, ExternalLink, Layers3, ListPlus, Minus, Plus, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
 import cardsJson from './data/cards.json';
 import referencesJson from './data/reference-data.json';
 import type { Card, ReferenceData, SortKey } from './data/schema';
@@ -10,11 +10,19 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
-import { cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
+import { baseCardId, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
+import { BUILDER_STORAGE_KEY, changeDeckQuantity, normalizeBuilderState, type DeckQuantities } from '@/lib/deck-builder';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
+const cardsByBuilderId = new Map<string, Card[]>();
+for (const card of cards) {
+  const id = baseCardId(card.cardNumber);
+  cardsByBuilderId.set(id, [...(cardsByBuilderId.get(id) ?? []), card]);
+}
+const validBuilderIds = new Set(cardsByBuilderId.keys());
 const PAGE_SIZE = 48;
 const DEFAULT_SORT: SortKey = 'cardNumberAsc';
 const commonSortOptions: { value: SortKey; label: string }[] = [
@@ -30,6 +38,17 @@ const liveSortOptions: { value: SortKey; label: string }[] = [
   { value: 'scoreDesc', label: 'スコア：高い順' },
 ];
 const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', any: 'heart-any' };
+
+function readBuilderState() {
+  try {
+    const saved = localStorage.getItem(BUILDER_STORAGE_KEY);
+    return saved
+      ? normalizeBuilderState(JSON.parse(saved), validBuilderIds)
+      : normalizeBuilderState(null, validBuilderIds);
+  } catch {
+    return normalizeBuilderState(null, validBuilderIds);
+  }
+}
 
 function getProductIdsForGroup(selectedGroupId: string) {
   return new Set(cards
@@ -118,6 +137,10 @@ export default function Home() {
   const [costIds, setCostIds] = useState<string[]>([]);
   const [scoreIds, setScoreIds] = useState<string[]>([]);
   const [groupIdenticalCards, setGroupIdenticalCards] = useState(true);
+  const [candidateOnly, setCandidateOnly] = useState(false);
+  const [initialBuilderState] = useState(readBuilderState);
+  const [candidateIds, setCandidateIds] = useState<Set<string>>(() => new Set(initialBuilderState.candidates));
+  const [deck, setDeck] = useState<DeckQuantities>(initialBuilderState.deck);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const memberById = useMemo(() => new Map(references.members.map((item) => [item.id, item.label])), []);
@@ -142,6 +165,18 @@ export default function Home() {
       ? [...liveSortOptions, ...commonSortOptions]
       : commonSortOptions;
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(BUILDER_STORAGE_KEY, JSON.stringify({
+        version: 1,
+        candidates: [...candidateIds],
+        deck,
+      }));
+    } catch {
+      // The builder remains usable for the current page even if storage is unavailable.
+    }
+  }, [candidateIds, deck]);
+
   const filteredCards = useMemo(() => {
     const needle = query.trim().toLocaleLowerCase('ja');
     return cards
@@ -151,6 +186,7 @@ export default function Home() {
       .filter((card) => cardType !== 'member' || matchesNumericFilter(card, 'cost', costIds))
       .filter((card) => cardType !== 'live' || matchesNumericFilter(card, 'score', scoreIds))
       .filter((card) => selectedProductIdSet.size === 0 || selectedProductIdSet.has(card.productId))
+      .filter((card) => !candidateOnly || candidateIds.has(baseCardId(card.cardNumber)))
       .filter((card) => !needle || [card.name, card.cardNumber, card.effectText ?? '', productById.get(card.productId) ?? '', ...card.memberIds.map((id) => memberById.get(id) ?? '')].join(' ').toLocaleLowerCase('ja').includes(needle))
       .sort((left, right) => {
         let result = 0;
@@ -162,14 +198,14 @@ export default function Home() {
         if (sortKey === 'scoreDesc') result = compareNullable(left.live?.score ?? null, right.live?.score ?? null, 'desc');
         return result || compareNullable(left.cardNumber, right.cardNumber);
       });
-  }, [cardType, costIds, scoreIds, groupId, memberById, productById, query, selectedMemberIdSet, selectedProductIdSet, sortKey]);
+  }, [candidateIds, candidateOnly, cardType, costIds, scoreIds, groupId, memberById, productById, query, selectedMemberIdSet, selectedProductIdSet, sortKey]);
   const displayGroups = useMemo(() => groupIdenticalCards
     ? groupCardsForDisplay(filteredCards)
     : filteredCards.map((card) => ({ baseCardId: card.cardNumber, cards: [card], representative: card })), [filteredCards, groupIdenticalCards]);
 
   const resetFilters = () => {
     setQuery(''); setGroupId('all'); setMemberIds([]); setCardType('all'); setProductIds([]); setSortKey(DEFAULT_SORT); setVisibleCount(PAGE_SIZE);
-    setCostIds([]); setScoreIds([]); setGroupIdenticalCards(true);
+    setCostIds([]); setScoreIds([]); setGroupIdenticalCards(true); setCandidateOnly(false);
   };
   const changeCardType = (nextCardType: string) => {
     setCardType(nextCardType);
@@ -195,7 +231,35 @@ export default function Home() {
   const updateProductIds = (nextIds: string[]) => { setProductIds(nextIds); setVisibleCount(PAGE_SIZE); };
   const updateCostIds = (nextIds: string[]) => { setCostIds(nextIds); setVisibleCount(PAGE_SIZE); };
   const updateScoreIds = (nextIds: string[]) => { setScoreIds(nextIds); setVisibleCount(PAGE_SIZE); };
-  const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length || costIds.length || scoreIds.length || !groupIdenticalCards);
+  const toggleCandidate = (id: string) => {
+    setCandidateIds((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+  const updateDeck = (id: string, delta: number) => setDeck((current) => changeDeckQuantity(current, id, delta));
+  const deckEntries = useMemo(() => Object.entries(deck)
+    .map(([id, quantity]) => ({ id, quantity, card: cardsByBuilderId.get(id)?.[0] }))
+    .filter((entry): entry is { id: string; quantity: number; card: Card } => Boolean(entry.card))
+    .sort((left, right) => compareNullable(left.id, right.id)), [deck]);
+  const memberDeckEntries = deckEntries.filter((entry) => entry.card.cardType === 'member');
+  const liveDeckEntries = deckEntries.filter((entry) => entry.card.cardType === 'live');
+  const deckTotal = deckEntries.reduce((sum, entry) => sum + entry.quantity, 0);
+  const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length || costIds.length || scoreIds.length || !groupIdenticalCards || candidateOnly);
+
+  const deckSection = (label: string, entries: typeof deckEntries) => entries.length > 0 && <section className="deck-section">
+    <h3>{label}<span>{entries.reduce((sum, entry) => sum + entry.quantity, 0)}枚</span></h3>
+    <div className="deck-list">{entries.map(({ id, quantity, card }) => <article className="deck-row" key={id}>
+      <div><strong>{card.name}</strong><code>{id}</code></div>
+      <div className="quantity-control" aria-label={`${card.name}の採用枚数`}>
+        <button aria-label={`${card.name}を1枚減らす`} onClick={() => updateDeck(id, -1)} type="button"><Minus /></button>
+        <output aria-label={`${quantity}枚`}>{quantity}</output>
+        <button aria-label={`${card.name}を1枚増やす`} onClick={() => updateDeck(id, 1)} type="button"><Plus /></button>
+      </div>
+    </article>)}</div>
+  </section>;
 
   return <main>
     <header className="site-header"><div className="header-inner">
@@ -231,23 +295,27 @@ export default function Home() {
       </div>
 
       <div className="result-tools">
-        <label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label>
+        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label></div>
         <div className="result-bar" aria-live="polite"><div><SlidersHorizontal aria-hidden="true" /><strong>{displayGroups.length}</strong><span>{groupIdenticalCards ? `種を表示（元カード${filteredCards.length}枚）` : '枚が見つかりました'}</span></div>{hasFilters && <Button variant="ghost" onClick={resetFilters}><X /> 条件をクリア</Button>}</div>
       </div>
       {displayGroups.length ? <div className="card-grid">{displayGroups.slice(0, visibleCount).map((group) => {
         const card = group.representative;
         const isGrouped = group.cards.length > 1;
         const productIdsInGroup = new Set(group.cards.map((version) => version.productId));
+        const builderId = baseCardId(card.cardNumber);
+        const isCandidate = candidateIds.has(builderId);
         return <article className={`card-item ${card.cardType}`} key={isGrouped ? `${group.baseCardId}:${card.id}` : card.id}>
           <div className="card-body"><Badge className="type-badge" variant="secondary">{card.cardType === 'member' ? 'MEMBER' : 'LIVE'}</Badge><div className="card-heading"><div><h2>{card.name}</h2><code>{isGrouped ? group.baseCardId : card.cardNumber}</code></div>{card.member && <span className="metric"><small>COST</small>{card.member.cost ?? '—'}</span>}{card.live && <span className="metric score"><small>SCORE</small>{card.live.score ?? '—'}</span>}</div>
             {isGrouped && <div className="version-summary"><span>バージョン</span>{group.cards.map((version) => <Badge key={version.id} variant="outline">{cardVersion(version.cardNumber) ?? version.cardNumber}</Badge>)}</div>}
             <p className="product-name">{productIdsInGroup.size === 1 ? productById.get(card.productId) : '収録商品はバージョン別'}</p><dl className="stats">{card.member && <><div><dt>基本ハート</dt><dd><Hearts values={card.member.hearts} /></dd></div><div><dt>ブレードハート</dt><dd><Hearts blade values={card.member.bladeHearts} /></dd></div><div><dt>ブレード</dt><dd>{card.member.yell.count ?? '—'}</dd></div></>}{card.live && <div><dt>必要ハート</dt><dd><Hearts values={card.live.requiredHearts} /></dd></div>}</dl>
             {card.effectText && <p className="effect-text">{card.effectText}</p>}
+            <div className="builder-actions"><Button aria-pressed={isCandidate} className={isCandidate ? 'candidate-active' : ''} onClick={() => toggleCandidate(builderId)} size="sm" variant="outline">{isCandidate ? <Check /> : <Bookmark />}{isCandidate ? '候補中' : '候補'}</Button><Button onClick={() => updateDeck(builderId, 1)} size="sm"><ListPlus />デッキに追加</Button></div>
             {isGrouped ? <details className="version-details"><summary>バージョンを見る（{group.cards.length}種）</summary><div className="version-list">{group.cards.map((version) => <section className="version-row" key={version.id}><div><strong>{cardVersion(version.cardNumber) ?? '仕様違い'}</strong><code>{version.cardNumber}</code></div><p><span>レアリティ</span>{version.rarity ?? cardVersion(version.cardNumber) ?? '—'}</p><p><span>収録商品</span>{productById.get(version.productId)}</p><div className="card-links">{version.officialUrl && <a className="official-link" href={version.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{version.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div></section>)}</div></details> : <div className="card-links">{card.officialUrl && <a className="official-link" href={card.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{card.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div>}
           </div></article>;
       })}</div> : <div className="empty-state"><Search /><h2>該当するカードがありません</h2><p>検索語や絞り込み条件を変更してください。</p><Button onClick={resetFilters}>条件をクリア</Button></div>}
       {visibleCount < displayGroups.length && <div className="load-more"><Button size="lg" variant="outline" onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}>さらに表示 <span>{Math.min(PAGE_SIZE, displayGroups.length - visibleCount)}種</span></Button></div>}
     </section>
+    <Sheet><SheetTrigger className="deck-launcher" aria-label={`デッキを開く、現在${deckTotal}枚`}><ListPlus /><span>デッキ</span><strong>{deckTotal}</strong></SheetTrigger><SheetContent className="deck-sheet" side="right"><SheetHeader className="deck-header"><SheetTitle>デッキ</SheetTitle><SheetDescription>メンバーとライブを分けて表示しています。</SheetDescription><div className="deck-total"><span>合計</span><strong>{deckTotal}</strong><span>枚</span></div></SheetHeader><div className="deck-scroll">{deckEntries.length ? <>{deckSection('メンバーカード', memberDeckEntries)}{deckSection('ライブカード', liveDeckEntries)}</> : <div className="deck-empty"><ListPlus /><strong>デッキは空です</strong><p>カード一覧の「デッキに追加」から選べます。</p></div>}</div></SheetContent></Sheet>
     <footer><p>非公式ファンメイドカードリスト · エネルギーカードは収録対象外です</p><p>未登録のレアリティは、確認済み情報のみ順次追加します。</p></footer>
   </main>;
 }
