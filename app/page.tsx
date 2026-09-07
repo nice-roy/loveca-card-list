@@ -13,7 +13,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 import { baseCardId, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
-import { BUILDER_STORAGE_KEY, changeDeckQuantity, createAiConsultationText, createDeckRecipeText, groupDeckEntriesByMetric, normalizeBuilderState, type DeckGroup, type DeckQuantities } from '@/lib/deck-builder';
+import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckRecipeText, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle, type DeckGroup, type DeckQuantities } from '@/lib/deck-builder';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -171,6 +171,7 @@ export default function Home() {
   const [deckOpen, setDeckOpen] = useState(false);
   const [isDesktopDeck, setIsDesktopDeck] = useState(false);
   const [copyFeedback, setCopyFeedback] = useState<'recipe' | 'ai' | 'error' | null>(null);
+  const [pendingRemovalId, setPendingRemovalId] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const memberById = useMemo(() => new Map(references.members.map((item) => [item.id, item.label])), []);
@@ -277,7 +278,18 @@ export default function Home() {
       return next;
     });
   };
-  const updateDeck = (id: string, delta: number) => setDeck((current) => changeDeckQuantity(current, id, delta));
+  const updateDeck = (id: string, delta: number) => {
+    setPendingRemovalId((current) => current === id ? null : current);
+    setDeck((current) => changeDeckQuantity(current, id, delta));
+  };
+  const decreaseDeck = (id: string, quantity: number) => {
+    if (quantity === 1) setPendingRemovalId(id);
+    else updateDeck(id, -1);
+  };
+  const confirmDeckRemoval = (id: string) => {
+    setDeck((current) => removeDeckCardIfSingle(current, id));
+    setPendingRemovalId(null);
+  };
   const deckEntries = useMemo(() => Object.entries(deck)
     .map(([id, quantity]) => ({ id, quantity, card: cardsByBuilderId.get(id)?.[0] }))
     .filter((entry): entry is { id: string; quantity: number; card: Card } => Boolean(entry.card))
@@ -303,10 +315,12 @@ export default function Home() {
       return <article className={`deck-row ${card.cardType}`} key={id}>
       <details className="deck-card-details"><summary><div className="deck-card-heading"><strong>{card.cardType === 'member' ? memberName : card.name}</strong><code>{id}</code></div><div className="deck-key-info">{card.member && <><span className="deck-main-metric"><small>COST</small><strong>{card.member.cost ?? '—'}</strong></span><span><small>基本ハート</small><Hearts values={card.member.hearts} /></span><span><small>ブレードハート</small><Hearts blade values={card.member.bladeHearts} /></span><span><small>ブレード</small><strong>{card.member.yell.count ?? '—'}</strong></span></>}{card.live && <><span className="deck-main-metric live"><small>SCORE</small><strong>{card.live.score ?? '—'}</strong></span><span><small>必要ハート</small><Hearts values={card.live.requiredHearts} /></span></>}</div>{card.effectText && <p className="deck-effect-preview">{card.effectText}</p>}<span className="deck-detail-hint">詳細を見る <ChevronDown /></span></summary><div className="deck-detail-body"><div className="deck-full-effect"><span>効果</span><p>{card.effectText ?? '—'}</p></div><div className="deck-version-list">{versions.map((version) => <section className="deck-version" key={version.id}><div><strong>{cardVersion(version.cardNumber) ?? version.rarity ?? '通常版'}</strong><code>{version.cardNumber}</code></div><p><span>収録商品</span>{productById.get(version.productId) ?? '—'}</p><div className="card-links">{version.officialUrl && <a className="official-link" href={version.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{version.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div></section>)}</div></div></details>
       <div className="quantity-control" aria-label={`${card.name}の採用枚数`}>
-        <button aria-label={`${card.name}を1枚減らす`} onClick={() => updateDeck(id, -1)} type="button"><Minus /></button>
+        <button aria-label={`${card.name}を1枚減らす`} onClick={() => decreaseDeck(id, quantity)} type="button"><Minus /></button>
         <output aria-label={`${quantity}枚`}>{quantity}</output>
-        <button aria-label={`${card.name}を1枚増やす`} onClick={() => updateDeck(id, 1)} type="button"><Plus /></button>
+        <button aria-label={`${card.name}を1枚増やす`} disabled={quantity >= MAX_DECK_QUANTITY} onClick={() => updateDeck(id, 1)} title={quantity >= MAX_DECK_QUANTITY ? '同一カードは4枚までです' : undefined} type="button"><Plus /></button>
       </div>
+      {quantity > MAX_DECK_QUANTITY && <output className="deck-limit-warning">保存済みの{quantity}枚を保持中です。追加はできません。</output>}
+      {pendingRemovalId === id && <div aria-label={`${card.name}の削除確認`} aria-modal="false" className="deck-remove-confirm" role="alertdialog"><p>このカードをデッキから削除しますか？</p><div><Button onClick={() => confirmDeckRemoval(id)} size="sm" type="button" variant="destructive">削除</Button><Button onClick={() => setPendingRemovalId(null)} size="sm" type="button" variant="outline">キャンセル</Button></div></div>}
     </article>})}</div>
     </section>)}</div>
   </section>;
@@ -360,7 +374,7 @@ export default function Home() {
             {isGrouped && <div className="version-summary"><span>バージョン</span>{group.cards.map((version) => <Badge key={version.id} variant="outline">{cardVersion(version.cardNumber) ?? version.cardNumber}</Badge>)}</div>}
             <p className="product-name">{productIdsInGroup.size === 1 ? productById.get(card.productId) : '収録商品はバージョン別'}</p><dl className="stats">{card.member && <><div><dt>基本ハート</dt><dd><Hearts values={card.member.hearts} /></dd></div><div><dt>ブレードハート</dt><dd><Hearts blade values={card.member.bladeHearts} /></dd></div><div><dt>ブレード</dt><dd>{card.member.yell.count ?? '—'}</dd></div></>}{card.live && <div><dt>必要ハート</dt><dd><Hearts values={card.live.requiredHearts} /></dd></div>}</dl>
             {card.effectText && <p className="effect-text">{card.effectText}</p>}
-            <div className="builder-actions"><Button aria-pressed={isCandidate} className={isCandidate ? 'candidate-active' : ''} onClick={() => toggleCandidate(builderId)} size="sm" variant="outline">{isCandidate ? <Check /> : <Bookmark />}{isCandidate ? '候補中' : '候補'}</Button><Button onClick={() => updateDeck(builderId, 1)} size="sm"><ListPlus />デッキに追加</Button></div>
+            <div className="builder-actions"><Button aria-pressed={isCandidate} className={isCandidate ? 'candidate-active' : ''} onClick={() => toggleCandidate(builderId)} size="sm" variant="outline">{isCandidate ? <Check /> : <Bookmark />}{isCandidate ? '候補中' : '候補'}</Button><Button disabled={(deck[builderId] ?? 0) >= MAX_DECK_QUANTITY} onClick={() => updateDeck(builderId, 1)} size="sm"><ListPlus />{(deck[builderId] ?? 0) >= MAX_DECK_QUANTITY ? '4枚採用中' : 'デッキに追加'}</Button></div>
             {isGrouped ? <details className="version-details"><summary>バージョンを見る（{group.cards.length}種）</summary><div className="version-list">{group.cards.map((version) => <section className="version-row" key={version.id}><div><strong>{cardVersion(version.cardNumber) ?? '仕様違い'}</strong><code>{version.cardNumber}</code></div><p><span>レアリティ</span>{version.rarity ?? cardVersion(version.cardNumber) ?? '—'}</p><p><span>収録商品</span>{productById.get(version.productId)}</p><div className="card-links">{version.officialUrl && <a className="official-link" href={version.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{version.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div></section>)}</div></details> : <div className="card-links">{card.officialUrl && <a className="official-link" href={card.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{card.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div>}
           </div></article>;
       })}</div> : <div className="empty-state"><Search /><h2>該当するカードがありません</h2><p>検索語や絞り込み条件を変更してください。</p><Button onClick={resetFilters}>条件をクリア</Button></div>}

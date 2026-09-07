@@ -12,6 +12,8 @@ export type BuilderState = {
   deck: DeckQuantities;
 };
 
+export const MAX_DECK_QUANTITY = 4;
+
 export function normalizeBuilderState(value: unknown, validIds: Set<string>): BuilderState {
   const empty: BuilderState = { version: 1, candidates: [], deck: {} };
   if (!value || typeof value !== 'object') return empty;
@@ -35,10 +37,16 @@ export function normalizeBuilderState(value: unknown, validIds: Set<string>): Bu
 
 export function changeDeckQuantity(deck: DeckQuantities, id: string, delta: number) {
   const next = { ...deck };
-  const quantity = Math.max(0, (next[id] ?? 0) + delta);
+  const current = next[id] ?? 0;
+  if (delta > 0 && current >= MAX_DECK_QUANTITY) return next;
+  const quantity = Math.max(0, Math.min(MAX_DECK_QUANTITY, current + delta));
   if (quantity === 0) delete next[id];
   else next[id] = quantity;
   return next;
+}
+
+export function removeDeckCardIfSingle(deck: DeckQuantities, id: string) {
+  return deck[id] === 1 ? changeDeckQuantity(deck, id, -1) : deck;
 }
 
 function compareNullable(left: string | number | null, right: string | number | null, direction: 'asc' | 'desc' = 'asc') {
@@ -79,6 +87,53 @@ const heartColorLabels: Record<string, string> = {
   purple: '紫',
   any: '無色',
 };
+
+const effectHeartTokenLabels: Record<string, string> = {
+  heart01: '桃ハート',
+  heart02: '赤ハート',
+  heart03: '黄ハート',
+  heart04: '緑ハート',
+  heart05: '青ハート',
+  heart06: '紫ハート',
+  heart0: '無色ハート',
+};
+
+const effectBladeTokenLabels: Record<string, string> = {
+  heart01: '桃ブレード',
+  heart02: '赤ブレード',
+  heart03: '黄ブレード',
+  heart04: '緑ブレード',
+  heart05: '青ブレード',
+  heart06: '紫ブレード',
+  heart0: 'ALLブレード',
+};
+
+function onlyStructuredHeartColor(card: Card) {
+  const values = card.live?.requiredHearts ?? card.member?.hearts ?? [];
+  const colors = [...new Set(values.map((value) => value.color).filter((color): color is string => Boolean(color && color !== 'any')))];
+  return colors.length === 1 ? colors[0] : null;
+}
+
+function compactIconRuns(text: string) {
+  return text.replace(/\[([^\]]+)\](?:\[\1\])+/g, (run, label: string) => {
+    const count = run.split(`[${label}]`).length - 1;
+    return `[${label}×${count}]`;
+  });
+}
+
+export function formatEffectTextForAi(card: Card) {
+  if (!card.effectText) return '記載なし';
+  const structuredColor = onlyStructuredHeartColor(card);
+  const structuredHeartLabel = structuredColor ? `${heartColorLabels[structuredColor] ?? structuredColor}ハート` : null;
+  const structuredBladeLabel = structuredColor ? `${heartColorLabels[structuredColor] ?? structuredColor}ブレード` : null;
+  const converted = card.effectText
+    .replace(/(heart0[1-6]|heart0)ブレード/g, (_, token: string) => `[${effectBladeTokenLabels[token]}]`)
+    .replace(/♥ブレード/g, `[${structuredBladeLabel ?? '色不明ブレード'}]`)
+    .replace(/heart0[1-6]|heart0/g, (token) => `[${effectHeartTokenLabels[token]}]`)
+    .replace(/◇/g, '[無色ハート]')
+    .replace(/♥/g, `[${structuredHeartLabel ?? '色不明ハート'}]`);
+  return compactIconRuns(converted);
+}
 
 function formatHearts(values: { color: string | null; count: number }[]) {
   if (!values.length) return 'なし';
@@ -125,13 +180,13 @@ export function createAiConsultationText(entries: DeckEntry[]) {
     `  基本ハート：${formatHearts(entry.card.member?.hearts ?? [])}`,
     `  ブレードハート：${formatHearts(entry.card.member?.bladeHearts ?? [])}`,
     `  ブレード：${entry.card.member?.yell.count ?? '不明'}`,
-    `  効果：${entry.card.effectText ?? '記載なし'}`,
+    `  効果：${formatEffectTextForAi(entry.card)}`,
   ].join('\n')).join('\n\n') : '（なし）';
   const liveBlocks = lives.length ? lives.map((entry) => [
     `・${entry.card.name} / ${entry.id} ×${entry.quantity}`,
     `  SCORE：${entry.card.live?.score ?? '不明'}`,
     `  必要ハート：${formatHearts(entry.card.live?.requiredHearts ?? [])}`,
-    `  効果：${entry.card.effectText ?? '記載なし'}`,
+    `  効果：${formatEffectTextForAi(entry.card)}`,
   ].join('\n')).join('\n\n') : '（なし）';
 
   return [

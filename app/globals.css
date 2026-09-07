@@ -186,9 +186,15 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .quantity-control button:first-child { border-radius: 10px 0 0 10px; }
 .quantity-control button:last-child { border-radius: 0 10px 10px 0; }
 .quantity-control button:hover { background: #f9e9f1; }
+.quantity-control button:disabled { cursor: not-allowed; background: #f3edf0; color: #b9aab2; opacity: .75; }
 .quantity-control button:focus-visible { position: relative; z-index: 1; outline: 3px solid color-mix(in oklab,var(--ring) 35%,transparent); }
 .quantity-control svg { width: 14px; }
 .quantity-control output { height: 34px; display: grid; place-items: center; border-block: 1px solid #e5d3dd; background: white; font-size: .8rem; font-weight: 850; }
+.deck-limit-warning { margin: 0; padding: 8px 12px; border-top: 1px solid #f0e4ea; background: #fff7e8; color: #795719; font-size: .65rem; line-height: 1.45; }
+.deck-remove-confirm { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-top: 1px solid #ead6e1; background: #fff7fa; }
+.deck-remove-confirm p { margin: 0; color: #6b4057; font-size: .69rem; font-weight: 750; line-height: 1.45; }
+.deck-remove-confirm > div { display: flex; flex: 0 0 auto; gap: 6px; }
+.deck-remove-confirm button { min-height: 34px; }
 .deck-empty { min-height: 55vh; display: grid; place-items: center; align-content: center; padding: 32px; color: #826d79; text-align: center; }
 .deck-empty svg { width: 34px; height: 34px; margin-bottom: 12px; color: #b07b98; }
 .deck-empty strong { color: #5c4753; font-size: .95rem; }
@@ -218,6 +224,8 @@ footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25p
   .result-tools { align-items: stretch; flex-direction: column; gap: 0; padding: 8px 0; }
   .view-toggles { gap: 16px; overflow-x: auto; }
   .result-bar { min-height: 48px; }
+  .deck-remove-confirm { align-items: stretch; flex-direction: column; }
+  .deck-remove-confirm > div { display: grid; grid-template-columns: 1fr 1fr; }
   .deck-launcher { right: max(12px,env(safe-area-inset-right)); bottom: max(12px,env(safe-area-inset-bottom)); min-height: 48px; }
   .deck-sheet { width: 100vw !important; }
   .deck-scroll { padding: 12px; }

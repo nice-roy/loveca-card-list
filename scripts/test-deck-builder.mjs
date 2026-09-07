@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { changeDeckQuantity, createAiConsultationText, createDeckRecipeText, groupDeckEntriesByMetric, normalizeBuilderState } from '../lib/deck-builder.ts';
+import { changeDeckQuantity, createAiConsultationText, createDeckRecipeText, formatEffectTextForAi, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle } from '../lib/deck-builder.ts';
 
 test('saved state is restored only for valid cards and positive whole quantities', () => {
   const restored = normalizeBuilderState({
@@ -18,6 +18,26 @@ test('saved state is restored only for valid cards and positive whole quantities
 test('decreasing to zero removes a card from the deck', () => {
   assert.deepEqual(changeDeckQuantity({ 'A-001': 1, 'B-002': 2 }, 'A-001', -1), { 'B-002': 2 });
   assert.deepEqual(changeDeckQuantity({ 'B-002': 2 }, 'B-002', 1), { 'B-002': 3 });
+});
+
+test('quantity updates stop at four without rewriting legacy over-limit values', () => {
+  assert.deepEqual(changeDeckQuantity({ 'A-001': 3 }, 'A-001', 1), { 'A-001': 4 });
+  assert.deepEqual(changeDeckQuantity({ 'A-001': 4 }, 'A-001', 1), { 'A-001': 4 });
+  assert.deepEqual(changeDeckQuantity({ 'A-001': 3 }, 'A-001', 20), { 'A-001': 4 });
+  assert.deepEqual(changeDeckQuantity({ 'A-001': 6 }, 'A-001', 1), { 'A-001': 6 });
+  assert.deepEqual(normalizeBuilderState({ deck: { 'A-001': 6 } }, new Set(['A-001'])).deck, { 'A-001': 6 });
+});
+
+test('single-card removal only occurs after the dedicated confirmation path', () => {
+  const deck = { 'A-001': 1, 'B-002': 2 };
+  assert.strictEqual(removeDeckCardIfSingle(deck, 'B-002'), deck);
+  assert.deepEqual(removeDeckCardIfSingle(deck, 'A-001'), { 'B-002': 2 });
+});
+
+test('AI effect text converts only icons supported by token or structured color data', () => {
+  assert.equal(formatEffectTextForAi({ effectText: 'heart02heart02とheart0、heart03ブレードとheart0ブレード', member: null, live: null }), '[赤ハート×2]と[無色ハート]、[黄ブレード]と[ALLブレード]');
+  assert.equal(formatEffectTextForAi({ effectText: '必要ハートは♥♥♥♥♥♥♥♥♥◇◇◇になる。', member: null, live: { requiredHearts: [{ color: 'yellow', count: 1 }, { color: 'any', count: 2 }] } }), '必要ハートは[黄ハート×9][無色ハート×3]になる。');
+  assert.equal(formatEffectTextForAi({ effectText: '♥を得る。', member: null, live: { requiredHearts: [{ color: 'red', count: 1 }, { color: 'purple', count: 1 }] } }), '[色不明ハート]を得る。');
 });
 
 test('deck entries are grouped by metric with adopted quantities totaled', () => {
