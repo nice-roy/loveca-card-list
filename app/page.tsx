@@ -14,6 +14,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 import { baseCardId, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
 import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckRecipeText, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle, type DeckGroup, type DeckQuantities } from '@/lib/deck-builder';
+import { groupMemberOptions, type MemberOptionGroup } from '@/lib/member-options';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -108,6 +109,7 @@ function MultiSelect({
   label,
   emptyLabel,
   options,
+  optionGroups,
   selectedIds,
   onChange,
   className = '',
@@ -116,6 +118,7 @@ function MultiSelect({
   label: string;
   emptyLabel: string;
   options: { id: string; label: string }[];
+  optionGroups?: MemberOptionGroup[];
   selectedIds: string[];
   onChange: (nextIds: string[]) => void;
   className?: string;
@@ -140,8 +143,16 @@ function MultiSelect({
       </PopoverTrigger>
       <PopoverContent align="start" className="multi-select-menu">
         <div className="multi-select-header"><span>複数選択できます</span><button disabled={!selectedIds.length} onClick={() => onChange([])} type="button">すべて解除</button></div>
-        <div className="multi-select-options" role="group" aria-labelledby={`${id}-label`}>
-          {options.map((option) => <label className="multi-select-option" key={option.id}>
+        <div className={`multi-select-options${optionGroups ? ' grouped-member-options' : ''}`} role="group" aria-labelledby={`${id}-label`}>
+          {optionGroups ? optionGroups.map((group) => <section className="member-option-group" key={group.id}>
+            {group.label && <h3>{group.label}</h3>}
+            {group.sections.map((section) => <section className="member-option-section" key={`${group.id}-${section.id}`}>
+              <h4>{section.label}</h4><div className="member-option-grid">{section.options.map((option) => <label className="multi-select-option" key={option.id}>
+                <input checked={selectedIds.includes(option.id)} onChange={() => toggle(option.id)} type="checkbox" />
+                <span>{option.label}</span>
+              </label>)}</div>
+            </section>)}
+          </section>) : options.map((option) => <label className="multi-select-option" key={option.id}>
             <input checked={selectedIds.includes(option.id)} onChange={() => toggle(option.id)} type="checkbox" />
             <span>{option.label}</span>
           </label>)}
@@ -181,6 +192,7 @@ export default function Home() {
   const availableMembers = useMemo(() => groupId === 'all'
     ? references.members
     : references.members.filter((member) => member.groupId === groupId), [groupId]);
+  const memberOptionGroups = useMemo(() => groupMemberOptions(availableMembers, groupId, references.groups), [availableMembers, groupId]);
   const availableProducts = useMemo(() => {
     const availableProductIds = getProductIdsForGroup(groupId);
     return references.products.filter((product) => availableProductIds.has(product.id));
@@ -351,7 +363,7 @@ export default function Home() {
         <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" className="search-input" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
         <div className={`select-grid${cardType === 'member' ? ' with-cost-filter' : ''}`}>
           <label className="filter-field"><span className="filter-label">カード種類</span><NativeSelect className="select-control" value={cardType} onChange={(event) => changeCardType(event.target.value)}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="member">メンバー</NativeSelectOption><NativeSelectOption value="live">ライブ</NativeSelectOption></NativeSelect></label>
-          {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" onChange={updateMemberIds} options={availableMembers} selectedIds={memberIds} />}
+          {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" onChange={updateMemberIds} optionGroups={memberOptionGroups} options={availableMembers} selectedIds={memberIds} />}
           {cardType === 'member' && <MultiSelect key="cost" emptyLabel="すべてのコスト" id="cost-filter" label="コスト" onChange={updateCostIds} options={availableCosts} selectedIds={costIds} />}
           {cardType === 'live' && <MultiSelect key="score" emptyLabel="すべてのスコア" id="score-filter" label="スコア" onChange={updateScoreIds} options={availableScores} selectedIds={scoreIds} />}
           <MultiSelect className="product-filter" emptyLabel="すべての商品" id="product-filter" label="収録商品" onChange={updateProductIds} options={availableProducts} selectedIds={productIds} />
