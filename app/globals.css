@@ -132,6 +132,11 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .deck-total { display: flex; align-items: baseline; gap: 4px; margin-top: 9px; color: #7b6572; }
 .deck-total strong { color: #a82d6a; font-size: 2rem; line-height: 1; }
 .deck-total span { font-size: .76rem; font-weight: 800; }
+.deck-copy-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 10px; }
+.deck-copy-actions button { min-width: 0; min-height: 38px; padding-inline: 8px; color: #783354; background: #fffafd; font-size: .66rem; font-weight: 800; }
+.deck-copy-actions svg { width: 14px; height: 14px; }
+.copy-feedback { min-height: 15px; margin: 3px 1px 0; color: #9a627e; font-size: .61rem; font-weight: 700; }
+.copy-feedback.error { color: #b13b3b; }
 .deck-scroll { min-height: 0; flex: 1; padding: 16px; overflow-y: auto; overscroll-behavior: contain; }
 .deck-section + .deck-section { margin-top: 24px; }
 .deck-section-heading { display: flex; align-items: center; margin: 0 4px 9px; }
@@ -222,5 +227,6 @@ footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25p
   .intro h1 br { display: none; } .card-grid { grid-template-columns: 1fr; }
   .effect-text { min-height: 0; -webkit-line-clamp: 3; } .result-bar > div span { display: none; }
   .builder-actions { grid-template-columns: 1fr 1.35fr; }
+  .deck-copy-actions { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion:reduce) { * { scroll-behavior: auto !important; transition-duration: .01ms !important; } }

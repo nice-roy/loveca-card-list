@@ -69,3 +69,93 @@ export function groupDeckEntriesByMetric(entries: DeckEntry[], metric: DeckMetri
       entries: [...groupedEntries].sort((left, right) => compareNullable(left.id, right.id)),
     }));
 }
+
+const heartColorLabels: Record<string, string> = {
+  pink: '桃',
+  red: '赤',
+  yellow: '黄',
+  green: '緑',
+  blue: '青',
+  purple: '紫',
+  any: '無色',
+};
+
+function formatHearts(values: { color: string | null; count: number }[]) {
+  if (!values.length) return 'なし';
+  return values.map((value) => `${heartColorLabels[value.color ?? 'any'] ?? value.color ?? '無色'}×${value.count}`).join(' / ');
+}
+
+function splitDeckEntries(entries: DeckEntry[]) {
+  const members = groupDeckEntriesByMetric(entries.filter((entry) => entry.card.cardType === 'member'), 'cost').flatMap((group) => group.entries);
+  const lives = groupDeckEntriesByMetric(entries.filter((entry) => entry.card.cardType === 'live'), 'score').flatMap((group) => group.entries);
+  return { members, lives };
+}
+
+export function createDeckRecipeText(entries: DeckEntry[]) {
+  const { members, lives } = splitDeckEntries(entries);
+  const memberTotal = members.reduce((sum, entry) => sum + entry.quantity, 0);
+  const liveTotal = lives.reduce((sum, entry) => sum + entry.quantity, 0);
+  const formatLines = (items: DeckEntry[]) => items.length
+    ? items.map((entry) => `${entry.card.name} / ${entry.id} ×${entry.quantity}`).join('\n')
+    : '（なし）';
+
+  return [
+    '【ラブカ デッキレシピ】',
+    '',
+    `合計：${memberTotal + liveTotal}枚`,
+    `メンバー：${memberTotal}枚`,
+    `ライブ：${liveTotal}枚`,
+    '',
+    '■ メンバーカード',
+    formatLines(members),
+    '',
+    '■ ライブカード',
+    formatLines(lives),
+  ].join('\n');
+}
+
+export function createAiConsultationText(entries: DeckEntry[]) {
+  const { members, lives } = splitDeckEntries(entries);
+  const memberTotal = members.reduce((sum, entry) => sum + entry.quantity, 0);
+  const liveTotal = lives.reduce((sum, entry) => sum + entry.quantity, 0);
+  const total = memberTotal + liveTotal;
+  const memberBlocks = members.length ? members.map((entry) => [
+    `・${entry.card.name} / ${entry.id} ×${entry.quantity}`,
+    `  COST：${entry.card.member?.cost ?? '不明'}`,
+    `  基本ハート：${formatHearts(entry.card.member?.hearts ?? [])}`,
+    `  ブレードハート：${formatHearts(entry.card.member?.bladeHearts ?? [])}`,
+    `  ブレード：${entry.card.member?.yell.count ?? '不明'}`,
+    `  効果：${entry.card.effectText ?? '記載なし'}`,
+  ].join('\n')).join('\n\n') : '（なし）';
+  const liveBlocks = lives.length ? lives.map((entry) => [
+    `・${entry.card.name} / ${entry.id} ×${entry.quantity}`,
+    `  SCORE：${entry.card.live?.score ?? '不明'}`,
+    `  必要ハート：${formatHearts(entry.card.live?.requiredHearts ?? [])}`,
+    `  効果：${entry.card.effectText ?? '記載なし'}`,
+  ].join('\n')).join('\n\n') : '（なし）';
+
+  return [
+    '以下はラブライブ！オフィシャルカードゲームの現在作成中のデッキです。',
+    '記載されたカード情報を基準にデッキを分析してください。',
+    '現在の採用カードをできるだけ尊重しながら、',
+    '・構成の長所と弱点',
+    '・増やす候補',
+    '・減らす／抜く候補',
+    '・残り枠に入れる候補',
+    '・その理由',
+    'を提案してください。',
+    '不明なカード効果を推測しないでください。',
+    `現在の合計は${total}枚です。未完成の場合は、想定する完成枚数を確認したうえで残り枠について提案してください。`,
+    '',
+    '【現在のデッキ】',
+    `合計：${total}枚`,
+    `メンバー：${memberTotal}枚`,
+    `ライブ：${liveTotal}枚`,
+    '',
+    '■ メンバーカード',
+    memberBlocks,
+    '',
+    '■ ライブカード',
+    liveBlocks,
+  ].join('\n');
+}

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { changeDeckQuantity, groupDeckEntriesByMetric, normalizeBuilderState } from '../lib/deck-builder.ts';
+import { changeDeckQuantity, createAiConsultationText, createDeckRecipeText, groupDeckEntriesByMetric, normalizeBuilderState } from '../lib/deck-builder.ts';
 
 test('saved state is restored only for valid cards and positive whole quantities', () => {
   const restored = normalizeBuilderState({
@@ -46,4 +46,41 @@ test('live cards are grouped by score from low to high', () => {
     { value: 40, quantity: 2 },
     { value: 60, quantity: 1 },
   ]);
+});
+
+test('recipe copy text totals quantities and keeps base card ids separate', () => {
+  const entries = [
+    { id: 'MEMBER-001', quantity: 4, card: { name: 'メンバーA', cardType: 'member', member: { cost: 3 }, live: null } },
+    { id: 'MEMBER-002', quantity: 2, card: { name: 'メンバーA', cardType: 'member', member: { cost: 3 }, live: null } },
+    { id: 'LIVE-001', quantity: 3, card: { name: 'ライブA', cardType: 'live', member: null, live: { score: 50 } } },
+  ];
+  const text = createDeckRecipeText(entries);
+
+  assert.match(text, /合計：9枚/);
+  assert.match(text, /メンバー：6枚/);
+  assert.match(text, /ライブ：3枚/);
+  assert.match(text, /メンバーA \/ MEMBER-001 ×4/);
+  assert.match(text, /メンバーA \/ MEMBER-002 ×2/);
+});
+
+test('AI consultation text contains card details without links or images', () => {
+  const entries = [{
+    id: 'MEMBER-001',
+    quantity: 2,
+    card: {
+      name: 'メンバーA', cardType: 'member', officialUrl: 'https://example.com/card', image: { url: 'https://example.com/card.png' },
+      member: { cost: 4, hearts: [{ color: 'pink', count: 2 }], bladeHearts: [{ color: 'blue', count: 1 }], yell: { count: 3 } },
+      live: null, effectText: '確認済みの効果全文。',
+    },
+  }];
+  const text = createAiConsultationText(entries);
+
+  assert.match(text, /現在の合計は2枚です/);
+  assert.match(text, /COST：4/);
+  assert.match(text, /基本ハート：桃×2/);
+  assert.match(text, /ブレードハート：青×1/);
+  assert.match(text, /ブレード：3/);
+  assert.match(text, /効果：確認済みの効果全文。/);
+  assert.doesNotMatch(text, /https:\/\//);
+  assert.doesNotMatch(text, /画像/);
 });
