@@ -3,8 +3,9 @@ import type { Card } from '../app/data/schema';
 export const BUILDER_STORAGE_KEY = 'loveca-card-list:deck-builder:v1';
 
 export type DeckQuantities = Record<string, number>;
-export type DeckSortKey = 'costAsc' | 'costDesc' | 'scoreAsc' | 'scoreDesc' | 'cardNumberAsc' | 'cardNumberDesc';
 export type DeckEntry = { id: string; quantity: number; card: Card };
+export type DeckMetric = 'cost' | 'score';
+export type DeckGroup = { value: number | null; quantity: number; entries: DeckEntry[] };
 export type BuilderState = {
   version: 1;
   candidates: string[];
@@ -50,15 +51,21 @@ function compareNullable(left: string | number | null, right: string | number | 
   return direction === 'asc' ? result : -result;
 }
 
-export function sortDeckEntries(entries: DeckEntry[], key: DeckSortKey) {
-  return [...entries].sort((left, right) => {
-    let result = 0;
-    if (key === 'cardNumberAsc') result = compareNullable(left.id, right.id);
-    if (key === 'cardNumberDesc') result = compareNullable(left.id, right.id, 'desc');
-    if (key === 'costAsc') result = compareNullable(left.card.member?.cost ?? null, right.card.member?.cost ?? null);
-    if (key === 'costDesc') result = compareNullable(left.card.member?.cost ?? null, right.card.member?.cost ?? null, 'desc');
-    if (key === 'scoreAsc') result = compareNullable(left.card.live?.score ?? null, right.card.live?.score ?? null);
-    if (key === 'scoreDesc') result = compareNullable(left.card.live?.score ?? null, right.card.live?.score ?? null, 'desc');
-    return result || compareNullable(left.id, right.id);
-  });
+export function groupDeckEntriesByMetric(entries: DeckEntry[], metric: DeckMetric): DeckGroup[] {
+  const groups = new Map<number | null, DeckEntry[]>();
+
+  for (const entry of entries) {
+    const value = metric === 'cost'
+      ? entry.card.member?.cost ?? null
+      : entry.card.live?.score ?? null;
+    groups.set(value, [...(groups.get(value) ?? []), entry]);
+  }
+
+  return [...groups.entries()]
+    .sort(([left], [right]) => compareNullable(left, right))
+    .map(([value, groupedEntries]) => ({
+      value,
+      quantity: groupedEntries.reduce((sum, entry) => sum + entry.quantity, 0),
+      entries: [...groupedEntries].sort((left, right) => compareNullable(left.id, right.id)),
+    }));
 }

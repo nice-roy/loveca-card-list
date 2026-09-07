@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { changeDeckQuantity, normalizeBuilderState, sortDeckEntries } from '../lib/deck-builder.ts';
+import { changeDeckQuantity, groupDeckEntriesByMetric, normalizeBuilderState } from '../lib/deck-builder.ts';
 
 test('saved state is restored only for valid cards and positive whole quantities', () => {
   const restored = normalizeBuilderState({
@@ -20,15 +20,30 @@ test('decreasing to zero removes a card from the deck', () => {
   assert.deepEqual(changeDeckQuantity({ 'B-002': 2 }, 'B-002', 1), { 'B-002': 3 });
 });
 
-test('deck sorting changes display order without changing quantities', () => {
+test('deck entries are grouped by metric with adopted quantities totaled', () => {
   const entries = [
     { id: 'CARD-010', quantity: 2, card: { member: { cost: 5 }, live: null } },
     { id: 'CARD-002', quantity: 3, card: { member: { cost: 2 }, live: null } },
     { id: 'CARD-001', quantity: 1, card: { member: { cost: 5 }, live: null } },
   ];
 
-  assert.deepEqual(sortDeckEntries(entries, 'costAsc').map((entry) => entry.id), ['CARD-002', 'CARD-001', 'CARD-010']);
-  assert.deepEqual(sortDeckEntries(entries, 'costDesc').map((entry) => entry.id), ['CARD-001', 'CARD-010', 'CARD-002']);
-  assert.deepEqual(sortDeckEntries(entries, 'cardNumberDesc').map((entry) => entry.id), ['CARD-010', 'CARD-002', 'CARD-001']);
+  const groups = groupDeckEntriesByMetric(entries, 'cost');
+  assert.deepEqual(groups.map((group) => ({ value: group.value, quantity: group.quantity })), [
+    { value: 2, quantity: 3 },
+    { value: 5, quantity: 3 },
+  ]);
+  assert.deepEqual(groups[1].entries.map((entry) => entry.id), ['CARD-001', 'CARD-010']);
   assert.deepEqual(entries.map((entry) => entry.quantity), [2, 3, 1]);
+});
+
+test('live cards are grouped by score from low to high', () => {
+  const entries = [
+    { id: 'LIVE-060', quantity: 1, card: { member: null, live: { score: 60 } } },
+    { id: 'LIVE-040', quantity: 2, card: { member: null, live: { score: 40 } } },
+  ];
+
+  assert.deepEqual(groupDeckEntriesByMetric(entries, 'score').map((group) => ({ value: group.value, quantity: group.quantity })), [
+    { value: 40, quantity: 2 },
+    { value: 60, quantity: 1 },
+  ]);
 });
