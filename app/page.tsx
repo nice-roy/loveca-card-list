@@ -16,6 +16,7 @@ import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/
 import { baseCardId, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
 import { parseCandidateImportText } from '@/lib/candidate-import';
 import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckRecipeText, emptyDeckForBulkClear, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear, type DeckGroup, type DeckQuantities } from '@/lib/deck-builder';
+import { createBuilderTransferText, validateBuilderTransferText, type ValidatedBuilderTransfer } from '@/lib/builder-transfer';
 import { groupMemberOptions, type MemberOptionGroup } from '@/lib/member-options';
 
 const cards = cardsJson as Card[];
@@ -192,6 +193,13 @@ export default function Home() {
   const [pendingRemovalId, setPendingRemovalId] = useState<string | null>(null);
   const [deckClearConfirmOpen, setDeckClearConfirmOpen] = useState(false);
   const [clearedDeckForUndo, setClearedDeckForUndo] = useState<DeckQuantities | null>(null);
+  const [dataTransferOpen, setDataTransferOpen] = useState(false);
+  const [dataTransferView, setDataTransferView] = useState<'menu' | 'export' | 'import' | 'preview'>('menu');
+  const [dataTransferText, setDataTransferText] = useState('');
+  const [dataTransferErrors, setDataTransferErrors] = useState<string[]>([]);
+  const [dataTransferCopyFeedback, setDataTransferCopyFeedback] = useState<'success' | 'error' | null>(null);
+  const [pendingDataImport, setPendingDataImport] = useState<ValidatedBuilderTransfer | null>(null);
+  const [importedStateForUndo, setImportedStateForUndo] = useState<{ deck: DeckQuantities; candidates: string[] } | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const memberById = useMemo(() => new Map(references.members.map((item) => [item.id, item.label])), []);
@@ -292,6 +300,7 @@ export default function Home() {
   const updateCostIds = (nextIds: string[]) => { setCostIds(nextIds); setVisibleCount(PAGE_SIZE); };
   const updateScoreIds = (nextIds: string[]) => { setScoreIds(nextIds); setVisibleCount(PAGE_SIZE); };
   const toggleCandidate = (id: string) => {
+    setImportedStateForUndo(null);
     setCandidateIds((current) => {
       const next = new Set(current);
       if (next.has(id)) next.delete(id);
@@ -308,11 +317,15 @@ export default function Home() {
     const parsed = parseCandidateImportText(candidateImportText, validBuilderIds);
     const existing = parsed.recognizedIds.filter((id) => candidateIds.has(id));
     const added = parsed.recognizedIds.filter((id) => !candidateIds.has(id));
-    if (added.length) setCandidateIds((current) => new Set([...current, ...added]));
+    if (added.length) {
+      setImportedStateForUndo(null);
+      setCandidateIds((current) => new Set([...current, ...added]));
+    }
     setCandidateImportResult({ recognized: parsed.recognizedIds.length, added: added.length, existing: existing.length, unknown: parsed.unrecognizedCardNumbers, usedSection: parsed.usedBulkCandidateSection });
   };
   const updateDeck = (id: string, delta: number) => {
     setClearedDeckForUndo(null);
+    setImportedStateForUndo(null);
     setPendingRemovalId((current) => current === id ? null : current);
     setDeck((current) => changeDeckQuantity(current, id, delta));
   };
@@ -322,6 +335,7 @@ export default function Home() {
   };
   const confirmDeckRemoval = (id: string) => {
     setClearedDeckForUndo(null);
+    setImportedStateForUndo(null);
     setDeck((current) => removeDeckCardIfSingle(current, id));
     setPendingRemovalId(null);
   };
@@ -368,6 +382,7 @@ export default function Home() {
     const cleared = emptyDeckForBulkClear(deck);
     setDeck(cleared.deck);
     setClearedDeckForUndo(cleared.undoDeck);
+    setImportedStateForUndo(null);
     setPendingRemovalId(null);
     setDeckClearConfirmOpen(false);
   };
@@ -376,6 +391,60 @@ export default function Home() {
     setDeck(restoreDeckAfterBulkClear(clearedDeckForUndo));
     setClearedDeckForUndo(null);
   };
+  const openDataTransfer = () => {
+    setDataTransferView('menu');
+    setDataTransferText('');
+    setDataTransferErrors([]);
+    setDataTransferCopyFeedback(null);
+    setPendingDataImport(null);
+    setDataTransferOpen(true);
+  };
+  const exportDataText = useMemo(() => createBuilderTransferText(deck, candidateIds), [deck, candidateIds]);
+  const copyDataExport = async () => {
+    const copied = await copyText(exportDataText);
+    setDataTransferCopyFeedback(copied ? 'success' : 'error');
+    window.setTimeout(() => setDataTransferCopyFeedback(null), 1800);
+  };
+  const downloadDataExport = () => {
+    const blob = new Blob([exportDataText], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = 'loveca-card-list-data.json';
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  };
+  const reviewDataImport = () => {
+    const result = validateBuilderTransferText(dataTransferText, validBuilderIds);
+    if (!result.ok) {
+      setDataTransferErrors(result.errors);
+      setPendingDataImport(null);
+      return;
+    }
+    setDataTransferErrors([]);
+    setPendingDataImport(result.value);
+    setDataTransferView('preview');
+  };
+  const confirmDataImport = () => {
+    if (!pendingDataImport) return;
+    setImportedStateForUndo({ deck: { ...deck }, candidates: [...candidateIds] });
+    setDeck({ ...pendingDataImport.deck });
+    setCandidateIds(new Set(pendingDataImport.candidates));
+    setClearedDeckForUndo(null);
+    setPendingRemovalId(null);
+    setDataTransferOpen(false);
+    setPendingDataImport(null);
+  };
+  const undoDataImport = () => {
+    if (!importedStateForUndo) return;
+    setDeck({ ...importedStateForUndo.deck });
+    setCandidateIds(new Set(importedStateForUndo.candidates));
+    setImportedStateForUndo(null);
+  };
+  const importMemberTotal = pendingDataImport ? Object.entries(pendingDataImport.deck).reduce((sum, [id, quantity]) => sum + (cardsByBuilderId.get(id)?.[0]?.cardType === 'member' ? quantity : 0), 0) : 0;
+  const importLiveTotal = pendingDataImport ? Object.entries(pendingDataImport.deck).reduce((sum, [id, quantity]) => sum + (cardsByBuilderId.get(id)?.[0]?.cardType === 'live' ? quantity : 0), 0) : 0;
 
   const deckSection = (label: string, metricLabel: 'COST' | 'SCORE', groups: DeckGroup[]) => groups.length > 0 && <section className="deck-section">
     <div className="deck-section-heading"><h3>{label}<span>{groups.reduce((sum, group) => sum + group.quantity, 0)}枚</span></h3></div>
@@ -432,7 +501,7 @@ export default function Home() {
       </div>
 
       <div className="result-tools">
-        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button></div>
+        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button><Button className="data-transfer-button" onClick={openDataTransfer} size="sm" type="button" variant="outline">データ移行</Button></div>
         <div className="result-bar" aria-live="polite"><div><SlidersHorizontal aria-hidden="true" /><strong>{displayGroups.length}</strong><span>{groupIdenticalCards ? `種を表示（元カード${filteredCards.length}枚）` : '枚が見つかりました'}</span></div>{hasFilters && <Button variant="ghost" onClick={resetFilters}><X /> 条件をクリア</Button>}</div>
       </div>
       {displayGroups.length ? <div className="card-grid">{displayGroups.slice(0, visibleCount).map((group) => {
@@ -454,9 +523,10 @@ export default function Home() {
     </section>
     <footer><p>非公式ファンメイドカードリスト · エネルギーカードは収録対象外です</p><p>未登録のレアリティは、確認済み情報のみ順次追加します。</p></footer>
     </div>
-    <Sheet disablePointerDismissal={isDesktopDeck} modal={!isDesktopDeck} onOpenChange={setDeckOpen} open={deckOpen}><SheetTrigger className={`deck-launcher${deckOpen ? ' deck-is-open' : ''}`} aria-label={`デッキを開く、現在${deckTotal}枚`}><ListPlus /><span>デッキ</span><strong>{deckTotal}</strong></SheetTrigger><SheetContent className="deck-sheet" initialFocus={!isDesktopDeck} side="right"><SheetHeader className="deck-header"><SheetTitle>デッキ</SheetTitle><SheetDescription>メンバーはCOST別、ライブはSCORE別に表示しています。</SheetDescription><div className="deck-total"><span>合計</span><strong>{deckTotal}</strong><span>枚</span></div><div className="deck-copy-actions"><Button onClick={copyDeckRecipe} size="sm" type="button" variant="outline">{copyFeedback === 'recipe' ? <Check /> : <Copy />}{copyFeedback === 'recipe' ? 'コピーしました' : 'デッキレシピをコピー'}</Button><Button onClick={requestAiCopy} size="sm" type="button" variant="outline">{copyFeedback === 'ai' ? <Check /> : <Bot />}{copyFeedback === 'ai' ? 'コピーしました' : 'AI相談用にコピー'}</Button></div><Button className="deck-clear-button" disabled={!deckEntries.length} onClick={() => setDeckClearConfirmOpen(true)} size="sm" type="button" variant="outline"><Trash2 />デッキを空にする</Button>{clearedDeckForUndo && <div aria-live="polite" className="deck-clear-undo"><span>デッキを空にしました</span><Button onClick={undoDeckClear} size="sm" type="button" variant="outline"><RotateCcw />元に戻す</Button></div>}<p aria-live="polite" className={`copy-feedback${copyFeedback === 'error' ? ' error' : ''}`}>{copyFeedback === 'error' ? 'コピーできませんでした' : copyFeedback ? 'クリップボードにコピーしました' : ''}</p></SheetHeader><div className="deck-scroll">{deckEntries.length ? <>{deckSection('メンバーカード', 'COST', memberDeckGroups)}{deckSection('ライブカード', 'SCORE', liveDeckGroups)}</> : <div className="deck-empty"><ListPlus /><strong>デッキは空です</strong><p>カード一覧の「デッキに追加」から選べます。</p></div>}</div></SheetContent></Sheet>
+    <Sheet disablePointerDismissal={isDesktopDeck} modal={!isDesktopDeck} onOpenChange={setDeckOpen} open={deckOpen}><SheetTrigger className={`deck-launcher${deckOpen ? ' deck-is-open' : ''}`} aria-label={`デッキを開く、現在${deckTotal}枚`}><ListPlus /><span>デッキ</span><strong>{deckTotal}</strong></SheetTrigger><SheetContent className="deck-sheet" initialFocus={!isDesktopDeck} side="right"><SheetHeader className="deck-header"><SheetTitle>デッキ</SheetTitle><SheetDescription>メンバーはCOST別、ライブはSCORE別に表示しています。</SheetDescription><div className="deck-total"><span>合計</span><strong>{deckTotal}</strong><span>枚</span></div><div className="deck-copy-actions"><Button onClick={copyDeckRecipe} size="sm" type="button" variant="outline">{copyFeedback === 'recipe' ? <Check /> : <Copy />}{copyFeedback === 'recipe' ? 'コピーしました' : 'デッキレシピをコピー'}</Button><Button onClick={requestAiCopy} size="sm" type="button" variant="outline">{copyFeedback === 'ai' ? <Check /> : <Bot />}{copyFeedback === 'ai' ? 'コピーしました' : 'AI相談用にコピー'}</Button></div><Button className="deck-clear-button" disabled={!deckEntries.length} onClick={() => setDeckClearConfirmOpen(true)} size="sm" type="button" variant="outline"><Trash2 />デッキを空にする</Button>{clearedDeckForUndo && <div aria-live="polite" className="deck-clear-undo"><span>デッキを空にしました</span><Button onClick={undoDeckClear} size="sm" type="button" variant="outline"><RotateCcw />元に戻す</Button></div>}{importedStateForUndo && <div aria-live="polite" className="deck-clear-undo data-import-undo"><span>データをインポートしました</span><Button onClick={undoDataImport} size="sm" type="button" variant="outline"><RotateCcw />元に戻す</Button></div>}<p aria-live="polite" className={`copy-feedback${copyFeedback === 'error' ? ' error' : ''}`}>{copyFeedback === 'error' ? 'コピーできませんでした' : copyFeedback ? 'クリップボードにコピーしました' : ''}</p></SheetHeader><div className="deck-scroll">{deckEntries.length ? <>{deckSection('メンバーカード', 'COST', memberDeckGroups)}{deckSection('ライブカード', 'SCORE', liveDeckGroups)}</> : <div className="deck-empty"><ListPlus /><strong>デッキは空です</strong><p>カード一覧の「デッキに追加」から選べます。</p></div>}</div></SheetContent></Sheet>
     <Dialog onOpenChange={setAiCandidateDialogOpen} open={aiCandidateDialogOpen}><DialogContent className="ai-candidate-dialog"><DialogHeader><DialogTitle>AI相談に含める候補カード</DialogTitle><DialogDescription>今回のコピーに含めるカードだけ選択してください。元の候補状態は変わりません。</DialogDescription></DialogHeader><div className="ai-candidate-tools"><Button onClick={() => setSelectedAiCandidateIds(new Set(availableAiCandidates.map((entry) => entry.id)))} size="sm" type="button" variant="outline">すべて選択</Button><Button disabled={!selectedAiCandidateIds.size} onClick={() => setSelectedAiCandidateIds(new Set())} size="sm" type="button" variant="outline">すべて解除</Button></div><div className="ai-candidate-list">{availableAiCandidates.map(({ id, card }) => <label className="ai-candidate-option" key={id}><input checked={selectedAiCandidateIds.has(id)} onChange={() => toggleAiCandidate(id)} type="checkbox" /><span><strong>{card.name}</strong><code>{id}</code><small>{card.cardType === 'member' ? `COST ${card.member?.cost ?? '—'}` : `SCORE ${card.live?.score ?? '—'}`}</small></span></label>)}</div><DialogFooter className="ai-candidate-footer"><DialogClose render={<Button type="button" variant="outline" />}>キャンセル</DialogClose><Button onClick={copyAiWithCandidates} type="button"><Copy />この内容でコピー</Button></DialogFooter></DialogContent></Dialog>
     <Dialog onOpenChange={setCandidateImportOpen} open={candidateImportOpen}><DialogContent className="candidate-import-dialog"><DialogHeader><DialogTitle>候補を一括追加</DialogTitle><DialogDescription>AIの「候補一括追加用」ブロック、またはカード番号を貼り付けてください。推奨枚数は候補追加には使用しません。</DialogDescription></DialogHeader><textarea aria-label="候補に追加するカード番号" className="candidate-import-textarea" onChange={(event) => { setCandidateImportText(event.target.value); setCandidateImportResult(null); }} placeholder={'PL!SP-bp1-012 | 澁谷かのん | 4\nPL!SP-bp1-001 | 澁谷かのん | 4'} value={candidateImportText} />{candidateImportResult && <div aria-live="polite" className="candidate-import-result">{candidateImportResult.recognized ? <><strong>{candidateImportResult.recognized}種類を認識しました</strong><span>新しく候補に追加：{candidateImportResult.added}種類</span><span>すでに候補：{candidateImportResult.existing}種類</span>{candidateImportResult.usedSection && <span>「候補一括追加用」セクションを優先して解析しました</span>}{candidateImportResult.unknown.length > 0 && <span>確認できなかったカード：{candidateImportResult.unknown.join('、')}</span>}</> : <><strong>追加できるカード番号を確認できませんでした</strong>{candidateImportResult.unknown.length > 0 && <span>確認できなかったカード：{candidateImportResult.unknown.join('、')}</span>}</>}</div>}<DialogFooter className="candidate-import-footer"><DialogClose render={<Button type="button" variant="outline" />}>キャンセル</DialogClose><Button onClick={importCandidates} type="button"><Bookmark />候補に追加</Button></DialogFooter></DialogContent></Dialog>
+    <Dialog onOpenChange={setDataTransferOpen} open={dataTransferOpen}><DialogContent className="data-transfer-dialog"><DialogHeader><DialogTitle>データ移行</DialogTitle><DialogDescription>デッキと候補だけを、別の端末へ移せます。検索条件や表示状態は含まれません。</DialogDescription></DialogHeader>{dataTransferView === 'menu' && <div className="data-transfer-menu"><Button onClick={() => setDataTransferView('export')} type="button" variant="outline"><strong>エクスポート</strong><span>現在のデッキと候補をJSONで書き出す</span></Button><Button onClick={() => setDataTransferView('import')} type="button" variant="outline"><strong>インポート</strong><span>JSONを検証してから現在の状態を置き換える</span></Button></div>}{dataTransferView === 'export' && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('menu')} type="button">← 戻る</button><strong>エクスポート</strong></div><textarea aria-label="エクスポートするJSON" className="candidate-import-textarea data-transfer-textarea" readOnly value={exportDataText} /><div className="data-transfer-actions"><Button onClick={copyDataExport} type="button">{dataTransferCopyFeedback === 'success' ? <Check /> : <Copy />}{dataTransferCopyFeedback === 'success' ? 'コピーしました' : 'データをコピー'}</Button><Button onClick={downloadDataExport} type="button" variant="outline">JSONファイルとして保存</Button></div>{dataTransferCopyFeedback === 'error' && <p aria-live="polite" className="data-transfer-copy-error">コピーできませんでした</p>}</>}{dataTransferView === 'import' && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('menu')} type="button">← 戻る</button><strong>インポート</strong></div><textarea aria-label="インポートするJSON" className="candidate-import-textarea data-transfer-textarea" onChange={(event) => { setDataTransferText(event.target.value); setDataTransferErrors([]); }} placeholder={'{\n  "format": "loveca-card-list-state",\n  "version": 1,\n  ...\n}'} value={dataTransferText} />{dataTransferErrors.length > 0 && <div aria-live="polite" className="data-transfer-errors"><strong>インポートできませんでした</strong>{dataTransferErrors.map((error) => <span key={error}>・{error}</span>)}</div>}<div className="data-transfer-actions"><Button onClick={reviewDataImport} type="button">内容を確認</Button></div></>}{dataTransferView === 'preview' && pendingDataImport && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('import')} type="button">← 戻る</button><strong>インポートするデータ</strong></div><dl className="deck-clear-summary data-transfer-summary"><div><dt>メンバー</dt><dd>{importMemberTotal}枚</dd></div><div><dt>ライブ</dt><dd>{importLiveTotal}枚</dd></div><div><dt>合計</dt><dd>{importMemberTotal + importLiveTotal}枚</dd></div></dl><div className="data-transfer-preview-note"><strong>候補：{pendingDataImport.candidates.length}種類</strong><span>現在のデッキと候補は、この内容に置き換えられます。</span></div><div className="data-transfer-actions"><Button onClick={confirmDataImport} type="button">インポートする</Button><Button onClick={() => setDataTransferOpen(false)} type="button" variant="outline">キャンセル</Button></div></>}{dataTransferView !== 'preview' && <DialogFooter className="data-transfer-footer"><DialogClose render={<Button type="button" variant="outline" />}>閉じる</DialogClose></DialogFooter>}</DialogContent></Dialog>
     <Dialog onOpenChange={setDeckClearConfirmOpen} open={deckClearConfirmOpen}><DialogContent className="deck-clear-dialog"><DialogHeader><DialogTitle>デッキを空にしますか？</DialogTitle><DialogDescription>現在のデッキ{deckTotal}枚をすべて削除します。候補や検索条件は変更されません。</DialogDescription></DialogHeader><dl className="deck-clear-summary"><div><dt>メンバー</dt><dd>{memberDeckTotal}枚</dd></div><div><dt>ライブ</dt><dd>{liveDeckTotal}枚</dd></div><div><dt>合計</dt><dd>{deckTotal}枚</dd></div></dl><DialogFooter className="deck-clear-footer"><DialogClose render={<Button type="button" variant="outline" />}>キャンセル</DialogClose><Button onClick={clearDeck} type="button" variant="destructive"><Trash2 />デッキを空にする</Button></DialogFooter></DialogContent></Dialog>
   </main>;
 }

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { changeDeckQuantity, createAiConsultationText, createDeckRecipeText, emptyDeckForBulkClear, formatEffectTextForAi, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear } from '../lib/deck-builder.ts';
 import { parseCandidateImportText } from '../lib/candidate-import.ts';
+import { createBuilderTransferText, validateBuilderTransferText } from '../lib/builder-transfer.ts';
 
 test('saved state is restored only for valid cards and positive whole quantities', () => {
   const restored = normalizeBuilderState({
@@ -43,6 +44,33 @@ test('bulk deck clear removes only deck entries and restores one saved snapshot'
   assert.deepEqual(cleared.undoDeck, originalDeck);
   assert.notStrictEqual(cleared.undoDeck, originalDeck);
   assert.deepEqual(restoreDeckAfterBulkClear(cleared.undoDeck), originalDeck);
+});
+
+test('transfer export uses base card ids only and validates a complete replacement safely', () => {
+  const text = createBuilderTransferText({ 'MEMBER-001': 4, 'LIVE-001': 2 }, new Set(['CANDIDATE-001', 'MEMBER-001']), '2026-09-08T00:00:00.000Z');
+  const result = validateBuilderTransferText(text, new Set(['MEMBER-001', 'LIVE-001', 'CANDIDATE-001']));
+  assert.deepEqual(result, { ok: true, value: { deck: { 'LIVE-001': 2, 'MEMBER-001': 4 }, candidates: ['CANDIDATE-001', 'MEMBER-001'] } });
+  assert.doesNotMatch(text, /カード名|効果|URL/);
+});
+
+test('transfer import rejects malformed, unknown, invalid count, and duplicate data without partial acceptance', () => {
+  const known = new Set(['MEMBER-001']);
+  assert.equal(validateBuilderTransferText('{', known).ok, false);
+  const invalid = validateBuilderTransferText(JSON.stringify({
+    format: 'loveca-card-list-state', version: 1, exportedAt: '2026-09-08T00:00:00.000Z',
+    deck: [{ baseCardId: 'MEMBER-001', count: 5 }, { baseCardId: 'MEMBER-001', count: 1 }, { baseCardId: 'UNKNOWN', count: 2 }],
+    candidates: ['MEMBER-001', 'MEMBER-001', 'UNKNOWN'],
+  }), known);
+  assert.deepEqual(invalid, {
+    ok: false,
+    errors: [
+      '採用枚数が不正：MEMBER-001 ×5',
+      'デッキ内で同一カードが重複しています：MEMBER-001',
+      '確認できないカード：UNKNOWN',
+      '候補内で同一カードが重複しています：MEMBER-001',
+      '確認できない候補カード：UNKNOWN',
+    ],
+  });
 });
 
 test('AI effect text converts only icons supported by token or structured color data', () => {
