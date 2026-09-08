@@ -15,6 +15,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 import { baseCardId, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
 import { parseCandidateImportText } from '@/lib/candidate-import';
+import { matchesFreewordSearch } from '@/lib/freeword-search';
 import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckId, createDeckRecipeText, duplicateDeckName, emptyDeckForBulkClear, groupDeckEntriesByMetric, nextDefaultDeckName, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear, type DeckGroup, type DeckQuantities, type SavedDeck } from '@/lib/deck-builder';
 import { createBuilderTransferText, validateBuilderTransferText, type ValidatedBuilderTransfer } from '@/lib/builder-transfer';
 import { groupMemberOptions, type MemberOptionGroup } from '@/lib/member-options';
@@ -259,7 +260,6 @@ export default function Home() {
   }, [activeDeckId, candidateIds, decks]);
 
   const filteredCards = useMemo(() => {
-    const needle = query.trim().toLocaleLowerCase('ja');
     return cards
       .filter((card) => groupId === 'all' || card.groupIds.includes(groupId))
       .filter((card) => selectedMemberIdSet.size === 0 || card.memberIds.some((id) => selectedMemberIdSet.has(id)))
@@ -268,7 +268,10 @@ export default function Home() {
       .filter((card) => cardType !== 'live' || matchesNumericFilter(card, 'score', scoreIds))
       .filter((card) => selectedProductIdSet.size === 0 || selectedProductIdSet.has(card.productId))
       .filter((card) => !candidateOnly || candidateIds.has(baseCardId(card.cardNumber)))
-      .filter((card) => !needle || [card.name, card.cardNumber, card.effectText ?? '', productById.get(card.productId) ?? '', ...card.memberIds.map((id) => memberById.get(id) ?? '')].join(' ').toLocaleLowerCase('ja').includes(needle))
+      .filter((card) => matchesFreewordSearch(
+        [card.name, card.cardNumber, card.effectText ?? '', productById.get(card.productId) ?? '', ...card.memberIds.map((id) => memberById.get(id) ?? '')].join(' '),
+        query,
+      ))
       .sort((left, right) => {
         let result = 0;
         if (sortKey === 'cardNumberAsc') result = compareNullable(left.cardNumber, right.cardNumber);

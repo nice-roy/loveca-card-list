@@ -11,6 +11,7 @@
     "start": "vite preview",
     "test:deck-builder": "node --experimental-strip-types --test scripts/test-deck-builder.mjs",
     "test:member-options": "node --experimental-strip-types --test scripts/test-member-options.mjs",
+    "test:freeword-search": "node --experimental-strip-types --test scripts/test-freeword-search.mjs",
     "lint": "oxlint",
     "format": "oxfmt"
   },
