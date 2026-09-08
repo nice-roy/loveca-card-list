@@ -108,3 +108,28 @@ test('AI consultation text contains card details without links or images', () =>
   assert.doesNotMatch(text, /https:\/\//);
   assert.doesNotMatch(text, /画像/);
 });
+
+test('AI consultation candidates are optional, deduplicated, and exclude adopted base card ids', () => {
+  const memberCard = { name: '候補メンバー', cardType: 'member', member: { cost: 2, hearts: [{ color: 'red', count: 1 }], bladeHearts: [], yell: { count: 1 } }, live: null, effectText: '候補効果' };
+  const adoptedCard = { ...memberCard, name: '採用済みメンバー' };
+  const liveCard = { name: '候補ライブ', cardType: 'live', member: null, live: { score: 3, requiredHearts: [{ color: 'any', count: 2 }] }, effectText: 'ライブ効果' };
+  const deck = [{ id: 'MEMBER-001', quantity: 2, card: adoptedCard }];
+
+  const withoutCandidates = createAiConsultationText(deck, []);
+  assert.doesNotMatch(withoutCandidates, /追加候補カード/);
+
+  const withCandidates = createAiConsultationText(deck, [
+    { id: 'MEMBER-001', card: adoptedCard },
+    { id: 'MEMBER-002', card: memberCard },
+    { id: 'LIVE-001', card: liveCard },
+    { id: 'LIVE-001', card: liveCard },
+  ]);
+  assert.match(withCandidates, /追加候補カードも記載しています/);
+  assert.match(withCandidates, /【追加候補カード】/);
+  assert.match(withCandidates, /■ メンバー候補/);
+  assert.match(withCandidates, /■ ライブ候補/);
+  assert.match(withCandidates, /候補メンバー \/ MEMBER-002/);
+  assert.match(withCandidates, /候補ライブ \/ LIVE-001/);
+  assert.equal((withCandidates.match(/候補ライブ \/ LIVE-001/g) ?? []).length, 1);
+  assert.doesNotMatch(withCandidates.split('【追加候補カード】')[1], /MEMBER-001/);
+});

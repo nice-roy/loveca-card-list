@@ -168,8 +168,10 @@ export function createDeckRecipeText(entries: DeckEntry[]) {
   ].join('\n');
 }
 
-export function createAiConsultationText(entries: DeckEntry[]) {
+export function createAiConsultationText(entries: DeckEntry[], candidateEntries: Pick<DeckEntry, 'id' | 'card'>[] = []) {
   const { members, lives } = splitDeckEntries(entries);
+  const deckIds = new Set(entries.map((entry) => entry.id));
+  const candidates = [...new Map(candidateEntries.filter((entry) => !deckIds.has(entry.id)).map((entry) => [entry.id, entry])).values()];
   const memberTotal = members.reduce((sum, entry) => sum + entry.quantity, 0);
   const liveTotal = lives.reduce((sum, entry) => sum + entry.quantity, 0);
   const total = memberTotal + liveTotal;
@@ -187,6 +189,33 @@ export function createAiConsultationText(entries: DeckEntry[]) {
     `  必要ハート：${formatHearts(entry.card.live?.requiredHearts ?? [])}`,
     `  効果：${formatEffectTextForAi(entry.card)}`,
   ].join('\n')).join('\n\n') : '（なし）';
+  const candidateMembers = candidates.filter((entry) => entry.card.cardType === 'member');
+  const candidateLives = candidates.filter((entry) => entry.card.cardType === 'live');
+  const formatCandidateMembers = candidateMembers.map((entry) => [
+    `・${entry.card.name} / ${entry.id}`,
+    `  COST：${entry.card.member?.cost ?? '不明'}`,
+    `  基本ハート：${formatHearts(entry.card.member?.hearts ?? [])}`,
+    `  ブレードハート：${formatHearts(entry.card.member?.bladeHearts ?? [])}`,
+    `  ブレード：${entry.card.member?.yell.count ?? '不明'}`,
+    `  効果：${formatEffectTextForAi(entry.card)}`,
+  ].join('\n')).join('\n\n');
+  const formatCandidateLives = candidateLives.map((entry) => [
+    `・${entry.card.name} / ${entry.id}`,
+    `  SCORE：${entry.card.live?.score ?? '不明'}`,
+    `  必要ハート：${formatHearts(entry.card.live?.requiredHearts ?? [])}`,
+    `  効果：${formatEffectTextForAi(entry.card)}`,
+  ].join('\n')).join('\n\n');
+  const candidatePrompt = candidates.length ? [
+    '追加候補カードも記載しています。',
+    '残り枠や入れ替え候補については、まず記載された候補カードを優先して比較・提案してください。',
+    '記載情報にないカードについて、不明な効果を推測しないでください。',
+  ] : [];
+  const candidateSection = candidates.length ? [
+    '',
+    '【追加候補カード】',
+    ...(candidateMembers.length ? ['', '■ メンバー候補', formatCandidateMembers] : []),
+    ...(candidateLives.length ? ['', '■ ライブ候補', formatCandidateLives] : []),
+  ] : [];
 
   return [
     '以下はラブライブ！オフィシャルカードゲームの現在作成中のデッキです。',
@@ -199,6 +228,7 @@ export function createAiConsultationText(entries: DeckEntry[]) {
     '・その理由',
     'を提案してください。',
     '不明なカード効果を推測しないでください。',
+    ...candidatePrompt,
     `現在の合計は${total}枚です。未完成の場合は、想定する完成枚数を確認したうえで残り枠について提案してください。`,
     '',
     '【現在のデッキ】',
@@ -211,5 +241,6 @@ export function createAiConsultationText(entries: DeckEntry[]) {
     '',
     '■ ライブカード',
     liveBlocks,
+    ...candidateSection,
   ].join('\n');
 }
