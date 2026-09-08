@@ -29,3 +29,23 @@ test('official member order is retained inside each school year', () => {
   const muse = groupMemberOptions(references.members.filter((member) => member.groupId === 'muse'), 'muse', references.groups)[0];
   assert.deepEqual(muse.sections[1].options.map((option) => option.label), ['高坂穂乃果', '南ことり', '園田海未']);
 });
+
+for (const [groupId, expectedUnits] of [
+  ['liella', ['CatChu!', 'KALEIDOSCORE', '5yncri5e!', 'ユニットなし', '複数メンバー']],
+  ['aqours', ['CYaRon!', 'AZALEA', 'Guilty Kiss']],
+  ['muse', ['Printemps', 'lily white', 'BiBi']],
+]) {
+  test(`${groupId} options use explicit official unit order`, () => {
+    const options = references.members.filter((member) => member.groupId === groupId);
+    const groups = groupMemberOptions(options, groupId, references.groups, 'unit');
+    assert.deepEqual(groups[0].sections.map((section) => section.label), expectedUnits);
+  });
+}
+
+test('unit mode retains member ids and separates cross-group combinations in all-groups view', () => {
+  const groups = groupMemberOptions(references.members, 'all', references.groups, 'unit');
+  assert.deepEqual(groups.map((group) => group.label), ['Liella!', 'Aqours', "μ's", 'グループ横断・複数メンバー']);
+  assert.deepEqual(groups[0].sections[0].options.map((option) => option.label), ['澁谷かのん', '唐 可可', '平安名すみれ']);
+  assert.equal(groups[0].sections.at(-1)?.label, '複数メンバー');
+  assert.equal(groups.at(-1)?.sections[0].options.length, 4);
+});

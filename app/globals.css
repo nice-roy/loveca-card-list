@@ -64,6 +64,10 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .multi-select-menu { width: min(340px,calc(100vw - 32px)); max-height: min(520px,var(--available-height)); gap: 0; padding: 8px; overflow: hidden; border: 1px solid #e7d8e1; border-radius: 14px; box-shadow: 0 18px 48px rgba(79,44,66,.18); }
 .multi-select-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 5px 8px; border-bottom: 1px solid #f0e5eb; color: #8b7481; font-size: .68rem; }
 .multi-select-header button { min-height: 30px; padding: 4px 7px; border: 0; border-radius: 7px; background: #f7edf3; color: #a62c68; font-size: .68rem; font-weight: 800; } .multi-select-header button:disabled { cursor: default; opacity: .42; }
+.member-display-mode { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 5px; border-bottom: 1px solid #f0e5eb; color: #8b7481; font-size: .68rem; font-weight: 800; }
+.member-display-mode fieldset { display: inline-grid; grid-template-columns: 1fr 1fr; overflow: hidden; margin: 0; padding: 0; border: 1px solid #e3ccd8; border-radius: 8px; background: white; }
+.member-display-mode button { min-height: 29px; padding: 4px 10px; border: 0; background: transparent; color: #836d7a; font-size: .67rem; font-weight: 850; }
+.member-display-mode button.active { background: #a82d6a; color: white; }
 .multi-select-options { min-height: 0; flex: 1; max-height: 300px; padding: 5px 1px 1px; overflow-y: auto; overscroll-behavior: contain; }
 .multi-select-option { min-height: 42px; display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 9px; color: #574750; font-size: .78rem; line-height: 1.35; cursor: pointer; }
 .multi-select-option:hover { background: #fbf1f6; } .multi-select-option input { width: 17px; height: 17px; flex: 0 0 auto; accent-color: #c52f79; }
