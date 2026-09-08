@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { changeDeckQuantity, createAiConsultationText, createDeckRecipeText, formatEffectTextForAi, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle } from '../lib/deck-builder.ts';
+import { parseCandidateImportText } from '../lib/candidate-import.ts';
 
 test('saved state is restored only for valid cards and positive whole quantities', () => {
   const restored = normalizeBuilderState({
@@ -109,6 +110,9 @@ test('AI consultation text contains card details without links or images', () =>
   assert.match(text, /効果：確認済みの効果全文。/);
   assert.doesNotMatch(text, /https:\/\//);
   assert.doesNotMatch(text, /画像/);
+  assert.match(text, /候補一括追加用/);
+  assert.match(text, /カード番号 \| カード名 \| 推奨枚数/);
+  assert.match(text, /提案後の採用枚数を再計算/);
 });
 
 test('AI consultation candidates are optional, deduplicated, and exclude adopted base card ids', () => {
@@ -118,7 +122,7 @@ test('AI consultation candidates are optional, deduplicated, and exclude adopted
   const deck = [{ id: 'MEMBER-001', quantity: 2, card: adoptedCard }];
 
   const withoutCandidates = createAiConsultationText(deck, []);
-  assert.doesNotMatch(withoutCandidates, /追加候補カード/);
+  assert.doesNotMatch(withoutCandidates, /【追加候補カード】/);
 
   const withCandidates = createAiConsultationText(deck, [
     { id: 'MEMBER-001', card: adoptedCard },
@@ -154,4 +158,29 @@ test('AI consultation text calculates fixed member and live remaining slots', ()
 
   const shortLive = createAiConsultationText(createEntries(48, 9));
   assert.match(shortLive, /【残り枠】\nメンバー：0枚\nライブ：3枚\n合計：3枚/);
+});
+
+test('candidate import recognizes card numbers, base card ids, and bulk sections safely', () => {
+  const knownIds = new Set(['PL!SP-bp1-001', 'PL!SP-bp1-012', 'PL!SP-bp1-013']);
+
+  assert.deepEqual(parseCandidateImportText('PL!SP-bp1-012\nPL!SP-bp1-001', knownIds), {
+    recognizedIds: ['PL!SP-bp1-012', 'PL!SP-bp1-001'],
+    unrecognizedCardNumbers: [],
+    usedBulkCandidateSection: false,
+  });
+  assert.deepEqual(parseCandidateImportText('PL!SP-bp1-012 | 澁谷かのん | 4\nPL!SP-bp1-013 | 唐 可可 | 4', knownIds), {
+    recognizedIds: ['PL!SP-bp1-012', 'PL!SP-bp1-013'],
+    unrecognizedCardNumbers: [],
+    usedBulkCandidateSection: false,
+  });
+  assert.deepEqual(parseCandidateImportText('本文の採用済み PL!SP-bp1-001\n【候補一括追加用】\n```\nPL!SP-bp1-012 | 澁谷かのん | 4\nPL!SP-bp1-012-R | 澁谷かのん | 4\nPL!SP-zz9-999 | 不明 | 4\n```\n【補足】\nPL!SP-bp1-013', knownIds), {
+    recognizedIds: ['PL!SP-bp1-012'],
+    unrecognizedCardNumbers: ['PL!SP-zz9-999'],
+    usedBulkCandidateSection: true,
+  });
+  assert.deepEqual(parseCandidateImportText('カード名だけ', knownIds), {
+    recognizedIds: [],
+    unrecognizedCardNumbers: [],
+    usedBulkCandidateSection: false,
+  });
 });
