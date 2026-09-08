@@ -31,7 +31,7 @@ test('official member order is retained inside each school year', () => {
 });
 
 for (const [groupId, expectedUnits] of [
-  ['liella', ['CatChu!', 'KALEIDOSCORE', '5yncri5e!', 'ユニットなし', '複数メンバー']],
+  ['liella', ['CatChu!', 'KALEIDOSCORE', '5yncri5e!', '複数メンバー']],
   ['aqours', ['CYaRon!', 'AZALEA', 'Guilty Kiss']],
   ['muse', ['Printemps', 'lily white', 'BiBi']],
 ]) {
@@ -45,7 +45,19 @@ for (const [groupId, expectedUnits] of [
 test('unit mode retains member ids and separates cross-group combinations in all-groups view', () => {
   const groups = groupMemberOptions(references.members, 'all', references.groups, 'unit');
   assert.deepEqual(groups.map((group) => group.label), ['Liella!', 'Aqours', "μ's", 'グループ横断・複数メンバー']);
-  assert.deepEqual(groups[0].sections[0].options.map((option) => option.label), ['澁谷かのん', '唐 可可', '平安名すみれ']);
+  assert.deepEqual(groups[0].sections[0].options.map((option) => option.label), ['澁谷かのん', '平安名すみれ', '米女メイ']);
   assert.equal(groups[0].sections.at(-1)?.label, '複数メンバー');
   assert.equal(groups.at(-1)?.sections[0].options.length, 4);
+});
+
+test('Liella unit memberships exactly match the official eleven-member structure', () => {
+  const liella = groupMemberOptions(references.members.filter((member) => member.groupId === 'liella'), 'liella', references.groups, 'unit')[0];
+  assert.deepEqual(Object.fromEntries(liella.sections.filter((section) => section.label !== '複数メンバー').map((section) => [section.label, section.options.map((option) => option.label)])), {
+    'CatChu!': ['澁谷かのん', '平安名すみれ', '米女メイ'],
+    KALEIDOSCORE: ['唐 可可', '葉月 恋', 'ウィーン・マルガレーテ'],
+    '5yncri5e!': ['嵐 千砂都', '桜小路きな子', '若菜四季', '鬼塚夏美', '鬼塚冬毬'],
+  });
+  const singles = liella.sections.filter((section) => section.label !== '複数メンバー').flatMap((section) => section.options.map((option) => option.id));
+  assert.equal(new Set(singles).size, 11);
+  assert.equal(singles.length, 11);
 });
