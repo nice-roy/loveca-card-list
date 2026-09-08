@@ -1,7 +1,8 @@
 import type { DeckQuantities, SavedDeck } from './deck-builder';
+import type { InventoryQuantities } from './inventory';
 
 export const BUILDER_TRANSFER_FORMAT = 'loveca-card-list-state';
-export const BUILDER_TRANSFER_VERSION = 2;
+export const BUILDER_TRANSFER_VERSION = 3;
 
 type TransferDeckCards = { baseCardId: string; count: number }[];
 
@@ -12,13 +13,16 @@ export type BuilderTransferData = {
   activeDeckId: string;
   decks: { id: string; name: string; cards: TransferDeckCards }[];
   candidates: string[];
+  inventory: { cardId: string; count: number }[];
 };
 
 export type ValidatedBuilderTransfer = {
-  sourceVersion: 1 | 2;
+  sourceVersion: 1 | 2 | 3;
   decks: SavedDeck[];
   activeDeckId: string;
   candidates: string[];
+  inventory: InventoryQuantities;
+  hasInventoryData: boolean;
 };
 
 export type BuilderTransferValidation =
@@ -31,7 +35,7 @@ function sortedCards(deck: DeckQuantities): TransferDeckCards {
     .sort((left, right) => left.baseCardId.localeCompare(right.baseCardId, 'ja', { numeric: true }));
 }
 
-export function createBuilderTransfer(decks: SavedDeck[], activeDeckId: string, candidates: Iterable<string>, exportedAt = new Date().toISOString()): BuilderTransferData {
+export function createBuilderTransfer(decks: SavedDeck[], activeDeckId: string, candidates: Iterable<string>, inventory: InventoryQuantities, exportedAt = new Date().toISOString()): BuilderTransferData {
   return {
     format: BUILDER_TRANSFER_FORMAT,
     version: BUILDER_TRANSFER_VERSION,
@@ -39,11 +43,12 @@ export function createBuilderTransfer(decks: SavedDeck[], activeDeckId: string, 
     activeDeckId,
     decks: decks.map((deck) => ({ id: deck.id, name: deck.name, cards: sortedCards(deck.cards) })),
     candidates: [...new Set(candidates)].sort((left, right) => left.localeCompare(right, 'ja', { numeric: true })),
+    inventory: Object.entries(inventory).map(([cardId, count]) => ({ cardId, count })).sort((left, right) => left.cardId.localeCompare(right.cardId, 'ja', { numeric: true })),
   };
 }
 
-export function createBuilderTransferText(decks: SavedDeck[], activeDeckId: string, candidates: Iterable<string>, exportedAt?: string) {
-  return JSON.stringify(createBuilderTransfer(decks, activeDeckId, candidates, exportedAt), null, 2);
+export function createBuilderTransferText(decks: SavedDeck[], activeDeckId: string, candidates: Iterable<string>, inventory: InventoryQuantities, exportedAt?: string) {
+  return JSON.stringify(createBuilderTransfer(decks, activeDeckId, candidates, inventory, exportedAt), null, 2);
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
@@ -93,7 +98,30 @@ function validateDeckCards(value: unknown, validIds: Set<string>, errors: string
   return deck;
 }
 
-export function validateBuilderTransferText(text: string, validIds: Set<string>): BuilderTransferValidation {
+function validateInventory(value: unknown, validVersionIds: Set<string>, errors: string[]) {
+  const inventory: InventoryQuantities = {};
+  if (!Array.isArray(value)) {
+    errors.push('inventoryの形式が正しくありません。');
+    return inventory;
+  }
+  const seen = new Set<string>();
+  for (const entry of value) {
+    if (!isPlainObject(entry) || typeof entry.cardId !== 'string' || !Number.isInteger(entry.count)) {
+      errors.push('inventory内に正しくないカード情報があります。');
+      continue;
+    }
+    const cardId = entry.cardId;
+    const count = entry.count as number;
+    if (seen.has(cardId)) errors.push(`所持カードが重複しています：${cardId}`);
+    else seen.add(cardId);
+    if (!validVersionIds.has(cardId)) errors.push(`確認できない所持カード：${cardId}`);
+    if (count < 0 || count > 99) errors.push(`所持枚数が不正：${cardId} ×${count}`);
+    if (validVersionIds.has(cardId) && count >= 1 && count <= 99 && !inventory[cardId]) inventory[cardId] = count;
+  }
+  return inventory;
+}
+
+export function validateBuilderTransferText(text: string, validIds: Set<string>, validVersionIds: Set<string> = new Set()): BuilderTransferValidation {
   let value: unknown;
   try {
     value = JSON.parse(text);
@@ -104,7 +132,7 @@ export function validateBuilderTransferText(text: string, validIds: Set<string>)
 
   const errors: string[] = [];
   if (value.format !== BUILDER_TRANSFER_FORMAT) errors.push('対応していない移行データです。');
-  if (value.version !== 1 && value.version !== BUILDER_TRANSFER_VERSION) errors.push(`対応していないバージョンです（version: ${String(value.version)}）。`);
+  if (value.version !== 1 && value.version !== 2 && value.version !== BUILDER_TRANSFER_VERSION) errors.push(`対応していないバージョンです（version: ${String(value.version)}）。`);
   if (typeof value.exportedAt !== 'string') errors.push('exportedAtが正しくありません。');
   const candidates = validateCandidates(value.candidates, validIds, errors);
 
@@ -112,7 +140,7 @@ export function validateBuilderTransferText(text: string, validIds: Set<string>)
     const cards = validateDeckCards(value.deck, validIds, errors, 'デッキ1');
     return errors.length
       ? { ok: false, errors: [...new Set(errors)] }
-      : { ok: true, value: { sourceVersion: 1, decks: [{ id: 'imported-deck-v1', name: 'デッキ1', cards }], activeDeckId: 'imported-deck-v1', candidates } };
+      : { ok: true, value: { sourceVersion: 1, decks: [{ id: 'imported-deck-v1', name: 'デッキ1', cards }], activeDeckId: 'imported-deck-v1', candidates, inventory: {}, hasInventoryData: false } };
   }
 
   if (!Array.isArray(value.decks) || value.decks.length === 0) errors.push('decksには1件以上のデッキが必要です。');
@@ -131,7 +159,8 @@ export function validateBuilderTransferText(text: string, validIds: Set<string>)
   }
   if (typeof value.activeDeckId !== 'string' || !deckIds.has(value.activeDeckId)) errors.push('アクティブデッキを確認できません。');
 
+  const inventory = value.version === 3 ? validateInventory(value.inventory, validVersionIds, errors) : {};
   return errors.length
     ? { ok: false, errors: [...new Set(errors)] }
-    : { ok: true, value: { sourceVersion: 2, decks, activeDeckId: value.activeDeckId as string, candidates } };
+    : { ok: true, value: { sourceVersion: value.version as 2 | 3, decks, activeDeckId: value.activeDeckId as string, candidates, inventory, hasInventoryData: value.version === 3 } };
 }

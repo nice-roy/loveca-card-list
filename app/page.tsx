@@ -19,6 +19,7 @@ import { matchesFreewordSearch } from '@/lib/freeword-search';
 import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckId, createDeckRecipeText, duplicateDeckName, emptyDeckForBulkClear, groupDeckEntriesByMetric, nextDefaultDeckName, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear, type DeckGroup, type DeckQuantities, type SavedDeck } from '@/lib/deck-builder';
 import { createBuilderTransferText, validateBuilderTransferText, type ValidatedBuilderTransfer } from '@/lib/builder-transfer';
 import { groupMemberOptions, type MemberDisplayMode, type MemberOptionGroup } from '@/lib/member-options';
+import { INVENTORY_STORAGE_KEY, MAX_OWNED_QUANTITY, inventoryTotalsByBase, matchesInventoryFilter, normalizeInventory, setOwnedQuantity, type InventoryFilter, type InventoryQuantities } from '@/lib/inventory';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -28,6 +29,8 @@ for (const card of cards) {
   cardsByBuilderId.set(id, [...(cardsByBuilderId.get(id) ?? []), card]);
 }
 const validBuilderIds = new Set(cardsByBuilderId.keys());
+const validVersionIds = new Set(cards.map((card) => card.id));
+const versionToBase = new Map(cards.map((card) => [card.id, baseCardId(card.cardNumber)]));
 const PAGE_SIZE = 48;
 const MEMBER_DISPLAY_MODE_STORAGE_KEY = 'loveca-card-list:member-display-mode:v1';
 const DEFAULT_SORT: SortKey = 'cardNumberAsc';
@@ -61,6 +64,15 @@ function readMemberDisplayMode(): MemberDisplayMode {
     return localStorage.getItem(MEMBER_DISPLAY_MODE_STORAGE_KEY) === 'unit' ? 'unit' : 'schoolYear';
   } catch {
     return 'schoolYear';
+  }
+}
+
+function readInventory() {
+  try {
+    const saved = localStorage.getItem(INVENTORY_STORAGE_KEY);
+    return saved ? normalizeInventory(JSON.parse(saved), validVersionIds) : {};
+  } catch {
+    return {};
   }
 }
 
@@ -115,6 +127,18 @@ function Hearts({ values, blade = false }: { values: { color: string | null; cou
       <strong>{value.count}</strong>
     </span>
   ))}</span>;
+}
+
+function InventoryStepper({ label, count, onChange }: { label: string; count: number; onChange: (count: number) => void }) {
+  return <div className={`inventory-stepper${count > 0 ? ' owned' : ''}`}>
+    <span>所持</span>
+    <button aria-label={`${label}の所持枚数を1枚減らす`} disabled={count <= 0} onClick={() => onChange(count - 1)} type="button"><Minus /></button>
+    <input aria-label={`${label}の所持枚数`} inputMode="numeric" max={MAX_OWNED_QUANTITY} min={0} onChange={(event) => {
+      const next = Number(event.target.value);
+      if (Number.isInteger(next) && next >= 0 && next <= MAX_OWNED_QUANTITY) onChange(next);
+    }} type="number" value={count} />
+    <button aria-label={`${label}の所持枚数を1枚増やす`} disabled={count >= MAX_OWNED_QUANTITY} onClick={() => onChange(count + 1)} type="button"><Plus /></button>
+  </div>;
 }
 
 function MultiSelect({
@@ -200,6 +224,8 @@ export default function Home() {
   const [scoreIds, setScoreIds] = useState<string[]>([]);
   const [groupIdenticalCards, setGroupIdenticalCards] = useState(true);
   const [candidateOnly, setCandidateOnly] = useState(false);
+  const [inventoryFilter, setInventoryFilter] = useState<InventoryFilter>('all');
+  const [inventory, setInventory] = useState<InventoryQuantities>(readInventory);
   const [initialBuilderState] = useState(readBuilderState);
   const [candidateIds, setCandidateIds] = useState<Set<string>>(() => new Set(initialBuilderState.candidates));
   const [decks, setDecks] = useState<SavedDeck[]>(initialBuilderState.decks);
@@ -225,7 +251,7 @@ export default function Home() {
   const [dataTransferErrors, setDataTransferErrors] = useState<string[]>([]);
   const [dataTransferCopyFeedback, setDataTransferCopyFeedback] = useState<'success' | 'error' | null>(null);
   const [pendingDataImport, setPendingDataImport] = useState<ValidatedBuilderTransfer | null>(null);
-  const [importedStateForUndo, setImportedStateForUndo] = useState<{ decks: SavedDeck[]; activeDeckId: string; candidates: string[] } | null>(null);
+  const [importedStateForUndo, setImportedStateForUndo] = useState<{ decks: SavedDeck[]; activeDeckId: string; candidates: string[]; inventory: InventoryQuantities } | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const activeDeck = decks.find((item) => item.id === activeDeckId) ?? decks[0];
@@ -252,6 +278,7 @@ export default function Home() {
   const memberTotal = useMemo(() => cards.filter((card) => card.cardType === 'member').length, []);
   const liveTotal = useMemo(() => cards.filter((card) => card.cardType === 'live').length, []);
   const enabledGroupLabels = useMemo(() => references.groups.filter((group) => group.enabled).map((group) => group.label), []);
+  const ownedTotalsByBase = useMemo(() => inventoryTotalsByBase(inventory, versionToBase), [inventory]);
   const sortOptions = cardType === 'member'
     ? [...memberSortOptions, ...commonSortOptions]
     : cardType === 'live'
@@ -287,6 +314,14 @@ export default function Home() {
     }
   }, [memberDisplayMode]);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(INVENTORY_STORAGE_KEY, JSON.stringify({ version: 1, cards: inventory }));
+    } catch {
+      // Inventory remains usable for the current page even if storage is unavailable.
+    }
+  }, [inventory]);
+
   const filteredCards = useMemo(() => {
     return cards
       .filter((card) => groupId === 'all' || card.groupIds.includes(groupId))
@@ -296,6 +331,7 @@ export default function Home() {
       .filter((card) => cardType !== 'live' || matchesNumericFilter(card, 'score', scoreIds))
       .filter((card) => selectedProductIdSet.size === 0 || selectedProductIdSet.has(card.productId))
       .filter((card) => !candidateOnly || candidateIds.has(baseCardId(card.cardNumber)))
+      .filter((card) => matchesInventoryFilter(inventoryFilter, card.id, baseCardId(card.cardNumber), groupIdenticalCards, inventory, ownedTotalsByBase))
       .filter((card) => matchesFreewordSearch(
         [card.name, card.cardNumber, card.effectText ?? '', productById.get(card.productId) ?? '', ...card.memberIds.map((id) => memberById.get(id) ?? '')].join(' '),
         query,
@@ -310,14 +346,14 @@ export default function Home() {
         if (sortKey === 'scoreDesc') result = compareNullable(left.live?.score ?? null, right.live?.score ?? null, 'desc');
         return result || compareNullable(left.cardNumber, right.cardNumber);
       });
-  }, [candidateIds, candidateOnly, cardType, costIds, scoreIds, groupId, memberById, productById, query, selectedMemberIdSet, selectedProductIdSet, sortKey]);
+  }, [candidateIds, candidateOnly, cardType, costIds, scoreIds, groupId, groupIdenticalCards, inventory, inventoryFilter, memberById, ownedTotalsByBase, productById, query, selectedMemberIdSet, selectedProductIdSet, sortKey]);
   const displayGroups = useMemo(() => groupIdenticalCards
     ? groupCardsForDisplay(filteredCards)
     : filteredCards.map((card) => ({ baseCardId: card.cardNumber, cards: [card], representative: card })), [filteredCards, groupIdenticalCards]);
 
   const resetFilters = () => {
     setQuery(''); setGroupId('all'); setMemberIds([]); setCardType('all'); setProductIds([]); setSortKey(DEFAULT_SORT); setVisibleCount(PAGE_SIZE);
-    setCostIds([]); setScoreIds([]); setGroupIdenticalCards(true); setCandidateOnly(false);
+    setCostIds([]); setScoreIds([]); setGroupIdenticalCards(true); setCandidateOnly(false); setInventoryFilter('all');
   };
   const changeCardType = (nextCardType: string) => {
     setCardType(nextCardType);
@@ -343,6 +379,10 @@ export default function Home() {
   const updateProductIds = (nextIds: string[]) => { setProductIds(nextIds); setVisibleCount(PAGE_SIZE); };
   const updateCostIds = (nextIds: string[]) => { setCostIds(nextIds); setVisibleCount(PAGE_SIZE); };
   const updateScoreIds = (nextIds: string[]) => { setScoreIds(nextIds); setVisibleCount(PAGE_SIZE); };
+  const updateInventory = (versionId: string, count: number) => {
+    setImportedStateForUndo(null);
+    setInventory((current) => setOwnedQuantity(current, versionId, count));
+  };
   const toggleCandidate = (id: string) => {
     setImportedStateForUndo(null);
     setCandidateIds((current) => {
@@ -440,7 +480,7 @@ export default function Home() {
     .map((id) => ({ id, card: cardsByBuilderId.get(id)?.[0] }))
     .filter((entry): entry is { id: string; card: Card } => Boolean(entry.card))
     .sort((left, right) => compareNullable(left.id, right.id)), [candidateIds, deck]);
-  const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length || costIds.length || scoreIds.length || !groupIdenticalCards || candidateOnly);
+  const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length || costIds.length || scoreIds.length || !groupIdenticalCards || candidateOnly || inventoryFilter !== 'all');
   const finishCopy = async (kind: 'recipe' | 'ai', text: string) => {
     const copied = await copyText(text);
     setCopyFeedback(copied ? kind : 'error');
@@ -486,7 +526,7 @@ export default function Home() {
     setPendingDataImport(null);
     setDataTransferOpen(true);
   };
-  const exportDataText = useMemo(() => createBuilderTransferText(decks, activeDeckId, candidateIds), [activeDeckId, candidateIds, decks]);
+  const exportDataText = useMemo(() => createBuilderTransferText(decks, activeDeckId, candidateIds, inventory), [activeDeckId, candidateIds, decks, inventory]);
   const copyDataExport = async () => {
     const copied = await copyText(exportDataText);
     setDataTransferCopyFeedback(copied ? 'success' : 'error');
@@ -504,7 +544,7 @@ export default function Home() {
     URL.revokeObjectURL(url);
   };
   const reviewDataImport = () => {
-    const result = validateBuilderTransferText(dataTransferText, validBuilderIds);
+    const result = validateBuilderTransferText(dataTransferText, validBuilderIds, validVersionIds);
     if (!result.ok) {
       setDataTransferErrors(result.errors);
       setPendingDataImport(null);
@@ -516,10 +556,11 @@ export default function Home() {
   };
   const confirmDataImport = () => {
     if (!pendingDataImport) return;
-    setImportedStateForUndo({ decks: decks.map((item) => ({ ...item, cards: { ...item.cards } })), activeDeckId, candidates: [...candidateIds] });
+    setImportedStateForUndo({ decks: decks.map((item) => ({ ...item, cards: { ...item.cards } })), activeDeckId, candidates: [...candidateIds], inventory: { ...inventory } });
     setDecks(pendingDataImport.decks.map((item) => ({ ...item, cards: { ...item.cards } })));
     setActiveDeckId(pendingDataImport.activeDeckId);
     setCandidateIds(new Set(pendingDataImport.candidates));
+    setInventory({ ...pendingDataImport.inventory });
     setClearedDeckForUndo(null);
     setPendingRemovalId(null);
     setDataTransferOpen(false);
@@ -531,6 +572,7 @@ export default function Home() {
     setDecks(importedStateForUndo.decks.map((item) => ({ ...item, cards: { ...item.cards } })));
     setActiveDeckId(importedStateForUndo.activeDeckId);
     setCandidateIds(new Set(importedStateForUndo.candidates));
+    setInventory({ ...importedStateForUndo.inventory });
     setImportedStateForUndo(null);
   };
   const importDeckPreviews = pendingDataImport?.decks.map((item) => {
@@ -538,6 +580,8 @@ export default function Home() {
     const liveTotal = Object.entries(item.cards).reduce((sum, [id, quantity]) => sum + (cardsByBuilderId.get(id)?.[0]?.cardType === 'live' ? quantity : 0), 0);
     return { ...item, memberTotal, liveTotal, total: memberTotal + liveTotal };
   }) ?? [];
+  const importInventoryKinds = pendingDataImport ? Object.keys(pendingDataImport.inventory).length : 0;
+  const importInventoryTotal = pendingDataImport ? Object.values(pendingDataImport.inventory).reduce((sum, count) => sum + count, 0) : 0;
 
   const deckSection = (label: string, metricLabel: 'COST' | 'SCORE', groups: DeckGroup[]) => groups.length > 0 && <section className="deck-section">
     <div className="deck-section-heading"><h3>{label}<span>{groups.reduce((sum, group) => sum + group.quantity, 0)}枚</span></h3></div>
@@ -589,6 +633,7 @@ export default function Home() {
           {cardType === 'member' && <MultiSelect key="cost" emptyLabel="すべてのコスト" id="cost-filter" label="コスト" onChange={updateCostIds} options={availableCosts} selectedIds={costIds} />}
           {cardType === 'live' && <MultiSelect key="score" emptyLabel="すべてのスコア" id="score-filter" label="スコア" onChange={updateScoreIds} options={availableScores} selectedIds={scoreIds} />}
           <MultiSelect className="product-filter" emptyLabel="すべての商品" id="product-filter" label="収録商品" onChange={updateProductIds} options={availableProducts} selectedIds={productIds} />
+          <label className="filter-field"><span className="filter-label">所持状態</span><NativeSelect className="select-control" value={inventoryFilter} onChange={(event) => { setInventoryFilter(event.target.value as InventoryFilter); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="owned">所持のみ</NativeSelectOption><NativeSelectOption value="unowned">未所持のみ</NativeSelectOption></NativeSelect></label>
           <label className="filter-field"><span className="filter-label"><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label>
         </div>
       </div>
@@ -603,13 +648,16 @@ export default function Home() {
         const productIdsInGroup = new Set(group.cards.map((version) => version.productId));
         const builderId = baseCardId(card.cardNumber);
         const isCandidate = candidateIds.has(builderId);
-        return <article className={`card-item ${card.cardType}`} key={isGrouped ? `${group.baseCardId}:${card.id}` : card.id}>
+        const ownedTotal = ownedTotalsByBase.get(builderId) ?? 0;
+        const shownOwnedCount = groupIdenticalCards ? ownedTotal : (inventory[card.id] ?? 0);
+        return <article className={`card-item ${card.cardType}${shownOwnedCount > 0 ? ' inventory-owned' : ''}`} key={isGrouped ? `${group.baseCardId}:${card.id}` : card.id}>
           <div className="card-body"><Badge className="type-badge" variant="secondary">{card.cardType === 'member' ? 'MEMBER' : 'LIVE'}</Badge><div className="card-heading"><div><h2>{card.name}</h2><code>{isGrouped ? group.baseCardId : card.cardNumber}</code></div>{card.member && <span className="metric"><small>COST</small>{card.member.cost ?? '—'}</span>}{card.live && <span className="metric score"><small>SCORE</small>{card.live.score ?? '—'}</span>}</div>
             {isGrouped && <div className="version-summary"><span>バージョン</span>{group.cards.map((version) => <Badge key={version.id} variant="outline">{cardVersion(version.cardNumber) ?? version.cardNumber}</Badge>)}</div>}
             <p className="product-name">{productIdsInGroup.size === 1 ? productById.get(card.productId) : '収録商品はバージョン別'}</p><dl className="stats">{card.member && <><div><dt>基本ハート</dt><dd><Hearts values={card.member.hearts} /></dd></div><div><dt>ブレードハート</dt><dd><Hearts blade values={card.member.bladeHearts} /></dd></div><div><dt>ブレード</dt><dd>{card.member.yell.count ?? '—'}</dd></div></>}{card.live && <div><dt>必要ハート</dt><dd><Hearts values={card.live.requiredHearts} /></dd></div>}</dl>
             {card.effectText && <p className="effect-text">{card.effectText}</p>}
+            {groupIdenticalCards ? <><div className={`inventory-total${ownedTotal > 0 ? ' owned' : ''}`}><span>所持合計</span><strong>{ownedTotal}</strong><span>枚</span></div>{!isGrouped && <InventoryStepper count={inventory[card.id] ?? 0} label={card.cardNumber} onChange={(count) => updateInventory(card.id, count)} />}</> : <InventoryStepper count={inventory[card.id] ?? 0} label={card.cardNumber} onChange={(count) => updateInventory(card.id, count)} />}
             <div className="builder-actions"><Button aria-pressed={isCandidate} className={isCandidate ? 'candidate-active' : ''} onClick={() => toggleCandidate(builderId)} size="sm" variant="outline">{isCandidate ? <Check /> : <Bookmark />}{isCandidate ? '候補中' : '候補'}</Button><Button disabled={(deck[builderId] ?? 0) >= MAX_DECK_QUANTITY} onClick={() => updateDeck(builderId, 1)} size="sm"><ListPlus />{(deck[builderId] ?? 0) >= MAX_DECK_QUANTITY ? '4枚採用中' : 'デッキに追加'}</Button></div>
-            {isGrouped ? <details className="version-details"><summary>バージョンを見る（{group.cards.length}種）</summary><div className="version-list">{group.cards.map((version) => <section className="version-row" key={version.id}><div><strong>{cardVersion(version.cardNumber) ?? '仕様違い'}</strong><code>{version.cardNumber}</code></div><p><span>レアリティ</span>{version.rarity ?? cardVersion(version.cardNumber) ?? '—'}</p><p><span>収録商品</span>{productById.get(version.productId)}</p><div className="card-links">{version.officialUrl && <a className="official-link" href={version.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{version.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div></section>)}</div></details> : <div className="card-links">{card.officialUrl && <a className="official-link" href={card.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{card.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div>}
+            {isGrouped ? <details className="version-details"><summary>バージョンを見る（{group.cards.length}種）</summary><div className="version-list">{group.cards.map((version) => <section className="version-row" key={version.id}><div><strong>{cardVersion(version.cardNumber) ?? '仕様違い'}</strong><code>{version.cardNumber}</code></div><p><span>レアリティ</span>{version.rarity ?? cardVersion(version.cardNumber) ?? '—'}</p><p><span>収録商品</span>{productById.get(version.productId)}</p><InventoryStepper count={inventory[version.id] ?? 0} label={version.cardNumber} onChange={(count) => updateInventory(version.id, count)} /><div className="card-links">{version.officialUrl && <a className="official-link" href={version.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{version.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div></section>)}</div></details> : <div className="card-links">{card.officialUrl && <a className="official-link" href={card.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{card.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div>}
           </div></article>;
       })}</div> : <div className="empty-state"><Search /><h2>該当するカードがありません</h2><p>検索語や絞り込み条件を変更してください。</p><Button onClick={resetFilters}>条件をクリア</Button></div>}
       {visibleCount < displayGroups.length && <div className="load-more"><Button size="lg" variant="outline" onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}>さらに表示 <span>{Math.min(PAGE_SIZE, displayGroups.length - visibleCount)}種</span></Button></div>}
@@ -621,11 +669,11 @@ export default function Home() {
     <Dialog onOpenChange={setCandidateImportOpen} open={candidateImportOpen}><DialogContent className="candidate-import-dialog"><DialogHeader><DialogTitle>候補を一括追加</DialogTitle><DialogDescription>AIの「候補一括追加用」ブロック、またはカード番号を貼り付けてください。推奨枚数は候補追加には使用しません。</DialogDescription></DialogHeader><textarea aria-label="候補に追加するカード番号" className="candidate-import-textarea" onChange={(event) => { setCandidateImportText(event.target.value); setCandidateImportResult(null); }} placeholder={'PL!SP-bp1-012 | 澁谷かのん | 4\nPL!SP-bp1-001 | 澁谷かのん | 4'} value={candidateImportText} />{candidateImportResult && <div aria-live="polite" className="candidate-import-result">{candidateImportResult.recognized ? <><strong>{candidateImportResult.recognized}種類を認識しました</strong><span>新しく候補に追加：{candidateImportResult.added}種類</span><span>すでに候補：{candidateImportResult.existing}種類</span>{candidateImportResult.usedSection && <span>「候補一括追加用」セクションを優先して解析しました</span>}{candidateImportResult.unknown.length > 0 && <span>確認できなかったカード：{candidateImportResult.unknown.join('、')}</span>}</> : <><strong>追加できるカード番号を確認できませんでした</strong>{candidateImportResult.unknown.length > 0 && <span>確認できなかったカード：{candidateImportResult.unknown.join('、')}</span>}</>}</div>}<DialogFooter className="candidate-import-footer"><DialogClose render={<Button type="button" variant="outline" />}>キャンセル</DialogClose><Button onClick={importCandidates} type="button"><Bookmark />候補に追加</Button></DialogFooter></DialogContent></Dialog>
     <Dialog onOpenChange={setDataTransferOpen} open={dataTransferOpen}>
       <DialogContent className="data-transfer-dialog">
-        <DialogHeader><DialogTitle>データ移行</DialogTitle><DialogDescription>全デッキと共通の候補を、別の端末へ移せます。検索条件や表示状態は含まれません。</DialogDescription></DialogHeader>
-        {dataTransferView === 'menu' && <div className="data-transfer-menu"><Button onClick={() => setDataTransferView('export')} type="button" variant="outline"><strong>エクスポート</strong><span>全デッキと候補をJSONで書き出す</span></Button><Button onClick={() => setDataTransferView('import')} type="button" variant="outline"><strong>インポート</strong><span>JSONを検証してから全デッキと候補を置き換える</span></Button></div>}
+        <DialogHeader><DialogTitle>データ移行</DialogTitle><DialogDescription>全デッキ・共通候補・所持カードを、別の端末へ移せます。検索条件や表示状態は含まれません。</DialogDescription></DialogHeader>
+        {dataTransferView === 'menu' && <div className="data-transfer-menu"><Button onClick={() => setDataTransferView('export')} type="button" variant="outline"><strong>エクスポート</strong><span>全デッキ・候補・所持カードをJSONで書き出す</span></Button><Button onClick={() => setDataTransferView('import')} type="button" variant="outline"><strong>インポート</strong><span>JSONを検証してから保存データを置き換える</span></Button></div>}
         {dataTransferView === 'export' && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('menu')} type="button">← 戻る</button><strong>エクスポート</strong></div><textarea aria-label="エクスポートするJSON" className="candidate-import-textarea data-transfer-textarea" readOnly value={exportDataText} /><div className="data-transfer-actions"><Button onClick={copyDataExport} type="button">{dataTransferCopyFeedback === 'success' ? <Check /> : <Copy />}{dataTransferCopyFeedback === 'success' ? 'コピーしました' : 'データをコピー'}</Button><Button onClick={downloadDataExport} type="button" variant="outline">JSONファイルとして保存</Button></div>{dataTransferCopyFeedback === 'error' && <p aria-live="polite" className="data-transfer-copy-error">コピーできませんでした</p>}</>}
-        {dataTransferView === 'import' && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('menu')} type="button">← 戻る</button><strong>インポート</strong></div><textarea aria-label="インポートするJSON" className="candidate-import-textarea data-transfer-textarea" onChange={(event) => { setDataTransferText(event.target.value); setDataTransferErrors([]); }} placeholder={'{\n  "format": "loveca-card-list-state",\n  "version": 2,\n  ...\n}'} value={dataTransferText} />{dataTransferErrors.length > 0 && <div aria-live="polite" className="data-transfer-errors"><strong>インポートできませんでした</strong>{dataTransferErrors.map((error) => <span key={error}>・{error}</span>)}</div>}<div className="data-transfer-actions"><Button onClick={reviewDataImport} type="button">内容を確認</Button></div></>}
-        {dataTransferView === 'preview' && pendingDataImport && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('import')} type="button">← 戻る</button><strong>インポートするデータ</strong></div><div className="data-transfer-deck-preview"><strong>{importDeckPreviews.length}デッキ</strong>{importDeckPreviews.map((item) => <section key={item.id}><h3>{item.name}{item.id === pendingDataImport.activeDeckId && <span>選択中</span>}</h3><dl><div><dt>メンバー</dt><dd>{item.memberTotal}枚</dd></div><div><dt>ライブ</dt><dd>{item.liveTotal}枚</dd></div><div><dt>合計</dt><dd>{item.total}枚</dd></div></dl></section>)}</div><div className="data-transfer-preview-note"><strong>候補：{pendingDataImport.candidates.length}種類</strong><span>現在の全デッキと候補は、この内容に置き換えられます。</span>{pendingDataImport.sourceVersion === 1 && <span>version 1のデータは「デッキ1」として読み込みます。</span>}</div><div className="data-transfer-actions"><Button onClick={confirmDataImport} type="button">インポートする</Button><Button onClick={() => setDataTransferOpen(false)} type="button" variant="outline">キャンセル</Button></div></>}
+        {dataTransferView === 'import' && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('menu')} type="button">← 戻る</button><strong>インポート</strong></div><textarea aria-label="インポートするJSON" className="candidate-import-textarea data-transfer-textarea" onChange={(event) => { setDataTransferText(event.target.value); setDataTransferErrors([]); }} placeholder={'{\n  "format": "loveca-card-list-state",\n  "version": 3,\n  ...\n}'} value={dataTransferText} />{dataTransferErrors.length > 0 && <div aria-live="polite" className="data-transfer-errors"><strong>インポートできませんでした</strong>{dataTransferErrors.map((error) => <span key={error}>・{error}</span>)}</div>}<div className="data-transfer-actions"><Button onClick={reviewDataImport} type="button">内容を確認</Button></div></>}
+        {dataTransferView === 'preview' && pendingDataImport && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('import')} type="button">← 戻る</button><strong>インポートするデータ</strong></div><div className="data-transfer-deck-preview"><strong>{importDeckPreviews.length}デッキ</strong>{importDeckPreviews.map((item) => <section key={item.id}><h3>{item.name}{item.id === pendingDataImport.activeDeckId && <span>選択中</span>}</h3><dl><div><dt>メンバー</dt><dd>{item.memberTotal}枚</dd></div><div><dt>ライブ</dt><dd>{item.liveTotal}枚</dd></div><div><dt>合計</dt><dd>{item.total}枚</dd></div></dl></section>)}</div><div className={`data-transfer-preview-note${!pendingDataImport.hasInventoryData ? ' legacy-warning' : ''}`}><strong>候補：{pendingDataImport.candidates.length}種類</strong><strong>所持：{importInventoryKinds}種類・合計{importInventoryTotal}枚</strong><span>現在の全デッキ・候補・所持情報は、この内容に置き換えられます。</span>{pendingDataImport.sourceVersion === 1 && <span>version 1のデータは「デッキ1」として読み込みます。</span>}{!pendingDataImport.hasInventoryData && <span>このデータには所持カード情報がありません。インポートすると現在の所持情報も消去されます。</span>}</div><div className="data-transfer-actions"><Button onClick={confirmDataImport} type="button">インポートする</Button><Button onClick={() => setDataTransferOpen(false)} type="button" variant="outline">キャンセル</Button></div></>}
         {dataTransferView !== 'preview' && <DialogFooter className="data-transfer-footer"><DialogClose render={<Button type="button" variant="outline" />}>閉じる</DialogClose></DialogFooter>}
       </DialogContent>
     </Dialog>

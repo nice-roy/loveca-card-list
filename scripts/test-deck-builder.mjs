@@ -81,15 +81,15 @@ test('bulk deck clear removes only deck entries and restores one saved snapshot'
   assert.deepEqual(restoreDeckAfterBulkClear(cleared.undoDeck), originalDeck);
 });
 
-test('version 2 transfer exports every deck, active deck, and global candidates', () => {
+test('version 3 transfer exports decks, candidates, and per-version inventory', () => {
   const decks = [
     { id: 'deck-a', name: 'デッキA', cards: { 'MEMBER-001': 4 } },
     { id: 'deck-b', name: 'デッキB', cards: { 'LIVE-001': 2 } },
   ];
-  const text = createBuilderTransferText(decks, 'deck-b', new Set(['CANDIDATE-001', 'MEMBER-001']), '2026-09-08T00:00:00.000Z');
-  const result = validateBuilderTransferText(text, new Set(['MEMBER-001', 'LIVE-001', 'CANDIDATE-001']));
-  assert.deepEqual(result, { ok: true, value: { sourceVersion: 2, decks, activeDeckId: 'deck-b', candidates: ['CANDIDATE-001', 'MEMBER-001'] } });
-  assert.match(text, /"version": 2/);
+  const text = createBuilderTransferText(decks, 'deck-b', new Set(['CANDIDATE-001', 'MEMBER-001']), { 'version-r': 2, 'version-p': 2 }, '2026-09-08T00:00:00.000Z');
+  const result = validateBuilderTransferText(text, new Set(['MEMBER-001', 'LIVE-001', 'CANDIDATE-001']), new Set(['version-r', 'version-p']));
+  assert.deepEqual(result, { ok: true, value: { sourceVersion: 3, decks, activeDeckId: 'deck-b', candidates: ['CANDIDATE-001', 'MEMBER-001'], inventory: { 'version-p': 2, 'version-r': 2 }, hasInventoryData: true } });
+  assert.match(text, /"version": 3/);
   assert.doesNotMatch(text, /カード名|効果|URL/);
 });
 
@@ -100,8 +100,28 @@ test('version 1 transfer remains importable as one deck with global candidates',
   });
   assert.deepEqual(validateBuilderTransferText(text, new Set(['MEMBER-001', 'CANDIDATE-001'])), {
     ok: true,
-    value: { sourceVersion: 1, decks: [{ id: 'imported-deck-v1', name: 'デッキ1', cards: { 'MEMBER-001': 4 } }], activeDeckId: 'imported-deck-v1', candidates: ['CANDIDATE-001'] },
+    value: { sourceVersion: 1, decks: [{ id: 'imported-deck-v1', name: 'デッキ1', cards: { 'MEMBER-001': 4 } }], activeDeckId: 'imported-deck-v1', candidates: ['CANDIDATE-001'], inventory: {}, hasInventoryData: false },
   });
+});
+
+test('version 2 transfer remains importable and explicitly has no inventory data', () => {
+  const text = JSON.stringify({
+    format: 'loveca-card-list-state', version: 2, exportedAt: '2026-09-08T00:00:00.000Z', activeDeckId: 'deck-a', candidates: [],
+    decks: [{ id: 'deck-a', name: 'A', cards: [{ baseCardId: 'MEMBER-001', count: 1 }] }],
+  });
+  assert.deepEqual(validateBuilderTransferText(text, new Set(['MEMBER-001'])), {
+    ok: true,
+    value: { sourceVersion: 2, decks: [{ id: 'deck-a', name: 'A', cards: { 'MEMBER-001': 1 } }], activeDeckId: 'deck-a', candidates: [], inventory: {}, hasInventoryData: false },
+  });
+});
+
+test('version 3 rejects unknown, duplicate, and out-of-range inventory without partial import', () => {
+  const result = validateBuilderTransferText(JSON.stringify({
+    format: 'loveca-card-list-state', version: 3, exportedAt: '2026-09-08T00:00:00.000Z', activeDeckId: 'deck-a', candidates: [],
+    decks: [{ id: 'deck-a', name: 'A', cards: [] }],
+    inventory: [{ cardId: 'version-r', count: 100 }, { cardId: 'version-r', count: 2 }, { cardId: 'unknown', count: 1 }],
+  }), new Set(), new Set(['version-r']));
+  assert.deepEqual(result, { ok: false, errors: ['所持枚数が不正：version-r ×100', '所持カードが重複しています：version-r', '確認できない所持カード：unknown'] });
 });
 
 test('version 2 transfer rejects duplicate deck ids and a missing active deck', () => {
