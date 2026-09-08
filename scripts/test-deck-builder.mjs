@@ -1,20 +1,55 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { changeDeckQuantity, createAiConsultationText, createDeckRecipeText, emptyDeckForBulkClear, formatEffectTextForAi, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear } from '../lib/deck-builder.ts';
+import { changeDeckQuantity, createAiConsultationText, createDeckRecipeText, duplicateDeckName, emptyDeckForBulkClear, formatEffectTextForAi, groupDeckEntriesByMetric, nextDefaultDeckName, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear } from '../lib/deck-builder.ts';
 import { parseCandidateImportText } from '../lib/candidate-import.ts';
 import { createBuilderTransferText, validateBuilderTransferText } from '../lib/builder-transfer.ts';
 
-test('saved state is restored only for valid cards and positive whole quantities', () => {
+test('legacy single-deck storage migrates without losing valid cards or global candidates', () => {
   const restored = normalizeBuilderState({
     candidates: ['A-001', 'A-001', 'missing'],
     deck: { 'A-001': 3.8, 'B-002': 0, missing: 4, broken: '2' },
   }, new Set(['A-001', 'B-002']));
 
-  assert.deepEqual(restored, {
-    version: 1,
+  assert.equal(restored.version, 2);
+  assert.deepEqual(restored.candidates, ['A-001']);
+  assert.equal(restored.decks.length, 1);
+  assert.equal(restored.decks[0].name, 'デッキ1');
+  assert.deepEqual(restored.decks[0].cards, { 'A-001': 3 });
+  assert.equal(restored.activeDeckId, restored.decks[0].id);
+});
+
+test('multi-deck storage restores every deck and the active deck', () => {
+  const restored = normalizeBuilderState({
+    version: 2,
     candidates: ['A-001'],
-    deck: { 'A-001': 3 },
+    activeDeckId: 'deck-b',
+    decks: [
+      { id: 'deck-a', name: 'デッキA', cards: { 'A-001': 4 } },
+      { id: 'deck-b', name: 'デッキB', cards: { 'B-002': 2 } },
+    ],
+  }, new Set(['A-001', 'B-002']));
+  assert.deepEqual(restored, {
+    version: 2,
+    candidates: ['A-001'],
+    activeDeckId: 'deck-b',
+    decks: [
+      { id: 'deck-a', name: 'デッキA', cards: { 'A-001': 4 } },
+      { id: 'deck-b', name: 'デッキB', cards: { 'B-002': 2 } },
+    ],
   });
+  assert.equal(nextDefaultDeckName(restored.decks), 'デッキ1');
+  assert.equal(duplicateDeckName('デッキA', [...restored.decks, { name: 'デッキA のコピー' }]), 'デッキA のコピー 2');
+});
+
+test('editing one saved deck leaves other decks and global candidates untouched', () => {
+  const state = normalizeBuilderState({
+    version: 2, candidates: ['A-001'], activeDeckId: 'deck-a',
+    decks: [{ id: 'deck-a', name: 'A', cards: { 'A-001': 1 } }, { id: 'deck-b', name: 'B', cards: { 'B-002': 3 } }],
+  }, new Set(['A-001', 'B-002']));
+  const editedDecks = state.decks.map((deck) => deck.id === state.activeDeckId ? { ...deck, cards: changeDeckQuantity(deck.cards, 'A-001', 1) } : deck);
+  assert.deepEqual(editedDecks[0].cards, { 'A-001': 2 });
+  assert.deepEqual(editedDecks[1].cards, { 'B-002': 3 });
+  assert.deepEqual(state.candidates, ['A-001']);
 });
 
 test('decreasing to zero removes a card from the deck', () => {
@@ -27,7 +62,7 @@ test('quantity updates stop at four without rewriting legacy over-limit values',
   assert.deepEqual(changeDeckQuantity({ 'A-001': 4 }, 'A-001', 1), { 'A-001': 4 });
   assert.deepEqual(changeDeckQuantity({ 'A-001': 3 }, 'A-001', 20), { 'A-001': 4 });
   assert.deepEqual(changeDeckQuantity({ 'A-001': 6 }, 'A-001', 1), { 'A-001': 6 });
-  assert.deepEqual(normalizeBuilderState({ deck: { 'A-001': 6 } }, new Set(['A-001'])).deck, { 'A-001': 6 });
+  assert.deepEqual(normalizeBuilderState({ deck: { 'A-001': 6 } }, new Set(['A-001'])).decks[0].cards, { 'A-001': 6 });
 });
 
 test('single-card removal only occurs after the dedicated confirmation path', () => {
@@ -46,11 +81,35 @@ test('bulk deck clear removes only deck entries and restores one saved snapshot'
   assert.deepEqual(restoreDeckAfterBulkClear(cleared.undoDeck), originalDeck);
 });
 
-test('transfer export uses base card ids only and validates a complete replacement safely', () => {
-  const text = createBuilderTransferText({ 'MEMBER-001': 4, 'LIVE-001': 2 }, new Set(['CANDIDATE-001', 'MEMBER-001']), '2026-09-08T00:00:00.000Z');
+test('version 2 transfer exports every deck, active deck, and global candidates', () => {
+  const decks = [
+    { id: 'deck-a', name: 'デッキA', cards: { 'MEMBER-001': 4 } },
+    { id: 'deck-b', name: 'デッキB', cards: { 'LIVE-001': 2 } },
+  ];
+  const text = createBuilderTransferText(decks, 'deck-b', new Set(['CANDIDATE-001', 'MEMBER-001']), '2026-09-08T00:00:00.000Z');
   const result = validateBuilderTransferText(text, new Set(['MEMBER-001', 'LIVE-001', 'CANDIDATE-001']));
-  assert.deepEqual(result, { ok: true, value: { deck: { 'LIVE-001': 2, 'MEMBER-001': 4 }, candidates: ['CANDIDATE-001', 'MEMBER-001'] } });
+  assert.deepEqual(result, { ok: true, value: { sourceVersion: 2, decks, activeDeckId: 'deck-b', candidates: ['CANDIDATE-001', 'MEMBER-001'] } });
+  assert.match(text, /"version": 2/);
   assert.doesNotMatch(text, /カード名|効果|URL/);
+});
+
+test('version 1 transfer remains importable as one deck with global candidates', () => {
+  const text = JSON.stringify({
+    format: 'loveca-card-list-state', version: 1, exportedAt: '2026-09-08T00:00:00.000Z',
+    deck: [{ baseCardId: 'MEMBER-001', count: 4 }], candidates: ['CANDIDATE-001'],
+  });
+  assert.deepEqual(validateBuilderTransferText(text, new Set(['MEMBER-001', 'CANDIDATE-001'])), {
+    ok: true,
+    value: { sourceVersion: 1, decks: [{ id: 'imported-deck-v1', name: 'デッキ1', cards: { 'MEMBER-001': 4 } }], activeDeckId: 'imported-deck-v1', candidates: ['CANDIDATE-001'] },
+  });
+});
+
+test('version 2 transfer rejects duplicate deck ids and a missing active deck', () => {
+  const result = validateBuilderTransferText(JSON.stringify({
+    format: 'loveca-card-list-state', version: 2, exportedAt: '2026-09-08T00:00:00.000Z', activeDeckId: 'missing', candidates: [],
+    decks: [{ id: 'deck-a', name: 'A', cards: [] }, { id: 'deck-a', name: 'B', cards: [] }],
+  }), new Set());
+  assert.deepEqual(result, { ok: false, errors: ['デッキIDが重複しています：deck-a', 'アクティブデッキを確認できません。'] });
 });
 
 test('transfer import rejects malformed, unknown, invalid count, and duplicate data without partial acceptance', () => {
@@ -64,11 +123,11 @@ test('transfer import rejects malformed, unknown, invalid count, and duplicate d
   assert.deepEqual(invalid, {
     ok: false,
     errors: [
-      '採用枚数が不正：MEMBER-001 ×5',
-      'デッキ内で同一カードが重複しています：MEMBER-001',
-      '確認できないカード：UNKNOWN',
       '候補内で同一カードが重複しています：MEMBER-001',
       '確認できない候補カード：UNKNOWN',
+      '採用枚数が不正：MEMBER-001 ×5',
+      'デッキ1で同一カードが重複しています：MEMBER-001',
+      '確認できないカード：UNKNOWN',
     ],
   });
 });
@@ -117,8 +176,9 @@ test('recipe copy text totals quantities and keeps base card ids separate', () =
     { id: 'MEMBER-002', quantity: 2, card: { name: 'メンバーA', cardType: 'member', member: { cost: 3 }, live: null } },
     { id: 'LIVE-001', quantity: 3, card: { name: 'ライブA', cardType: 'live', member: null, live: { score: 50 } } },
   ];
-  const text = createDeckRecipeText(entries);
+  const text = createDeckRecipeText(entries, 'Liella!メイン');
 
+  assert.match(text, /デッキ名：Liella!メイン/);
   assert.match(text, /合計：9枚/);
   assert.match(text, /メンバー：6枚/);
   assert.match(text, /ライブ：3枚/);
@@ -136,8 +196,9 @@ test('AI consultation text contains card details without links or images', () =>
       live: null, effectText: '確認済みの効果全文。',
     },
   }];
-  const text = createAiConsultationText(entries);
+  const text = createAiConsultationText(entries, [], '試作デッキ');
 
+  assert.match(text, /デッキ名：試作デッキ/);
   assert.match(text, /【完成形】\nメンバー：48枚\nライブ：12枚\n合計：60枚/);
   assert.match(text, /【残り枠】\nメンバー：46枚\nライブ：12枚\n合計：58枚/);
   assert.doesNotMatch(text, /想定する完成枚数/);

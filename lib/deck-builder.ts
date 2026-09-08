@@ -6,10 +6,12 @@ export type DeckQuantities = Record<string, number>;
 export type DeckEntry = { id: string; quantity: number; card: Card };
 export type DeckMetric = 'cost' | 'score';
 export type DeckGroup = { value: number | null; quantity: number; entries: DeckEntry[] };
+export type SavedDeck = { id: string; name: string; cards: DeckQuantities };
 export type BuilderState = {
-  version: 1;
+  version: 2;
   candidates: string[];
-  deck: DeckQuantities;
+  decks: SavedDeck[];
+  activeDeckId: string;
 };
 
 export const MAX_DECK_QUANTITY = 4;
@@ -17,25 +19,67 @@ const COMPLETE_MEMBER_COUNT = 48;
 const COMPLETE_LIVE_COUNT = 12;
 const COMPLETE_DECK_COUNT = COMPLETE_MEMBER_COUNT + COMPLETE_LIVE_COUNT;
 
-export function normalizeBuilderState(value: unknown, validIds: Set<string>): BuilderState {
-  const empty: BuilderState = { version: 1, candidates: [], deck: {} };
-  if (!value || typeof value !== 'object') return empty;
+function normalizeDeckQuantities(value: unknown, validIds: Set<string>) {
+  const deck: DeckQuantities = {};
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return deck;
+  for (const [id, quantity] of Object.entries(value)) {
+    if (!validIds.has(id) || typeof quantity !== 'number' || !Number.isFinite(quantity)) continue;
+    const normalizedQuantity = Math.floor(quantity);
+    if (normalizedQuantity > 0) deck[id] = normalizedQuantity;
+  }
+  return deck;
+}
 
-  const saved = value as { candidates?: unknown; deck?: unknown };
+export function createDeckId() {
+  return globalThis.crypto?.randomUUID?.() ?? `deck-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+export function nextDefaultDeckName(decks: Pick<SavedDeck, 'name'>[]) {
+  const names = new Set(decks.map((deck) => deck.name));
+  let number = 1;
+  while (names.has(`デッキ${number}`)) number += 1;
+  return `デッキ${number}`;
+}
+
+export function duplicateDeckName(name: string, decks: Pick<SavedDeck, 'name'>[]) {
+  const names = new Set(decks.map((deck) => deck.name));
+  const base = `${name} のコピー`;
+  if (!names.has(base)) return base;
+  let number = 2;
+  while (names.has(`${base} ${number}`)) number += 1;
+  return `${base} ${number}`;
+}
+
+export function normalizeBuilderState(value: unknown, validIds: Set<string>): BuilderState {
+  const createEmpty = (): BuilderState => {
+    const id = createDeckId();
+    return { version: 2, candidates: [], decks: [{ id, name: 'デッキ1', cards: {} }], activeDeckId: id };
+  };
+  if (!value || typeof value !== 'object') return createEmpty();
+
+  const saved = value as { version?: unknown; candidates?: unknown; deck?: unknown; decks?: unknown; activeDeckId?: unknown };
   const candidates = Array.isArray(saved.candidates)
     ? [...new Set(saved.candidates.filter((id): id is string => typeof id === 'string' && validIds.has(id)))]
     : [];
-  const deck: DeckQuantities = {};
 
-  if (saved.deck && typeof saved.deck === 'object' && !Array.isArray(saved.deck)) {
-    for (const [id, quantity] of Object.entries(saved.deck)) {
-      if (!validIds.has(id) || typeof quantity !== 'number' || !Number.isFinite(quantity)) continue;
-      const normalizedQuantity = Math.floor(quantity);
-      if (normalizedQuantity > 0) deck[id] = normalizedQuantity;
+  if (saved.version === 2 && Array.isArray(saved.decks)) {
+    const seenIds = new Set<string>();
+    const decks: SavedDeck[] = [];
+    for (const item of saved.decks) {
+      if (!item || typeof item !== 'object' || Array.isArray(item)) continue;
+      const deck = item as { id?: unknown; name?: unknown; cards?: unknown };
+      if (typeof deck.id !== 'string' || !deck.id || seenIds.has(deck.id) || typeof deck.name !== 'string' || !deck.name.trim()) continue;
+      seenIds.add(deck.id);
+      decks.push({ id: deck.id, name: deck.name.trim(), cards: normalizeDeckQuantities(deck.cards, validIds) });
+    }
+    if (decks.length) {
+      const activeDeckId = typeof saved.activeDeckId === 'string' && seenIds.has(saved.activeDeckId) ? saved.activeDeckId : decks[0].id;
+      return { version: 2, candidates, decks, activeDeckId };
     }
   }
 
-  return { version: 1, candidates, deck };
+  const legacyId = createDeckId();
+  return { version: 2, candidates, decks: [{ id: legacyId, name: 'デッキ1', cards: normalizeDeckQuantities(saved.deck, validIds) }], activeDeckId: legacyId };
 }
 
 export function changeDeckQuantity(deck: DeckQuantities, id: string, delta: number) {
@@ -156,7 +200,7 @@ function splitDeckEntries(entries: DeckEntry[]) {
   return { members, lives };
 }
 
-export function createDeckRecipeText(entries: DeckEntry[]) {
+export function createDeckRecipeText(entries: DeckEntry[], deckName?: string) {
   const { members, lives } = splitDeckEntries(entries);
   const memberTotal = members.reduce((sum, entry) => sum + entry.quantity, 0);
   const liveTotal = lives.reduce((sum, entry) => sum + entry.quantity, 0);
@@ -166,6 +210,7 @@ export function createDeckRecipeText(entries: DeckEntry[]) {
 
   return [
     '【ラブカ デッキレシピ】',
+    ...(deckName ? ['', `デッキ名：${deckName}`] : []),
     '',
     `合計：${memberTotal + liveTotal}枚`,
     `メンバー：${memberTotal}枚`,
@@ -179,7 +224,7 @@ export function createDeckRecipeText(entries: DeckEntry[]) {
   ].join('\n');
 }
 
-export function createAiConsultationText(entries: DeckEntry[], candidateEntries: Pick<DeckEntry, 'id' | 'card'>[] = []) {
+export function createAiConsultationText(entries: DeckEntry[], candidateEntries: Pick<DeckEntry, 'id' | 'card'>[] = [], deckName?: string) {
   const { members, lives } = splitDeckEntries(entries);
   const deckIds = new Set(entries.map((entry) => entry.id));
   const candidates = [...new Map(candidateEntries.filter((entry) => !deckIds.has(entry.id)).map((entry) => [entry.id, entry])).values()];
@@ -233,6 +278,7 @@ export function createAiConsultationText(entries: DeckEntry[], candidateEntries:
 
   return [
     '以下はラブライブ！オフィシャルカードゲームの現在作成中のデッキです。',
+    ...(deckName ? [`デッキ名：${deckName}`] : []),
     '記載されたカード情報を基準にデッキを分析してください。',
     '現在の採用カードをできるだけ尊重しながら、',
     '・構成の長所と弱点',
