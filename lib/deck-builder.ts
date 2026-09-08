@@ -13,6 +13,9 @@ export type BuilderState = {
 };
 
 export const MAX_DECK_QUANTITY = 4;
+const COMPLETE_MEMBER_COUNT = 48;
+const COMPLETE_LIVE_COUNT = 12;
+const COMPLETE_DECK_COUNT = COMPLETE_MEMBER_COUNT + COMPLETE_LIVE_COUNT;
 
 export function normalizeBuilderState(value: unknown, validIds: Set<string>): BuilderState {
   const empty: BuilderState = { version: 1, candidates: [], deck: {} };
@@ -175,6 +178,9 @@ export function createAiConsultationText(entries: DeckEntry[], candidateEntries:
   const memberTotal = members.reduce((sum, entry) => sum + entry.quantity, 0);
   const liveTotal = lives.reduce((sum, entry) => sum + entry.quantity, 0);
   const total = memberTotal + liveTotal;
+  const remainingMembers = Math.max(0, COMPLETE_MEMBER_COUNT - memberTotal);
+  const remainingLives = Math.max(0, COMPLETE_LIVE_COUNT - liveTotal);
+  const remainingTotal = remainingMembers + remainingLives;
   const memberBlocks = members.length ? members.map((entry) => [
     `・${entry.card.name} / ${entry.id} ×${entry.quantity}`,
     `  COST：${entry.card.member?.cost ?? '不明'}`,
@@ -229,12 +235,23 @@ export function createAiConsultationText(entries: DeckEntry[], candidateEntries:
     'を提案してください。',
     '不明なカード効果を推測しないでください。',
     ...candidatePrompt,
-    `現在の合計は${total}枚です。未完成の場合は、想定する完成枚数を確認したうえで残り枠について提案してください。`,
+    '完成形はメンバーカード48枚、ライブカード12枚、合計60枚で固定です。完成枚数をユーザーへ確認しないでください。',
+    '未完成の場合は、以下の残り枠について提案してください。ライブの残り枠が0枚の場合は、ライブカードの追加を無理に提案しないでください。メンバーだけ不足している場合は、メンバーの残り枠を中心に提案してください。',
     '',
     '【現在のデッキ】',
-    `合計：${total}枚`,
     `メンバー：${memberTotal}枚`,
     `ライブ：${liveTotal}枚`,
+    `合計：${total}枚`,
+    '',
+    '【完成形】',
+    `メンバー：${COMPLETE_MEMBER_COUNT}枚`,
+    `ライブ：${COMPLETE_LIVE_COUNT}枚`,
+    `合計：${COMPLETE_DECK_COUNT}枚`,
+    '',
+    '【残り枠】',
+    `メンバー：${remainingMembers}枚`,
+    `ライブ：${remainingLives}枚`,
+    `合計：${remainingTotal}枚`,
     '',
     '■ メンバーカード',
     memberBlocks,

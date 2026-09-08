@@ -99,7 +99,9 @@ test('AI consultation text contains card details without links or images', () =>
   }];
   const text = createAiConsultationText(entries);
 
-  assert.match(text, /現在の合計は2枚です/);
+  assert.match(text, /【完成形】\nメンバー：48枚\nライブ：12枚\n合計：60枚/);
+  assert.match(text, /【残り枠】\nメンバー：46枚\nライブ：12枚\n合計：58枚/);
+  assert.doesNotMatch(text, /想定する完成枚数/);
   assert.match(text, /COST：4/);
   assert.match(text, /基本ハート：桃×2/);
   assert.match(text, /ブレードハート：青×1/);
@@ -132,4 +134,24 @@ test('AI consultation candidates are optional, deduplicated, and exclude adopted
   assert.match(withCandidates, /候補ライブ \/ LIVE-001/);
   assert.equal((withCandidates.match(/候補ライブ \/ LIVE-001/g) ?? []).length, 1);
   assert.doesNotMatch(withCandidates.split('【追加候補カード】')[1], /MEMBER-001/);
+  assert.match(withCandidates, /【完成形】\nメンバー：48枚\nライブ：12枚\n合計：60枚/);
+});
+
+test('AI consultation text calculates fixed member and live remaining slots', () => {
+  const memberCard = { name: 'メンバー', cardType: 'member', member: { cost: 2, hearts: [], bladeHearts: [], yell: { count: 1 } }, live: null };
+  const liveCard = { name: 'ライブ', cardType: 'live', member: null, live: { score: 40, requiredHearts: [] } };
+  const createEntries = (memberQuantity, liveQuantity) => [
+    { id: 'MEMBER-001', quantity: memberQuantity, card: memberCard },
+    { id: 'LIVE-001', quantity: liveQuantity, card: liveCard },
+  ];
+
+  const fiftyTwo = createAiConsultationText(createEntries(40, 12));
+  assert.match(fiftyTwo, /【残り枠】\nメンバー：8枚\nライブ：0枚\n合計：8枚/);
+  assert.match(fiftyTwo, /ライブの残り枠が0枚の場合は、ライブカードの追加を無理に提案しないでください/);
+
+  const sixty = createAiConsultationText(createEntries(48, 12));
+  assert.match(sixty, /【残り枠】\nメンバー：0枚\nライブ：0枚\n合計：0枚/);
+
+  const shortLive = createAiConsultationText(createEntries(48, 9));
+  assert.match(shortLive, /【残り枠】\nメンバー：0枚\nライブ：3枚\n合計：3枚/);
 });
