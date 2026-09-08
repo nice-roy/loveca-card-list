@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Copy, ExternalLink, Layers3, ListPlus, Minus, Plus, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
+import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Copy, ExternalLink, Layers3, ListPlus, Minus, Plus, RotateCcw, Search, SlidersHorizontal, Sparkles, Trash2, X } from 'lucide-react';
 import cardsJson from './data/cards.json';
 import referencesJson from './data/reference-data.json';
 import type { Card, ReferenceData, SortKey } from './data/schema';
@@ -15,7 +15,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 import { baseCardId, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
 import { parseCandidateImportText } from '@/lib/candidate-import';
-import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckRecipeText, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle, type DeckGroup, type DeckQuantities } from '@/lib/deck-builder';
+import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckRecipeText, emptyDeckForBulkClear, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear, type DeckGroup, type DeckQuantities } from '@/lib/deck-builder';
 import { groupMemberOptions, type MemberOptionGroup } from '@/lib/member-options';
 
 const cards = cardsJson as Card[];
@@ -190,6 +190,8 @@ export default function Home() {
   const [candidateImportText, setCandidateImportText] = useState('');
   const [candidateImportResult, setCandidateImportResult] = useState<{ recognized: number; added: number; existing: number; unknown: string[]; usedSection: boolean } | null>(null);
   const [pendingRemovalId, setPendingRemovalId] = useState<string | null>(null);
+  const [deckClearConfirmOpen, setDeckClearConfirmOpen] = useState(false);
+  const [clearedDeckForUndo, setClearedDeckForUndo] = useState<DeckQuantities | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const memberById = useMemo(() => new Map(references.members.map((item) => [item.id, item.label])), []);
@@ -310,6 +312,7 @@ export default function Home() {
     setCandidateImportResult({ recognized: parsed.recognizedIds.length, added: added.length, existing: existing.length, unknown: parsed.unrecognizedCardNumbers, usedSection: parsed.usedBulkCandidateSection });
   };
   const updateDeck = (id: string, delta: number) => {
+    setClearedDeckForUndo(null);
     setPendingRemovalId((current) => current === id ? null : current);
     setDeck((current) => changeDeckQuantity(current, id, delta));
   };
@@ -318,6 +321,7 @@ export default function Home() {
     else updateDeck(id, -1);
   };
   const confirmDeckRemoval = (id: string) => {
+    setClearedDeckForUndo(null);
     setDeck((current) => removeDeckCardIfSingle(current, id));
     setPendingRemovalId(null);
   };
@@ -328,6 +332,8 @@ export default function Home() {
   const memberDeckGroups = groupDeckEntriesByMetric(deckEntries.filter((entry) => entry.card.cardType === 'member'), 'cost');
   const liveDeckGroups = groupDeckEntriesByMetric(deckEntries.filter((entry) => entry.card.cardType === 'live'), 'score');
   const deckTotal = deckEntries.reduce((sum, entry) => sum + entry.quantity, 0);
+  const memberDeckTotal = memberDeckGroups.reduce((sum, group) => sum + group.quantity, 0);
+  const liveDeckTotal = liveDeckGroups.reduce((sum, group) => sum + group.quantity, 0);
   const availableAiCandidates = useMemo(() => [...candidateIds]
     .filter((id) => !deck[id])
     .map((id) => ({ id, card: cardsByBuilderId.get(id)?.[0] }))
@@ -358,6 +364,18 @@ export default function Home() {
     if (next.has(id)) next.delete(id); else next.add(id);
     return next;
   });
+  const clearDeck = () => {
+    const cleared = emptyDeckForBulkClear(deck);
+    setDeck(cleared.deck);
+    setClearedDeckForUndo(cleared.undoDeck);
+    setPendingRemovalId(null);
+    setDeckClearConfirmOpen(false);
+  };
+  const undoDeckClear = () => {
+    if (!clearedDeckForUndo) return;
+    setDeck(restoreDeckAfterBulkClear(clearedDeckForUndo));
+    setClearedDeckForUndo(null);
+  };
 
   const deckSection = (label: string, metricLabel: 'COST' | 'SCORE', groups: DeckGroup[]) => groups.length > 0 && <section className="deck-section">
     <div className="deck-section-heading"><h3>{label}<span>{groups.reduce((sum, group) => sum + group.quantity, 0)}枚</span></h3></div>
@@ -436,8 +454,9 @@ export default function Home() {
     </section>
     <footer><p>非公式ファンメイドカードリスト · エネルギーカードは収録対象外です</p><p>未登録のレアリティは、確認済み情報のみ順次追加します。</p></footer>
     </div>
-    <Sheet disablePointerDismissal={isDesktopDeck} modal={!isDesktopDeck} onOpenChange={setDeckOpen} open={deckOpen}><SheetTrigger className={`deck-launcher${deckOpen ? ' deck-is-open' : ''}`} aria-label={`デッキを開く、現在${deckTotal}枚`}><ListPlus /><span>デッキ</span><strong>{deckTotal}</strong></SheetTrigger><SheetContent className="deck-sheet" initialFocus={!isDesktopDeck} side="right"><SheetHeader className="deck-header"><SheetTitle>デッキ</SheetTitle><SheetDescription>メンバーはCOST別、ライブはSCORE別に表示しています。</SheetDescription><div className="deck-total"><span>合計</span><strong>{deckTotal}</strong><span>枚</span></div><div className="deck-copy-actions"><Button onClick={copyDeckRecipe} size="sm" type="button" variant="outline">{copyFeedback === 'recipe' ? <Check /> : <Copy />}{copyFeedback === 'recipe' ? 'コピーしました' : 'デッキレシピをコピー'}</Button><Button onClick={requestAiCopy} size="sm" type="button" variant="outline">{copyFeedback === 'ai' ? <Check /> : <Bot />}{copyFeedback === 'ai' ? 'コピーしました' : 'AI相談用にコピー'}</Button></div><p aria-live="polite" className={`copy-feedback${copyFeedback === 'error' ? ' error' : ''}`}>{copyFeedback === 'error' ? 'コピーできませんでした' : copyFeedback ? 'クリップボードにコピーしました' : ''}</p></SheetHeader><div className="deck-scroll">{deckEntries.length ? <>{deckSection('メンバーカード', 'COST', memberDeckGroups)}{deckSection('ライブカード', 'SCORE', liveDeckGroups)}</> : <div className="deck-empty"><ListPlus /><strong>デッキは空です</strong><p>カード一覧の「デッキに追加」から選べます。</p></div>}</div></SheetContent></Sheet>
+    <Sheet disablePointerDismissal={isDesktopDeck} modal={!isDesktopDeck} onOpenChange={setDeckOpen} open={deckOpen}><SheetTrigger className={`deck-launcher${deckOpen ? ' deck-is-open' : ''}`} aria-label={`デッキを開く、現在${deckTotal}枚`}><ListPlus /><span>デッキ</span><strong>{deckTotal}</strong></SheetTrigger><SheetContent className="deck-sheet" initialFocus={!isDesktopDeck} side="right"><SheetHeader className="deck-header"><SheetTitle>デッキ</SheetTitle><SheetDescription>メンバーはCOST別、ライブはSCORE別に表示しています。</SheetDescription><div className="deck-total"><span>合計</span><strong>{deckTotal}</strong><span>枚</span></div><div className="deck-copy-actions"><Button onClick={copyDeckRecipe} size="sm" type="button" variant="outline">{copyFeedback === 'recipe' ? <Check /> : <Copy />}{copyFeedback === 'recipe' ? 'コピーしました' : 'デッキレシピをコピー'}</Button><Button onClick={requestAiCopy} size="sm" type="button" variant="outline">{copyFeedback === 'ai' ? <Check /> : <Bot />}{copyFeedback === 'ai' ? 'コピーしました' : 'AI相談用にコピー'}</Button></div><Button className="deck-clear-button" disabled={!deckEntries.length} onClick={() => setDeckClearConfirmOpen(true)} size="sm" type="button" variant="outline"><Trash2 />デッキを空にする</Button>{clearedDeckForUndo && <div aria-live="polite" className="deck-clear-undo"><span>デッキを空にしました</span><Button onClick={undoDeckClear} size="sm" type="button" variant="outline"><RotateCcw />元に戻す</Button></div>}<p aria-live="polite" className={`copy-feedback${copyFeedback === 'error' ? ' error' : ''}`}>{copyFeedback === 'error' ? 'コピーできませんでした' : copyFeedback ? 'クリップボードにコピーしました' : ''}</p></SheetHeader><div className="deck-scroll">{deckEntries.length ? <>{deckSection('メンバーカード', 'COST', memberDeckGroups)}{deckSection('ライブカード', 'SCORE', liveDeckGroups)}</> : <div className="deck-empty"><ListPlus /><strong>デッキは空です</strong><p>カード一覧の「デッキに追加」から選べます。</p></div>}</div></SheetContent></Sheet>
     <Dialog onOpenChange={setAiCandidateDialogOpen} open={aiCandidateDialogOpen}><DialogContent className="ai-candidate-dialog"><DialogHeader><DialogTitle>AI相談に含める候補カード</DialogTitle><DialogDescription>今回のコピーに含めるカードだけ選択してください。元の候補状態は変わりません。</DialogDescription></DialogHeader><div className="ai-candidate-tools"><Button onClick={() => setSelectedAiCandidateIds(new Set(availableAiCandidates.map((entry) => entry.id)))} size="sm" type="button" variant="outline">すべて選択</Button><Button disabled={!selectedAiCandidateIds.size} onClick={() => setSelectedAiCandidateIds(new Set())} size="sm" type="button" variant="outline">すべて解除</Button></div><div className="ai-candidate-list">{availableAiCandidates.map(({ id, card }) => <label className="ai-candidate-option" key={id}><input checked={selectedAiCandidateIds.has(id)} onChange={() => toggleAiCandidate(id)} type="checkbox" /><span><strong>{card.name}</strong><code>{id}</code><small>{card.cardType === 'member' ? `COST ${card.member?.cost ?? '—'}` : `SCORE ${card.live?.score ?? '—'}`}</small></span></label>)}</div><DialogFooter className="ai-candidate-footer"><DialogClose render={<Button type="button" variant="outline" />}>キャンセル</DialogClose><Button onClick={copyAiWithCandidates} type="button"><Copy />この内容でコピー</Button></DialogFooter></DialogContent></Dialog>
     <Dialog onOpenChange={setCandidateImportOpen} open={candidateImportOpen}><DialogContent className="candidate-import-dialog"><DialogHeader><DialogTitle>候補を一括追加</DialogTitle><DialogDescription>AIの「候補一括追加用」ブロック、またはカード番号を貼り付けてください。推奨枚数は候補追加には使用しません。</DialogDescription></DialogHeader><textarea aria-label="候補に追加するカード番号" className="candidate-import-textarea" onChange={(event) => { setCandidateImportText(event.target.value); setCandidateImportResult(null); }} placeholder={'PL!SP-bp1-012 | 澁谷かのん | 4\nPL!SP-bp1-001 | 澁谷かのん | 4'} value={candidateImportText} />{candidateImportResult && <div aria-live="polite" className="candidate-import-result">{candidateImportResult.recognized ? <><strong>{candidateImportResult.recognized}種類を認識しました</strong><span>新しく候補に追加：{candidateImportResult.added}種類</span><span>すでに候補：{candidateImportResult.existing}種類</span>{candidateImportResult.usedSection && <span>「候補一括追加用」セクションを優先して解析しました</span>}{candidateImportResult.unknown.length > 0 && <span>確認できなかったカード：{candidateImportResult.unknown.join('、')}</span>}</> : <><strong>追加できるカード番号を確認できませんでした</strong>{candidateImportResult.unknown.length > 0 && <span>確認できなかったカード：{candidateImportResult.unknown.join('、')}</span>}</>}</div>}<DialogFooter className="candidate-import-footer"><DialogClose render={<Button type="button" variant="outline" />}>キャンセル</DialogClose><Button onClick={importCandidates} type="button"><Bookmark />候補に追加</Button></DialogFooter></DialogContent></Dialog>
+    <Dialog onOpenChange={setDeckClearConfirmOpen} open={deckClearConfirmOpen}><DialogContent className="deck-clear-dialog"><DialogHeader><DialogTitle>デッキを空にしますか？</DialogTitle><DialogDescription>現在のデッキ{deckTotal}枚をすべて削除します。候補や検索条件は変更されません。</DialogDescription></DialogHeader><dl className="deck-clear-summary"><div><dt>メンバー</dt><dd>{memberDeckTotal}枚</dd></div><div><dt>ライブ</dt><dd>{liveDeckTotal}枚</dd></div><div><dt>合計</dt><dd>{deckTotal}枚</dd></div></dl><DialogFooter className="deck-clear-footer"><DialogClose render={<Button type="button" variant="outline" />}>キャンセル</DialogClose><Button onClick={clearDeck} type="button" variant="destructive"><Trash2 />デッキを空にする</Button></DialogFooter></DialogContent></Dialog>
   </main>;
 }

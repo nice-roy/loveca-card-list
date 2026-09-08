@@ -52,6 +52,14 @@ export function removeDeckCardIfSingle(deck: DeckQuantities, id: string) {
   return deck[id] === 1 ? changeDeckQuantity(deck, id, -1) : deck;
 }
 
+export function emptyDeckForBulkClear(deck: DeckQuantities) {
+  return { deck: {} as DeckQuantities, undoDeck: { ...deck } };
+}
+
+export function restoreDeckAfterBulkClear(deck: DeckQuantities) {
+  return { ...deck };
+}
+
 function compareNullable(left: string | number | null, right: string | number | null, direction: 'asc' | 'desc' = 'asc') {
   if (left === null && right === null) return 0;
   if (left === null) return 1;

@@ -145,11 +145,18 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .deck-copy-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 10px; }
 .deck-copy-actions button { min-width: 0; min-height: 38px; padding-inline: 8px; color: #783354; background: #fffafd; font-size: .66rem; font-weight: 800; }
 .deck-copy-actions svg { width: 14px; height: 14px; }
+.deck-clear-button { width: 100%; min-height: 35px; margin-top: 7px; border-color: #e6b8bd; color: #a33d48; background: #fff8f8; font-size: .68rem; font-weight: 800; }
+.deck-clear-button:hover:not(:disabled) { border-color: #cf6973; background: #fff0f1; color: #8e2e39; }
+.deck-clear-button:disabled { cursor: not-allowed; opacity: .52; }
+.deck-clear-undo { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; padding: 7px 8px 7px 10px; border: 1px solid #ddc6d3; border-radius: 10px; background: #fff5fa; color: #83395e; font-size: .68rem; font-weight: 800; }
+.deck-clear-undo button { min-height: 31px; padding-inline: 9px; color: #84365c; background: white; font-size: .65rem; }
+.deck-clear-undo svg { width: 13px; height: 13px; }
 .copy-feedback { min-height: 15px; margin: 3px 1px 0; color: #9a627e; font-size: .61rem; font-weight: 700; }
 .copy-feedback.error { color: #b13b3b; }
 .ai-candidate-dialog { z-index: 71; width: min(620px,calc(100vw - 24px)); max-width: none; max-height: min(720px,calc(100dvh - 24px)); grid-template-rows: auto auto minmax(0,1fr) auto; padding: 18px; border: 1px solid #eadbe3; background: #fffafd; }
 [data-slot="dialog-overlay"]:has(+ .ai-candidate-dialog) { z-index: 70; background: rgba(47,28,39,.28); }
 [data-slot="dialog-overlay"]:has(+ .candidate-import-dialog) { z-index: 70; background: rgba(47,28,39,.28); }
+[data-slot="dialog-overlay"]:has(+ .deck-clear-dialog) { z-index: 70; background: rgba(47,28,39,.28); }
 .ai-candidate-dialog [data-slot="dialog-title"] { color: #75314f; font-size: 1rem; font-weight: 900; }
 .ai-candidate-dialog [data-slot="dialog-description"] { padding-right: 28px; font-size: .76rem; line-height: 1.55; }
 .ai-candidate-tools { display: flex; gap: 7px; }
@@ -171,6 +178,14 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .candidate-import-result { display: grid; gap: 3px; padding: 10px 11px; border: 1px solid #ead7e1; border-radius: 11px; background: #fff4f8; color: #765564; font-size: .72rem; line-height: 1.5; }
 .candidate-import-result strong { color: #95355f; font-size: .78rem; }
 .candidate-import-footer { margin: 0 -18px -18px; }
+.deck-clear-dialog { z-index: 71; width: min(430px,calc(100vw - 24px)); max-width: none; padding: 18px; border: 1px solid #eadbe3; background: #fffafd; }
+.deck-clear-dialog [data-slot="dialog-title"] { color: #813946; font-size: 1rem; font-weight: 900; }
+.deck-clear-dialog [data-slot="dialog-description"] { padding-right: 28px; font-size: .76rem; line-height: 1.55; }
+.deck-clear-summary { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin: 0; }
+.deck-clear-summary div { padding: 10px 7px; border: 1px solid #eddce3; border-radius: 10px; background: white; text-align: center; }
+.deck-clear-summary dt { color: #8e7480; font-size: .66rem; font-weight: 800; }
+.deck-clear-summary dd { margin: 3px 0 0; color: #74364e; font-size: .86rem; font-weight: 900; }
+.deck-clear-footer { margin: 0 -18px -18px; }
 .deck-scroll { min-height: 0; flex: 1; padding: 16px; overflow-y: auto; overscroll-behavior: contain; }
 .deck-section + .deck-section { margin-top: 24px; }
 .deck-section-heading { display: flex; align-items: center; margin: 0 4px 9px; }
@@ -266,6 +281,8 @@ footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25p
   .ai-candidate-footer { margin: 0 -14px -14px; }
   .candidate-import-dialog { padding: 14px; }
   .candidate-import-footer { margin: 0 -14px -14px; }
+  .deck-clear-dialog { padding: 14px; }
+  .deck-clear-footer { margin: 0 -14px -14px; }
   .deck-launcher { right: max(12px,env(safe-area-inset-right)); bottom: max(12px,env(safe-area-inset-bottom)); min-height: 48px; }
   .deck-sheet { width: 100vw !important; }
   .deck-scroll { padding: 12px; }

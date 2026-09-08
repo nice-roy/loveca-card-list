@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { changeDeckQuantity, createAiConsultationText, createDeckRecipeText, formatEffectTextForAi, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle } from '../lib/deck-builder.ts';
+import { changeDeckQuantity, createAiConsultationText, createDeckRecipeText, emptyDeckForBulkClear, formatEffectTextForAi, groupDeckEntriesByMetric, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear } from '../lib/deck-builder.ts';
 import { parseCandidateImportText } from '../lib/candidate-import.ts';
 
 test('saved state is restored only for valid cards and positive whole quantities', () => {
@@ -33,6 +33,16 @@ test('single-card removal only occurs after the dedicated confirmation path', ()
   const deck = { 'A-001': 1, 'B-002': 2 };
   assert.strictEqual(removeDeckCardIfSingle(deck, 'B-002'), deck);
   assert.deepEqual(removeDeckCardIfSingle(deck, 'A-001'), { 'B-002': 2 });
+});
+
+test('bulk deck clear removes only deck entries and restores one saved snapshot', () => {
+  const originalDeck = { 'MEMBER-001': 4, 'LIVE-001': 3 };
+  const cleared = emptyDeckForBulkClear(originalDeck);
+
+  assert.deepEqual(cleared.deck, {});
+  assert.deepEqual(cleared.undoDeck, originalDeck);
+  assert.notStrictEqual(cleared.undoDeck, originalDeck);
+  assert.deepEqual(restoreDeckAfterBulkClear(cleared.undoDeck), originalDeck);
 });
 
 test('AI effect text converts only icons supported by token or structured color data', () => {
