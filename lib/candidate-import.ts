@@ -1,12 +1,10 @@
+import { baseCardId } from './card-grouping';
+
 export type CandidateImportParseResult = {
   recognizedIds: string[];
   unrecognizedCardNumbers: string[];
   usedBulkCandidateSection: boolean;
 };
-
-function baseCardId(cardNumber: string) {
-  return cardNumber.match(/^(.+-[0-9]{3})-([^-]+)$/)?.[1] ?? cardNumber;
-}
 
 function sourceForCandidateImport(text: string) {
   const header = text.match(/【\s*候補一括追加用\s*】/u);

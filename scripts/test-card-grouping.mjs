@@ -12,42 +12,53 @@ test('base number and version are derived without changing individual records', 
   assert.equal(new Set(cards.map((card) => card.id)).size, 1051);
 });
 
-test('only complete, performance-identical variants are grouped', () => {
+test('all official version variants are grouped by their game-card identifier', () => {
   const groups = groupCardsForDisplay(cards);
-  assert.equal(groups.length, 681);
-  assert.equal(groups.filter((group) => group.cards.length > 1).length, 256);
-  assert.equal(groups.filter((group) => group.cards.length > 1).reduce((sum, group) => sum + group.cards.length, 0), 626);
+  assert.equal(groups.length, 658);
+  assert.equal(groups.filter((group) => group.cards.length > 1).length, 261);
+  assert.equal(groups.filter((group) => group.cards.length > 1).reduce((sum, group) => sum + group.cards.length, 0), 654);
   assert.equal(groups.reduce((sum, group) => sum + group.cards.length, 0), cards.length);
 
-  for (const group of groups.filter((item) => item.cards.length > 1)) {
-    const first = group.cards[0];
-    for (const card of group.cards.slice(1)) {
+  for (const group of groups) {
+    for (const card of group.cards) {
       assert.equal(baseCardId(card.cardNumber), group.baseCardId);
-      assert.equal(card.name, first.name);
-      assert.equal(card.cardType, first.cardType);
-      assert.deepEqual(card.member, first.member);
-      assert.deepEqual(card.live, first.live);
-      assert.equal(card.effectText.trim().replace(/\s+/g, ' '), first.effectText.trim().replace(/\s+/g, ' '));
     }
   }
 });
 
-test('same base number with different performance remains separate', () => {
+test('version variants remain grouped when imported display metadata differs', () => {
   const sample = cards.find((card) => card.cardType === 'member' && card.member?.hearts.length);
   const changed = structuredClone(sample);
   changed.id += '-different';
   changed.cardNumber = `${baseCardId(sample.cardNumber)}-TEST`;
   changed.member.cost += 1;
-  assert.equal(groupCardsForDisplay([sample, changed]).length, 2);
+  assert.equal(groupCardsForDisplay([sample, changed]).length, 1);
 });
 
-test('missing comparison data remains separate', () => {
+test('version variants remain grouped when optional metadata is missing', () => {
   const sample = structuredClone(cards.find((card) => card.cardType === 'member'));
   sample.effectText = null;
   const variant = structuredClone(sample);
   variant.id += '-variant';
   variant.cardNumber = `${baseCardId(sample.cardNumber)}-TEST`;
-  assert.equal(groupCardsForDisplay([sample, variant]).length, 2);
+  assert.equal(groupCardsForDisplay([sample, variant]).length, 1);
+});
+
+test('audited representative version sets are each one display group', () => {
+  const cases = [
+    ['PL!SP-bp5-011', ['PL!SP-bp5-011-AR', 'PL!SP-bp5-011-P', 'PL!SP-bp5-011-R']],
+    ['PL!SP-bp1-025', ['PL!SP-bp1-025-L', 'PL!SP-bp1-025-L＋', 'PL!SP-bp1-025-SECL', 'PL!SP-bp1-025-SRL']],
+    ['PL!-bp4-002', ['PL!-bp4-002-P', 'PL!-bp4-002-P＋', 'PL!-bp4-002-R＋', 'PL!-bp4-002-SEC']],
+  ];
+
+  for (const [base, cardNumbers] of cases) {
+    const versions = cards.filter((card) => cardNumbers.includes(card.cardNumber));
+    assert.equal(versions.length, cardNumbers.length);
+    for (const cardNumber of cardNumbers) assert.ok(versions.some((card) => card.cardNumber === cardNumber));
+    const groups = groupCardsForDisplay(versions);
+    assert.equal(groups.length, 1);
+    assert.equal(groups[0].baseCardId, base);
+  }
 });
 
 test('filtering first keeps only matching versions, including full-number searches', () => {
