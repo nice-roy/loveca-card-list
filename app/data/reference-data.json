@@ -50,6 +50,11 @@
       "id": "hasunosora",
       "label": "蓮ノ空",
       "enabled": false
+    },
+    {
+      "id": "other-live",
+      "label": "その他ライブ",
+      "enabled": true
     }
   ],
   "heartColors": [

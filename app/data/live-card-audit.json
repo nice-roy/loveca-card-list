@@ -1,0 +1,2706 @@
+{
+  "format": "loveca-card-list-live-audit",
+  "version": 1,
+  "auditedAt": "2026-09-09",
+  "officialSource": "https://llofficial-cardgame.com/manage/card-list-user/list (全件取得後、card_kind=ライブを抽出)",
+  "baseline": {
+    "cardCount": 1069,
+    "liveCount": 179,
+    "cardsPrefixSha256": "24b1d8474715f2309b57d2394d0d8096fba2264ec092b90dcb87f3c91e2b324e"
+  },
+  "officialLiveCards": [
+    {
+      "id": 2447,
+      "cardNumber": "PL!S-bp2-023-SECL",
+      "name": "MY舞☆TONIGHT"
+    },
+    {
+      "id": 2425,
+      "cardNumber": "PL!S-bp7-019-L",
+      "name": "なんどだって約束！"
+    },
+    {
+      "id": 2426,
+      "cardNumber": "PL!S-bp7-020-L",
+      "name": "HAPPY PARTY TRAIN"
+    },
+    {
+      "id": 2445,
+      "cardNumber": "PL!S-bp7-020-SECL",
+      "name": "HAPPY PARTY TRAIN"
+    },
+    {
+      "id": 2427,
+      "cardNumber": "PL!S-bp7-021-L",
+      "name": "僕らの旅は終わらない"
+    },
+    {
+      "id": 2428,
+      "cardNumber": "PL!S-bp7-022-L",
+      "name": "恋になりたいAQUARIUM"
+    },
+    {
+      "id": 2446,
+      "cardNumber": "PL!S-bp7-022-SECL",
+      "name": "恋になりたいAQUARIUM"
+    },
+    {
+      "id": 2429,
+      "cardNumber": "PL!S-bp7-023-L",
+      "name": "夜空はなんでも知ってるの？"
+    },
+    {
+      "id": 2430,
+      "cardNumber": "PL!S-bp7-024-L",
+      "name": "ときめき分類学"
+    },
+    {
+      "id": 2431,
+      "cardNumber": "PL!S-bp7-025-L",
+      "name": "Guilty Night, Guilty Kiss!"
+    },
+    {
+      "id": 2450,
+      "cardNumber": "PL!N-bp1-026-SECL",
+      "name": "Poppin' Up!"
+    },
+    {
+      "id": 2432,
+      "cardNumber": "PL!N-bp7-025-L",
+      "name": "Colorful Dreams! Colorful Smiles!"
+    },
+    {
+      "id": 2448,
+      "cardNumber": "PL!N-bp7-025-SECL",
+      "name": "Colorful Dreams! Colorful Smiles!"
+    },
+    {
+      "id": 2433,
+      "cardNumber": "PL!N-bp7-026-L",
+      "name": "Just Believe!!!"
+    },
+    {
+      "id": 2449,
+      "cardNumber": "PL!N-bp7-026-SECL",
+      "name": "Just Believe!!!"
+    },
+    {
+      "id": 2434,
+      "cardNumber": "PL!N-bp7-027-L",
+      "name": "オードリー"
+    },
+    {
+      "id": 2435,
+      "cardNumber": "PL!N-bp7-028-L",
+      "name": "Cooking with Love"
+    },
+    {
+      "id": 2436,
+      "cardNumber": "PL!N-bp7-029-L",
+      "name": "Burn!!"
+    },
+    {
+      "id": 2437,
+      "cardNumber": "PL!N-bp7-030-L",
+      "name": "Cheer Mode"
+    },
+    {
+      "id": 2438,
+      "cardNumber": "PL!N-bp7-031-L",
+      "name": "Like a Treasure"
+    },
+    {
+      "id": 2439,
+      "cardNumber": "PL!SP-bp7-023-L",
+      "name": "START!! True dreams"
+    },
+    {
+      "id": 2451,
+      "cardNumber": "PL!SP-bp7-023-SECL",
+      "name": "START!! True dreams"
+    },
+    {
+      "id": 2440,
+      "cardNumber": "PL!SP-bp7-024-L",
+      "name": "WE WILL!!"
+    },
+    {
+      "id": 2452,
+      "cardNumber": "PL!SP-bp7-024-SECL",
+      "name": "WE WILL!!"
+    },
+    {
+      "id": 2441,
+      "cardNumber": "PL!SP-bp7-025-L",
+      "name": "Memories"
+    },
+    {
+      "id": 2442,
+      "cardNumber": "PL!SP-bp7-026-L",
+      "name": "Dears"
+    },
+    {
+      "id": 2443,
+      "cardNumber": "PL!SP-bp7-027-L",
+      "name": "What a Wonderful Dream!!"
+    },
+    {
+      "id": 2444,
+      "cardNumber": "PL!SP-bp7-028-L",
+      "name": "未来の音が聴こえる"
+    },
+    {
+      "id": 2453,
+      "cardNumber": "PL!SP-pb1-025-SECL",
+      "name": "Jellyfish"
+    },
+    {
+      "id": 2538,
+      "cardNumber": "PL!N-sd1-026-P",
+      "name": "夢が僕らの太陽さ"
+    },
+    {
+      "id": 2534,
+      "cardNumber": "PL!N-sd1-026-SD2",
+      "name": "夢が僕らの太陽さ"
+    },
+    {
+      "id": 2537,
+      "cardNumber": "PL!N-sd2-025-P",
+      "name": "ワンダーメイツ"
+    },
+    {
+      "id": 2533,
+      "cardNumber": "PL!N-sd2-025-SD2",
+      "name": "ワンダーメイツ"
+    },
+    {
+      "id": 2539,
+      "cardNumber": "PL!N-sd2-026-P",
+      "name": "Fire Bird"
+    },
+    {
+      "id": 2535,
+      "cardNumber": "PL!N-sd2-026-SD2",
+      "name": "Fire Bird"
+    },
+    {
+      "id": 2540,
+      "cardNumber": "PL!N-sd2-027-P",
+      "name": "決意の光"
+    },
+    {
+      "id": 2536,
+      "cardNumber": "PL!N-sd2-027-SD2",
+      "name": "決意の光"
+    },
+    {
+      "id": 2259,
+      "cardNumber": "PL!SP-bp1-023-SRL",
+      "name": "START!! True dreams"
+    },
+    {
+      "id": 2257,
+      "cardNumber": "PL!SP-bp1-024-SRL",
+      "name": "Tiny Stars"
+    },
+    {
+      "id": 2237,
+      "cardNumber": "PL!SP-bp1-025-SECL",
+      "name": "Starlight Prologue"
+    },
+    {
+      "id": 2258,
+      "cardNumber": "PL!SP-bp1-025-SRL",
+      "name": "Starlight Prologue"
+    },
+    {
+      "id": 2238,
+      "cardNumber": "PL!SP-bp1-026-SECL",
+      "name": "未来予報ハレルヤ！"
+    },
+    {
+      "id": 2260,
+      "cardNumber": "PL!SP-bp1-026-SRL",
+      "name": "未来予報ハレルヤ！"
+    },
+    {
+      "id": 2261,
+      "cardNumber": "PL!SP-bp1-027-SRL",
+      "name": "Sing！Shine！Smile！"
+    },
+    {
+      "id": 2262,
+      "cardNumber": "PL!SP-bp2-023-SRL",
+      "name": "Go!! リスタート"
+    },
+    {
+      "id": 2263,
+      "cardNumber": "PL!SP-bp2-024-SRL",
+      "name": "ビタミンSUMMER!"
+    },
+    {
+      "id": 2264,
+      "cardNumber": "PL!SP-bp2-025-SRL",
+      "name": "Bubble Rise"
+    },
+    {
+      "id": 2265,
+      "cardNumber": "PL!SP-bp2-026-SRL",
+      "name": "笑顔のPromise"
+    },
+    {
+      "id": 2266,
+      "cardNumber": "PL!SP-bp2-027-SRL",
+      "name": "UNIVERSE!!"
+    },
+    {
+      "id": 2271,
+      "cardNumber": "PL!SP-bp4-023-SRL",
+      "name": "Dazzling Game"
+    },
+    {
+      "id": 2239,
+      "cardNumber": "PL!SP-bp4-024-SECL",
+      "name": "ノンフィクション!!"
+    },
+    {
+      "id": 2272,
+      "cardNumber": "PL!SP-bp4-024-SRL",
+      "name": "ノンフィクション!!"
+    },
+    {
+      "id": 2273,
+      "cardNumber": "PL!SP-bp4-025-SRL",
+      "name": "Special Color"
+    },
+    {
+      "id": 2274,
+      "cardNumber": "PL!SP-bp4-026-SRL",
+      "name": "Wish Song"
+    },
+    {
+      "id": 2275,
+      "cardNumber": "PL!SP-bp4-027-SRL",
+      "name": "Chance Day, Chance Way!"
+    },
+    {
+      "id": 2276,
+      "cardNumber": "PL!SP-bp4-028-SRL",
+      "name": "DAISUKI FULL POWER"
+    },
+    {
+      "id": 2277,
+      "cardNumber": "PL!SP-bp4-029-SRL",
+      "name": "追いかける夢の先で"
+    },
+    {
+      "id": 2278,
+      "cardNumber": "PL!SP-bp4-030-SRL",
+      "name": "Second Sparkle"
+    },
+    {
+      "id": 2267,
+      "cardNumber": "PL!SP-pb1-023-SRL",
+      "name": "ディストーション"
+    },
+    {
+      "id": 2268,
+      "cardNumber": "PL!SP-pb1-024-SRL",
+      "name": "ニュートラル"
+    },
+    {
+      "id": 2269,
+      "cardNumber": "PL!SP-pb1-025-SRL",
+      "name": "Jellyfish"
+    },
+    {
+      "id": 2270,
+      "cardNumber": "PL!SP-pb1-026-SRL",
+      "name": "Jump Into the New World"
+    },
+    {
+      "id": 2231,
+      "cardNumber": "PL!SP-pb2-045-L",
+      "name": "絶対的LOVER"
+    },
+    {
+      "id": 2233,
+      "cardNumber": "PL!SP-pb2-047-L",
+      "name": "Welcome to 僕らのセカイ"
+    },
+    {
+      "id": 2234,
+      "cardNumber": "PL!SP-pb2-048-L",
+      "name": "ディストーション"
+    },
+    {
+      "id": 2235,
+      "cardNumber": "PL!SP-pb2-049-L",
+      "name": "ニュートラル"
+    },
+    {
+      "id": 2236,
+      "cardNumber": "PL!SP-pb2-050-L",
+      "name": "Jellyfish"
+    },
+    {
+      "id": 2253,
+      "cardNumber": "PL!SP-sd1-023-SRL",
+      "name": "WE WILL!!"
+    },
+    {
+      "id": 2254,
+      "cardNumber": "PL!SP-sd1-024-SRL",
+      "name": "シェキラ☆☆☆"
+    },
+    {
+      "id": 2255,
+      "cardNumber": "PL!SP-sd1-025-SRL",
+      "name": "未来は風のように"
+    },
+    {
+      "id": 2256,
+      "cardNumber": "PL!SP-sd1-026-SRL",
+      "name": "私のSymphony 〜澁谷かのんVer.〜"
+    },
+    {
+      "id": 2232,
+      "cardNumber": "PL!SP-pb2-046-L",
+      "name": "Butterfly Wing"
+    },
+    {
+      "id": 1986,
+      "cardNumber": "PL!-bp4-022-SECL",
+      "name": "No brand girls"
+    },
+    {
+      "id": 1980,
+      "cardNumber": "PL!-bp6-019-L",
+      "name": "Music S.T.A.R.T!!"
+    },
+    {
+      "id": 1981,
+      "cardNumber": "PL!-bp6-020-L",
+      "name": "Dancing stars on me!"
+    },
+    {
+      "id": 1982,
+      "cardNumber": "PL!-bp6-021-L",
+      "name": "Wonderful Rush"
+    },
+    {
+      "id": 1983,
+      "cardNumber": "PL!-bp6-022-L",
+      "name": "Dreamin' Go! Go!!"
+    },
+    {
+      "id": 1984,
+      "cardNumber": "PL!-bp6-023-L",
+      "name": "sweet&sweet holiday"
+    },
+    {
+      "id": 1985,
+      "cardNumber": "PL!-bp6-024-L",
+      "name": "錯覚CROSSROADS"
+    },
+    {
+      "id": 1993,
+      "cardNumber": "PL!S-bp2-024-SECL",
+      "name": "君のこころは輝いてるかい？"
+    },
+    {
+      "id": 1987,
+      "cardNumber": "PL!S-bp6-019-L",
+      "name": "Step! ZERO to ONE"
+    },
+    {
+      "id": 1988,
+      "cardNumber": "PL!S-bp6-020-L",
+      "name": "冒険Type A, B, C!!"
+    },
+    {
+      "id": 1989,
+      "cardNumber": "PL!S-bp6-021-L",
+      "name": "MIRAI TICKET"
+    },
+    {
+      "id": 1990,
+      "cardNumber": "PL!S-bp6-022-L",
+      "name": "近未来ハッピーエンド"
+    },
+    {
+      "id": 1991,
+      "cardNumber": "PL!S-bp6-023-L",
+      "name": "GALAXY HidE and SeeK"
+    },
+    {
+      "id": 1992,
+      "cardNumber": "PL!S-bp6-024-L",
+      "name": "コワレヤスキ"
+    },
+    {
+      "id": 2118,
+      "cardNumber": "PL!SP-sd1-024-P",
+      "name": "シェキラ☆☆☆"
+    },
+    {
+      "id": 2122,
+      "cardNumber": "PL!SP-sd1-024-SD2",
+      "name": "シェキラ☆☆☆"
+    },
+    {
+      "id": 2117,
+      "cardNumber": "PL!SP-sd2-023-P",
+      "name": "始まりは君の空"
+    },
+    {
+      "id": 2121,
+      "cardNumber": "PL!SP-sd2-023-SD2",
+      "name": "始まりは君の空"
+    },
+    {
+      "id": 2119,
+      "cardNumber": "PL!SP-sd2-024-P",
+      "name": "アイコトバ！"
+    },
+    {
+      "id": 2123,
+      "cardNumber": "PL!SP-sd2-024-SD2",
+      "name": "アイコトバ！"
+    },
+    {
+      "id": 2120,
+      "cardNumber": "PL!SP-sd2-025-P",
+      "name": "Aspire"
+    },
+    {
+      "id": 2124,
+      "cardNumber": "PL!SP-sd2-025-SD2",
+      "name": "Aspire"
+    },
+    {
+      "id": 1994,
+      "cardNumber": "PL!HS-bp6-025-L",
+      "name": "ツバサ・ラ・リベルテ"
+    },
+    {
+      "id": 1995,
+      "cardNumber": "PL!HS-bp6-026-L",
+      "name": "可惜夜花火"
+    },
+    {
+      "id": 1996,
+      "cardNumber": "PL!HS-bp6-027-L",
+      "name": "月夜見海月"
+    },
+    {
+      "id": 1997,
+      "cardNumber": "PL!HS-bp6-028-L",
+      "name": "ブルウモーメント"
+    },
+    {
+      "id": 1998,
+      "cardNumber": "PL!HS-bp6-029-L",
+      "name": "Proof"
+    },
+    {
+      "id": 1999,
+      "cardNumber": "PL!HS-bp6-030-L",
+      "name": "Very! Very! COCO夏っ"
+    },
+    {
+      "id": 2000,
+      "cardNumber": "PL!HS-bp6-031-L",
+      "name": "ファンファーレ！！！"
+    },
+    {
+      "id": 2001,
+      "cardNumber": "PL!HS-bp6-032-L",
+      "name": "フュージョンクラスト"
+    },
+    {
+      "id": 2137,
+      "cardNumber": "PL!HS-cl1-009-CL",
+      "name": "水彩世界"
+    },
+    {
+      "id": 2138,
+      "cardNumber": "PL!HS-cl1-010-CL",
+      "name": "AWOKE"
+    },
+    {
+      "id": 2139,
+      "cardNumber": "PL!HS-cl1-011-CL",
+      "name": "ド！ド！ド！"
+    },
+    {
+      "id": 2140,
+      "cardNumber": "PL!HS-cl1-012-CL",
+      "name": "Edelied"
+    },
+    {
+      "id": 2002,
+      "cardNumber": "PL!HS-sd1-018-SECL",
+      "name": "Dream Believers（105期Ver.）"
+    },
+    {
+      "id": 1867,
+      "cardNumber": "PL!HS-bp2-022-L＋",
+      "name": "アオクハルカ"
+    },
+    {
+      "id": 1869,
+      "cardNumber": "PL!HS-bp2-024-L＋",
+      "name": "レディバグ"
+    },
+    {
+      "id": 1868,
+      "cardNumber": "PL!HS-bp2-026-L＋",
+      "name": "みらくりえーしょん"
+    },
+    {
+      "id": 1845,
+      "cardNumber": "PL!HS-pb1-025-L",
+      "name": "抱きしめる花びら"
+    },
+    {
+      "id": 1846,
+      "cardNumber": "PL!HS-pb1-026-L",
+      "name": "雪舞う空と二秒の永遠"
+    },
+    {
+      "id": 1847,
+      "cardNumber": "PL!HS-pb1-027-L",
+      "name": "ユメワズライ"
+    },
+    {
+      "id": 1848,
+      "cardNumber": "PL!HS-pb1-028-L",
+      "name": "COMPASS"
+    },
+    {
+      "id": 1849,
+      "cardNumber": "PL!HS-pb1-029-L",
+      "name": "全方位キュン♡"
+    },
+    {
+      "id": 1850,
+      "cardNumber": "PL!HS-pb1-030-L",
+      "name": "Edelied"
+    },
+    {
+      "id": 1460,
+      "cardNumber": "PL!-bp3-020-SECL",
+      "name": "Snow halation"
+    },
+    {
+      "id": 1454,
+      "cardNumber": "PL!-bp5-019-L",
+      "name": "それは僕たちの奇跡"
+    },
+    {
+      "id": 1455,
+      "cardNumber": "PL!-bp5-020-L",
+      "name": "Wonder zone"
+    },
+    {
+      "id": 1456,
+      "cardNumber": "PL!-bp5-021-L",
+      "name": "SUNNY DAY SONG"
+    },
+    {
+      "id": 1457,
+      "cardNumber": "PL!-bp5-022-L",
+      "name": "A song for You! You? You!!"
+    },
+    {
+      "id": 1458,
+      "cardNumber": "PL!-bp5-023-L",
+      "name": "乙姫心で恋宮殿"
+    },
+    {
+      "id": 1518,
+      "cardNumber": "PL!S-bp5-019-L",
+      "name": "not ALONE not HITORI"
+    },
+    {
+      "id": 1519,
+      "cardNumber": "PL!S-bp5-020-L",
+      "name": "Landing action Yeah!!"
+    },
+    {
+      "id": 1520,
+      "cardNumber": "PL!S-bp5-021-L",
+      "name": "夢で夜空を照らしたい"
+    },
+    {
+      "id": 1523,
+      "cardNumber": "PL!S-bp5-021-SECL",
+      "name": "夢で夜空を照らしたい"
+    },
+    {
+      "id": 1391,
+      "cardNumber": "PL!S-sd1-019-SD",
+      "name": "未来の僕らは知ってるよ"
+    },
+    {
+      "id": 1392,
+      "cardNumber": "PL!S-sd1-020-SD",
+      "name": "JIMO-AI Dash!"
+    },
+    {
+      "id": 1393,
+      "cardNumber": "PL!S-sd1-021-SD",
+      "name": "永久hours"
+    },
+    {
+      "id": 1394,
+      "cardNumber": "PL!S-sd1-022-SD",
+      "name": "Jump up HIGH!!"
+    },
+    {
+      "id": 1594,
+      "cardNumber": "PL!N-bp3-028-SECL",
+      "name": "ツナガルコネクト"
+    },
+    {
+      "id": 1588,
+      "cardNumber": "PL!N-bp5-025-L",
+      "name": "SINGING, DREAMING, NOW!"
+    },
+    {
+      "id": 1589,
+      "cardNumber": "PL!N-bp5-026-L",
+      "name": "TOKIMEKI Runners"
+    },
+    {
+      "id": 1590,
+      "cardNumber": "PL!N-bp5-027-L",
+      "name": "ミラクル STAY TUNE！"
+    },
+    {
+      "id": 1591,
+      "cardNumber": "PL!N-bp5-028-L",
+      "name": "CHASE!"
+    },
+    {
+      "id": 1592,
+      "cardNumber": "PL!N-bp5-029-L",
+      "name": "無敵級*ビリーバー"
+    },
+    {
+      "id": 1593,
+      "cardNumber": "PL!N-bp5-030-L",
+      "name": "繚乱！ビクトリーロード"
+    },
+    {
+      "id": 1674,
+      "cardNumber": "PL!SP-bp2-024-SECL",
+      "name": "ビタミンSUMMER!"
+    },
+    {
+      "id": 1669,
+      "cardNumber": "PL!SP-bp5-023-L",
+      "name": "Shooting Voice!!"
+    },
+    {
+      "id": 1670,
+      "cardNumber": "PL!SP-bp5-024-L",
+      "name": "MIRACLE NEW STORY"
+    },
+    {
+      "id": 1671,
+      "cardNumber": "PL!SP-bp5-025-L",
+      "name": "常夏☆サンシャイン"
+    },
+    {
+      "id": 1672,
+      "cardNumber": "PL!SP-bp5-026-L",
+      "name": "Let's be ONE"
+    },
+    {
+      "id": 1749,
+      "cardNumber": "PL!HS-bp1-019-SECL",
+      "name": "Dream Believers"
+    },
+    {
+      "id": 1743,
+      "cardNumber": "PL!HS-bp5-017-L",
+      "name": "Dream Believers（104期Ver.）"
+    },
+    {
+      "id": 1744,
+      "cardNumber": "PL!HS-bp5-018-L",
+      "name": "AURORA FLOWER"
+    },
+    {
+      "id": 1745,
+      "cardNumber": "PL!HS-bp5-019-L",
+      "name": "ハナムスビ"
+    },
+    {
+      "id": 1746,
+      "cardNumber": "PL!HS-bp5-020-L",
+      "name": "バアドケージ"
+    },
+    {
+      "id": 1747,
+      "cardNumber": "PL!HS-bp5-021-L",
+      "name": "ジョーショーキリュー"
+    },
+    {
+      "id": 1748,
+      "cardNumber": "PL!HS-bp5-022-L",
+      "name": "Retrofuture"
+    },
+    {
+      "id": 1421,
+      "cardNumber": "PL!HS-sd1-017-SD",
+      "name": "夏めきペイン"
+    },
+    {
+      "id": 1422,
+      "cardNumber": "PL!HS-sd1-018-SD",
+      "name": "Dream Believers（105期Ver.）"
+    },
+    {
+      "id": 1423,
+      "cardNumber": "PL!HS-sd1-019-SD",
+      "name": "アイドゥーミー！"
+    },
+    {
+      "id": 1424,
+      "cardNumber": "PL!HS-sd1-020-SD",
+      "name": "Link to the FUTURE（104期Ver.）"
+    },
+    {
+      "id": 1788,
+      "cardNumber": "LL-bp5-001-L",
+      "name": "Live with a smile!"
+    },
+    {
+      "id": 1789,
+      "cardNumber": "LL-bp5-002-L",
+      "name": "Bring the LOVE！"
+    },
+    {
+      "id": 1459,
+      "cardNumber": "PL!-bp5-024-L",
+      "name": "Private Wars"
+    },
+    {
+      "id": 1521,
+      "cardNumber": "PL!S-bp5-022-L",
+      "name": "SELF CONTROL!!"
+    },
+    {
+      "id": 1522,
+      "cardNumber": "PL!S-bp5-023-L",
+      "name": "Awaken the power"
+    },
+    {
+      "id": 1673,
+      "cardNumber": "PL!SP-bp5-027-L",
+      "name": "HOT PASSION!!"
+    },
+    {
+      "id": 1257,
+      "cardNumber": "PL!N-bp4-032-L＋",
+      "name": "Blue!"
+    },
+    {
+      "id": 1250,
+      "cardNumber": "PL!N-pb1-037-L",
+      "name": "Cara Tesoro"
+    },
+    {
+      "id": 1251,
+      "cardNumber": "PL!N-pb1-038-L",
+      "name": "PHOENIX"
+    },
+    {
+      "id": 1252,
+      "cardNumber": "PL!N-pb1-039-L",
+      "name": "Stellar Stream"
+    },
+    {
+      "id": 1253,
+      "cardNumber": "PL!N-pb1-040-L",
+      "name": "どこにいても君は君"
+    },
+    {
+      "id": 1254,
+      "cardNumber": "PL!N-pb1-041-L",
+      "name": "PASTEL"
+    },
+    {
+      "id": 1256,
+      "cardNumber": "PL!N-pb1-041-L＋",
+      "name": "PASTEL"
+    },
+    {
+      "id": 1255,
+      "cardNumber": "PL!N-pb1-042-L",
+      "name": "Eternalize Love!!"
+    },
+    {
+      "id": 1057,
+      "cardNumber": "PL!-bp4-019-L",
+      "name": "Angelic Angel"
+    },
+    {
+      "id": 1058,
+      "cardNumber": "PL!-bp4-020-L",
+      "name": "Love wing bell"
+    },
+    {
+      "id": 1059,
+      "cardNumber": "PL!-bp4-021-L",
+      "name": "?←HEARTBEAT"
+    },
+    {
+      "id": 1060,
+      "cardNumber": "PL!-bp4-022-L",
+      "name": "No brand girls"
+    },
+    {
+      "id": 1061,
+      "cardNumber": "PL!-bp4-023-L",
+      "name": "もぎゅっと\"love\"で接近中！"
+    },
+    {
+      "id": 1062,
+      "cardNumber": "PL!-bp4-024-L",
+      "name": "小夜啼鳥恋詩"
+    },
+    {
+      "id": 1063,
+      "cardNumber": "PL!-bp4-025-L",
+      "name": "微熱からMystery"
+    },
+    {
+      "id": 1064,
+      "cardNumber": "PL!-bp4-026-L",
+      "name": "ダイヤモンドプリンセスの憂鬱"
+    },
+    {
+      "id": 1119,
+      "cardNumber": "PL!N-bp4-025-L",
+      "name": "VIVID WORLD"
+    },
+    {
+      "id": 1120,
+      "cardNumber": "PL!N-bp4-026-L",
+      "name": "DIVE!"
+    },
+    {
+      "id": 1121,
+      "cardNumber": "PL!N-bp4-027-L",
+      "name": "EMOTION"
+    },
+    {
+      "id": 1122,
+      "cardNumber": "PL!N-bp4-028-L",
+      "name": "stars we chase"
+    },
+    {
+      "id": 1123,
+      "cardNumber": "PL!N-bp4-029-L",
+      "name": "Rise Up High!"
+    },
+    {
+      "id": 1124,
+      "cardNumber": "PL!N-bp4-030-L",
+      "name": "Daydream Mermaid"
+    },
+    {
+      "id": 1125,
+      "cardNumber": "PL!N-bp4-031-L",
+      "name": "NEO SKY, NEO MAP!"
+    },
+    {
+      "id": 1126,
+      "cardNumber": "PL!N-bp4-032-L",
+      "name": "Blue!"
+    },
+    {
+      "id": 1183,
+      "cardNumber": "PL!SP-bp4-023-L",
+      "name": "Dazzling Game"
+    },
+    {
+      "id": 1184,
+      "cardNumber": "PL!SP-bp4-024-L",
+      "name": "ノンフィクション!!"
+    },
+    {
+      "id": 1185,
+      "cardNumber": "PL!SP-bp4-025-L",
+      "name": "Special Color"
+    },
+    {
+      "id": 1186,
+      "cardNumber": "PL!SP-bp4-026-L",
+      "name": "Wish Song"
+    },
+    {
+      "id": 1187,
+      "cardNumber": "PL!SP-bp4-027-L",
+      "name": "Chance Day, Chance Way!"
+    },
+    {
+      "id": 1188,
+      "cardNumber": "PL!SP-bp4-028-L",
+      "name": "DAISUKI FULL POWER"
+    },
+    {
+      "id": 1189,
+      "cardNumber": "PL!SP-bp4-029-L",
+      "name": "追いかける夢の先で"
+    },
+    {
+      "id": 1190,
+      "cardNumber": "PL!SP-bp4-030-L",
+      "name": "Second Sparkle"
+    },
+    {
+      "id": 969,
+      "cardNumber": "PL!-bp3-020-L＋",
+      "name": "Snow halation"
+    },
+    {
+      "id": 963,
+      "cardNumber": "PL!-pb1-028-L",
+      "name": "WAO-WAO Powerful day!"
+    },
+    {
+      "id": 964,
+      "cardNumber": "PL!-pb1-029-L",
+      "name": "知らないLove＊教えてLove"
+    },
+    {
+      "id": 965,
+      "cardNumber": "PL!-pb1-030-L",
+      "name": "Cutie Panther"
+    },
+    {
+      "id": 966,
+      "cardNumber": "PL!-pb1-031-L",
+      "name": "輝夜の城で踊りたい"
+    },
+    {
+      "id": 967,
+      "cardNumber": "PL!-pb1-032-L",
+      "name": "SENTIMENTAL StepS"
+    },
+    {
+      "id": 968,
+      "cardNumber": "PL!-pb1-033-L",
+      "name": "KiRa-KiRa Sensation!"
+    },
+    {
+      "id": 771,
+      "cardNumber": "PL!-bp3-019-L",
+      "name": "僕らのLIVE 君とのLIFE"
+    },
+    {
+      "id": 772,
+      "cardNumber": "PL!-bp3-020-L",
+      "name": "Snow halation"
+    },
+    {
+      "id": 773,
+      "cardNumber": "PL!-bp3-021-L",
+      "name": "愛してるばんざーい!"
+    },
+    {
+      "id": 774,
+      "cardNumber": "PL!-bp3-022-L",
+      "name": "ユメノトビラ"
+    },
+    {
+      "id": 775,
+      "cardNumber": "PL!-bp3-023-L",
+      "name": "ミはμ'sicのミ"
+    },
+    {
+      "id": 776,
+      "cardNumber": "PL!-bp3-024-L",
+      "name": "夏色えがおで1,2,Jump!"
+    },
+    {
+      "id": 777,
+      "cardNumber": "PL!-bp3-025-L",
+      "name": "タカラモノズ"
+    },
+    {
+      "id": 778,
+      "cardNumber": "PL!-bp3-026-L",
+      "name": "Oh,Love&Peace!"
+    },
+    {
+      "id": 723,
+      "cardNumber": "PL!-sd1-019-SD",
+      "name": "START:DASH!!"
+    },
+    {
+      "id": 724,
+      "cardNumber": "PL!-sd1-020-SD",
+      "name": "きっと青春が聞こえる"
+    },
+    {
+      "id": 725,
+      "cardNumber": "PL!-sd1-021-SD",
+      "name": "これからのSomeday"
+    },
+    {
+      "id": 726,
+      "cardNumber": "PL!-sd1-022-SD",
+      "name": "僕らは今のなかで"
+    },
+    {
+      "id": 888,
+      "cardNumber": "PL!S-bp3-019-L",
+      "name": "MIRACLE WAVE"
+    },
+    {
+      "id": 889,
+      "cardNumber": "PL!S-bp3-020-L",
+      "name": "ダイスキだったらダイジョウブ！"
+    },
+    {
+      "id": 890,
+      "cardNumber": "PL!S-bp3-021-L",
+      "name": "想いよひとつになれ"
+    },
+    {
+      "id": 891,
+      "cardNumber": "PL!S-bp3-022-L",
+      "name": "Fantastic Departure!"
+    },
+    {
+      "id": 892,
+      "cardNumber": "PL!S-bp3-023-L",
+      "name": "KOKORO Magic “A to Z”"
+    },
+    {
+      "id": 893,
+      "cardNumber": "PL!S-bp3-024-L",
+      "name": "Deep Resonance"
+    },
+    {
+      "id": 894,
+      "cardNumber": "PL!S-bp3-025-L",
+      "name": "SUKI for you, DREAM for you!"
+    },
+    {
+      "id": 834,
+      "cardNumber": "PL!N-bp3-025-L",
+      "name": "Awakening Promise"
+    },
+    {
+      "id": 835,
+      "cardNumber": "PL!N-bp3-026-L",
+      "name": "サイコーハート"
+    },
+    {
+      "id": 836,
+      "cardNumber": "PL!N-bp3-027-L",
+      "name": "La Bella Patria"
+    },
+    {
+      "id": 837,
+      "cardNumber": "PL!N-bp3-028-L",
+      "name": "ツナガルコネクト"
+    },
+    {
+      "id": 838,
+      "cardNumber": "PL!N-bp3-029-L",
+      "name": "未来ハーモニー"
+    },
+    {
+      "id": 839,
+      "cardNumber": "PL!N-bp3-030-L",
+      "name": "Love U my friends"
+    },
+    {
+      "id": 840,
+      "cardNumber": "PL!N-bp3-031-L",
+      "name": "MONSTER GIRLS"
+    },
+    {
+      "id": 841,
+      "cardNumber": "PL!N-bp3-032-L",
+      "name": "THE SECRET NiGHT"
+    },
+    {
+      "id": 602,
+      "cardNumber": "PL!S-pb1-019-L",
+      "name": "元気全開DAY！DAY！DAY！"
+    },
+    {
+      "id": 603,
+      "cardNumber": "PL!S-pb1-020-L",
+      "name": "トリコリコPLEASE!!"
+    },
+    {
+      "id": 604,
+      "cardNumber": "PL!S-pb1-021-L",
+      "name": "Strawberry Trapper"
+    },
+    {
+      "id": 605,
+      "cardNumber": "PL!S-pb1-022-L",
+      "name": "逃走迷走メビウスループ"
+    },
+    {
+      "id": 608,
+      "cardNumber": "PL!S-pb1-022-L＋",
+      "name": "逃走迷走メビウスループ"
+    },
+    {
+      "id": 606,
+      "cardNumber": "PL!S-pb1-023-L",
+      "name": "Next SPARKLING!!"
+    },
+    {
+      "id": 609,
+      "cardNumber": "PL!S-pb1-023-L＋",
+      "name": "Next SPARKLING!!"
+    },
+    {
+      "id": 607,
+      "cardNumber": "PL!S-pb1-024-L",
+      "name": "僕らの走ってきた道は・・・"
+    },
+    {
+      "id": 554,
+      "cardNumber": "PL!S-bp2-019-L",
+      "name": "WATER BLUE NEW WORLD"
+    },
+    {
+      "id": 555,
+      "cardNumber": "PL!S-bp2-020-L",
+      "name": "DREAMY COLOR"
+    },
+    {
+      "id": 556,
+      "cardNumber": "PL!S-bp2-021-L",
+      "name": "未体験HORIZON"
+    },
+    {
+      "id": 557,
+      "cardNumber": "PL!S-bp2-022-L",
+      "name": "未熟DREAMER"
+    },
+    {
+      "id": 558,
+      "cardNumber": "PL!S-bp2-023-L",
+      "name": "MY舞☆TONIGHT"
+    },
+    {
+      "id": 559,
+      "cardNumber": "PL!S-bp2-024-L",
+      "name": "君のこころは輝いてるかい？"
+    },
+    {
+      "id": 560,
+      "cardNumber": "PL!S-bp2-025-L",
+      "name": "青空Jumping Heart"
+    },
+    {
+      "id": 561,
+      "cardNumber": "PL!S-bp2-026-L",
+      "name": "ユメ語るよりユメ歌おう"
+    },
+    {
+      "id": 562,
+      "cardNumber": "PL!SP-bp2-023-L",
+      "name": "Go!! リスタート"
+    },
+    {
+      "id": 563,
+      "cardNumber": "PL!SP-bp2-024-L",
+      "name": "ビタミンSUMMER！"
+    },
+    {
+      "id": 564,
+      "cardNumber": "PL!SP-bp2-025-L",
+      "name": "Bubble Rise"
+    },
+    {
+      "id": 565,
+      "cardNumber": "PL!SP-bp2-026-L",
+      "name": "笑顔のPromise"
+    },
+    {
+      "id": 566,
+      "cardNumber": "PL!SP-bp2-027-L",
+      "name": "UNIVERSE!!"
+    },
+    {
+      "id": 567,
+      "cardNumber": "PL!HS-bp2-019-L",
+      "name": "Bloom the smile, Bloom the dream!"
+    },
+    {
+      "id": 568,
+      "cardNumber": "PL!HS-bp2-020-L",
+      "name": "Link to the FUTURE"
+    },
+    {
+      "id": 569,
+      "cardNumber": "PL!HS-bp2-021-L",
+      "name": "眩耀夜行"
+    },
+    {
+      "id": 570,
+      "cardNumber": "PL!HS-bp2-022-L",
+      "name": "アオクハルカ"
+    },
+    {
+      "id": 571,
+      "cardNumber": "PL!HS-bp2-023-L",
+      "name": "Mirage Voyage"
+    },
+    {
+      "id": 572,
+      "cardNumber": "PL!HS-bp2-024-L",
+      "name": "レディバグ"
+    },
+    {
+      "id": 573,
+      "cardNumber": "PL!HS-bp2-025-L",
+      "name": "ココン東西"
+    },
+    {
+      "id": 574,
+      "cardNumber": "PL!HS-bp2-026-L",
+      "name": "みらくりえーしょん"
+    },
+    {
+      "id": 379,
+      "cardNumber": "PL!SP-bp1-025-L＋",
+      "name": "Starlight Prologue"
+    },
+    {
+      "id": 374,
+      "cardNumber": "PL!SP-pb1-023-L",
+      "name": "ディストーション"
+    },
+    {
+      "id": 375,
+      "cardNumber": "PL!SP-pb1-024-L",
+      "name": "ニュートラル"
+    },
+    {
+      "id": 376,
+      "cardNumber": "PL!SP-pb1-025-L",
+      "name": "Jellyfish"
+    },
+    {
+      "id": 377,
+      "cardNumber": "PL!SP-pb1-026-L",
+      "name": "Jump Into the New World"
+    },
+    {
+      "id": 378,
+      "cardNumber": "PL!SP-pb1-026-L＋",
+      "name": "Jump Into the New World"
+    },
+    {
+      "id": 688,
+      "cardNumber": "PL!S-PR-022-PR",
+      "name": "HAPPY PARTY TRAIN"
+    },
+    {
+      "id": 689,
+      "cardNumber": "PL!S-PR-023-PR",
+      "name": "恋になりたいAQUARIUM"
+    },
+    {
+      "id": 690,
+      "cardNumber": "PL!S-PR-024-PR",
+      "name": "勇気はどこに?君の胸に!"
+    },
+    {
+      "id": 117,
+      "cardNumber": "PL!N-bp1-025-L",
+      "name": "虹色Passions！"
+    },
+    {
+      "id": 118,
+      "cardNumber": "PL!N-bp1-026-L",
+      "name": "Poppin' Up!"
+    },
+    {
+      "id": 119,
+      "cardNumber": "PL!N-bp1-027-L",
+      "name": "Solitude Rain"
+    },
+    {
+      "id": 120,
+      "cardNumber": "PL!N-bp1-028-L",
+      "name": "Butterfly"
+    },
+    {
+      "id": 121,
+      "cardNumber": "PL!N-bp1-029-L",
+      "name": "Eutopia"
+    },
+    {
+      "id": 162,
+      "cardNumber": "PL!N-sd1-025-SD",
+      "name": "Colorful Dreams! Colorful Smiles!"
+    },
+    {
+      "id": 163,
+      "cardNumber": "PL!N-sd1-026-SD",
+      "name": "夢が僕らの太陽さ"
+    },
+    {
+      "id": 164,
+      "cardNumber": "PL!N-sd1-027-SD",
+      "name": "Just Believe!!!"
+    },
+    {
+      "id": 165,
+      "cardNumber": "PL!N-sd1-028-SD",
+      "name": "Dream with You"
+    },
+    {
+      "id": 220,
+      "cardNumber": "PL!SP-bp1-023-L",
+      "name": "START!! True dreams"
+    },
+    {
+      "id": 221,
+      "cardNumber": "PL!SP-bp1-024-L",
+      "name": "Tiny Stars"
+    },
+    {
+      "id": 222,
+      "cardNumber": "PL!SP-bp1-025-L",
+      "name": "Starlight Prologue"
+    },
+    {
+      "id": 223,
+      "cardNumber": "PL!SP-bp1-026-L",
+      "name": "未来予報ハレルヤ！"
+    },
+    {
+      "id": 224,
+      "cardNumber": "PL!SP-bp1-027-L",
+      "name": "Sing！Shine！Smile！"
+    },
+    {
+      "id": 41,
+      "cardNumber": "PL!HS-bp1-019-L",
+      "name": "Dream Believers"
+    },
+    {
+      "id": 42,
+      "cardNumber": "PL!HS-bp1-020-L",
+      "name": "365 Days"
+    },
+    {
+      "id": 43,
+      "cardNumber": "PL!HS-bp1-021-L",
+      "name": "Holiday∞Holiday"
+    },
+    {
+      "id": 44,
+      "cardNumber": "PL!HS-bp1-022-L",
+      "name": "AWOKE"
+    },
+    {
+      "id": 45,
+      "cardNumber": "PL!HS-bp1-023-L",
+      "name": "ド！ド！ド！"
+    },
+    {
+      "id": 68,
+      "cardNumber": "PL!HS-PR-010-PR",
+      "name": "Reflection in the mirror"
+    },
+    {
+      "id": 69,
+      "cardNumber": "PL!HS-PR-011-PR",
+      "name": "Sparkly Spot"
+    },
+    {
+      "id": 70,
+      "cardNumber": "PL!HS-PR-012-PR",
+      "name": "アイデンティティ"
+    },
+    {
+      "id": 1368,
+      "cardNumber": "PL!HS-PR-028-PR",
+      "name": "Echoes Beyond"
+    },
+    {
+      "id": 1014,
+      "cardNumber": "LL-PR-004-PR",
+      "name": "愛♡スクリ～ム！"
+    },
+    {
+      "id": 260,
+      "cardNumber": "PL!SP-sd1-023-SD",
+      "name": "WE WILL!!"
+    },
+    {
+      "id": 261,
+      "cardNumber": "PL!SP-sd1-024-SD",
+      "name": "シェキラ☆☆☆"
+    },
+    {
+      "id": 262,
+      "cardNumber": "PL!SP-sd1-025-SD",
+      "name": "未来は風のように"
+    },
+    {
+      "id": 263,
+      "cardNumber": "PL!SP-sd1-026-SD",
+      "name": "私のSymphony 〜澁谷かのんVer.〜"
+    }
+  ],
+  "missing": [
+    {
+      "id": 2450,
+      "cardNumber": "PL!N-bp1-026-SECL",
+      "name": "Poppin' Up!",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "SECL",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2432,
+      "cardNumber": "PL!N-bp7-025-L",
+      "name": "Colorful Dreams! Colorful Smiles!",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2448,
+      "cardNumber": "PL!N-bp7-025-SECL",
+      "name": "Colorful Dreams! Colorful Smiles!",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "SECL",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2433,
+      "cardNumber": "PL!N-bp7-026-L",
+      "name": "Just Believe!!!",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2449,
+      "cardNumber": "PL!N-bp7-026-SECL",
+      "name": "Just Believe!!!",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "SECL",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2434,
+      "cardNumber": "PL!N-bp7-027-L",
+      "name": "オードリー",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2435,
+      "cardNumber": "PL!N-bp7-028-L",
+      "name": "Cooking with Love",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2436,
+      "cardNumber": "PL!N-bp7-029-L",
+      "name": "Burn!!",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2437,
+      "cardNumber": "PL!N-bp7-030-L",
+      "name": "Cheer Mode",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2438,
+      "cardNumber": "PL!N-bp7-031-L",
+      "name": "Like a Treasure",
+      "product": "ブースターパック MELLOW MOMENT",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2538,
+      "cardNumber": "PL!N-sd1-026-P",
+      "name": "夢が僕らの太陽さ",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "rarity": "P",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2534,
+      "cardNumber": "PL!N-sd1-026-SD2",
+      "name": "夢が僕らの太陽さ",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "rarity": "SD2",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2537,
+      "cardNumber": "PL!N-sd2-025-P",
+      "name": "ワンダーメイツ",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "rarity": "P",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2533,
+      "cardNumber": "PL!N-sd2-025-SD2",
+      "name": "ワンダーメイツ",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "rarity": "SD2",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2539,
+      "cardNumber": "PL!N-sd2-026-P",
+      "name": "Fire Bird",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "rarity": "P",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2535,
+      "cardNumber": "PL!N-sd2-026-SD2",
+      "name": "Fire Bird",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "rarity": "SD2",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2540,
+      "cardNumber": "PL!N-sd2-027-P",
+      "name": "決意の光",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "rarity": "P",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2536,
+      "cardNumber": "PL!N-sd2-027-SD2",
+      "name": "決意の光",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "rarity": "SD2",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2232,
+      "cardNumber": "PL!SP-pb2-046-L",
+      "name": "Butterfly Wing",
+      "product": "プレミアムブースター ラブライブ！スーパースター!! DUO",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "-",
+      "classification": "special-unclassified",
+      "addedInThisAudit": true
+    },
+    {
+      "id": 1994,
+      "cardNumber": "PL!HS-bp6-025-L",
+      "name": "ツバサ・ラ・リベルテ",
+      "product": "ブースターパック Royal Holiday",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1995,
+      "cardNumber": "PL!HS-bp6-026-L",
+      "name": "可惜夜花火",
+      "product": "ブースターパック Royal Holiday",
+      "rarity": "L",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1996,
+      "cardNumber": "PL!HS-bp6-027-L",
+      "name": "月夜見海月",
+      "product": "ブースターパック Royal Holiday",
+      "rarity": "L",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1997,
+      "cardNumber": "PL!HS-bp6-028-L",
+      "name": "ブルウモーメント",
+      "product": "ブースターパック Royal Holiday",
+      "rarity": "L",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1998,
+      "cardNumber": "PL!HS-bp6-029-L",
+      "name": "Proof",
+      "product": "ブースターパック Royal Holiday",
+      "rarity": "L",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1999,
+      "cardNumber": "PL!HS-bp6-030-L",
+      "name": "Very! Very! COCO夏っ",
+      "product": "ブースターパック Royal Holiday",
+      "rarity": "L",
+      "officialUnitName": "みらくらぱーく！",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2000,
+      "cardNumber": "PL!HS-bp6-031-L",
+      "name": "ファンファーレ！！！",
+      "product": "ブースターパック Royal Holiday",
+      "rarity": "L",
+      "officialUnitName": "みらくらぱーく！",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2001,
+      "cardNumber": "PL!HS-bp6-032-L",
+      "name": "フュージョンクラスト",
+      "product": "ブースターパック Royal Holiday",
+      "rarity": "L",
+      "officialUnitName": "Edel Note",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2137,
+      "cardNumber": "PL!HS-cl1-009-CL",
+      "name": "水彩世界",
+      "product": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "CL",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2138,
+      "cardNumber": "PL!HS-cl1-010-CL",
+      "name": "AWOKE",
+      "product": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "CL",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2139,
+      "cardNumber": "PL!HS-cl1-011-CL",
+      "name": "ド！ド！ド！",
+      "product": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "CL",
+      "officialUnitName": "みらくらぱーく！",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2140,
+      "cardNumber": "PL!HS-cl1-012-CL",
+      "name": "Edelied",
+      "product": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "CL",
+      "officialUnitName": "Edel Note",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 2002,
+      "cardNumber": "PL!HS-sd1-018-SECL",
+      "name": "Dream Believers（105期Ver.）",
+      "product": "ブースターパック Royal Holiday",
+      "rarity": "SECL",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1867,
+      "cardNumber": "PL!HS-bp2-022-L＋",
+      "name": "アオクハルカ",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "L+",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1869,
+      "cardNumber": "PL!HS-bp2-024-L＋",
+      "name": "レディバグ",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "L+",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1868,
+      "cardNumber": "PL!HS-bp2-026-L＋",
+      "name": "みらくりえーしょん",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "L+",
+      "officialUnitName": "みらくらぱーく!",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1845,
+      "cardNumber": "PL!HS-pb1-025-L",
+      "name": "抱きしめる花びら",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1846,
+      "cardNumber": "PL!HS-pb1-026-L",
+      "name": "雪舞う空と二秒の永遠",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1847,
+      "cardNumber": "PL!HS-pb1-027-L",
+      "name": "ユメワズライ",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "L",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1848,
+      "cardNumber": "PL!HS-pb1-028-L",
+      "name": "COMPASS",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "L",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1849,
+      "cardNumber": "PL!HS-pb1-029-L",
+      "name": "全方位キュン♡",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "L",
+      "officialUnitName": "みらくらぱーく！",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1850,
+      "cardNumber": "PL!HS-pb1-030-L",
+      "name": "Edelied",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "L",
+      "officialUnitName": "Edel Note",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1594,
+      "cardNumber": "PL!N-bp3-028-SECL",
+      "name": "ツナガルコネクト",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "SECL",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1588,
+      "cardNumber": "PL!N-bp5-025-L",
+      "name": "SINGING, DREAMING, NOW!",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1589,
+      "cardNumber": "PL!N-bp5-026-L",
+      "name": "TOKIMEKI Runners",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1590,
+      "cardNumber": "PL!N-bp5-027-L",
+      "name": "ミラクル STAY TUNE！",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1591,
+      "cardNumber": "PL!N-bp5-028-L",
+      "name": "CHASE!",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1592,
+      "cardNumber": "PL!N-bp5-029-L",
+      "name": "無敵級*ビリーバー",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1593,
+      "cardNumber": "PL!N-bp5-030-L",
+      "name": "繚乱！ビクトリーロード",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1749,
+      "cardNumber": "PL!HS-bp1-019-SECL",
+      "name": "Dream Believers",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "SECL",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1743,
+      "cardNumber": "PL!HS-bp5-017-L",
+      "name": "Dream Believers（104期Ver.）",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1744,
+      "cardNumber": "PL!HS-bp5-018-L",
+      "name": "AURORA FLOWER",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1745,
+      "cardNumber": "PL!HS-bp5-019-L",
+      "name": "ハナムスビ",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1746,
+      "cardNumber": "PL!HS-bp5-020-L",
+      "name": "バアドケージ",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1747,
+      "cardNumber": "PL!HS-bp5-021-L",
+      "name": "ジョーショーキリュー",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "みらくらぱーく！",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1748,
+      "cardNumber": "PL!HS-bp5-022-L",
+      "name": "Retrofuture",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "Edel Note",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1421,
+      "cardNumber": "PL!HS-sd1-017-SD",
+      "name": "夏めきペイン",
+      "product": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "SD",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1422,
+      "cardNumber": "PL!HS-sd1-018-SD",
+      "name": "Dream Believers（105期Ver.）",
+      "product": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "SD",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1423,
+      "cardNumber": "PL!HS-sd1-019-SD",
+      "name": "アイドゥーミー！",
+      "product": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "SD",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1424,
+      "cardNumber": "PL!HS-sd1-020-SD",
+      "name": "Link to the FUTURE（104期Ver.）",
+      "product": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "rarity": "SD",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1788,
+      "cardNumber": "LL-bp5-001-L",
+      "name": "Live with a smile!",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "-",
+      "classification": "special-unclassified",
+      "addedInThisAudit": true
+    },
+    {
+      "id": 1789,
+      "cardNumber": "LL-bp5-002-L",
+      "name": "Bring the LOVE！",
+      "product": "ブースターパック Anniversary 2026",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "-",
+      "classification": "special-unclassified",
+      "addedInThisAudit": true
+    },
+    {
+      "id": 1257,
+      "cardNumber": "PL!N-bp4-032-L＋",
+      "name": "Blue!",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "L+",
+      "officialUnitName": "A・ZU・NA",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1250,
+      "cardNumber": "PL!N-pb1-037-L",
+      "name": "Cara Tesoro",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1251,
+      "cardNumber": "PL!N-pb1-038-L",
+      "name": "PHOENIX",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1252,
+      "cardNumber": "PL!N-pb1-039-L",
+      "name": "Stellar Stream",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1253,
+      "cardNumber": "PL!N-pb1-040-L",
+      "name": "どこにいても君は君",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1254,
+      "cardNumber": "PL!N-pb1-041-L",
+      "name": "PASTEL",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "L",
+      "officialUnitName": "QU4RTZ",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1256,
+      "cardNumber": "PL!N-pb1-041-L＋",
+      "name": "PASTEL",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "L+",
+      "officialUnitName": "QU4RTZ",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1255,
+      "cardNumber": "PL!N-pb1-042-L",
+      "name": "Eternalize Love!!",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1119,
+      "cardNumber": "PL!N-bp4-025-L",
+      "name": "VIVID WORLD",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1120,
+      "cardNumber": "PL!N-bp4-026-L",
+      "name": "DIVE!",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1121,
+      "cardNumber": "PL!N-bp4-027-L",
+      "name": "EMOTION",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1122,
+      "cardNumber": "PL!N-bp4-028-L",
+      "name": "stars we chase",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1123,
+      "cardNumber": "PL!N-bp4-029-L",
+      "name": "Rise Up High!",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1124,
+      "cardNumber": "PL!N-bp4-030-L",
+      "name": "Daydream Mermaid",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1125,
+      "cardNumber": "PL!N-bp4-031-L",
+      "name": "NEO SKY, NEO MAP!",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1126,
+      "cardNumber": "PL!N-bp4-032-L",
+      "name": "Blue!",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "rarity": "L",
+      "officialUnitName": "A・ZU・NA",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 834,
+      "cardNumber": "PL!N-bp3-025-L",
+      "name": "Awakening Promise",
+      "product": "ブースターパック　夏、はじまる。",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 835,
+      "cardNumber": "PL!N-bp3-026-L",
+      "name": "サイコーハート",
+      "product": "ブースターパック　夏、はじまる。",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 836,
+      "cardNumber": "PL!N-bp3-027-L",
+      "name": "La Bella Patria",
+      "product": "ブースターパック　夏、はじまる。",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 837,
+      "cardNumber": "PL!N-bp3-028-L",
+      "name": "ツナガルコネクト",
+      "product": "ブースターパック　夏、はじまる。",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 838,
+      "cardNumber": "PL!N-bp3-029-L",
+      "name": "未来ハーモニー",
+      "product": "ブースターパック　夏、はじまる。",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 839,
+      "cardNumber": "PL!N-bp3-030-L",
+      "name": "Love U my friends",
+      "product": "ブースターパック　夏、はじまる。",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 840,
+      "cardNumber": "PL!N-bp3-031-L",
+      "name": "MONSTER GIRLS",
+      "product": "ブースターパック　夏、はじまる。",
+      "rarity": "L",
+      "officialUnitName": "R3BIRTH",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 841,
+      "cardNumber": "PL!N-bp3-032-L",
+      "name": "THE SECRET NiGHT",
+      "product": "ブースターパック　夏、はじまる。",
+      "rarity": "L",
+      "officialUnitName": "DiverDiva",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 567,
+      "cardNumber": "PL!HS-bp2-019-L",
+      "name": "Bloom the smile, Bloom the dream!",
+      "product": "ブースターパック NEXT STEP",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 568,
+      "cardNumber": "PL!HS-bp2-020-L",
+      "name": "Link to the FUTURE",
+      "product": "ブースターパック NEXT STEP",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 569,
+      "cardNumber": "PL!HS-bp2-021-L",
+      "name": "眩耀夜行",
+      "product": "ブースターパック NEXT STEP",
+      "rarity": "L",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 570,
+      "cardNumber": "PL!HS-bp2-022-L",
+      "name": "アオクハルカ",
+      "product": "ブースターパック NEXT STEP",
+      "rarity": "L",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 571,
+      "cardNumber": "PL!HS-bp2-023-L",
+      "name": "Mirage Voyage",
+      "product": "ブースターパック NEXT STEP",
+      "rarity": "L",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 572,
+      "cardNumber": "PL!HS-bp2-024-L",
+      "name": "レディバグ",
+      "product": "ブースターパック NEXT STEP",
+      "rarity": "L",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 573,
+      "cardNumber": "PL!HS-bp2-025-L",
+      "name": "ココン東西",
+      "product": "ブースターパック NEXT STEP",
+      "rarity": "L",
+      "officialUnitName": "みらくらぱーく!",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 574,
+      "cardNumber": "PL!HS-bp2-026-L",
+      "name": "みらくりえーしょん",
+      "product": "ブースターパック NEXT STEP",
+      "rarity": "L",
+      "officialUnitName": "みらくらぱーく!",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 117,
+      "cardNumber": "PL!N-bp1-025-L",
+      "name": "虹色Passions！",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 118,
+      "cardNumber": "PL!N-bp1-026-L",
+      "name": "Poppin' Up!",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 119,
+      "cardNumber": "PL!N-bp1-027-L",
+      "name": "Solitude Rain",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 120,
+      "cardNumber": "PL!N-bp1-028-L",
+      "name": "Butterfly",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 121,
+      "cardNumber": "PL!N-bp1-029-L",
+      "name": "Eutopia",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 162,
+      "cardNumber": "PL!N-sd1-025-SD",
+      "name": "Colorful Dreams! Colorful Smiles!",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "SD",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 163,
+      "cardNumber": "PL!N-sd1-026-SD",
+      "name": "夢が僕らの太陽さ",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "SD",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 164,
+      "cardNumber": "PL!N-sd1-027-SD",
+      "name": "Just Believe!!!",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "SD",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 165,
+      "cardNumber": "PL!N-sd1-028-SD",
+      "name": "Dream with You",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "rarity": "SD",
+      "officialUnitName": "-",
+      "officialWorkTitle": "虹ヶ咲",
+      "classification": "nijigasaki",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 41,
+      "cardNumber": "PL!HS-bp1-019-L",
+      "name": "Dream Believers",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 42,
+      "cardNumber": "PL!HS-bp1-020-L",
+      "name": "365 Days",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "-",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 43,
+      "cardNumber": "PL!HS-bp1-021-L",
+      "name": "Holiday∞Holiday",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 44,
+      "cardNumber": "PL!HS-bp1-022-L",
+      "name": "AWOKE",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 45,
+      "cardNumber": "PL!HS-bp1-023-L",
+      "name": "ド！ド！ド！",
+      "product": "ブースターパック vol.1",
+      "rarity": "L",
+      "officialUnitName": "みらくらぱーく!",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 68,
+      "cardNumber": "PL!HS-PR-010-PR",
+      "name": "Reflection in the mirror",
+      "product": "PRカード",
+      "rarity": "PR",
+      "officialUnitName": "スリーズブーケ",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 69,
+      "cardNumber": "PL!HS-PR-011-PR",
+      "name": "Sparkly Spot",
+      "product": "PRカード",
+      "rarity": "PR",
+      "officialUnitName": "DOLLCHESTRA",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 70,
+      "cardNumber": "PL!HS-PR-012-PR",
+      "name": "アイデンティティ",
+      "product": "PRカード",
+      "rarity": "PR",
+      "officialUnitName": "みらくらぱーく!",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1368,
+      "cardNumber": "PL!HS-PR-028-PR",
+      "name": "Echoes Beyond",
+      "product": "PRカード",
+      "rarity": "PR",
+      "officialUnitName": "",
+      "officialWorkTitle": "蓮ノ空",
+      "classification": "hasunosora",
+      "addedInThisAudit": false
+    },
+    {
+      "id": 1014,
+      "cardNumber": "LL-PR-004-PR",
+      "name": "愛♡スクリ～ム！",
+      "product": "PRカード",
+      "rarity": "PR",
+      "officialUnitName": "AiScReam",
+      "officialWorkTitle": "",
+      "classification": "series-cross-special",
+      "addedInThisAudit": true
+    }
+  ],
+  "excludedFromThisChange": [
+    "nijigasaki",
+    "hasunosora"
+  ]
+}

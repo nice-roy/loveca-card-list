@@ -23,10 +23,10 @@ test('only Liella and Aqours have verified individual HTTPS purchase links',()=>
   assert.equal(count,audit.registered.length);
   assert.equal(audit.registered.length+audit.unregistered.length,783);
 });
-test('pool adds only member/live rival records and keeps card images absent',()=>{
-  assert.equal(cards.length,1069);
+test('pool adds only member/live audited records and keeps card images absent',()=>{
+  assert.equal(cards.length,1073);
   assert.equal(cards.filter(c=>c.cardType==='member').length,890);
-  assert.equal(cards.filter(c=>c.cardType==='live').length,179);
+  assert.equal(cards.filter(c=>c.cardType==='live').length,183);
   assert.equal(cards.filter(c=>!['member','live'].includes(c.cardType)).length,0);
   assert.deepEqual(cards.slice(0,before.length).map(c=>c.image),before.map(c=>c.image));
   assert.ok(cards.slice(before.length).every(c=>c.image.url===null&&c.image.alt===null));

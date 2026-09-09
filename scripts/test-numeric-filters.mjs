@@ -46,12 +46,12 @@ test('group changes remove only unavailable values and preserve valid values inc
   assert.deepEqual(retainAvailableIds(['0', '999'], numericOptions(cards, 'muse', 'score')), ['0']);
 });
 
-test('existing pools are preserved and rival cards are added', () => {
-  assert.equal(cards.length, 1069);
-  for (const [group, count] of [['liella', 483], ['aqours', 301], ['muse', 268], ['a-rise', 7], ['saint-snow', 6], ['sunny-passion', 5]]) {
+test('existing pools are preserved and audited live cards are added', () => {
+  assert.equal(cards.length, 1073);
+  for (const [group, count] of [['liella', 483], ['aqours', 301], ['muse', 268], ['a-rise', 7], ['saint-snow', 6], ['sunny-passion', 5], ['other-live', 4]]) {
     assert.equal(cards.filter((c) => c.groupIds.includes(group)).length, count);
   }
   assert.equal(cards.filter((c) => c.cardType === 'member').length, 890);
-  assert.equal(cards.filter((c) => c.cardType === 'live').length, 179);
+  assert.equal(cards.filter((c) => c.cardType === 'live').length, 183);
   assert.equal(cards.filter((c) => c.cardType === 'energy').length, 0);
 });

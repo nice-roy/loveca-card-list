@@ -49974,5 +49974,149 @@
       }
     },
     "live": null
+  },
+  {
+    "id": "loveca-card:pl!sp-pb2-046-l",
+    "cardNumber": "PL!SP-pb2-046-L",
+    "name": "Butterfly Wing",
+    "cardType": "live",
+    "groupIds": [
+      "other-live"
+    ],
+    "memberIds": [],
+    "productId": "product:a32dfc622613",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!SP-pb2-046-L&sort=no&view=text",
+    "effectText": "【常時】自分のステージにいるメンバーが持つ【ライブ開始時】能力は発動しない。\n【ライブ成功時】自分のステージに【ライブ開始時】能力を持つメンバーがいる場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "purple",
+          "count": 3
+        },
+        {
+          "color": "any",
+          "count": 3
+        }
+      ],
+      "score": 2
+    }
+  },
+  {
+    "id": "loveca-card:ll-bp5-001-l",
+    "cardNumber": "LL-bp5-001-L",
+    "name": "Live with a smile!",
+    "cardType": "live",
+    "groupIds": [
+      "other-live"
+    ],
+    "memberIds": [],
+    "productId": "product:a8d4041e8b82",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=LL-bp5-001-L&sort=no&view=text",
+    "effectText": "【ライブ成功時】エールにより公開された自分のカードの中にライブカードが2枚以上あるか、自分のステージにいるメンバーが持つハートの中に[heart01]、[heart04]、[heart05]、[heart02]、[heart03]、[heart06]のうち合計5種類以上あるか、このターンに自分のステージにいるメンバーがエリアを移動している場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 3
+        }
+      ],
+      "score": 1
+    }
+  },
+  {
+    "id": "loveca-card:ll-bp5-002-l",
+    "cardNumber": "LL-bp5-002-L",
+    "name": "Bring the LOVE！",
+    "cardType": "live",
+    "groupIds": [
+      "other-live"
+    ],
+    "memberIds": [],
+    "productId": "product:a8d4041e8b82",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=LL-bp5-002-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにグループ名がそれぞれ異なるメンバーが3人以上いる場合、ライブ終了時まで、自分のセンターエリアにいるメンバーは[ALLハート]を得る。\n【ライブ成功時】自分の控え室にある、自分のステージにいるすべてのメンバーと異なるグループ名を持つカード1枚を手札に加える。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "red",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 5
+        }
+      ],
+      "score": 4
+    }
+  },
+  {
+    "id": "loveca-card:ll-pr-004-pr",
+    "cardNumber": "LL-PR-004-PR",
+    "name": "愛♡スクリ～ム！",
+    "cardType": "live",
+    "groupIds": [
+      "other-live"
+    ],
+    "memberIds": [],
+    "productId": "product:c5ff86398c4c",
+    "rarity": "PR",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=LL-PR-004-PR&sort=no&view=text",
+    "effectText": "【ライブ開始時】相手に何が好き？と聞く。\n回答がチョコミントかストロベリーフレイバーかクッキー＆クリームの場合、自分と相手は手札を1枚控え室に置く。\n回答があなたの場合、自分と相手はカードを1枚引く。\n回答がそれ以外の場合、ライブ終了時まで、自分と相手のステージにいるメンバーは[ブレード]を得る。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 3
+        },
+        {
+          "color": "red",
+          "count": 3
+        },
+        {
+          "color": "green",
+          "count": 3
+        }
+      ],
+      "score": 3
+    }
   }
 ]
