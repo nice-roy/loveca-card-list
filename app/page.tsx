@@ -503,7 +503,7 @@ export default function Home() {
   };
   const requestAiCopy = () => {
     if (!availableAiCandidates.length) {
-      void finishCopy('ai', createAiConsultationText(deckEntries, [], activeDeck.name));
+      void finishCopy('ai', createAiConsultationText(deckEntries, [], activeDeck.name, ownedTotalsByBase));
       return;
     }
     setSelectedAiCandidateIds(new Set());
@@ -512,7 +512,7 @@ export default function Home() {
   const copyAiWithCandidates = () => {
     const selectedCandidates = availableAiCandidates.filter((entry) => selectedAiCandidateIds.has(entry.id));
     setAiCandidateDialogOpen(false);
-    void finishCopy('ai', createAiConsultationText(deckEntries, selectedCandidates, activeDeck.name));
+    void finishCopy('ai', createAiConsultationText(deckEntries, selectedCandidates, activeDeck.name, ownedTotalsByBase));
   };
   const toggleAiCandidate = (id: string) => setSelectedAiCandidateIds((current) => {
     const next = new Set(current);

@@ -224,7 +224,12 @@ export function createDeckRecipeText(entries: DeckEntry[], deckName?: string) {
   ].join('\n');
 }
 
-export function createAiConsultationText(entries: DeckEntry[], candidateEntries: Pick<DeckEntry, 'id' | 'card'>[] = [], deckName?: string) {
+export function createAiConsultationText(
+  entries: DeckEntry[],
+  candidateEntries: Pick<DeckEntry, 'id' | 'card'>[] = [],
+  deckName?: string,
+  ownedTotalsByBase: ReadonlyMap<string, number> = new Map(),
+) {
   const { members, lives } = splitDeckEntries(entries);
   const deckIds = new Set(entries.map((entry) => entry.id));
   const candidates = [...new Map(candidateEntries.filter((entry) => !deckIds.has(entry.id)).map((entry) => [entry.id, entry])).values()];
@@ -234,9 +239,15 @@ export function createAiConsultationText(entries: DeckEntry[], candidateEntries:
   const remainingMembers = Math.max(0, COMPLETE_MEMBER_COUNT - memberTotal);
   const remainingLives = Math.max(0, COMPLETE_LIVE_COUNT - liveTotal);
   const remainingTotal = remainingMembers + remainingLives;
+  const ownedQuantity = (id: string) => ownedTotalsByBase.get(id) ?? 0;
+  const shortageQuantity = (entry: DeckEntry) => Math.max(0, entry.quantity - ownedQuantity(entry.id));
+  const shortageEntries = entries.filter((entry) => shortageQuantity(entry) > 0);
+  const shortageTotal = shortageEntries.reduce((sum, entry) => sum + shortageQuantity(entry), 0);
   const memberBlocks = members.length ? members.map((entry) => [
     `・${entry.card.name} / ${entry.id} ×${entry.quantity}`,
     `  COST：${entry.card.member?.cost ?? '不明'}`,
+    `  所持：${ownedQuantity(entry.id)}枚`,
+    `  不足：${shortageQuantity(entry)}枚`,
     `  基本ハート：${formatHearts(entry.card.member?.hearts ?? [])}`,
     `  ブレードハート：${formatHearts(entry.card.member?.bladeHearts ?? [])}`,
     `  ブレード：${entry.card.member?.yell.count ?? '不明'}`,
@@ -245,6 +256,8 @@ export function createAiConsultationText(entries: DeckEntry[], candidateEntries:
   const liveBlocks = lives.length ? lives.map((entry) => [
     `・${entry.card.name} / ${entry.id} ×${entry.quantity}`,
     `  SCORE：${entry.card.live?.score ?? '不明'}`,
+    `  所持：${ownedQuantity(entry.id)}枚`,
+    `  不足：${shortageQuantity(entry)}枚`,
     `  必要ハート：${formatHearts(entry.card.live?.requiredHearts ?? [])}`,
     `  効果：${formatEffectTextForAi(entry.card)}`,
   ].join('\n')).join('\n\n') : '（なし）';
@@ -252,6 +265,7 @@ export function createAiConsultationText(entries: DeckEntry[], candidateEntries:
   const candidateLives = candidates.filter((entry) => entry.card.cardType === 'live');
   const formatCandidateMembers = candidateMembers.map((entry) => [
     `・${entry.card.name} / ${entry.id}`,
+    `  所持：${ownedQuantity(entry.id)}枚`,
     `  COST：${entry.card.member?.cost ?? '不明'}`,
     `  基本ハート：${formatHearts(entry.card.member?.hearts ?? [])}`,
     `  ブレードハート：${formatHearts(entry.card.member?.bladeHearts ?? [])}`,
@@ -260,6 +274,7 @@ export function createAiConsultationText(entries: DeckEntry[], candidateEntries:
   ].join('\n')).join('\n\n');
   const formatCandidateLives = candidateLives.map((entry) => [
     `・${entry.card.name} / ${entry.id}`,
+    `  所持：${ownedQuantity(entry.id)}枚`,
     `  SCORE：${entry.card.live?.score ?? '不明'}`,
     `  必要ハート：${formatHearts(entry.card.live?.requiredHearts ?? [])}`,
     `  効果：${formatEffectTextForAi(entry.card)}`,
@@ -288,6 +303,9 @@ export function createAiConsultationText(entries: DeckEntry[], candidateEntries:
     '・その理由',
     'を提案してください。',
     '不明なカード効果を推測しないでください。',
+    '所持枚数・不足枚数も記載しています。現在の採用カードをできるだけ尊重しつつ、所持カードを優先した案と、必要に応じて買い足す案を比較してください。',
+    '所持枚数が不足しているカードを提案する場合は、何枚追加で必要になるかも考慮してください。ただし、所持0枚のカードを提案禁止にはしないでください。デッキ完成度を優先する場合は未所持カードを提案して構いません。',
+    '可能であれば、所持カードを優先する案とデッキ性能を優先する案の差がある場合は、その違いも説明してください。',
     '完成案を提示する場合は、提案後の採用枚数を再計算し、メンバーカード48枚・ライブカード12枚・合計60枚になっていることを必ず確認してください。',
     '現在のデッキや追加候補カードとは別に、新しく採用を提案するカードがある場合は、回答の最後に「候補一括追加用」ブロックをコードブロックで出力してください。各行は「カード番号 | カード名 | 推奨枚数」の形式にしてください。現在のデッキにあるカードと追加候補カードにあるカードは原則として再出力せず、カード番号を確実に特定できないカードは出力しないでください。新しい候補がない場合は、このブロックを出力しないでください。',
     ...candidatePrompt,
@@ -298,6 +316,10 @@ export function createAiConsultationText(entries: DeckEntry[], candidateEntries:
     `メンバー：${memberTotal}枚`,
     `ライブ：${liveTotal}枚`,
     `合計：${total}枚`,
+    '',
+    '【所持状況】',
+    `不足カード：${shortageEntries.length}種類`,
+    `不足合計：${shortageTotal}枚`,
     '',
     '【完成形】',
     `メンバー：${COMPLETE_MEMBER_COUNT}枚`,

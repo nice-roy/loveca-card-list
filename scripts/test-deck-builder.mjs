@@ -260,6 +260,27 @@ test('AI consultation candidates are optional, deduplicated, and exclude adopted
   assert.match(withCandidates, /【完成形】\nメンバー：48枚\nライブ：12枚\n合計：60枚/);
 });
 
+test('AI consultation text includes base-card owned totals and derived shortages for deck and candidates', () => {
+  const memberCard = { name: '採用メンバー', cardType: 'member', member: { cost: 2, hearts: [], bladeHearts: [], yell: { count: 1 } }, live: null, effectText: '採用効果' };
+  const candidateCard = { name: '候補ライブ', cardType: 'live', member: null, live: { score: 40, requiredHearts: [] }, effectText: '候補効果' };
+  const entries = [
+    { id: 'MEMBER-001', quantity: 4, card: memberCard },
+    { id: 'LIVE-001', quantity: 2, card: candidateCard },
+  ];
+  const text = createAiConsultationText(entries, [{ id: 'LIVE-002', card: candidateCard }], '所持確認デッキ', new Map([
+    ['MEMBER-001', 2],
+    ['LIVE-001', 10],
+    ['LIVE-002', 3],
+  ]));
+
+  assert.match(text, /【所持状況】\n不足カード：1種類\n不足合計：2枚/);
+  assert.match(text, /採用メンバー \/ MEMBER-001 ×4\n  COST：2\n  所持：2枚\n  不足：2枚/);
+  assert.match(text, /候補ライブ \/ LIVE-001 ×2\n  SCORE：40\n  所持：10枚\n  不足：0枚/);
+  assert.match(text, /【追加候補カード】[\s\S]*候補ライブ \/ LIVE-002\n  所持：3枚/);
+  assert.match(text, /所持カードを優先した案と、必要に応じて買い足す案を比較してください/);
+  assert.match(text, /所持0枚のカードを提案禁止にはしないでください/);
+});
+
 test('AI consultation text calculates fixed member and live remaining slots', () => {
   const memberCard = { name: 'メンバー', cardType: 'member', member: { cost: 2, hearts: [], bladeHearts: [], yell: { count: 1 } }, live: null };
   const liveCard = { name: 'ライブ', cardType: 'live', member: null, live: { score: 40, requiredHearts: [] } };
