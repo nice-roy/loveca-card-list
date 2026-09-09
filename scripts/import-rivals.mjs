@@ -168,8 +168,8 @@ if (WRITE) {
   for (const [label, id] of productIdByLabel) {
     if (!references.products.some((product) => product.id === id)) references.products.push({ id, label });
   }
-  await writeFile(CARDS_PATH, `${JSON.stringify([...cards, ...additions], null, 2)}\n`);
-  await writeFile(REFERENCES_PATH, `${JSON.stringify(references, null, 2)}\n`);
+  await writeFile(CARDS_PATH, `${JSON.stringify([...cards, ...additions], null, 2)}\n`, 'utf8');
+  await writeFile(REFERENCES_PATH, `${JSON.stringify(references, null, 2)}\n`, 'utf8');
 }
 
 console.log(JSON.stringify({

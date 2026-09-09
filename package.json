@@ -7,13 +7,15 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "validate:utf8": "node scripts/validate-utf8.mjs",
+    "build": "npm run validate:utf8 && vite build",
     "start": "vite preview",
     "test:deck-builder": "node --experimental-strip-types --test scripts/test-deck-builder.mjs",
     "test:deck-ownership": "node --experimental-strip-types --test scripts/test-deck-ownership.mjs",
     "test:member-options": "node --experimental-strip-types --test scripts/test-member-options.mjs",
     "test:freeword-search": "node --experimental-strip-types --test scripts/test-freeword-search.mjs",
     "test:inventory": "node --experimental-strip-types --test scripts/test-inventory.mjs",
+    "test:utf8": "node --test scripts/test-utf8.mjs",
     "lint": "oxlint",
     "format": "oxfmt"
   },
