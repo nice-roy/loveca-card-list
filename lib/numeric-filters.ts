@@ -1,4 +1,5 @@
 import type { Card } from '../app/data/schema';
+import { matchesGroupFilter } from './group-filter.ts';
 
 export type NumericFilterKind = 'cost' | 'score';
 
@@ -11,7 +12,7 @@ export function numericValue(card: Card, kind: NumericFilterKind): number | null
 
 export function numericOptions(cards: Card[], groupId: string, kind: NumericFilterKind) {
   const values = cards
-    .filter((card) => groupId === 'all' || card.groupIds.includes(groupId))
+    .filter((card) => matchesGroupFilter(card, groupId))
     .map((card) => numericValue(card, kind))
     .filter((value): value is number => value !== null);
   return [...new Set(values)].sort((a, b) => a - b)

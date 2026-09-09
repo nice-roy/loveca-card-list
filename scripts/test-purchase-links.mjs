@@ -7,7 +7,7 @@ const cards = JSON.parse(fs.readFileSync('app/data/cards.json','utf8'));
 const before = JSON.parse(execFileSync('git',['show','5ea459c6326ac7a0c7dbec5638ac36f7a6282b3e:app/data/cards.json'],{encoding:'utf8',maxBuffer:10*1024*1024}));
 const audit = JSON.parse(fs.readFileSync('docs/purchase-links-audit.json','utf8'));
 const strip = ({purchaseLinks,...rest})=>rest;
-test('all existing card fields and ordering are unchanged',()=>assert.deepEqual(cards.map(strip),before.map(strip)));
+test('all pre-existing card fields and ordering are unchanged before appended rival records',()=>assert.deepEqual(cards.slice(0,before.length).map(strip),before.map(strip)));
 test('only Liella and Aqours have verified individual HTTPS purchase links',()=>{
   let count=0;
   for(const card of cards){
@@ -23,10 +23,11 @@ test('only Liella and Aqours have verified individual HTTPS purchase links',()=>
   assert.equal(count,audit.registered.length);
   assert.equal(audit.registered.length+audit.unregistered.length,783);
 });
-test('pool stays 1051, member 876/live 175, no energy or card images added',()=>{
-  assert.equal(cards.length,1051);
-  assert.equal(cards.filter(c=>c.cardType==='member').length,876);
-  assert.equal(cards.filter(c=>c.cardType==='live').length,175);
+test('pool adds only member/live rival records and keeps card images absent',()=>{
+  assert.equal(cards.length,1069);
+  assert.equal(cards.filter(c=>c.cardType==='member').length,890);
+  assert.equal(cards.filter(c=>c.cardType==='live').length,179);
   assert.equal(cards.filter(c=>!['member','live'].includes(c.cardType)).length,0);
-  assert.deepEqual(cards.map(c=>c.image),before.map(c=>c.image));
+  assert.deepEqual(cards.slice(0,before.length).map(c=>c.image),before.map(c=>c.image));
+  assert.ok(cards.slice(before.length).every(c=>c.image.url===null&&c.image.alt===null));
 });

@@ -8,15 +8,15 @@ const cards = JSON.parse(readFileSync(new URL('../app/data/cards.json', import.m
 test('base number and version are derived without changing individual records', () => {
   assert.equal(baseCardId('PL!SP-pb2-012-P＋'), 'PL!SP-pb2-012');
   assert.equal(cardVersion('PL!SP-pb2-012-P＋'), 'P＋');
-  assert.equal(cards.length, 1051);
-  assert.equal(new Set(cards.map((card) => card.id)).size, 1051);
+  assert.equal(cards.length, 1069);
+  assert.equal(new Set(cards.map((card) => card.id)).size, 1069);
 });
 
 test('all official version variants are grouped by their game-card identifier', () => {
   const groups = groupCardsForDisplay(cards);
-  assert.equal(groups.length, 658);
-  assert.equal(groups.filter((group) => group.cards.length > 1).length, 261);
-  assert.equal(groups.filter((group) => group.cards.length > 1).reduce((sum, group) => sum + group.cards.length, 0), 654);
+  assert.equal(groups.length, 669);
+  assert.equal(groups.filter((group) => group.cards.length > 1).length, 268);
+  assert.equal(groups.filter((group) => group.cards.length > 1).reduce((sum, group) => sum + group.cards.length, 0), 668);
   assert.equal(groups.reduce((sum, group) => sum + group.cards.length, 0), cards.length);
 
   for (const group of groups) {

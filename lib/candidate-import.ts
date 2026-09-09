@@ -1,4 +1,4 @@
-import { baseCardId } from './card-grouping';
+import { baseCardId } from './card-grouping.ts';
 
 export type CandidateImportParseResult = {
   recognizedIds: string[];
@@ -23,7 +23,7 @@ export function parseCandidateImportText(text: string, knownBaseCardIds: Iterabl
   const { source, usedBulkCandidateSection } = sourceForCandidateImport(text);
   const recognized = new Set<string>();
   const unrecognized = new Set<string>();
-  const cardNumberPattern = /PL!SP-[A-Z0-9]+-\d{3}(?:-[A-Z0-9＋+]+)?/gi;
+  const cardNumberPattern = /PL!(?:SP|S)?-[A-Z0-9]+-\d{3}(?:-[A-Z0-9＋+]+)?/gi;
 
   for (const match of source.matchAll(cardNumberPattern)) {
     const enteredNumber = match[0];

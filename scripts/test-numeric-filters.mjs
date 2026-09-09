@@ -2,13 +2,14 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '../lib/numeric-filters.ts';
+import { matchesGroupFilter } from '../lib/group-filter.ts';
 
 const cards = JSON.parse(readFileSync(new URL('../app/data/cards.json', import.meta.url), 'utf8'));
 
 test('actual group options are unique, numeric ascending, and independent of other filters', () => {
-  for (const group of ['all', 'liella', 'aqours', 'muse']) {
+  for (const group of ['all', 'liella', 'aqours', 'muse', 'a-rise', 'saint-snow', 'sunny-passion', 'rivals']) {
     for (const kind of ['cost', 'score']) {
-      const values = cards.filter((c) => group === 'all' || c.groupIds.includes(group))
+      const values = cards.filter((c) => matchesGroupFilter(c, group))
         .filter((c) => c.cardType === (kind === 'cost' ? 'member' : 'live'))
         .map((c) => kind === 'cost' ? c.member?.cost : c.live?.score)
         .filter((v) => typeof v === 'number' && Number.isFinite(v));
@@ -45,12 +46,12 @@ test('group changes remove only unavailable values and preserve valid values inc
   assert.deepEqual(retainAvailableIds(['0', '999'], numericOptions(cards, 'muse', 'score')), ['0']);
 });
 
-test('existing pool counts remain unchanged', () => {
-  assert.equal(cards.length, 1051);
-  for (const [group, count] of [['liella', 483], ['aqours', 300], ['muse', 268]]) {
+test('existing pools are preserved and rival cards are added', () => {
+  assert.equal(cards.length, 1069);
+  for (const [group, count] of [['liella', 483], ['aqours', 301], ['muse', 268], ['a-rise', 7], ['saint-snow', 6], ['sunny-passion', 5]]) {
     assert.equal(cards.filter((c) => c.groupIds.includes(group)).length, count);
   }
-  assert.equal(cards.filter((c) => c.cardType === 'member').length, 876);
-  assert.equal(cards.filter((c) => c.cardType === 'live').length, 175);
+  assert.equal(cards.filter((c) => c.cardType === 'member').length, 890);
+  assert.equal(cards.filter((c) => c.cardType === 'live').length, 179);
   assert.equal(cards.filter((c) => c.cardType === 'energy').length, 0);
 });

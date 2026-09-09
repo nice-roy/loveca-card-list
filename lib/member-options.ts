@@ -72,6 +72,15 @@ const memberDisplayMetadata: MemberDisplayMetadata[] = [
   { name: '東條希', group: 'muse', schoolYear: 3, sortOrder: 7, kind: 'single', units: ['lily-white'] },
   { name: '小泉花陽', group: 'muse', schoolYear: 1, sortOrder: 8, kind: 'single', units: ['printemps'] },
   { name: '矢澤にこ', group: 'muse', schoolYear: 3, sortOrder: 9, kind: 'single', units: ['bibi'] },
+
+  // ライバル3組は公式に学年・サブユニット分類を当てはめない。公式のユニット内掲載順だけを保持する。
+  { name: '綺羅ツバサ', group: 'a-rise', schoolYear: null, sortOrder: 1, kind: 'single' },
+  { name: '優木あんじゅ', group: 'a-rise', schoolYear: null, sortOrder: 2, kind: 'single' },
+  { name: '統堂英玲奈', group: 'a-rise', schoolYear: null, sortOrder: 3, kind: 'single' },
+  { name: '鹿角聖良', group: 'saint-snow', schoolYear: null, sortOrder: 1, kind: 'single' },
+  { name: '鹿角理亞', group: 'saint-snow', schoolYear: null, sortOrder: 2, kind: 'single' },
+  { name: '柊摩央', group: 'sunny-passion', schoolYear: null, sortOrder: 1, kind: 'single' },
+  { name: '聖澤悠奈', group: 'sunny-passion', schoolYear: null, sortOrder: 2, kind: 'single' },
 ];
 
 const metadataByName = new Map(memberDisplayMetadata.map((item) => [item.name, item]));
@@ -104,6 +113,8 @@ function sectionsFor(options: MemberOption[], includeCrossGroup: boolean, displa
   }
   const multiple = entries.filter(({ metadata }) => metadata?.kind === 'multiple').map(({ option }) => option);
   if (multiple.length) sections.push({ id: 'multiple', label: '複数メンバー', options: multiple });
+  const noSchoolYear = entries.filter(({ metadata }) => metadata?.kind === 'single' && metadata.schoolYear === null).map(({ option }) => option);
+  if (noSchoolYear.length) sections.push({ id: 'no-school-year', label: '学年なし', options: noSchoolYear });
   const unclassified = entries.filter(({ metadata }) => !metadata).map(({ option }) => option);
   if (unclassified.length) sections.push({ id: 'unclassified', label: '学年未確認', options: unclassified });
   return sections;

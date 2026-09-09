@@ -19,6 +19,7 @@ import { matchesFreewordSearch } from '@/lib/freeword-search';
 import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckId, createDeckRecipeText, duplicateDeckName, emptyDeckForBulkClear, groupDeckEntriesByMetric, nextDefaultDeckName, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear, type DeckGroup, type DeckQuantities, type SavedDeck } from '@/lib/deck-builder';
 import { createBuilderTransferText, validateBuilderTransferText, type ValidatedBuilderTransfer } from '@/lib/builder-transfer';
 import { groupMemberOptions, type MemberDisplayMode, type MemberOptionGroup } from '@/lib/member-options';
+import { isRivalGroupId, matchesGroupFilter, matchesMemberGroupFilter } from '@/lib/group-filter';
 import { INVENTORY_STORAGE_KEY, MAX_OWNED_QUANTITY, inventoryTotalsByBase, matchesInventoryFilter, normalizeInventory, setOwnedQuantity, type InventoryFilter, type InventoryQuantities } from '@/lib/inventory';
 import { createShortageCardsText, getDeckOwnershipStatuses, getShortageEntries, type DeckOwnershipStatus } from '@/lib/deck-ownership';
 
@@ -106,7 +107,7 @@ async function copyText(text: string) {
 
 function getProductIdsForGroup(selectedGroupId: string) {
   return new Set(cards
-    .filter((card) => selectedGroupId === 'all' || card.groupIds.includes(selectedGroupId))
+    .filter((card) => matchesGroupFilter(card, selectedGroupId))
     .map((card) => card.productId));
 }
 
@@ -268,10 +269,8 @@ export default function Home() {
   const productById = useMemo(() => new Map(references.products.map((item) => [item.id, item.label])), []);
   const selectedMemberIdSet = useMemo(() => new Set(memberIds), [memberIds]);
   const selectedProductIdSet = useMemo(() => new Set(productIds), [productIds]);
-  const availableMembers = useMemo(() => groupId === 'all'
-    ? references.members
-    : references.members.filter((member) => member.groupId === groupId), [groupId]);
-  const memberOptionGroups = useMemo(() => groupMemberOptions(availableMembers, groupId, references.groups, memberDisplayMode), [availableMembers, groupId, memberDisplayMode]);
+  const availableMembers = useMemo(() => references.members.filter((member) => matchesMemberGroupFilter(member, groupId)), [groupId]);
+  const memberOptionGroups = useMemo(() => groupMemberOptions(availableMembers, groupId === 'rivals' ? 'all' : groupId, references.groups, memberDisplayMode), [availableMembers, groupId, memberDisplayMode]);
   const availableProducts = useMemo(() => {
     const availableProductIds = getProductIdsForGroup(groupId);
     return references.products.filter((product) => availableProductIds.has(product.id));
@@ -281,6 +280,8 @@ export default function Home() {
   const memberTotal = useMemo(() => cards.filter((card) => card.cardType === 'member').length, []);
   const liveTotal = useMemo(() => cards.filter((card) => card.cardType === 'live').length, []);
   const enabledGroupLabels = useMemo(() => references.groups.filter((group) => group.enabled).map((group) => group.label), []);
+  const rivalGroups = useMemo(() => references.groups.filter((group) => isRivalGroupId(group.id)), []);
+  const standardGroups = useMemo(() => references.groups.filter((group) => !isRivalGroupId(group.id)), []);
   const ownedTotalsByBase = useMemo(() => inventoryTotalsByBase(inventory, versionToBase), [inventory]);
   const sortOptions = cardType === 'member'
     ? [...memberSortOptions, ...commonSortOptions]
@@ -327,7 +328,7 @@ export default function Home() {
 
   const filteredCards = useMemo(() => {
     return cards
-      .filter((card) => groupId === 'all' || card.groupIds.includes(groupId))
+      .filter((card) => matchesGroupFilter(card, groupId))
       .filter((card) => selectedMemberIdSet.size === 0 || card.memberIds.some((id) => selectedMemberIdSet.has(id)))
       .filter((card) => cardType === 'all' || card.cardType === cardType)
       .filter((card) => cardType !== 'member' || matchesNumericFilter(card, 'cost', costIds))
@@ -373,7 +374,7 @@ export default function Home() {
     const validProductIds = getProductIdsForGroup(nextGroupId);
     setProductIds((currentIds) => currentIds.filter((id) => validProductIds.has(id)));
     if (nextGroupId !== 'all') {
-      const validMemberIds = new Set(references.members.filter((member) => member.groupId === nextGroupId).map((member) => member.id));
+      const validMemberIds = new Set(references.members.filter((member) => matchesMemberGroupFilter(member, nextGroupId)).map((member) => member.id));
       setMemberIds((currentIds) => currentIds.filter((id) => validMemberIds.has(id)));
     }
     setVisibleCount(PAGE_SIZE);
@@ -634,11 +635,16 @@ export default function Home() {
     <section className="workspace" aria-label="カード検索">
       <nav className="group-switcher" aria-label="グループを切り替え">
         <button className={groupId === 'all' ? 'active' : ''} onClick={() => changeGroup('all')}>すべて <span>{cards.length}</span></button>
-        {references.groups.map((group) => {
+        {standardGroups.map((group) => {
           const count = cards.filter((card) => card.groupIds.includes(group.id)).length;
           return <button className={groupId === group.id ? 'active' : ''} disabled={!group.enabled} key={group.id} onClick={() => changeGroup(group.id)} title={group.enabled ? `${group.label}だけ表示` : '今後追加予定'}>{group.label} <span>{count || '準備中'}</span></button>;
         })}
+        <button className={groupId === 'rivals' || isRivalGroupId(groupId) ? 'active' : ''} onClick={() => changeGroup('rivals')} title="ライバルカードを表示">ライバル <span>{cards.filter((card) => matchesGroupFilter(card, 'rivals')).length}</span></button>
       </nav>
+      {(groupId === 'rivals' || isRivalGroupId(groupId)) && <nav className="rival-group-switcher" aria-label="ライバルグループを切り替え">
+        <button className={groupId === 'rivals' ? 'active' : ''} onClick={() => changeGroup('rivals')} type="button">すべて</button>
+        {rivalGroups.map((group) => <button className={groupId === group.id ? 'active' : ''} key={group.id} onClick={() => changeGroup(group.id)} type="button">{group.label}</button>)}
+      </nav>}
 
       <div className="filter-panel">
         <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" className="search-input" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>

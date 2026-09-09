@@ -17,7 +17,7 @@ for (const [groupId, expectedYears] of [['liella', ['1年生', '2年生', '3年�
 
 test('all-groups view follows group order and separates cross-group combinations last', () => {
   const groups = groupMemberOptions(references.members, 'all', references.groups);
-  assert.deepEqual(groups.map((group) => group.label), ['Liella!', 'Aqours', "μ's", 'グループ横断・複数メンバー']);
+  assert.deepEqual(groups.map((group) => group.label), ['Liella!', 'Aqours', "μ's", 'A-RISE', 'Saint Snow', 'Sunny Passion', 'グループ横断・複数メンバー']);
   assert.equal(groups[0].sections.at(-1)?.label, '複数メンバー');
   assert.deepEqual(groups[0].sections.at(-1)?.options.map((option) => option.label), ['嵐 千砂都＆鬼塚夏美']);
   assert.equal(groups.at(-1)?.sections[0].options.length, 4);
@@ -44,10 +44,25 @@ for (const [groupId, expectedUnits] of [
 
 test('unit mode retains member ids and separates cross-group combinations in all-groups view', () => {
   const groups = groupMemberOptions(references.members, 'all', references.groups, 'unit');
-  assert.deepEqual(groups.map((group) => group.label), ['Liella!', 'Aqours', "μ's", 'グループ横断・複数メンバー']);
+  assert.deepEqual(groups.map((group) => group.label), ['Liella!', 'Aqours', "μ's", 'A-RISE', 'Saint Snow', 'Sunny Passion', 'グループ横断・複数メンバー']);
   assert.deepEqual(groups[0].sections[0].options.map((option) => option.label), ['澁谷かのん', '平安名すみれ', '米女メイ']);
   assert.equal(groups[0].sections.at(-1)?.label, '複数メンバー');
   assert.equal(groups.at(-1)?.sections[0].options.length, 4);
+});
+
+test('rival members use safe school-year and unit fallbacks without invented classifications', () => {
+  for (const [groupId, labels] of [
+    ['a-rise', ['綺羅ツバサ', '優木あんじゅ', '統堂英玲奈']],
+    ['saint-snow', ['鹿角聖良', '鹿角理亞']],
+    ['sunny-passion', ['柊摩央', '聖澤悠奈']],
+  ]) {
+    const options = references.members.filter((member) => member.groupId === groupId);
+    const school = groupMemberOptions(options, groupId, references.groups, 'schoolYear')[0];
+    const unit = groupMemberOptions(options, groupId, references.groups, 'unit')[0];
+    assert.deepEqual(school.sections.map((section) => section.label), ['学年なし']);
+    assert.deepEqual(unit.sections.map((section) => section.label), ['ユニットなし']);
+    assert.deepEqual(school.sections[0].options.map((option) => option.label), labels);
+  }
 });
 
 test('Liella unit memberships exactly match the official eleven-member structure', () => {

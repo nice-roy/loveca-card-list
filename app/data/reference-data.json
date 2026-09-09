@@ -27,6 +27,21 @@
       "enabled": true
     },
     {
+      "id": "a-rise",
+      "label": "A-RISE",
+      "enabled": true
+    },
+    {
+      "id": "saint-snow",
+      "label": "Saint Snow",
+      "enabled": true
+    },
+    {
+      "id": "sunny-passion",
+      "label": "Sunny Passion",
+      "enabled": true
+    },
+    {
       "id": "nijigasaki",
       "label": "虹ヶ咲",
       "enabled": false
@@ -237,6 +252,41 @@
       "id": "member:41872c3ed00c",
       "label": "矢澤にこ",
       "groupId": "muse"
+    },
+    {
+      "id": "member:713ee71c0e9a",
+      "label": "綺羅ツバサ",
+      "groupId": "a-rise"
+    },
+    {
+      "id": "member:ea92d38db255",
+      "label": "優木あんじゅ",
+      "groupId": "a-rise"
+    },
+    {
+      "id": "member:557d478f7958",
+      "label": "統堂英玲奈",
+      "groupId": "a-rise"
+    },
+    {
+      "id": "member:74c11f7693e6",
+      "label": "鹿角聖良",
+      "groupId": "saint-snow"
+    },
+    {
+      "id": "member:ba92bafb1907",
+      "label": "鹿角理亞",
+      "groupId": "saint-snow"
+    },
+    {
+      "id": "member:bacb8deec6a0",
+      "label": "柊摩央",
+      "groupId": "sunny-passion"
+    },
+    {
+      "id": "member:7e86290aa059",
+      "label": "聖澤悠奈",
+      "groupId": "sunny-passion"
     }
   ],
   "products": [
