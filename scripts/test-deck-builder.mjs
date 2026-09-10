@@ -301,7 +301,7 @@ test('AI consultation text calculates fixed member and live remaining slots', ()
 });
 
 test('candidate import recognizes card numbers, base card ids, and bulk sections safely', () => {
-  const knownIds = new Set(['PL!SP-bp1-001', 'PL!SP-bp1-012', 'PL!SP-bp1-013', 'PL!-bp5-111', 'PL!S-bp5-111']);
+  const knownIds = new Set(['PL!SP-bp1-001', 'PL!SP-bp1-012', 'PL!SP-bp1-013', 'PL!-bp5-111', 'PL!S-bp5-111', 'PL!N-bp5-001', 'PL!HS-bp5-001', 'LL-bp1-001']);
 
   assert.deepEqual(parseCandidateImportText('PL!SP-bp1-012\nPL!SP-bp1-001', knownIds), {
     recognizedIds: ['PL!SP-bp1-012', 'PL!SP-bp1-001'],
@@ -325,6 +325,11 @@ test('candidate import recognizes card numbers, base card ids, and bulk sections
   });
   assert.deepEqual(parseCandidateImportText('PL!-bp5-111-R\nPL!S-bp5-111-P＋', knownIds), {
     recognizedIds: ['PL!-bp5-111', 'PL!S-bp5-111'],
+    unrecognizedCardNumbers: [],
+    usedBulkCandidateSection: false,
+  });
+  assert.deepEqual(parseCandidateImportText('PL!N-bp5-001-AR\nPL!HS-bp5-001-P＋\nLL-bp1-001-R＋', knownIds), {
+    recognizedIds: ['PL!N-bp5-001', 'PL!HS-bp5-001', 'LL-bp1-001'],
     unrecognizedCardNumbers: [],
     usedBulkCandidateSection: false,
   });

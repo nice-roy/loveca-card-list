@@ -6,12 +6,21 @@ import test from 'node:test';
 const cards = JSON.parse(fs.readFileSync('app/data/cards.json','utf8'));
 const before = JSON.parse(execFileSync('git',['show','5ea459c6326ac7a0c7dbec5638ac36f7a6282b3e:app/data/cards.json'],{encoding:'utf8',maxBuffer:10*1024*1024}));
 const audit = JSON.parse(fs.readFileSync('docs/purchase-links-audit.json','utf8'));
+const groupAudit = JSON.parse(fs.readFileSync('app/data/nijigasaki-hasunosora-audit.json','utf8'));
 const strip = ({purchaseLinks,...rest})=>rest;
-test('all pre-existing card fields and ordering are unchanged before appended rival records',()=>assert.deepEqual(cards.slice(0,before.length).map(strip),before.map(strip)));
+test('all pre-existing card fields and ordering are unchanged before appended rival records',()=>{
+  const restored=structuredClone(cards.slice(0,before.length));
+  for(const update of groupAudit.existingCardAffiliationUpdates){
+    const card=restored.find(item=>item.cardNumber===update.cardNumber);
+    if(card)card.groupIds=update.before;
+  }
+  assert.deepEqual(restored.map(strip),before.map(strip));
+});
 test('only Liella and Aqours have verified individual HTTPS purchase links',()=>{
   let count=0;
   for(const card of cards){
-    if(card.groupIds.includes('muse'))assert.deepEqual(card,before.find(c=>c.id===card.id));
+    const beforeCard=before.find(c=>c.id===card.id);
+    if(card.groupIds.includes('muse')&&beforeCard&&!['LL-bp4-001-R＋'].includes(card.cardNumber))assert.deepEqual(card,beforeCard);
     for(const link of card.purchaseLinks||[]){
       assert.ok(card.groupIds.includes('liella')||card.groupIds.includes('aqours'));
       assert.equal(link.shopId,'cardlabo');
@@ -24,9 +33,9 @@ test('only Liella and Aqours have verified individual HTTPS purchase links',()=>
   assert.equal(audit.registered.length+audit.unregistered.length,783);
 });
 test('pool adds only member/live audited records and keeps card images absent',()=>{
-  assert.equal(cards.length,1073);
-  assert.equal(cards.filter(c=>c.cardType==='member').length,890);
-  assert.equal(cards.filter(c=>c.cardType==='live').length,183);
+  assert.equal(cards.length,1817);
+  assert.equal(cards.filter(c=>c.cardType==='member').length,1526);
+  assert.equal(cards.filter(c=>c.cardType==='live').length,291);
   assert.equal(cards.filter(c=>!['member','live'].includes(c.cardType)).length,0);
   assert.deepEqual(cards.slice(0,before.length).map(c=>c.image),before.map(c=>c.image));
   assert.ok(cards.slice(before.length).every(c=>c.image.url===null&&c.image.alt===null));

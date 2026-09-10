@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import audit from '../app/data/live-card-audit.json' with { type: 'json' };
+import targetAudit from '../app/data/nijigasaki-hasunosora-audit.json' with { type: 'json' };
 import { baseCardId, groupCardsForDisplay } from '../lib/card-grouping.ts';
 
 const cards = JSON.parse(readFileSync(new URL('../app/data/cards.json', import.meta.url), 'utf8'));
@@ -30,11 +31,16 @@ test('official live audit snapshot records the complete official live-card unive
 
 test('the original 1069 card records remain byte-for-structure unchanged and approved global lives are appended', () => {
   const original = cards.slice(0, audit.baseline.cardCount);
-  assert.equal(createHash('sha256').update(JSON.stringify(original)).digest('hex'), audit.baseline.cardsPrefixSha256);
-  assert.equal(cards.length, 1073);
-  assert.equal(liveCards.length, 183);
-  assert.deepEqual(cards.slice(audit.baseline.cardCount).map((card) => card.cardNumber), additions);
-  assert.ok(cards.slice(audit.baseline.cardCount).every((card) => card.cardType === 'live' && card.groupIds.includes('other-live')));
+  const restored = structuredClone(original);
+  for (const update of targetAudit.existingCardAffiliationUpdates) {
+    const card = restored.find((item) => item.cardNumber === update.cardNumber);
+    if (card) card.groupIds = update.before;
+  }
+  assert.equal(createHash('sha256').update(JSON.stringify(restored)).digest('hex'), audit.baseline.cardsPrefixSha256);
+  assert.equal(cards.length, 1817);
+  assert.equal(liveCards.length, 291);
+  assert.deepEqual(cards.slice(audit.baseline.cardCount, audit.baseline.cardCount + additions.length).map((card) => card.cardNumber), additions);
+  assert.ok(cards.slice(audit.baseline.cardCount, audit.baseline.cardCount + additions.length).every((card) => card.cardType === 'live' && card.groupIds.includes('other-live')));
 });
 
 test('the four confirmed special lives remain distinct base cards and are reachable through the display category', () => {

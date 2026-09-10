@@ -1,4 +1,4 @@
-export type MemberOption = { id: string; label: string; groupId: string };
+export type MemberOption = { id: string; label: string; groupId: string; groupIds?: string[] };
 export type MemberOptionSection = { id: string; label: string; options: MemberOption[] };
 export type MemberOptionGroup = { id: string; label: string | null; sections: MemberOptionSection[] };
 export type MemberDisplayMode = 'schoolYear' | 'unit';
@@ -31,6 +31,18 @@ const unitsByGroup: Record<string, UnitDisplayMetadata[]> = {
     { id: 'printemps', label: 'Printemps', sortOrder: 1 },
     { id: 'lily-white', label: 'lily white', sortOrder: 2 },
     { id: 'bibi', label: 'BiBi', sortOrder: 3 },
+  ],
+  nijigasaki: [
+    { id: 'azuna', label: 'A・ZU・NA', sortOrder: 1 },
+    { id: 'qu4rtz', label: 'QU4RTZ', sortOrder: 2 },
+    { id: 'r3birth', label: 'R3BIRTH', sortOrder: 3 },
+    { id: 'diver-diva', label: 'DiverDiva', sortOrder: 4 },
+  ],
+  hasunosora: [
+    { id: 'cerise-bouquet', label: 'スリーズブーケ', sortOrder: 1 },
+    { id: 'dollchestra', label: 'DOLLCHESTRA', sortOrder: 2 },
+    { id: 'miracra-park', label: 'みらくらぱーく！', sortOrder: 3 },
+    { id: 'edel-note', label: 'Edel Note', sortOrder: 4 },
   ],
 };
 
@@ -81,17 +93,46 @@ const memberDisplayMetadata: MemberDisplayMetadata[] = [
   { name: '鹿角理亞', group: 'saint-snow', schoolYear: null, sortOrder: 2, kind: 'single' },
   { name: '柊摩央', group: 'sunny-passion', schoolYear: null, sortOrder: 1, kind: 'single' },
   { name: '聖澤悠奈', group: 'sunny-passion', schoolYear: null, sortOrder: 2, kind: 'single' },
+
+  // 公式カードリストの作品別・ユニット別検索で確認した所属と、作品別検索での初出順を保持する。
+  // 公式カードAPIに学年項目がないため、学年は推測せず null とする。
+  { name: '上原歩夢', group: 'nijigasaki', schoolYear: null, sortOrder: 1, kind: 'single', units: ['azuna'] },
+  { name: '中須かすみ', group: 'nijigasaki', schoolYear: null, sortOrder: 2, kind: 'single', units: ['qu4rtz'] },
+  { name: '桜坂しずく', group: 'nijigasaki', schoolYear: null, sortOrder: 3, kind: 'single', units: ['azuna'] },
+  { name: '朝香果林', group: 'nijigasaki', schoolYear: null, sortOrder: 4, kind: 'single', units: ['diver-diva'] },
+  { name: '宮下 愛', group: 'nijigasaki', schoolYear: null, sortOrder: 5, kind: 'single', units: ['diver-diva'] },
+  { name: '近江彼方', group: 'nijigasaki', schoolYear: null, sortOrder: 6, kind: 'single', units: ['qu4rtz'] },
+  { name: '優木せつ菜', group: 'nijigasaki', schoolYear: null, sortOrder: 7, kind: 'single', units: ['azuna'] },
+  { name: 'エマ・ヴェルデ', group: 'nijigasaki', schoolYear: null, sortOrder: 8, kind: 'single', units: ['qu4rtz'] },
+  { name: '天王寺璃奈', group: 'nijigasaki', schoolYear: null, sortOrder: 9, kind: 'single', units: ['qu4rtz'] },
+  { name: '三船栞子', group: 'nijigasaki', schoolYear: null, sortOrder: 10, kind: 'single', units: ['r3birth'] },
+  { name: 'ミア・テイラー', group: 'nijigasaki', schoolYear: null, sortOrder: 11, kind: 'single', units: ['r3birth'] },
+  { name: '鐘 嵐珠', group: 'nijigasaki', schoolYear: null, sortOrder: 12, kind: 'single', units: ['r3birth'] },
+  { name: '園田海未&津島善子&天王寺璃奈', group: 'nijigasaki', schoolYear: null, sortOrder: 101, kind: 'multiple', participantGroups: ['muse', 'aqours', 'nijigasaki'] },
+
+  // 蓮ノ空は年度で学年が変わり得るため、カード全期間共通の固定学年を付与しない。
+  { name: '日野下花帆', group: 'hasunosora', schoolYear: null, sortOrder: 1, kind: 'single', units: ['cerise-bouquet'] },
+  { name: '村野さやか', group: 'hasunosora', schoolYear: null, sortOrder: 2, kind: 'single', units: ['dollchestra'] },
+  { name: '大沢瑠璃乃', group: 'hasunosora', schoolYear: null, sortOrder: 3, kind: 'single', units: ['miracra-park'] },
+  { name: '百生 吟子', group: 'hasunosora', schoolYear: null, sortOrder: 4, kind: 'single', units: ['cerise-bouquet'] },
+  { name: '徒町 小鈴', group: 'hasunosora', schoolYear: null, sortOrder: 5, kind: 'single', units: ['dollchestra'] },
+  { name: '安養寺 姫芽', group: 'hasunosora', schoolYear: null, sortOrder: 6, kind: 'single', units: ['miracra-park'] },
+  { name: 'セラス 柳田 リリエンフェルト', group: 'hasunosora', schoolYear: null, sortOrder: 7, kind: 'single', units: ['edel-note'] },
+  { name: '桂城 泉', group: 'hasunosora', schoolYear: null, sortOrder: 8, kind: 'single', units: ['edel-note'] },
+  { name: '乙宗 梢', group: 'hasunosora', schoolYear: null, sortOrder: 9, kind: 'single', units: ['cerise-bouquet'] },
+  { name: '夕霧綴理', group: 'hasunosora', schoolYear: null, sortOrder: 10, kind: 'single', units: ['dollchestra'] },
+  { name: '藤島 慈', group: 'hasunosora', schoolYear: null, sortOrder: 11, kind: 'single', units: ['miracra-park'] },
+  { name: '南 ことり&黒澤ダイヤ&徒町小鈴', group: 'hasunosora', schoolYear: null, sortOrder: 101, kind: 'multiple', participantGroups: ['muse', 'aqours', 'hasunosora'] },
 ];
 
 const metadataByName = new Map(memberDisplayMetadata.map((item) => [item.name, item]));
 
-function sectionsFor(options: MemberOption[], includeCrossGroup: boolean, displayMode: MemberDisplayMode) {
+function sectionsFor(options: MemberOption[], includeCrossGroup: boolean, displayMode: MemberDisplayMode, groupId: string) {
   const entries = options.map((option) => ({ option, metadata: metadataByName.get(option.label) }))
     .filter(({ metadata }) => includeCrossGroup || !metadata?.participantGroups || new Set(metadata.participantGroups).size <= 1)
     .sort((left, right) => (left.metadata?.sortOrder ?? Number.MAX_SAFE_INTEGER) - (right.metadata?.sortOrder ?? Number.MAX_SAFE_INTEGER));
   const sections: MemberOptionSection[] = [];
   if (displayMode === 'unit') {
-    const groupId = entries[0]?.metadata?.group;
     const units = [...(unitsByGroup[groupId ?? ''] ?? [])].sort((left, right) => left.sortOrder - right.sortOrder);
     for (const unit of units) {
       const unitOptions = entries
@@ -122,12 +163,12 @@ function sectionsFor(options: MemberOption[], includeCrossGroup: boolean, displa
 
 export function groupMemberOptions(options: MemberOption[], selectedGroupId: string, groups: { id: string; label: string; enabled: boolean }[], displayMode: MemberDisplayMode = 'schoolYear'): MemberOptionGroup[] {
   if (selectedGroupId !== 'all') {
-    return [{ id: selectedGroupId, label: null, sections: sectionsFor(options, true, displayMode) }];
+    return [{ id: selectedGroupId, label: null, sections: sectionsFor(options, true, displayMode, selectedGroupId) }];
   }
 
   const result = groups.filter((group) => group.enabled).flatMap((group) => {
-    const groupOptions = options.filter((option) => option.groupId === group.id);
-    const sections = sectionsFor(groupOptions, false, displayMode);
+    const groupOptions = options.filter((option) => (option.groupIds ?? [option.groupId]).includes(group.id));
+    const sections = sectionsFor(groupOptions, false, displayMode, group.id);
     return sections.length ? [{ id: group.id, label: group.label, sections }] : [];
   });
   const crossGroupOptions = options.filter((option) => {

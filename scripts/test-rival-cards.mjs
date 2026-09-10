@@ -28,7 +28,7 @@ test('cross-group and rival parent filtering retain official affiliations', () =
   const awaken = cards.find((card) => card.cardNumber === 'PL!S-bp5-023-L');
   assert.deepEqual(awaken.groupIds, ['aqours', 'saint-snow']);
   assert.equal(cards.filter((card) => matchesGroupFilter(card, 'rivals')).length, 18);
-  assert.equal(cards.filter((card) => matchesGroupFilter(card, 'aqours')).length, 301);
+  assert.equal(cards.filter((card) => matchesGroupFilter(card, 'aqours')).length, 305);
 });
 
 test('rival member references and base-card display grouping are valid', () => {

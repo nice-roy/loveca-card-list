@@ -7,7 +7,7 @@ import { matchesGroupFilter } from '../lib/group-filter.ts';
 const cards = JSON.parse(readFileSync(new URL('../app/data/cards.json', import.meta.url), 'utf8'));
 
 test('actual group options are unique, numeric ascending, and independent of other filters', () => {
-  for (const group of ['all', 'liella', 'aqours', 'muse', 'a-rise', 'saint-snow', 'sunny-passion', 'rivals']) {
+  for (const group of ['all', 'liella', 'aqours', 'muse', 'a-rise', 'saint-snow', 'sunny-passion', 'nijigasaki', 'hasunosora', 'rivals']) {
     for (const kind of ['cost', 'score']) {
       const values = cards.filter((c) => matchesGroupFilter(c, group))
         .filter((c) => c.cardType === (kind === 'cost' ? 'member' : 'live'))
@@ -47,11 +47,11 @@ test('group changes remove only unavailable values and preserve valid values inc
 });
 
 test('existing pools are preserved and audited live cards are added', () => {
-  assert.equal(cards.length, 1073);
-  for (const [group, count] of [['liella', 483], ['aqours', 301], ['muse', 268], ['a-rise', 7], ['saint-snow', 6], ['sunny-passion', 5], ['other-live', 4]]) {
+  assert.equal(cards.length, 1817);
+  for (const [group, count] of [['liella', 483], ['aqours', 305], ['muse', 271], ['a-rise', 7], ['saint-snow', 6], ['sunny-passion', 5], ['nijigasaki', 454], ['hasunosora', 295], ['other-live', 4]]) {
     assert.equal(cards.filter((c) => c.groupIds.includes(group)).length, count);
   }
-  assert.equal(cards.filter((c) => c.cardType === 'member').length, 890);
-  assert.equal(cards.filter((c) => c.cardType === 'live').length, 183);
+  assert.equal(cards.filter((c) => c.cardType === 'member').length, 1526);
+  assert.equal(cards.filter((c) => c.cardType === 'live').length, 291);
   assert.equal(cards.filter((c) => c.cardType === 'energy').length, 0);
 });

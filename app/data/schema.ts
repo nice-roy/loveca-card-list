@@ -42,6 +42,6 @@ export type ReferenceData = {
   cardTypes: ReferenceItem[];
   groups: (ReferenceItem & { enabled: boolean })[];
   heartColors: ReferenceItem[];
-  members: (ReferenceItem & { groupId: string })[];
+  members: (ReferenceItem & { groupId: string; groupIds?: string[] })[];
   products: ReferenceItem[];
 };

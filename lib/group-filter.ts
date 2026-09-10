@@ -12,8 +12,9 @@ export function matchesGroupFilter(card: Pick<Card, 'groupIds'>, groupId: string
   return card.groupIds.includes(groupId);
 }
 
-export function matchesMemberGroupFilter(member: { groupId: string }, groupId: string) {
+export function matchesMemberGroupFilter(member: { groupId: string; groupIds?: string[] }, groupId: string) {
   if (groupId === 'all') return true;
-  if (groupId === 'rivals') return isRivalGroupId(member.groupId);
-  return member.groupId === groupId;
+  const groupIds = member.groupIds ?? [member.groupId];
+  if (groupId === 'rivals') return groupIds.some((id) => isRivalGroupId(id));
+  return groupIds.includes(groupId);
 }

@@ -44,12 +44,12 @@
     {
       "id": "nijigasaki",
       "label": "虹ヶ咲",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "hasunosora",
       "label": "蓮ノ空",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "other-live",
@@ -96,7 +96,12 @@
     {
       "id": "member:d665bd99b584",
       "label": "上原歩夢&澁谷かのん&日野下花帆",
-      "groupId": "liella"
+      "groupId": "liella",
+      "groupIds": [
+        "liella",
+        "nijigasaki",
+        "hasunosora"
+      ]
     },
     {
       "id": "member:de5a00678834",
@@ -106,7 +111,12 @@
     {
       "id": "member:e759b833a4a3",
       "label": "国木田花丸&優木せつ菜&嵐 千砂都",
-      "groupId": "liella"
+      "groupId": "liella",
+      "groupIds": [
+        "liella",
+        "aqours",
+        "nijigasaki"
+      ]
     },
     {
       "id": "member:0cc944daadab",
@@ -131,7 +141,12 @@
     {
       "id": "member:1b9064edca8c",
       "label": "渡辺 曜&鬼塚夏美&大沢瑠璃乃",
-      "groupId": "liella"
+      "groupId": "liella",
+      "groupIds": [
+        "liella",
+        "aqours",
+        "hasunosora"
+      ]
     },
     {
       "id": "member:c32e1f5ca467",
@@ -146,7 +161,12 @@
     {
       "id": "member:8e5236a23d65",
       "label": "絢瀬絵里&朝香果林&葉月 恋",
-      "groupId": "liella"
+      "groupId": "liella",
+      "groupIds": [
+        "liella",
+        "muse",
+        "nijigasaki"
+      ]
     },
     {
       "id": "member:06e80e019847",
@@ -292,6 +312,210 @@
       "id": "member:7e86290aa059",
       "label": "聖澤悠奈",
       "groupId": "sunny-passion"
+    },
+    {
+      "id": "member:581c94b9816e",
+      "label": "上原歩夢",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:32dce771f8b5",
+      "label": "中須かすみ",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:bbcca659db8f",
+      "label": "桜坂しずく",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:b8342f0b641b",
+      "label": "朝香果林",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:a0b76d95b625",
+      "label": "宮下 愛",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:0d9d956af84b",
+      "label": "近江彼方",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:e5340af679a7",
+      "label": "優木せつ菜",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:15fdc26429ae",
+      "label": "エマ・ヴェルデ",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:931bb0f0cc09",
+      "label": "天王寺璃奈",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:e19d4a5b6144",
+      "label": "三船栞子",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:e41b2e5f2d23",
+      "label": "ミア・テイラー",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:d0fce7d114cf",
+      "label": "鐘 嵐珠",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:03239bad6165",
+      "label": "園田海未&津島善子&天王寺璃奈",
+      "groupId": "nijigasaki",
+      "groupIds": [
+        "muse",
+        "aqours",
+        "nijigasaki"
+      ]
+    },
+    {
+      "id": "member:e648cb6458c7",
+      "label": "日野下花帆",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:d5ea1baf5509",
+      "label": "村野さやか",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:1629b94f2426",
+      "label": "大沢瑠璃乃",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:65608c4752e8",
+      "label": "百生 吟子",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:e27560ac3a8c",
+      "label": "徒町 小鈴",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:849356dfa6d4",
+      "label": "安養寺 姫芽",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:eb0b95da4a0f",
+      "label": "セラス 柳田 リリエンフェルト",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:d1dda3ba0578",
+      "label": "桂城 泉",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:5c5099ad8471",
+      "label": "南 ことり&黒澤ダイヤ&徒町小鈴",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "muse",
+        "aqours",
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:a33f64ff6c3b",
+      "label": "乙宗 梢",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:d65f858fac1b",
+      "label": "夕霧綴理",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
+    },
+    {
+      "id": "member:c0b77a798aed",
+      "label": "藤島 慈",
+      "groupId": "hasunosora",
+      "groupIds": [
+        "hasunosora"
+      ]
     }
   ],
   "products": [
@@ -358,6 +582,30 @@
     {
       "id": "product:8cf67415f883",
       "label": "プレミアムブースター ラブライブ！"
+    },
+    {
+      "id": "product:6fd06e26f92e",
+      "label": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer"
+    },
+    {
+      "id": "product:27739fd61f60",
+      "label": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会"
+    },
+    {
+      "id": "product:a441500ac5ed",
+      "label": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会"
+    },
+    {
+      "id": "product:5c25e2c8b9cd",
+      "label": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ"
+    },
+    {
+      "id": "product:8389db1f064d",
+      "label": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ"
+    },
+    {
+      "id": "product:df614dd1f5bd",
+      "label": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ"
     }
   ]
 }
