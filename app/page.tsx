@@ -23,9 +23,11 @@ import { isRivalGroupId, matchesGroupFilter, matchesMemberGroupFilter } from '@/
 import { INVENTORY_STORAGE_KEY, MAX_OWNED_QUANTITY, inventoryTotalsByBase, matchesInventoryFilter, normalizeInventory, setOwnedQuantity, type InventoryFilter, type InventoryQuantities } from '@/lib/inventory';
 import { createShortageCardsText, getDeckOwnershipStatuses, getShortageEntries, type DeckOwnershipStatus } from '@/lib/deck-ownership';
 import { CARD_TYPE_STORAGE_KEY, normalizeCardTypeFilter, type CardTypeFilter } from '@/lib/card-type-preference';
+import { GROUP_STORAGE_KEY, normalizeGroupPreference } from '@/lib/group-preference';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
+const selectableGroupIds = new Set(['all', 'rivals', ...references.groups.filter((group) => group.enabled).map((group) => group.id)]);
 const cardsByBuilderId = new Map<string, Card[]>();
 for (const card of cards) {
   const id = baseCardId(card.cardNumber);
@@ -73,6 +75,14 @@ function readMemberDisplayMode(): MemberDisplayMode {
 function readCardTypeFilter(): CardTypeFilter {
   try {
     return normalizeCardTypeFilter(localStorage.getItem(CARD_TYPE_STORAGE_KEY));
+  } catch {
+    return 'all';
+  }
+}
+
+function readGroupPreference() {
+  try {
+    return normalizeGroupPreference(localStorage.getItem(GROUP_STORAGE_KEY), selectableGroupIds);
   } catch {
     return 'all';
   }
@@ -226,7 +236,7 @@ function MultiSelect({
 
 export default function Home() {
   const [query, setQuery] = useState('');
-  const [groupId, setGroupId] = useState('all');
+  const [groupId, setGroupId] = useState(readGroupPreference);
   const [memberIds, setMemberIds] = useState<string[]>([]);
   const [memberDisplayMode, setMemberDisplayMode] = useState<MemberDisplayMode>(readMemberDisplayMode);
   const [cardType, setCardType] = useState<CardTypeFilter>(readCardTypeFilter);
@@ -334,6 +344,14 @@ export default function Home() {
       // The current page remains usable even if storage is unavailable.
     }
   }, [cardType]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(GROUP_STORAGE_KEY, groupId);
+    } catch {
+      // The current page remains usable even if storage is unavailable.
+    }
+  }, [groupId]);
 
   useEffect(() => {
     try {
