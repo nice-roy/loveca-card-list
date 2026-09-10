@@ -61,6 +61,11 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .clear-search svg { width: 15px; } .select-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); align-items: start; gap: 12px; margin-top: 13px; }
 .filter-field { min-width: 0; } .filter-field > .filter-label { display: flex; align-items: center; gap: 5px; margin: 0 0 6px 2px; color: #846e7b; font-size: .69rem; font-weight: 800; } .filter-label svg { width: 12px; height: 12px; }
 .select-control,.select-control select { width: 100%; } .select-control select { height: 39px; border-radius: 11px; background: white; }
+.card-type-segment { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 3px; min-height: 39px; padding: 3px; border: 1px solid #eadfe5; border-radius: 11px; background: #fbf8fa; }
+.card-type-segment button { min-width: 0; border: 0; border-radius: 8px; background: transparent; color: #725e6b; font: inherit; font-size: .76rem; font-weight: 800; cursor: pointer; transition: background .16s ease, color .16s ease, box-shadow .16s ease; }
+.card-type-segment button:hover { background: #f3eaf0; }
+.card-type-segment button:focus-visible { outline: 2px solid #b8427d; outline-offset: 1px; }
+.card-type-segment button.active { background: #b8427d; color: #fff; box-shadow: 0 1px 3px rgba(109,37,74,.24); }
 .multi-select-trigger { width: 100%; height: 39px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 11px; overflow: hidden; border: 1px solid var(--input); border-radius: 11px; background: white; color: var(--foreground); text-align: left; }
 .multi-select-trigger:hover { border-color: #d7aec3; } .multi-select-trigger:focus-visible { outline: 3px solid color-mix(in oklab,var(--ring) 35%,transparent); outline-offset: 1px; }
 .multi-select-trigger > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .multi-select-trigger svg { width: 15px; flex: 0 0 auto; color: #8c7482; }

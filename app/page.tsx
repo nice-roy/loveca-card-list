@@ -22,6 +22,7 @@ import { groupMemberOptions, type MemberDisplayMode, type MemberOptionGroup } fr
 import { isRivalGroupId, matchesGroupFilter, matchesMemberGroupFilter } from '@/lib/group-filter';
 import { INVENTORY_STORAGE_KEY, MAX_OWNED_QUANTITY, inventoryTotalsByBase, matchesInventoryFilter, normalizeInventory, setOwnedQuantity, type InventoryFilter, type InventoryQuantities } from '@/lib/inventory';
 import { createShortageCardsText, getDeckOwnershipStatuses, getShortageEntries, type DeckOwnershipStatus } from '@/lib/deck-ownership';
+import { CARD_TYPE_STORAGE_KEY, normalizeCardTypeFilter, type CardTypeFilter } from '@/lib/card-type-preference';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -66,6 +67,14 @@ function readMemberDisplayMode(): MemberDisplayMode {
     return localStorage.getItem(MEMBER_DISPLAY_MODE_STORAGE_KEY) === 'unit' ? 'unit' : 'schoolYear';
   } catch {
     return 'schoolYear';
+  }
+}
+
+function readCardTypeFilter(): CardTypeFilter {
+  try {
+    return normalizeCardTypeFilter(localStorage.getItem(CARD_TYPE_STORAGE_KEY));
+  } catch {
+    return 'all';
   }
 }
 
@@ -220,7 +229,7 @@ export default function Home() {
   const [groupId, setGroupId] = useState('all');
   const [memberIds, setMemberIds] = useState<string[]>([]);
   const [memberDisplayMode, setMemberDisplayMode] = useState<MemberDisplayMode>(readMemberDisplayMode);
-  const [cardType, setCardType] = useState('all');
+  const [cardType, setCardType] = useState<CardTypeFilter>(readCardTypeFilter);
   const [productIds, setProductIds] = useState<string[]>([]);
   const [costIds, setCostIds] = useState<string[]>([]);
   const [scoreIds, setScoreIds] = useState<string[]>([]);
@@ -320,6 +329,14 @@ export default function Home() {
 
   useEffect(() => {
     try {
+      localStorage.setItem(CARD_TYPE_STORAGE_KEY, cardType);
+    } catch {
+      // The current page remains usable even if storage is unavailable.
+    }
+  }, [cardType]);
+
+  useEffect(() => {
+    try {
       localStorage.setItem(INVENTORY_STORAGE_KEY, JSON.stringify({ version: 1, cards: inventory }));
     } catch {
       // Inventory remains usable for the current page even if storage is unavailable.
@@ -359,7 +376,7 @@ export default function Home() {
     setQuery(''); setGroupId('all'); setMemberIds([]); setCardType('all'); setProductIds([]); setSortKey(DEFAULT_SORT); setVisibleCount(PAGE_SIZE);
     setCostIds([]); setScoreIds([]); setGroupIdenticalCards(true); setCandidateOnly(false); setInventoryFilter('all');
   };
-  const changeCardType = (nextCardType: string) => {
+  const changeCardType = (nextCardType: CardTypeFilter) => {
     setCardType(nextCardType);
     if (nextCardType !== 'member') setCostIds([]);
     if (nextCardType !== 'live') setScoreIds([]);
@@ -649,7 +666,7 @@ export default function Home() {
       <div className="filter-panel">
         <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" className="search-input" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
         <div className={`select-grid${cardType === 'member' ? ' with-cost-filter' : ''}`}>
-          <label className="filter-field"><span className="filter-label">カード種類</span><NativeSelect className="select-control" value={cardType} onChange={(event) => changeCardType(event.target.value)}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="member">メンバー</NativeSelectOption><NativeSelectOption value="live">ライブ</NativeSelectOption></NativeSelect></label>
+          <div className="filter-field card-type-filter"><span className="filter-label" id="card-type-label">カード種類</span><div aria-labelledby="card-type-label" className="card-type-segment" role="group"><button aria-pressed={cardType === 'all'} className={cardType === 'all' ? 'active' : ''} onClick={() => changeCardType('all')} type="button">すべて</button><button aria-pressed={cardType === 'member'} className={cardType === 'member' ? 'active' : ''} onClick={() => changeCardType('member')} type="button">メンバー</button><button aria-pressed={cardType === 'live'} className={cardType === 'live' ? 'active' : ''} onClick={() => changeCardType('live')} type="button">ライブ</button></div></div>
           {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" memberDisplayMode={memberDisplayMode} onChange={updateMemberIds} onMemberDisplayModeChange={setMemberDisplayMode} optionGroups={memberOptionGroups} options={availableMembers} selectedIds={memberIds} />}
           {cardType === 'member' && <MultiSelect key="cost" emptyLabel="すべてのコスト" id="cost-filter" label="コスト" onChange={updateCostIds} options={availableCosts} selectedIds={costIds} />}
           {cardType === 'live' && <MultiSelect key="score" emptyLabel="すべてのスコア" id="score-filter" label="スコア" onChange={updateScoreIds} options={availableScores} selectedIds={scoreIds} />}
