@@ -15,7 +15,9 @@
     "test:member-options": "node --experimental-strip-types --test scripts/test-member-options.mjs",
     "test:freeword-search": "node --experimental-strip-types --test scripts/test-freeword-search.mjs",
     "test:inventory": "node --experimental-strip-types --test scripts/test-inventory.mjs",
+    "test:cloud-sync": "node --experimental-strip-types --test scripts/test-cloud-sync.mjs",
     "test:utf8": "node --test scripts/test-utf8.mjs",
+    "build:sync-worker": "wrangler deploy --dry-run --config wrangler.sync.example.jsonc --outdir .wrangler/sync-dry-run",
     "lint": "oxlint",
     "format": "oxfmt"
   },

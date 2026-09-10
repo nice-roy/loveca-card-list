@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Copy, ExternalLink, Layers3, ListPlus, Minus, Plus, RotateCcw, Search, SlidersHorizontal, Sparkles, Trash2, X } from 'lucide-react';
+import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Cloud, CloudDownload, CloudUpload, Copy, ExternalLink, Layers3, ListPlus, Minus, Plus, RotateCcw, Search, SlidersHorizontal, Sparkles, Trash2, X } from 'lucide-react';
 import cardsJson from './data/cards.json';
 import referencesJson from './data/reference-data.json';
 import type { Card, ReferenceData, SortKey } from './data/schema';
@@ -17,13 +17,14 @@ import { baseCardId, cardVersion, groupCardsForDisplay } from '@/lib/card-groupi
 import { parseCandidateImportText } from '@/lib/candidate-import';
 import { matchesFreewordSearch } from '@/lib/freeword-search';
 import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckId, createDeckRecipeText, duplicateDeckName, emptyDeckForBulkClear, groupDeckEntriesByMetric, nextDefaultDeckName, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear, type DeckGroup, type DeckQuantities, type SavedDeck } from '@/lib/deck-builder';
-import { createBuilderTransferText, validateBuilderTransferText, type ValidatedBuilderTransfer } from '@/lib/builder-transfer';
+import { createBuilderTransfer, createBuilderTransferText, validateBuilderTransferText, type ValidatedBuilderTransfer } from '@/lib/builder-transfer';
 import { groupMemberOptions, type MemberDisplayMode, type MemberOptionGroup } from '@/lib/member-options';
 import { isRivalGroupId, matchesGroupFilter, matchesMemberGroupFilter } from '@/lib/group-filter';
 import { INVENTORY_STORAGE_KEY, MAX_OWNED_QUANTITY, inventoryTotalsByBase, matchesInventoryFilter, normalizeInventory, setOwnedQuantity, type InventoryFilter, type InventoryQuantities } from '@/lib/inventory';
 import { createShortageCardsText, getDeckOwnershipStatuses, getShortageEntries, type DeckOwnershipStatus } from '@/lib/deck-ownership';
 import { CARD_TYPE_STORAGE_KEY, normalizeCardTypeFilter, type CardTypeFilter } from '@/lib/card-type-preference';
 import { GROUP_STORAGE_KEY, normalizeGroupPreference } from '@/lib/group-preference';
+import { clearSyncConnectionStorage, CloudSyncError, createCloudSync, formatSyncCode, getSyncApiUrl, loadCloudSync, normalizeSyncCode, normalizeSyncMetadata, saveCloudSync, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncMetadata } from '@/lib/cloud-sync';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -52,6 +53,7 @@ const liveSortOptions: { value: SortKey; label: string }[] = [
   { value: 'scoreDesc', label: 'スコア：高い順' },
 ];
 const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', any: 'heart-any' };
+const syncApiUrl = getSyncApiUrl();
 
 function readBuilderState() {
   try {
@@ -95,6 +97,29 @@ function readInventory() {
   } catch {
     return {};
   }
+}
+
+function readSyncCode() {
+  try {
+    return normalizeSyncCode(localStorage.getItem(SYNC_CODE_STORAGE_KEY));
+  } catch {
+    return null;
+  }
+}
+
+function readSyncMetadata() {
+  try {
+    const saved = localStorage.getItem(SYNC_META_STORAGE_KEY);
+    return saved ? normalizeSyncMetadata(JSON.parse(saved)) : null;
+  } catch {
+    return null;
+  }
+}
+
+function formatSyncDate(value?: string) {
+  if (!value) return '—';
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? '—' : date.toLocaleString('ja-JP');
 }
 
 async function copyText(text: string) {
@@ -275,6 +300,17 @@ export default function Home() {
   const [dataTransferCopyFeedback, setDataTransferCopyFeedback] = useState<'success' | 'error' | null>(null);
   const [pendingDataImport, setPendingDataImport] = useState<ValidatedBuilderTransfer | null>(null);
   const [importedStateForUndo, setImportedStateForUndo] = useState<{ decks: SavedDeck[]; activeDeckId: string; candidates: string[]; inventory: InventoryQuantities } | null>(null);
+  const [importUndoLabel, setImportUndoLabel] = useState('データをインポートしました');
+  const [syncCode, setSyncCode] = useState<string | null>(readSyncCode);
+  const [syncMetadata, setSyncMetadata] = useState<SyncMetadata | null>(readSyncMetadata);
+  const [syncDialogOpen, setSyncDialogOpen] = useState(false);
+  const [syncView, setSyncView] = useState<'main' | 'connect' | 'preview' | 'conflict'>('main');
+  const [syncCodeInput, setSyncCodeInput] = useState('');
+  const [syncBusy, setSyncBusy] = useState(false);
+  const [syncMessage, setSyncMessage] = useState<{ kind: 'success' | 'error'; text: string } | null>(null);
+  const [syncCodeCopied, setSyncCodeCopied] = useState(false);
+  const [syncForceConfirm, setSyncForceConfirm] = useState(false);
+  const [pendingCloudImport, setPendingCloudImport] = useState<{ code: string; value: ValidatedBuilderTransfer; revision: number; createdAt: string; updatedAt: string } | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const activeDeck = decks.find((item) => item.id === activeDeckId) ?? decks[0];
@@ -360,6 +396,17 @@ export default function Home() {
       // Inventory remains usable for the current page even if storage is unavailable.
     }
   }, [inventory]);
+
+  useEffect(() => {
+    try {
+      if (syncCode) localStorage.setItem(SYNC_CODE_STORAGE_KEY, syncCode);
+      else localStorage.removeItem(SYNC_CODE_STORAGE_KEY);
+      if (syncMetadata) localStorage.setItem(SYNC_META_STORAGE_KEY, JSON.stringify(syncMetadata));
+      else localStorage.removeItem(SYNC_META_STORAGE_KEY);
+    } catch {
+      // Cloud sync stays usable for the current page even if metadata cannot be retained.
+    }
+  }, [syncCode, syncMetadata]);
 
   const filteredCards = useMemo(() => {
     return cards
@@ -576,6 +623,118 @@ export default function Home() {
     setPendingDataImport(null);
     setDataTransferOpen(true);
   };
+  const currentSyncPayload = () => createBuilderTransfer(decks, activeDeckId, candidateIds, inventory);
+  const setSyncFailure = (error: unknown) => {
+    const text = error instanceof CloudSyncError ? error.message : 'クラウド同期に失敗しました。時間をおいてもう一度お試しください。';
+    setSyncMessage({ kind: 'error', text });
+  };
+  const openCloudSync = () => {
+    setSyncView('main');
+    setSyncCodeInput('');
+    setSyncMessage(null);
+    setSyncCodeCopied(false);
+    setSyncForceConfirm(false);
+    setPendingCloudImport(null);
+    setSyncDialogOpen(true);
+  };
+  const createSyncConnection = async () => {
+    setSyncBusy(true);
+    setSyncMessage(null);
+    try {
+      const result = await createCloudSync(syncApiUrl, currentSyncPayload());
+      const code = normalizeSyncCode(result.code);
+      if (!code) throw new Error('invalid sync code');
+      const metadata = { revision: result.revision, cloudUpdatedAt: result.updatedAt, lastSyncedAt: new Date().toISOString() };
+      setSyncCode(code);
+      setSyncMetadata(metadata);
+      setSyncMessage({ kind: 'success', text: '現在のデータを保存し、同期コードを作成しました。' });
+    } catch (error) {
+      setSyncFailure(error);
+    } finally {
+      setSyncBusy(false);
+    }
+  };
+  const prepareCloudImport = async (codeValue: string) => {
+    const code = normalizeSyncCode(codeValue);
+    if (!code) {
+      setSyncMessage({ kind: 'error', text: '同期コードの形式を確認してください。' });
+      return;
+    }
+    setSyncBusy(true);
+    setSyncMessage(null);
+    try {
+      const result = await loadCloudSync(syncApiUrl, code);
+      const validation = validateBuilderTransferText(JSON.stringify(result.payload), validBuilderIds, validVersionIds);
+      if (!validation.ok) {
+        setSyncMessage({ kind: 'error', text: `クラウドデータを適用できません：${validation.errors.join('、')}` });
+        return;
+      }
+      setPendingCloudImport({ code, value: validation.value, revision: result.revision, createdAt: result.createdAt, updatedAt: result.updatedAt });
+      setSyncView('preview');
+    } catch (error) {
+      setSyncFailure(error);
+    } finally {
+      setSyncBusy(false);
+    }
+  };
+  const saveToCloud = async (force = false) => {
+    if (!syncCode || !syncMetadata) {
+      setSyncMessage({ kind: 'error', text: '先にクラウドから読み込み、同期状態を確認してください。' });
+      return;
+    }
+    setSyncBusy(true);
+    setSyncMessage(null);
+    try {
+      const result = await saveCloudSync(syncApiUrl, syncCode, currentSyncPayload(), syncMetadata.revision, force);
+      setSyncMetadata({ revision: result.revision, cloudUpdatedAt: result.updatedAt, lastSyncedAt: new Date().toISOString() });
+      setSyncView('main');
+      setSyncForceConfirm(false);
+      setSyncMessage({ kind: 'success', text: '現在の端末データをクラウドへ保存しました。' });
+    } catch (error) {
+      if (error instanceof CloudSyncError && error.code === 'revision_conflict') {
+        setSyncView('conflict');
+        setSyncForceConfirm(false);
+        setSyncMessage({ kind: 'error', text: '別の端末でクラウドデータが更新されています。自動では上書きしません。' });
+      } else setSyncFailure(error);
+    } finally {
+      setSyncBusy(false);
+    }
+  };
+  const confirmCloudImport = () => {
+    if (!pendingCloudImport) return;
+    setImportedStateForUndo({ decks: decks.map((item) => ({ ...item, cards: { ...item.cards } })), activeDeckId, candidates: [...candidateIds], inventory: { ...inventory } });
+    setImportUndoLabel('クラウドから読み込みました');
+    setDecks(pendingCloudImport.value.decks.map((item) => ({ ...item, cards: { ...item.cards } })));
+    setActiveDeckId(pendingCloudImport.value.activeDeckId);
+    setCandidateIds(new Set(pendingCloudImport.value.candidates));
+    setInventory({ ...pendingCloudImport.value.inventory });
+    setSyncCode(pendingCloudImport.code);
+    setSyncMetadata({ revision: pendingCloudImport.revision, cloudUpdatedAt: pendingCloudImport.updatedAt, lastSyncedAt: new Date().toISOString() });
+    setClearedDeckForUndo(null);
+    setPendingRemovalId(null);
+    setPendingCloudImport(null);
+    setSyncDialogOpen(false);
+    setDeckOpen(true);
+  };
+  const copySyncCode = async () => {
+    if (!syncCode) return;
+    const copied = await copyText(formatSyncCode(syncCode));
+    setSyncCodeCopied(copied);
+    window.setTimeout(() => setSyncCodeCopied(false), 1800);
+  };
+  const disconnectCloudSync = () => {
+    try {
+      clearSyncConnectionStorage(localStorage);
+    } catch {
+      // The in-memory connection is still removed when storage is unavailable.
+    }
+    setSyncCode(null);
+    setSyncMetadata(null);
+    setSyncCodeInput('');
+    setPendingCloudImport(null);
+    setSyncView('main');
+    setSyncMessage({ kind: 'success', text: 'この端末の同期を解除しました。クラウドデータは残っています。' });
+  };
   const exportDataText = useMemo(() => createBuilderTransferText(decks, activeDeckId, candidateIds, inventory), [activeDeckId, candidateIds, decks, inventory]);
   const copyDataExport = async () => {
     const copied = await copyText(exportDataText);
@@ -607,6 +766,7 @@ export default function Home() {
   const confirmDataImport = () => {
     if (!pendingDataImport) return;
     setImportedStateForUndo({ decks: decks.map((item) => ({ ...item, cards: { ...item.cards } })), activeDeckId, candidates: [...candidateIds], inventory: { ...inventory } });
+    setImportUndoLabel('データをインポートしました');
     setDecks(pendingDataImport.decks.map((item) => ({ ...item, cards: { ...item.cards } })));
     setActiveDeckId(pendingDataImport.activeDeckId);
     setCandidateIds(new Set(pendingDataImport.candidates));
@@ -632,6 +792,9 @@ export default function Home() {
   }) ?? [];
   const importInventoryKinds = pendingDataImport ? Object.keys(pendingDataImport.inventory).length : 0;
   const importInventoryTotal = pendingDataImport ? Object.values(pendingDataImport.inventory).reduce((sum, count) => sum + count, 0) : 0;
+  const cloudPreviewDeckCount = pendingCloudImport?.value.decks.length ?? 0;
+  const cloudPreviewCandidateCount = pendingCloudImport?.value.candidates.length ?? 0;
+  const cloudPreviewInventoryKinds = pendingCloudImport ? Object.keys(pendingCloudImport.value.inventory).length : 0;
 
   const deckSection = (label: string, metricLabel: 'COST' | 'SCORE', groups: DeckGroup[]) => groups.length > 0 && <section className="deck-section">
     <div className="deck-section-heading"><h3>{label}<span>{groups.reduce((sum, group) => sum + group.quantity, 0)}枚</span></h3></div>
@@ -694,8 +857,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="result-tools">
-        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button><Button className="data-transfer-button" onClick={openDataTransfer} size="sm" type="button" variant="outline">データ移行</Button></div>
+        <div className="result-tools">
+        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button><Button className="data-transfer-button" onClick={openDataTransfer} size="sm" type="button" variant="outline">データ移行</Button><Button className="cloud-sync-button" onClick={openCloudSync} size="sm" type="button" variant="outline"><Cloud />クラウド同期{syncCode ? <span aria-label="接続済み">●</span> : null}</Button></div>
         <div className="result-bar" aria-live="polite"><div><SlidersHorizontal aria-hidden="true" /><strong>{displayGroups.length}</strong><span>{groupIdenticalCards ? `種を表示（元カード${filteredCards.length}枚）` : '枚が見つかりました'}</span></div>{hasFilters && <Button variant="ghost" onClick={resetFilters}><X /> 条件をクリア</Button>}</div>
       </div>
       {displayGroups.length ? <div className="card-grid">{displayGroups.slice(0, visibleCount).map((group) => {
@@ -720,7 +883,7 @@ export default function Home() {
     </section>
     <footer><p>非公式ファンメイドカードリスト · エネルギーカードは収録対象外です</p><p>未登録のレアリティは、確認済み情報のみ順次追加します。</p></footer>
     </div>
-    <Sheet disablePointerDismissal={isDesktopDeck} modal={!isDesktopDeck} onOpenChange={setDeckOpen} open={deckOpen}><SheetTrigger className={`deck-launcher${deckOpen ? ' deck-is-open' : ''}`} aria-label={`デッキを開く、現在${deckTotal}枚`}><ListPlus /><span>デッキ</span><strong>{deckTotal}</strong></SheetTrigger><SheetContent className="deck-sheet" initialFocus={!isDesktopDeck} side="right"><SheetHeader className="deck-header"><SheetTitle>デッキ</SheetTitle><SheetDescription>メンバーはCOST別、ライブはSCORE別に表示しています。</SheetDescription><div className="active-deck-control"><label><span>現在のデッキ</span><NativeSelect value={activeDeckId} onChange={(event) => switchDeck(event.target.value)}>{decks.map((item) => <NativeSelectOption key={item.id} value={item.id}>{item.name}</NativeSelectOption>)}</NativeSelect></label><Button onClick={() => setDeckManagerOpen(true)} size="sm" type="button" variant="outline">デッキ管理</Button></div><div className="deck-total"><span>合計</span><strong>{deckTotal}</strong><span>枚</span></div>{deckEntries.length > 0 && <div className={`deck-shortage-summary${shortageEntries.length ? ' shortage' : ' complete'}`}><div>{shortageEntries.length ? <><strong>不足カード {shortageEntries.length}種類 / 合計{shortageTotal}枚</strong><span>所持数を更新するとすぐ再計算されます</span></> : <><strong><Check /> 必要カードをすべて所持</strong><span>このデッキの不足カードはありません</span></>}</div>{shortageEntries.length > 0 && <Button onClick={() => setShortageDialogOpen(true)} size="sm" type="button" variant="outline">不足カード一覧</Button>}</div>}<div className="deck-copy-actions"><Button onClick={copyDeckRecipe} size="sm" type="button" variant="outline">{copyFeedback === 'recipe' ? <Check /> : <Copy />}{copyFeedback === 'recipe' ? 'コピーしました' : 'デッキレシピをコピー'}</Button><Button onClick={requestAiCopy} size="sm" type="button" variant="outline">{copyFeedback === 'ai' ? <Check /> : <Bot />}{copyFeedback === 'ai' ? 'コピーしました' : 'AI相談用にコピー'}</Button></div><Button className="deck-clear-button" disabled={!deckEntries.length} onClick={() => setDeckClearConfirmOpen(true)} size="sm" type="button" variant="outline"><Trash2 />デッキを空にする</Button>{clearedDeckForUndo && <div aria-live="polite" className="deck-clear-undo"><span>デッキを空にしました</span><Button onClick={undoDeckClear} size="sm" type="button" variant="outline"><RotateCcw />元に戻す</Button></div>}{importedStateForUndo && <div aria-live="polite" className="deck-clear-undo data-import-undo"><span>データをインポートしました</span><Button onClick={undoDataImport} size="sm" type="button" variant="outline"><RotateCcw />元に戻す</Button></div>}<p aria-live="polite" className={`copy-feedback${copyFeedback === 'error' ? ' error' : ''}`}>{copyFeedback === 'error' ? 'コピーできませんでした' : copyFeedback ? 'クリップボードにコピーしました' : ''}</p></SheetHeader><div className="deck-scroll">{deckEntries.length ? <>{deckSection('メンバーカード', 'COST', memberDeckGroups)}{deckSection('ライブカード', 'SCORE', liveDeckGroups)}</> : <div className="deck-empty"><ListPlus /><strong>デッキは空です</strong><p>カード一覧の「デッキに追加」から選べます。</p></div>}</div></SheetContent></Sheet>
+    <Sheet disablePointerDismissal={isDesktopDeck} modal={!isDesktopDeck} onOpenChange={setDeckOpen} open={deckOpen}><SheetTrigger className={`deck-launcher${deckOpen ? ' deck-is-open' : ''}`} aria-label={`デッキを開く、現在${deckTotal}枚`}><ListPlus /><span>デッキ</span><strong>{deckTotal}</strong></SheetTrigger><SheetContent className="deck-sheet" initialFocus={!isDesktopDeck} side="right"><SheetHeader className="deck-header"><SheetTitle>デッキ</SheetTitle><SheetDescription>メンバーはCOST別、ライブはSCORE別に表示しています。</SheetDescription><div className="active-deck-control"><label><span>現在のデッキ</span><NativeSelect value={activeDeckId} onChange={(event) => switchDeck(event.target.value)}>{decks.map((item) => <NativeSelectOption key={item.id} value={item.id}>{item.name}</NativeSelectOption>)}</NativeSelect></label><Button onClick={() => setDeckManagerOpen(true)} size="sm" type="button" variant="outline">デッキ管理</Button></div><div className="deck-total"><span>合計</span><strong>{deckTotal}</strong><span>枚</span></div>{deckEntries.length > 0 && <div className={`deck-shortage-summary${shortageEntries.length ? ' shortage' : ' complete'}`}><div>{shortageEntries.length ? <><strong>不足カード {shortageEntries.length}種類 / 合計{shortageTotal}枚</strong><span>所持数を更新するとすぐ再計算されます</span></> : <><strong><Check /> 必要カードをすべて所持</strong><span>このデッキの不足カードはありません</span></>}</div>{shortageEntries.length > 0 && <Button onClick={() => setShortageDialogOpen(true)} size="sm" type="button" variant="outline">不足カード一覧</Button>}</div>}<div className="deck-copy-actions"><Button onClick={copyDeckRecipe} size="sm" type="button" variant="outline">{copyFeedback === 'recipe' ? <Check /> : <Copy />}{copyFeedback === 'recipe' ? 'コピーしました' : 'デッキレシピをコピー'}</Button><Button onClick={requestAiCopy} size="sm" type="button" variant="outline">{copyFeedback === 'ai' ? <Check /> : <Bot />}{copyFeedback === 'ai' ? 'コピーしました' : 'AI相談用にコピー'}</Button></div><Button className="deck-clear-button" disabled={!deckEntries.length} onClick={() => setDeckClearConfirmOpen(true)} size="sm" type="button" variant="outline"><Trash2 />デッキを空にする</Button>{clearedDeckForUndo && <div aria-live="polite" className="deck-clear-undo"><span>デッキを空にしました</span><Button onClick={undoDeckClear} size="sm" type="button" variant="outline"><RotateCcw />元に戻す</Button></div>}{importedStateForUndo && <div aria-live="polite" className="deck-clear-undo data-import-undo"><span>{importUndoLabel}</span><Button onClick={undoDataImport} size="sm" type="button" variant="outline"><RotateCcw />元に戻す</Button></div>}<p aria-live="polite" className={`copy-feedback${copyFeedback === 'error' ? ' error' : ''}`}>{copyFeedback === 'error' ? 'コピーできませんでした' : copyFeedback ? 'クリップボードにコピーしました' : ''}</p></SheetHeader><div className="deck-scroll">{deckEntries.length ? <>{deckSection('メンバーカード', 'COST', memberDeckGroups)}{deckSection('ライブカード', 'SCORE', liveDeckGroups)}</> : <div className="deck-empty"><ListPlus /><strong>デッキは空です</strong><p>カード一覧の「デッキに追加」から選べます。</p></div>}</div></SheetContent></Sheet>
     <Dialog onOpenChange={setShortageDialogOpen} open={shortageDialogOpen}><DialogContent className="shortage-dialog"><DialogHeader><DialogTitle>不足カード一覧</DialogTitle><DialogDescription>「{activeDeck.name}」を実物で組むために不足しているカードです。所持数は同一baseCardIdの全バージョンを合算しています。</DialogDescription></DialogHeader><div className="shortage-list">{shortageEntries.map((entry) => <section key={entry.id}><div><strong>{entry.card.name}</strong><code>{entry.id}</code></div><dl><div><dt>必要</dt><dd>{entry.quantity}</dd></div><div><dt>所持</dt><dd>{entry.ownedQuantity}</dd></div><div><dt>不足</dt><dd>{entry.shortageQuantity}</dd></div></dl></section>)}</div><DialogFooter className="shortage-footer"><DialogClose render={<Button type="button" variant="outline" />}>閉じる</DialogClose><Button onClick={copyShortageCards} type="button">{shortageCopyFeedback === 'success' ? <Check /> : <Copy />}{shortageCopyFeedback === 'success' ? 'コピーしました' : '不足カードをコピー'}</Button></DialogFooter>{shortageCopyFeedback === 'error' && <p aria-live="polite" className="shortage-copy-error">コピーできませんでした</p>}</DialogContent></Dialog>
     <Dialog onOpenChange={setAiCandidateDialogOpen} open={aiCandidateDialogOpen}><DialogContent className="ai-candidate-dialog"><DialogHeader><DialogTitle>AI相談に含める候補カード</DialogTitle><DialogDescription>今回のコピーに含めるカードだけ選択してください。元の候補状態は変わりません。</DialogDescription></DialogHeader><div className="ai-candidate-tools"><Button onClick={() => setSelectedAiCandidateIds(new Set(availableAiCandidates.map((entry) => entry.id)))} size="sm" type="button" variant="outline">すべて選択</Button><Button disabled={!selectedAiCandidateIds.size} onClick={() => setSelectedAiCandidateIds(new Set())} size="sm" type="button" variant="outline">すべて解除</Button></div><div className="ai-candidate-list">{availableAiCandidates.map(({ id, card }) => <label className="ai-candidate-option" key={id}><input checked={selectedAiCandidateIds.has(id)} onChange={() => toggleAiCandidate(id)} type="checkbox" /><span><strong>{card.name}</strong><code>{id}</code><small>{card.cardType === 'member' ? `COST ${card.member?.cost ?? '—'}` : `SCORE ${card.live?.score ?? '—'}`}</small></span></label>)}</div><DialogFooter className="ai-candidate-footer"><DialogClose render={<Button type="button" variant="outline" />}>キャンセル</DialogClose><Button onClick={copyAiWithCandidates} type="button"><Copy />この内容でコピー</Button></DialogFooter></DialogContent></Dialog>
     <Dialog onOpenChange={setCandidateImportOpen} open={candidateImportOpen}><DialogContent className="candidate-import-dialog"><DialogHeader><DialogTitle>候補を一括追加</DialogTitle><DialogDescription>AIの「候補一括追加用」ブロック、またはカード番号を貼り付けてください。推奨枚数は候補追加には使用しません。</DialogDescription></DialogHeader><textarea aria-label="候補に追加するカード番号" className="candidate-import-textarea" onChange={(event) => { setCandidateImportText(event.target.value); setCandidateImportResult(null); }} placeholder={'PL!SP-bp1-012 | 澁谷かのん | 4\nPL!SP-bp1-001 | 澁谷かのん | 4'} value={candidateImportText} />{candidateImportResult && <div aria-live="polite" className="candidate-import-result">{candidateImportResult.recognized ? <><strong>{candidateImportResult.recognized}種類を認識しました</strong><span>新しく候補に追加：{candidateImportResult.added}種類</span><span>すでに候補：{candidateImportResult.existing}種類</span>{candidateImportResult.usedSection && <span>「候補一括追加用」セクションを優先して解析しました</span>}{candidateImportResult.unknown.length > 0 && <span>確認できなかったカード：{candidateImportResult.unknown.join('、')}</span>}</> : <><strong>追加できるカード番号を確認できませんでした</strong>{candidateImportResult.unknown.length > 0 && <span>確認できなかったカード：{candidateImportResult.unknown.join('、')}</span>}</>}</div>}<DialogFooter className="candidate-import-footer"><DialogClose render={<Button type="button" variant="outline" />}>キャンセル</DialogClose><Button onClick={importCandidates} type="button"><Bookmark />候補に追加</Button></DialogFooter></DialogContent></Dialog>
@@ -732,6 +895,18 @@ export default function Home() {
         {dataTransferView === 'import' && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('menu')} type="button">← 戻る</button><strong>インポート</strong></div><textarea aria-label="インポートするJSON" className="candidate-import-textarea data-transfer-textarea" onChange={(event) => { setDataTransferText(event.target.value); setDataTransferErrors([]); }} placeholder={'{\n  "format": "loveca-card-list-state",\n  "version": 3,\n  ...\n}'} value={dataTransferText} />{dataTransferErrors.length > 0 && <div aria-live="polite" className="data-transfer-errors"><strong>インポートできませんでした</strong>{dataTransferErrors.map((error) => <span key={error}>・{error}</span>)}</div>}<div className="data-transfer-actions"><Button onClick={reviewDataImport} type="button">内容を確認</Button></div></>}
         {dataTransferView === 'preview' && pendingDataImport && <><div className="data-transfer-heading"><button onClick={() => setDataTransferView('import')} type="button">← 戻る</button><strong>インポートするデータ</strong></div><div className="data-transfer-deck-preview"><strong>{importDeckPreviews.length}デッキ</strong>{importDeckPreviews.map((item) => <section key={item.id}><h3>{item.name}{item.id === pendingDataImport.activeDeckId && <span>選択中</span>}</h3><dl><div><dt>メンバー</dt><dd>{item.memberTotal}枚</dd></div><div><dt>ライブ</dt><dd>{item.liveTotal}枚</dd></div><div><dt>合計</dt><dd>{item.total}枚</dd></div></dl></section>)}</div><div className={`data-transfer-preview-note${!pendingDataImport.hasInventoryData ? ' legacy-warning' : ''}`}><strong>候補：{pendingDataImport.candidates.length}種類</strong><strong>所持：{importInventoryKinds}種類・合計{importInventoryTotal}枚</strong><span>現在の全デッキ・候補・所持情報は、この内容に置き換えられます。</span>{pendingDataImport.sourceVersion === 1 && <span>version 1のデータは「デッキ1」として読み込みます。</span>}{!pendingDataImport.hasInventoryData && <span>このデータには所持カード情報がありません。インポートすると現在の所持情報も消去されます。</span>}</div><div className="data-transfer-actions"><Button onClick={confirmDataImport} type="button">インポートする</Button><Button onClick={() => setDataTransferOpen(false)} type="button" variant="outline">キャンセル</Button></div></>}
         {dataTransferView !== 'preview' && <DialogFooter className="data-transfer-footer"><DialogClose render={<Button type="button" variant="outline" />}>閉じる</DialogClose></DialogFooter>}
+      </DialogContent>
+    </Dialog>
+    <Dialog onOpenChange={setSyncDialogOpen} open={syncDialogOpen}>
+      <DialogContent className="cloud-sync-dialog">
+        <DialogHeader><DialogTitle>クラウド同期</DialogTitle><DialogDescription>デッキ・候補・所持カードを、同期コードを使って手動で共有します。検索条件や表示設定は同期しません。</DialogDescription></DialogHeader>
+        {syncView === 'main' && !syncCode && <div className="cloud-sync-unconnected"><Button disabled={syncBusy} onClick={createSyncConnection} type="button"><CloudUpload />{syncBusy ? '作成中…' : '同期コードを作成'}</Button><Button disabled={syncBusy} onClick={() => { setSyncView('connect'); setSyncMessage(null); }} type="button" variant="outline"><CloudDownload />既存の同期コードを入力</Button><p>同期コードを作成すると、現在の全デッキ・候補・所持カードが初期データとして保存されます。</p></div>}
+        {syncView === 'connect' && <div className="cloud-sync-connect"><div className="data-transfer-heading"><button onClick={() => setSyncView('main')} type="button">← 戻る</button><strong>既存コードへ接続</strong></div><label htmlFor="cloud-sync-code-input"><span>同期コード</span><Input autoCapitalize="characters" autoComplete="off" id="cloud-sync-code-input" onChange={(event) => { setSyncCodeInput(event.target.value); setSyncMessage(null); }} placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" spellCheck={false} value={syncCodeInput} /></label><p>コードを確認後、クラウド内容のプレビューを表示します。この時点では端末データを変更しません。</p><Button disabled={syncBusy || !syncCodeInput.trim()} onClick={() => void prepareCloudImport(syncCodeInput)} type="button">{syncBusy ? '確認中…' : 'クラウド内容を確認'}</Button></div>}
+        {syncView === 'main' && syncCode && <div className="cloud-sync-connected"><div className="cloud-sync-code"><span>同期コード</span><strong>{formatSyncCode(syncCode)}</strong><Button onClick={copySyncCode} size="sm" type="button" variant="outline">{syncCodeCopied ? <Check /> : <Copy />}{syncCodeCopied ? 'コピーしました' : 'コピー'}</Button></div><p className="cloud-sync-warning">このコードを知っている人は同期データへアクセスできます。第三者へ公開せず、安全に保管してください。</p><dl className="cloud-sync-meta"><div><dt>クラウド最終更新</dt><dd>{formatSyncDate(syncMetadata?.cloudUpdatedAt)}</dd></div><div><dt>この端末の最終同期</dt><dd>{formatSyncDate(syncMetadata?.lastSyncedAt)}</dd></div><div><dt>revision</dt><dd>{syncMetadata?.revision ?? '未確認'}</dd></div></dl><div className="cloud-sync-actions"><Button disabled={syncBusy || !syncMetadata} onClick={() => void saveToCloud(false)} type="button"><CloudUpload />{syncBusy ? '処理中…' : 'クラウドへ保存'}</Button><Button disabled={syncBusy} onClick={() => void prepareCloudImport(syncCode)} type="button" variant="outline"><CloudDownload />クラウドから読み込み</Button></div>{!syncMetadata && <p className="cloud-sync-note">同期状態を確認するため、先に「クラウドから読み込み」を実行してください。</p>}<Button className="cloud-sync-disconnect" disabled={syncBusy} onClick={disconnectCloudSync} size="sm" type="button" variant="ghost">この端末の同期を解除</Button></div>}
+        {syncView === 'preview' && pendingCloudImport && <div className="cloud-sync-preview"><div className="data-transfer-heading"><button onClick={() => { setPendingCloudImport(null); setSyncView(syncCode ? 'main' : 'connect'); }} type="button">← 戻る</button><strong>クラウドから読み込む内容</strong></div><dl><div><dt>デッキ</dt><dd>{cloudPreviewDeckCount}件</dd></div><div><dt>候補</dt><dd>{cloudPreviewCandidateCount}種類</dd></div><div><dt>所持登録</dt><dd>{cloudPreviewInventoryKinds}種類</dd></div><div><dt>クラウド更新</dt><dd>{formatSyncDate(pendingCloudImport.updatedAt)}</dd></div></dl><p>現在のこの端末の全デッキ・候補・所持カードを、クラウド状態で置き換えます。実行直後は1回だけ元に戻せます。</p><div className="cloud-sync-actions"><Button onClick={confirmCloudImport} type="button">この内容を読み込む</Button><Button onClick={() => setSyncDialogOpen(false)} type="button" variant="outline">キャンセル</Button></div></div>}
+        {syncView === 'conflict' && <div className="cloud-sync-conflict"><strong>別の端末で更新されています</strong><p>古い状態からの保存は中止しました。最新のクラウドデータを読み込むか、操作をキャンセルしてください。</p><div className="cloud-sync-actions"><Button disabled={syncBusy || !syncCode} onClick={() => syncCode && void prepareCloudImport(syncCode)} type="button"><CloudDownload />最新データを読み込む</Button><Button onClick={() => { setSyncView('main'); setSyncMessage(null); setSyncForceConfirm(false); }} type="button" variant="outline">キャンセル</Button></div>{!syncForceConfirm ? <button className="cloud-force-link" onClick={() => setSyncForceConfirm(true)} type="button">現在の端末データで上書きする場合</button> : <div className="cloud-force-confirm" role="alert"><strong>本当にクラウドを上書きしますか？</strong><p>別端末の最新データは失われます。</p><div><Button disabled={syncBusy} onClick={() => void saveToCloud(true)} type="button" variant="destructive">上書きを実行</Button><Button onClick={() => setSyncForceConfirm(false)} type="button" variant="outline">戻る</Button></div></div>}</div>}
+        {syncMessage && <p aria-live="polite" className={`cloud-sync-message ${syncMessage.kind}`}>{syncMessage.text}</p>}
+        <DialogFooter className="cloud-sync-footer"><DialogClose render={<Button type="button" variant="outline" />}>閉じる</DialogClose></DialogFooter>
       </DialogContent>
     </Dialog>
     <Dialog onOpenChange={setDeckManagerOpen} open={deckManagerOpen}>

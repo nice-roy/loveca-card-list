@@ -98,6 +98,9 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .candidate-toggle { color: #8a3562; }
 .candidate-import-button { min-height: 36px; padding-inline: 10px; white-space: nowrap; }
 .data-transfer-button { min-height: 36px; padding-inline: 10px; border-color: #d9c4db; color: #704566; background: #fffafe; white-space: nowrap; }
+.cloud-sync-button { min-height: 36px; padding-inline: 10px; border-color: #c9d7e7; color: #3d627f; background: #f8fbff; white-space: nowrap; }
+.cloud-sync-button svg { width: 15px; height: 15px; }
+.cloud-sync-button span { color: #27805e; font-size: .55rem; }
 .result-bar { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .result-bar > div { display: flex; align-items: baseline; gap: 6px; color: #74616d; } .result-bar > div svg { width: 16px; align-self: center; margin-right: 3px; }
 .result-bar strong { color: #31232c; font-size: 1.4rem; } .result-bar span { font-size: .82rem; }
@@ -262,6 +265,38 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .data-transfer-preview-note.legacy-warning strong { color: #76531a; }
 .data-transfer-copy-error { margin: 0; color: #a23c47; font-size: .7rem; font-weight: 800; }
 .data-transfer-footer { margin: 0 -18px -18px; }
+.cloud-sync-dialog { z-index: 71; width: min(590px,calc(100vw - 24px)); max-width: none; padding: 18px; border: 1px solid #dce4ed; background: #fbfdff; }
+.cloud-sync-dialog [data-slot="dialog-title"] { color: #345f7e; font-size: 1rem; font-weight: 900; }
+.cloud-sync-dialog [data-slot="dialog-description"] { padding-right: 28px; font-size: .76rem; line-height: 1.55; }
+.cloud-sync-unconnected { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.cloud-sync-unconnected > button { min-height: 54px; }
+.cloud-sync-unconnected > p { grid-column: 1 / -1; margin: 0; color: #687985; font-size: .7rem; line-height: 1.55; }
+.cloud-sync-connect,.cloud-sync-connected,.cloud-sync-preview,.cloud-sync-conflict { display: grid; gap: 12px; }
+.cloud-sync-connect label { display: grid; gap: 6px; color: #536d80; font-size: .72rem; font-weight: 800; }
+.cloud-sync-connect label input { text-transform: uppercase; letter-spacing: .06em; }
+.cloud-sync-connect > p,.cloud-sync-preview > p,.cloud-sync-conflict > p,.cloud-sync-note { margin: 0; color: #687985; font-size: .7rem; line-height: 1.55; }
+.cloud-sync-code { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px 10px; padding: 12px; border: 1px solid #d7e2eb; border-radius: 12px; background: white; }
+.cloud-sync-code > span { grid-column: 1 / -1; color: #6c7d89; font-size: .65rem; font-weight: 800; }
+.cloud-sync-code > strong { min-width: 0; overflow-wrap: anywhere; color: #345d7a; font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: .78rem; letter-spacing: .04em; }
+.cloud-sync-warning { margin: 0; padding: 9px 10px; border: 1px solid #e7cc8e; border-radius: 10px; background: #fff9e9; color: #765d29; font-size: .69rem; line-height: 1.5; }
+.cloud-sync-meta,.cloud-sync-preview dl { display: grid; gap: 6px; margin: 0; }
+.cloud-sync-meta div,.cloud-sync-preview dl div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 9px; border-radius: 8px; background: #f1f6fa; font-size: .69rem; }
+.cloud-sync-meta dt,.cloud-sync-preview dt { color: #6a7e8c; font-weight: 800; }
+.cloud-sync-meta dd,.cloud-sync-preview dd { margin: 0; color: #355c77; font-weight: 900; text-align: right; }
+.cloud-sync-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.cloud-sync-actions button { flex: 1 1 190px; min-height: 40px; }
+.cloud-sync-disconnect { justify-self: start; color: #7a6b73; }
+.cloud-sync-conflict { padding: 12px; border: 1px solid #e2b7bb; border-radius: 12px; background: #fff7f7; }
+.cloud-sync-conflict > strong { color: #9c3e48; }
+.cloud-force-link { justify-self: start; padding: 3px 0; border: 0; background: transparent; color: #876c75; font-size: .67rem; text-decoration: underline; }
+.cloud-force-confirm { display: grid; gap: 6px; padding: 10px; border: 1px solid #dfb2b7; border-radius: 9px; background: white; }
+.cloud-force-confirm strong { color: #a13b47; font-size: .76rem; }
+.cloud-force-confirm p { margin: 0; color: #7f5c62; font-size: .68rem; }
+.cloud-force-confirm > div { display: flex; gap: 7px; }
+.cloud-sync-message { margin: 0; padding: 9px 10px; border-radius: 9px; font-size: .71rem; font-weight: 800; line-height: 1.5; }
+.cloud-sync-message.success { background: #edf8f3; color: #287355; }
+.cloud-sync-message.error { background: #fff0f1; color: #9b3c47; }
+.cloud-sync-footer { margin: 0 -18px -18px; }
 .data-import-undo { border-color: #cbd7e8; background: #f4f8ff; color: #415b87; }
 .data-import-undo button { color: #465f8c; }
 .data-transfer-deck-preview { min-height: 0; display: grid; align-content: start; gap: 8px; max-height: 340px; overflow-y: auto; }
@@ -405,6 +440,8 @@ footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25p
   .candidate-import-footer { margin: 0 -14px -14px; }
   .data-transfer-dialog { padding: 14px; }
   .data-transfer-footer { margin: 0 -14px -14px; }
+  .cloud-sync-dialog { padding: 14px; }
+  .cloud-sync-footer { margin: 0 -14px -14px; }
   .deck-manager-dialog,.deck-delete-dialog { padding: 14px; }
   .deck-manager-footer { margin: 0 -14px -14px; }
   .deck-clear-dialog { padding: 14px; }
@@ -422,6 +459,11 @@ footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25p
   .data-transfer-menu { grid-template-columns: 1fr; }
   .data-transfer-actions { display: grid; grid-template-columns: 1fr; }
   .data-transfer-actions button { width: 100%; }
+  .cloud-sync-unconnected { grid-template-columns: 1fr; }
+  .cloud-sync-unconnected > p { grid-column: 1; }
+  .cloud-sync-actions { display: grid; grid-template-columns: 1fr; }
+  .cloud-sync-actions button { width: 100%; }
+  .cloud-sync-code { grid-template-columns: 1fr; }
   .deck-manager-actions { grid-template-columns: 1fr; }
   .deck-manager-list > section { grid-template-columns: 1fr; }
   .deck-manager-row-actions { display: grid; grid-template-columns: 1fr 1fr; }
