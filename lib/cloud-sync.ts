@@ -18,6 +18,27 @@ export type SyncSnapshot = {
   updatedAt: string;
 };
 
+export type SyncHistorySummary = {
+  id: number;
+  sourceRevision: number;
+  savedAt: string;
+  deckCount: number;
+  candidateCount: number;
+  inventoryCount: number;
+};
+
+export type SyncHistoryResult = {
+  history: SyncHistorySummary[];
+  revision: number;
+};
+
+export type SyncHistoryRestoreResult = {
+  payload: BuilderTransferData;
+  revision: number;
+  updatedAt: string;
+  restoredFromRevision: number;
+};
+
 export class CloudSyncError extends Error {
   readonly status: number;
   readonly code: string;
@@ -102,4 +123,12 @@ export function loadCloudSync(apiUrl: string, code: string, fetcher?: typeof fet
 
 export function saveCloudSync(apiUrl: string, code: string, payload: BuilderTransferData, revision: number, force = false, fetcher?: typeof fetch) {
   return request<{ revision: number; updatedAt: string }>(apiUrl, '/sync/save', { code, payload, revision, force }, fetcher);
+}
+
+export function loadCloudSyncHistory(apiUrl: string, code: string, fetcher?: typeof fetch) {
+  return request<SyncHistoryResult>(apiUrl, '/sync/history', { code }, fetcher);
+}
+
+export function restoreCloudSyncHistory(apiUrl: string, code: string, historyId: number, revision: number, fetcher?: typeof fetch) {
+  return request<SyncHistoryRestoreResult>(apiUrl, '/sync/history/restore', { code, historyId, revision }, fetcher);
 }

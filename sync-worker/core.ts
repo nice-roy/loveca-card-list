@@ -12,10 +12,30 @@ export type SyncRow = {
   updatedAt: string;
 };
 
+export type SyncHistoryRow = {
+  id: number;
+  keyHash: string;
+  sourceRevision: number;
+  payload: string;
+  payloadVersion: number;
+  savedAt: string;
+};
+
+export type SyncHistorySummary = {
+  id: number;
+  sourceRevision: number;
+  savedAt: string;
+  deckCount: number;
+  candidateCount: number;
+  inventoryCount: number;
+};
+
 export interface SyncStore {
   create(row: SyncRow): Promise<boolean>;
   load(keyHash: string): Promise<SyncRow | null>;
   save(keyHash: string, payload: string, expectedRevision: number, force: boolean, updatedAt: string): Promise<{ status: 'saved'; row: SyncRow } | { status: 'missing' } | { status: 'conflict'; currentRevision: number }>;
+  listHistory(keyHash: string): Promise<SyncHistoryRow[]>;
+  restore(keyHash: string, historyId: number, expectedRevision: number, updatedAt: string): Promise<{ status: 'restored'; row: SyncRow; restoredFromRevision: number } | { status: 'missing' } | { status: 'history_missing' } | { status: 'conflict'; currentRevision: number }>;
 }
 
 function json(data: Record<string, unknown>, status = 200) {
@@ -72,6 +92,29 @@ export function validateSyncPayload(value: unknown): { ok: true; payload: string
     : { ok: false, message: '同期データが大きすぎます。' };
 }
 
+function parseStoredPayload(payloadText: string): { ok: true; payload: Record<string, unknown> } | { ok: false } {
+  try {
+    const payload = JSON.parse(payloadText);
+    const validation = validateSyncPayload(payload);
+    return validation.ok ? { ok: true, payload } : { ok: false };
+  } catch {
+    return { ok: false };
+  }
+}
+
+function summarizeHistory(row: SyncHistoryRow): SyncHistorySummary | null {
+  const parsed = parseStoredPayload(row.payload);
+  if (!parsed.ok) return null;
+  return {
+    id: row.id,
+    sourceRevision: row.sourceRevision,
+    savedAt: row.savedAt,
+    deckCount: (parsed.payload.decks as unknown[]).length,
+    candidateCount: (parsed.payload.candidates as unknown[]).length,
+    inventoryCount: (parsed.payload.inventory as unknown[]).length,
+  };
+}
+
 async function parseBody(request: Request): Promise<{ ok: true; body: Record<string, unknown> } | { ok: false; error: Response }> {
   const length = Number(request.headers.get('content-length') ?? 0);
   if (Number.isFinite(length) && length > MAX_REQUEST_BYTES) return { ok: false, error: json({ error: 'request_too_large', message: '送信データが大きすぎます。' }, 413) };
@@ -112,17 +155,17 @@ export function createSyncService(store: SyncStore, options: { now?: () => strin
     if (!code) return json({ error: 'invalid_code', message: '同期コードの形式を確認してください。' }, 400);
     const keyHash = await hashSyncCode(code);
 
-    if (new URL(request.url).pathname === '/sync/load') {
+    const pathname = new URL(request.url).pathname;
+
+    if (pathname === '/sync/load') {
       const row = await store.load(keyHash);
       if (!row) return json({ error: 'not_found', message: '同期コードを確認できませんでした。' }, 404);
-      let payload: unknown;
-      try { payload = JSON.parse(row.payload); } catch { return json({ error: 'invalid_cloud_payload', message: 'クラウドデータを読み込めませんでした。' }, 500); }
-      const validation = validateSyncPayload(payload);
-      if (validation.ok === false) return json({ error: 'invalid_cloud_payload', message: 'クラウドデータを読み込めませんでした。' }, 500);
-      return json({ payload, revision: row.revision, createdAt: row.createdAt, updatedAt: row.updatedAt });
+      const parsedPayload = parseStoredPayload(row.payload);
+      if (!parsedPayload.ok) return json({ error: 'invalid_cloud_payload', message: 'クラウドデータを読み込めませんでした。' }, 500);
+      return json({ payload: parsedPayload.payload, revision: row.revision, createdAt: row.createdAt, updatedAt: row.updatedAt });
     }
 
-    if (new URL(request.url).pathname === '/sync/save') {
+    if (pathname === '/sync/save') {
       const validation = validateSyncPayload(body.payload);
       if (validation.ok === false) return json({ error: 'invalid_payload', message: validation.message }, 400);
       if (!Number.isInteger(body.revision) || Number(body.revision) < 1 || (body.force !== undefined && typeof body.force !== 'boolean')) return json({ error: 'invalid_revision', message: '同期状態を確認できません。先にクラウドから読み込んでください。' }, 400);
@@ -130,6 +173,27 @@ export function createSyncService(store: SyncStore, options: { now?: () => strin
       if (result.status === 'missing') return json({ error: 'not_found', message: '同期コードを確認できませんでした。' }, 404);
       if (result.status === 'conflict') return json({ error: 'revision_conflict', message: '別の端末でクラウドデータが更新されています。', currentRevision: result.currentRevision }, 409);
       return json({ revision: result.row.revision, updatedAt: result.row.updatedAt });
+    }
+
+    if (pathname === '/sync/history') {
+      const row = await store.load(keyHash);
+      if (!row) return json({ error: 'not_found', message: '同期コードを確認できませんでした。' }, 404);
+      const historyRows = await store.listHistory(keyHash);
+      const history = historyRows.map(summarizeHistory);
+      if (history.some((item) => item === null)) return json({ error: 'invalid_cloud_payload', message: 'クラウド履歴を読み込めませんでした。' }, 500);
+      return json({ history, revision: row.revision });
+    }
+
+    if (pathname === '/sync/history/restore') {
+      if (!Number.isInteger(body.historyId) || Number(body.historyId) < 1) return json({ error: 'invalid_history', message: '復元する履歴を確認できません。' }, 400);
+      if (!Number.isInteger(body.revision) || Number(body.revision) < 1) return json({ error: 'invalid_revision', message: '同期状態を確認できません。先にクラウドから読み込んでください。' }, 400);
+      const result = await store.restore(keyHash, Number(body.historyId), Number(body.revision), now());
+      if (result.status === 'missing') return json({ error: 'not_found', message: '同期コードを確認できませんでした。' }, 404);
+      if (result.status === 'history_missing') return json({ error: 'history_not_found', message: '選択したクラウド履歴を確認できませんでした。' }, 404);
+      if (result.status === 'conflict') return json({ error: 'revision_conflict', message: '別の端末でクラウドデータが更新されています。', currentRevision: result.currentRevision }, 409);
+      const parsedPayload = parseStoredPayload(result.row.payload);
+      if (!parsedPayload.ok) return json({ error: 'invalid_cloud_payload', message: '復元したクラウドデータを読み込めませんでした。' }, 500);
+      return json({ payload: parsedPayload.payload, revision: result.row.revision, updatedAt: result.row.updatedAt, restoredFromRevision: result.restoredFromRevision });
     }
 
     return json({ error: 'not_found', message: '同期APIを確認できません。' }, 404);

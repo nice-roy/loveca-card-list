@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { clearSyncConnectionStorage, createCloudSync, formatSyncCode, loadCloudSync, normalizeSyncCode, normalizeSyncMetadata, saveCloudSync, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY } from '../lib/cloud-sync.ts';
+import { clearSyncConnectionStorage, createCloudSync, formatSyncCode, loadCloudSync, loadCloudSyncHistory, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY } from '../lib/cloud-sync.ts';
 import { createSyncService, generateSyncCode, hashSyncCode, validateSyncPayload } from '../sync-worker/core.ts';
 
 const basePayload = {
@@ -15,6 +15,8 @@ const basePayload = {
 
 class MemoryStore {
   rows = new Map();
+  history = new Map();
+  nextHistoryId = 1;
   async create(row) {
     if (this.rows.has(row.keyHash)) return false;
     this.rows.set(row.keyHash, structuredClone(row));
@@ -27,9 +29,29 @@ class MemoryStore {
     const row = this.rows.get(keyHash);
     if (!row) return { status: 'missing' };
     if (!force && row.revision !== expectedRevision) return { status: 'conflict', currentRevision: row.revision };
+    this.archive(row);
     const next = { ...row, payload, payloadVersion: 3, revision: row.revision + 1, updatedAt };
     this.rows.set(keyHash, next);
     return { status: 'saved', row: structuredClone(next) };
+  }
+  archive(row) {
+    const items = this.history.get(row.keyHash) ?? [];
+    items.push({ id: this.nextHistoryId++, keyHash: row.keyHash, sourceRevision: row.revision, payload: row.payload, payloadVersion: row.payloadVersion, savedAt: row.updatedAt });
+    this.history.set(row.keyHash, items.slice(-5));
+  }
+  async listHistory(keyHash) {
+    return structuredClone([...(this.history.get(keyHash) ?? [])].reverse());
+  }
+  async restore(keyHash, historyId, expectedRevision, updatedAt) {
+    const row = this.rows.get(keyHash);
+    if (!row) return { status: 'missing' };
+    if (row.revision !== expectedRevision) return { status: 'conflict', currentRevision: row.revision };
+    const target = (this.history.get(keyHash) ?? []).find((item) => item.id === historyId);
+    if (!target) return { status: 'history_missing' };
+    this.archive(row);
+    const next = { ...row, payload: target.payload, payloadVersion: target.payloadVersion, revision: row.revision + 1, updatedAt };
+    this.rows.set(keyHash, next);
+    return { status: 'restored', row: structuredClone(next), restoredFromRevision: target.sourceRevision };
   }
 }
 
@@ -84,6 +106,86 @@ test('create, cross-device load, save, conflict protection, force save, and disc
   const forced = await saveCloudSync('https://sync.example', fixedCode, basePayload, created.revision, true, fetcher);
   assert.equal(forced.revision, 3);
   assert.deepEqual((await loadCloudSync('https://sync.example', fixedCode, fetcher)).payload, basePayload);
+});
+
+test('successful saves retain only the previous five cloud snapshots', async () => {
+  const store = new MemoryStore();
+  const fixedCode = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let tick = 0;
+  const service = createSyncService(store, { generateCode: () => fixedCode, now: () => `2026-09-10T00:00:${String(tick++).padStart(2, '0')}.000Z` });
+  const fetcher = fetchFrom(service);
+  const created = await createCloudSync('https://sync.example', basePayload, fetcher);
+  let revision = created.revision;
+  for (let index = 1; index <= 6; index += 1) {
+    const payload = { ...basePayload, candidates: [`save-${index}`] };
+    revision = (await saveCloudSync('https://sync.example', fixedCode, payload, revision, false, fetcher)).revision;
+  }
+  const result = await loadCloudSyncHistory('https://sync.example', fixedCode, fetcher);
+  assert.equal(result.revision, 7);
+  assert.equal(result.history.length, 5);
+  assert.deepEqual(result.history.map((item) => item.sourceRevision), [6, 5, 4, 3, 2]);
+  assert.deepEqual(result.history[0], {
+    id: 6,
+    sourceRevision: 6,
+    savedAt: '2026-09-10T00:00:05.000Z',
+    deckCount: 1,
+    candidateCount: 1,
+    inventoryCount: 1,
+  });
+});
+
+test('history restore archives the current state, increments revision, and rejects stale restores', async () => {
+  const store = new MemoryStore();
+  const fixedCode = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let tick = 0;
+  const service = createSyncService(store, { generateCode: () => fixedCode, now: () => `2026-09-10T00:01:${String(tick++).padStart(2, '0')}.000Z` });
+  const fetcher = fetchFrom(service);
+  let revision = (await createCloudSync('https://sync.example', basePayload, fetcher)).revision;
+  const payload2 = { ...basePayload, candidates: ['revision-2'] };
+  revision = (await saveCloudSync('https://sync.example', fixedCode, payload2, revision, false, fetcher)).revision;
+  const payload3 = { ...basePayload, candidates: ['revision-3'] };
+  revision = (await saveCloudSync('https://sync.example', fixedCode, payload3, revision, false, fetcher)).revision;
+  const before = await loadCloudSyncHistory('https://sync.example', fixedCode, fetcher);
+  const revision1 = before.history.find((item) => item.sourceRevision === 1);
+  assert.ok(revision1);
+
+  const restored = await restoreCloudSyncHistory('https://sync.example', fixedCode, revision1.id, revision, fetcher);
+  assert.equal(restored.revision, 4);
+  assert.equal(restored.restoredFromRevision, 1);
+  assert.deepEqual(restored.payload, basePayload);
+  const after = await loadCloudSyncHistory('https://sync.example', fixedCode, fetcher);
+  assert.equal(after.history[0].sourceRevision, 3);
+  assert.deepEqual(JSON.parse((await store.listHistory(await hashSyncCode(fixedCode)))[0].payload), payload3);
+
+  await assert.rejects(
+    () => restoreCloudSyncHistory('https://sync.example', fixedCode, revision1.id, revision, fetcher),
+    (error) => error.status === 409 && error.code === 'revision_conflict' && error.currentRevision === 4,
+  );
+  assert.equal((await loadCloudSyncHistory('https://sync.example', fixedCode, fetcher)).history.length, 3);
+});
+
+test('history restore keeps the pre-restore latest state while pruning to five generations', async () => {
+  const store = new MemoryStore();
+  const fixedCode = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let tick = 0;
+  const service = createSyncService(store, { generateCode: () => fixedCode, now: () => `2026-09-10T00:02:${String(tick++).padStart(2, '0')}.000Z` });
+  const fetcher = fetchFrom(service);
+  let revision = (await createCloudSync('https://sync.example', basePayload, fetcher)).revision;
+  for (let index = 2; index <= 7; index += 1) {
+    revision = (await saveCloudSync('https://sync.example', fixedCode, { ...basePayload, candidates: [`revision-${index}`] }, revision, false, fetcher)).revision;
+  }
+  const before = await loadCloudSyncHistory('https://sync.example', fixedCode, fetcher);
+  const revision2 = before.history.find((item) => item.sourceRevision === 2);
+  assert.ok(revision2);
+
+  const restored = await restoreCloudSyncHistory('https://sync.example', fixedCode, revision2.id, revision, fetcher);
+  assert.equal(restored.revision, 8);
+  assert.equal(restored.restoredFromRevision, 2);
+  assert.deepEqual(restored.payload.candidates, ['revision-2']);
+  const after = await loadCloudSyncHistory('https://sync.example', fixedCode, fetcher);
+  assert.equal(after.history.length, 5);
+  assert.deepEqual(after.history.map((item) => item.sourceRevision), [7, 6, 5, 4, 3]);
+  assert.deepEqual((await loadCloudSync('https://sync.example', fixedCode, fetcher)).payload, restored.payload);
 });
 
 test('invalid and missing codes never mutate cloud or local data', async () => {
