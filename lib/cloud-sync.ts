@@ -2,6 +2,7 @@ import type { BuilderTransferData } from './builder-transfer';
 
 export const SYNC_CODE_STORAGE_KEY = 'loveca-card-list:sync-code:v1';
 export const SYNC_META_STORAGE_KEY = 'loveca-card-list:sync-meta:v1';
+export const SYNC_BASELINE_STORAGE_KEY = 'loveca-card-list:sync-baseline:v1';
 export const SYNC_CODE_LENGTH = 32;
 export const SYNC_CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
@@ -9,6 +10,12 @@ export type SyncMetadata = {
   revision: number;
   cloudUpdatedAt: string;
   lastSyncedAt: string;
+};
+
+export type SyncBaseline = {
+  version: 1;
+  code: string;
+  fingerprint: string;
 };
 
 export type SyncSnapshot = {
@@ -79,9 +86,38 @@ export function normalizeSyncMetadata(value: unknown): SyncMetadata | null {
     : null;
 }
 
+export function createSyncPayloadFingerprint(payload: BuilderTransferData) {
+  return JSON.stringify({
+    format: payload.format,
+    version: payload.version,
+    activeDeckId: payload.activeDeckId,
+    decks: payload.decks.map((deck) => ({
+      id: deck.id,
+      name: deck.name,
+      cards: [...deck.cards].sort((left, right) => left.baseCardId.localeCompare(right.baseCardId, 'ja', { numeric: true })),
+    })),
+    candidates: [...payload.candidates].sort((left, right) => left.localeCompare(right, 'ja', { numeric: true })),
+    inventory: [...payload.inventory].sort((left, right) => left.cardId.localeCompare(right.cardId, 'ja', { numeric: true })),
+  });
+}
+
+export function createSyncBaseline(code: string, payload: BuilderTransferData): SyncBaseline {
+  return { version: 1, code, fingerprint: createSyncPayloadFingerprint(payload) };
+}
+
+export function normalizeSyncBaseline(value: unknown): SyncBaseline | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const item = value as Record<string, unknown>;
+  const code = normalizeSyncCode(item.code);
+  return item.version === 1 && code && typeof item.fingerprint === 'string' && item.fingerprint.length > 0
+    ? { version: 1, code, fingerprint: item.fingerprint }
+    : null;
+}
+
 export function clearSyncConnectionStorage(storage: Pick<Storage, 'removeItem'>) {
   storage.removeItem(SYNC_CODE_STORAGE_KEY);
   storage.removeItem(SYNC_META_STORAGE_KEY);
+  storage.removeItem(SYNC_BASELINE_STORAGE_KEY);
 }
 
 export function getSyncApiUrl() {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { clearSyncConnectionStorage, createCloudSync, formatSyncCode, loadCloudSync, loadCloudSyncHistory, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY } from '../lib/cloud-sync.ts';
+import { clearSyncConnectionStorage, createCloudSync, createSyncBaseline, createSyncPayloadFingerprint, formatSyncCode, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY } from '../lib/cloud-sync.ts';
 import { createSyncService, generateSyncCode, hashSyncCode, validateSyncPayload } from '../sync-worker/core.ts';
 
 const basePayload = {
@@ -67,8 +67,29 @@ test('sync codes have 160 bits of random input, normalize separators, and hash b
   assert.match(await hashSyncCode(code), /^[a-f0-9]{64}$/);
   assert.equal(SYNC_CODE_STORAGE_KEY, 'loveca-card-list:sync-code:v1');
   assert.equal(SYNC_META_STORAGE_KEY, 'loveca-card-list:sync-meta:v1');
+  assert.equal(SYNC_BASELINE_STORAGE_KEY, 'loveca-card-list:sync-baseline:v1');
   assert.deepEqual(normalizeSyncMetadata({ revision: 2, cloudUpdatedAt: 'a', lastSyncedAt: 'b' }), { revision: 2, cloudUpdatedAt: 'a', lastSyncedAt: 'b' });
   assert.equal(normalizeSyncMetadata({ revision: 0 }), null);
+});
+
+test('sync baseline compares only version 3 sync data and returns clean after an exact revert', () => {
+  const code = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const baseline = createSyncBaseline(code, basePayload);
+  assert.deepEqual(normalizeSyncBaseline(baseline), baseline);
+  assert.equal(normalizeSyncBaseline({ ...baseline, code: 'bad' }), null);
+
+  const reorderedEquivalent = {
+    ...basePayload,
+    exportedAt: '2026-09-11T00:00:00.000Z',
+    candidates: [...basePayload.candidates].reverse(),
+    inventory: [...basePayload.inventory].reverse(),
+    decks: basePayload.decks.map((deck) => ({ ...deck, cards: [...deck.cards].reverse() })),
+  };
+  assert.equal(createSyncPayloadFingerprint(reorderedEquivalent), baseline.fingerprint);
+
+  const changed = { ...basePayload, candidates: [...basePayload.candidates, 'PL!SP-bp1-003'] };
+  assert.notEqual(createSyncPayloadFingerprint(changed), baseline.fingerprint);
+  assert.equal(createSyncPayloadFingerprint({ ...changed, candidates: basePayload.candidates }), baseline.fingerprint);
 });
 
 test('worker validates version 3 snapshots and rejects malformed payloads', () => {
@@ -219,6 +240,7 @@ test('disconnect removes only sync credentials and leaves user data and UI prefe
   const values = new Map([
     [SYNC_CODE_STORAGE_KEY, 'secret'],
     [SYNC_META_STORAGE_KEY, '{"revision":1}'],
+    [SYNC_BASELINE_STORAGE_KEY, '{"version":1}'],
     ['loveca-card-list:builder:v1', 'decks'],
     ['loveca-card-list:inventory:v1', 'inventory'],
     ['loveca-card-list:card-type:v1', 'live'],
@@ -227,6 +249,7 @@ test('disconnect removes only sync credentials and leaves user data and UI prefe
   clearSyncConnectionStorage({ removeItem: (key) => values.delete(key) });
   assert.equal(values.has(SYNC_CODE_STORAGE_KEY), false);
   assert.equal(values.has(SYNC_META_STORAGE_KEY), false);
+  assert.equal(values.has(SYNC_BASELINE_STORAGE_KEY), false);
   assert.equal(values.get('loveca-card-list:builder:v1'), 'decks');
   assert.equal(values.get('loveca-card-list:inventory:v1'), 'inventory');
   assert.equal(values.get('loveca-card-list:card-type:v1'), 'live');
