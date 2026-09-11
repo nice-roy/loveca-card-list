@@ -100,7 +100,6 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .data-transfer-button { min-height: 36px; padding-inline: 10px; border-color: #d9c4db; color: #704566; background: #fffafe; white-space: nowrap; }
 .cloud-sync-button { min-height: 36px; padding-inline: 10px; border-color: #c9d7e7; color: #3d627f; background: #f8fbff; white-space: nowrap; }
 .cloud-sync-button svg { width: 15px; height: 15px; }
-.cloud-sync-button span { color: #27805e; font-size: .55rem; }
 .cloud-sync-button .cloud-sync-dirty-dot { width: 7px; height: 7px; display: inline-block; flex: 0 0 auto; border-radius: 999px; background: #d88335; box-shadow: 0 0 0 2px #fff; }
 .result-bar { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .result-bar > div { display: flex; align-items: baseline; gap: 6px; color: #74616d; } .result-bar > div svg { width: 16px; align-self: center; margin-right: 3px; }
