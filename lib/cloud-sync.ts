@@ -106,7 +106,9 @@ export function createSyncBaseline(code: string, payload: BuilderTransferData): 
 }
 
 export function isSyncPayloadDirty(code: string | null, baseline: SyncBaseline | null, payload: BuilderTransferData) {
-  return Boolean(code && baseline?.code === code && baseline.fingerprint !== createSyncPayloadFingerprint(payload));
+  if (!code) return false;
+  if (!baseline || baseline.code !== code) return true;
+  return baseline.fingerprint !== createSyncPayloadFingerprint(payload);
 }
 
 export function normalizeSyncBaseline(value: unknown): SyncBaseline | null {
