@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import {applyOfficialHeartCorrections} from './heart-data-fixtures.mjs';
 
 const cards = JSON.parse(fs.readFileSync('app/data/cards.json','utf8'));
 const before = JSON.parse(execFileSync('git',['show','5ea459c6326ac7a0c7dbec5638ac36f7a6282b3e:app/data/cards.json'],{encoding:'utf8',maxBuffer:10*1024*1024}));
@@ -14,13 +15,16 @@ test('all pre-existing card fields and ordering are unchanged before appended ri
     const card=restored.find(item=>item.cardNumber===update.cardNumber);
     if(card)card.groupIds=update.before;
   }
-  assert.deepEqual(restored.map(strip),before.map(strip));
+  assert.deepEqual(restored.map(strip),applyOfficialHeartCorrections(structuredClone(before),restored).map(strip));
 });
 test('only Liella and Aqours have verified individual HTTPS purchase links',()=>{
   let count=0;
   for(const card of cards){
     const beforeCard=before.find(c=>c.id===card.id);
-    if(card.groupIds.includes('muse')&&beforeCard&&!['LL-bp4-001-R＋'].includes(card.cardNumber))assert.deepEqual(card,beforeCard);
+    if(card.groupIds.includes('muse')&&beforeCard&&!['LL-bp4-001-R＋'].includes(card.cardNumber)){
+      const expected=applyOfficialHeartCorrections([structuredClone(beforeCard)],[card])[0];
+      assert.deepEqual(card,expected);
+    }
     for(const link of card.purchaseLinks||[]){
       assert.ok(card.groupIds.includes('liella')||card.groupIds.includes('aqours'));
       assert.equal(link.shopId,'cardlabo');

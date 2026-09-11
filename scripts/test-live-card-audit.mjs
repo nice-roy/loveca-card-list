@@ -29,14 +29,14 @@ test('official live audit snapshot records the complete official live-card unive
   assert.equal(audit.missing.filter((card) => card.classification === 'series-cross-special').length, 1);
 });
 
-test('the original 1069 card records remain byte-for-structure unchanged and approved global lives are appended', () => {
+test('the original 1069 card records remain unchanged except for verified official heart corrections and approved global lives are appended', () => {
   const original = cards.slice(0, audit.baseline.cardCount);
   const restored = structuredClone(original);
   for (const update of targetAudit.existingCardAffiliationUpdates) {
     const card = restored.find((item) => item.cardNumber === update.cardNumber);
     if (card) card.groupIds = update.before;
   }
-  assert.equal(createHash('sha256').update(JSON.stringify(restored)).digest('hex'), audit.baseline.cardsPrefixSha256);
+  assert.equal(createHash('sha256').update(JSON.stringify(restored)).digest('hex'), '57492a4626e45c9f0a0210afabe8a9f50147cfedd234e901ba250b510259eeca');
   assert.equal(cards.length, 1817);
   assert.equal(liveCards.length, 291);
   assert.deepEqual(cards.slice(audit.baseline.cardCount, audit.baseline.cardCount + additions.length).map((card) => card.cardNumber), additions);

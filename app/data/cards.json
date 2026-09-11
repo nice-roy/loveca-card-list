@@ -20023,7 +20023,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-bp5-024-L&sort=no&view=text",
-    "effectText": "【ライブ開始時】♥か♥か♥のうち、1つを選ぶ。ライブ終了時まで、自分のステージにいる、このターン中にエリアを移動しているすべてのメンバーは、選んだハートを1つ得る。",
+    "effectText": "【ライブ開始時】[heart01]か[heart02]か[heart06]のうち、1つを選ぶ。ライブ終了時まで、自分のステージにいる、このターン中にエリアを移動しているすべてのメンバーは、選んだハートを1つ得る。",
     "tags": [],
     "member": null,
     "live": {
@@ -20167,7 +20167,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-bp4-024-L&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分のセンターエリアにいる『Liella!』のメンバーのコストが、相手のセンターエリアにいるメンバーより高い場合、このカードのスコアを＋１する。\n【ライブ開始時】自分のステージの左サイドエリアにいる『Liella!』のメンバーが♥を3つ以上持つ場合、そのメンバーは、ライブ終了時まで、ブレードブレードを得る。",
+    "effectText": "【ライブ開始時】自分のセンターエリアにいる『Liella!』のメンバーのコストが、相手のセンターエリアにいるメンバーより高い場合、このカードのスコアを＋１する。\n【ライブ開始時】自分のステージの左サイドエリアにいる『Liella!』のメンバーが[heart02]を3つ以上持つ場合、そのメンバーは、ライブ終了時まで、[ブレード][ブレード]を得る。",
     "tags": [],
     "member": null,
     "live": {
@@ -20211,7 +20211,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-bp4-024-SECL&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分のセンターエリアにいる『Liella!』のメンバーのコストが、相手のセンターエリアにいるメンバーより高い場合、このカードのスコアを＋１する。\n【ライブ開始時】自分のステージの左サイドエリアにいる『Liella!』のメンバーが♥を3つ以上持つ場合、そのメンバーは、ライブ終了時まで、ブレードブレードを得る。",
+    "effectText": "【ライブ開始時】自分のセンターエリアにいる『Liella!』のメンバーのコストが、相手のセンターエリアにいるメンバーより高い場合、このカードのスコアを＋１する。\n【ライブ開始時】自分のステージの左サイドエリアにいる『Liella!』のメンバーが[heart02]を3つ以上持つ場合、そのメンバーは、ライブ終了時まで、[ブレード][ブレード]を得る。",
     "tags": [],
     "member": null,
     "live": {
@@ -20255,7 +20255,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-bp4-024-SRL&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分のセンターエリアにいる『Liella!』のメンバーのコストが、相手のセンターエリアにいるメンバーより高い場合、このカードのスコアを＋１する。\n【ライブ開始時】自分のステージの左サイドエリアにいる『Liella!』のメンバーが♥を3つ以上持つ場合、そのメンバーは、ライブ終了時まで、ブレードブレードを得る。",
+    "effectText": "【ライブ開始時】自分のセンターエリアにいる『Liella!』のメンバーのコストが、相手のセンターエリアにいるメンバーより高い場合、このカードのスコアを＋１する。\n【ライブ開始時】自分のステージの左サイドエリアにいる『Liella!』のメンバーが[heart02]を3つ以上持つ場合、そのメンバーは、ライブ終了時まで、[ブレード][ブレード]を得る。",
     "tags": [],
     "member": null,
     "live": {
@@ -20427,7 +20427,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-pb1-025-L&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分のステージにいる、このターン中に登場、またはエリアを移動した『5yncri5e!』のメンバー1人につき、このカードを成功させるための必要ハートを◇減らす。",
+    "effectText": "【ライブ開始時】自分のステージにいる、このターン中に登場、またはエリアを移動した『5yncri5e!』のメンバー1人につき、このカードを成功させるための必要ハートを[heart0]減らす。",
     "tags": [],
     "member": null,
     "live": {
@@ -20471,7 +20471,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-pb1-025-SECL&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分のステージにいる、このターン中に登場、またはエリアを移動した『5yncri5e!』のメンバー1人につき、このカードを成功させるための必要ハートを◇減らす。",
+    "effectText": "【ライブ開始時】自分のステージにいる、このターン中に登場、またはエリアを移動した『5yncri5e!』のメンバー1人につき、このカードを成功させるための必要ハートを[heart0]減らす。",
     "tags": [],
     "member": null,
     "live": {
@@ -20515,7 +20515,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-pb1-025-SRL&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分のステージにいる、このターン中に登場、またはエリアを移動した『5yncri5e!』のメンバー1人につき、このカードを成功させるための必要ハートを◇減らす。",
+    "effectText": "【ライブ開始時】自分のステージにいる、このターン中に登場、またはエリアを移動した『5yncri5e!』のメンバー1人につき、このカードを成功させるための必要ハートを[heart0]減らす。",
     "tags": [],
     "member": null,
     "live": {
@@ -20559,7 +20559,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-pb2-048-L&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分のステージにいる名前の異なる『CatChu!』のメンバー1人につき、このカードの必要ハートを◇◇減らし、♥増やす。その後、このカードの必要ハートに含まれる♥が9以上の場合、このカードのスコアを＋１する。",
+    "effectText": "【ライブ開始時】自分のステージにいる名前の異なる『CatChu!』のメンバー1人につき、このカードの必要ハートを[heart0][heart0]減らし、[heart02]増やす。その後、このカードの必要ハートに含まれる[heart02]が9以上の場合、このカードのスコアを＋１する。",
     "tags": [],
     "member": null,
     "live": {
@@ -21692,7 +21692,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-bp1-026-L&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分の、ステージと控え室に名前の異なる『Liella!』のメンバーが5人以上いる場合、このカードを成功させるための必要ハートは♥♥♥♥♥♥になる。",
+    "effectText": "【ライブ開始時】自分の、ステージと控え室に名前の異なる『Liella!』のメンバーが5人以上いる場合、このカードを成功させるための必要ハートは[heart02][heart02][heart03][heart03][heart06][heart06]になる。",
     "tags": [],
     "member": null,
     "live": {
@@ -21740,7 +21740,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-bp1-026-SECL&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分の、ステージと控え室に名前の異なる『Liella!』のメンバーが5人以上いる場合、このカードを成功させるための必要ハートは♥♥♥♥♥♥になる。",
+    "effectText": "【ライブ開始時】自分の、ステージと控え室に名前の異なる『Liella!』のメンバーが5人以上いる場合、このカードを成功させるための必要ハートは[heart02][heart02][heart03][heart03][heart06][heart06]になる。",
     "tags": [],
     "member": null,
     "live": {
@@ -21788,7 +21788,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-bp1-026-SRL&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分の、ステージと控え室に名前の異なる『Liella!』のメンバーが5人以上いる場合、このカードを成功させるための必要ハートは♥♥♥♥♥♥になる。",
+    "effectText": "【ライブ開始時】自分の、ステージと控え室に名前の異なる『Liella!』のメンバーが5人以上いる場合、このカードを成功させるための必要ハートは[heart02][heart02][heart03][heart03][heart06][heart06]になる。",
     "tags": [],
     "member": null,
     "live": {
@@ -22196,7 +22196,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-bp1-024-L&sort=no&view=text",
-    "effectText": "【ライブ開始時】ライブ終了時まで、自分のステージにいる「澁谷かのん」1人は♥ブレードを、「唐 可可」1人は♥ブレードを得る。\n【ライブ成功時】自分のステージに「澁谷かのん」と「唐 可可」がいる場合、カードを1枚引く。\n\n(必要ハートを確認する時、エールで出たALLブレードは任意の色のハートとして扱う。)",
+    "effectText": "【ライブ開始時】ライブ終了時まで、自分のステージにいる「澁谷かのん」1人は[heart05][ブレード]を、「唐 可可」1人は[heart01][ブレード]を得る。\n【ライブ成功時】自分のステージに「澁谷かのん」と「唐 可可」がいる場合、カードを1枚引く。\n(必要ハートを確認する時、エールで出た[ALLブレード]は任意の色のハートとして扱う。)",
     "tags": [],
     "member": null,
     "live": {
@@ -22240,7 +22240,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-bp1-024-SRL&sort=no&view=text",
-    "effectText": "【ライブ開始時】ライブ終了時まで、自分のステージにいる「澁谷かのん」1人は♥ブレードを、「唐 可可」1人は♥ブレードを得る。\n【ライブ成功時】自分のステージに「澁谷かのん」と「唐 可可」がいる場合、カードを1枚引く。",
+    "effectText": "【ライブ開始時】ライブ終了時まで、自分のステージにいる「澁谷かのん」1人は[heart05][ブレード]を、「唐 可可」1人は[heart01][ブレード]を得る。\n【ライブ成功時】自分のステージに「澁谷かのん」と「唐 可可」がいる場合、カードを1枚引く。",
     "tags": [],
     "member": null,
     "live": {
@@ -23460,7 +23460,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-sd2-023-P&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分の成功ライブカード置き場にカードが2枚以上ある場合、このカードのスコアを＋５し、必要ハートは♥♥♥♥♥♥♥♥♥◇◇◇になる。",
+    "effectText": "【ライブ開始時】自分の成功ライブカード置き場にカードが2枚以上ある場合、このカードのスコアを＋５し、必要ハートは[heart02][heart02][heart02][heart03][heart03][heart03][heart06][heart06][heart06][heart0][heart0][heart0]になる。",
     "tags": [],
     "member": null,
     "live": {
@@ -23500,7 +23500,7 @@
       "alt": null
     },
     "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL%21SP-sd2-023-SD2&sort=no&view=text",
-    "effectText": "【ライブ開始時】自分の成功ライブカード置き場にカードが2枚以上ある場合、このカードのスコアを＋５し、必要ハートは♥♥♥♥♥♥♥♥♥◇◇◇になる。",
+    "effectText": "【ライブ開始時】自分の成功ライブカード置き場にカードが2枚以上ある場合、このカードのスコアを＋５し、必要ハートは[heart02][heart02][heart02][heart03][heart03][heart03][heart06][heart06][heart06][heart0][heart0][heart0]になる。",
     "tags": [],
     "member": null,
     "live": {
@@ -37994,7 +37994,20 @@
     "tags": [],
     "member": {
       "cost": 5,
-      "hearts": [],
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
       "bladeHearts": [],
       "yell": {
         "count": 0
@@ -49137,7 +49150,20 @@
     "tags": [],
     "member": {
       "cost": 11,
-      "hearts": [],
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
       "bladeHearts": [
         {
           "color": "purple",

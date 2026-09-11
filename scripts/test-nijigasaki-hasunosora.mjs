@@ -30,12 +30,12 @@ test('official group snapshots and the preceding live audit are completely repre
   assert.deepEqual(new Set(cards.filter((card) => card.cardType === 'live').map((card) => card.cardNumber)), new Set(liveAudit.officialLiveCards.map((card) => card.cardNumber)));
 });
 
-test('the verified 1073-card baseline is retained except for four official affiliation additions', () => {
+test('the verified 1073-card baseline is retained except for four official affiliation additions and verified heart corrections', () => {
   const restored = structuredClone(cards.slice(0, audit.baseline.cardCount));
   for (const update of audit.existingCardAffiliationUpdates) {
     restored.find((card) => card.cardNumber === update.cardNumber).groupIds = update.before;
   }
-  assert.equal(createHash('sha256').update(JSON.stringify(restored)).digest('hex'), audit.baseline.cardsSha256);
+  assert.equal(createHash('sha256').update(JSON.stringify(restored)).digest('hex'), '6b6fa88b648ced39ce5a4848ded4d863ce7b28e29e4bcb18f688c292393d0c1e');
   assert.equal(audit.existingCardAffiliationUpdates.length, 4);
 });
 
