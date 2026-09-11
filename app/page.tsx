@@ -24,7 +24,7 @@ import { INVENTORY_STORAGE_KEY, MAX_OWNED_QUANTITY, inventoryTotalsByBase, match
 import { createShortageCardsText, getDeckOwnershipStatuses, getShortageEntries, type DeckOwnershipStatus } from '@/lib/deck-ownership';
 import { CARD_TYPE_STORAGE_KEY, normalizeCardTypeFilter, type CardTypeFilter } from '@/lib/card-type-preference';
 import { GROUP_STORAGE_KEY, normalizeGroupPreference } from '@/lib/group-preference';
-import { clearSyncConnectionStorage, CloudSyncError, createCloudSync, formatSyncCode, getSyncApiUrl, loadCloudSync, loadCloudSyncHistory, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncHistorySummary, type SyncMetadata } from '@/lib/cloud-sync';
+import { clearSyncConnectionStorage, CloudSyncError, createSyncBaseline, createSyncPayloadFingerprint, createCloudSync, formatSyncCode, getSyncApiUrl, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncBaseline, type SyncHistorySummary, type SyncMetadata } from '@/lib/cloud-sync';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -111,6 +111,15 @@ function readSyncMetadata() {
   try {
     const saved = localStorage.getItem(SYNC_META_STORAGE_KEY);
     return saved ? normalizeSyncMetadata(JSON.parse(saved)) : null;
+  } catch {
+    return null;
+  }
+}
+
+function readSyncBaseline() {
+  try {
+    const saved = localStorage.getItem(SYNC_BASELINE_STORAGE_KEY);
+    return saved ? normalizeSyncBaseline(JSON.parse(saved)) : null;
   } catch {
     return null;
   }
@@ -303,6 +312,7 @@ export default function Home() {
   const [importUndoLabel, setImportUndoLabel] = useState('データをインポートしました');
   const [syncCode, setSyncCode] = useState<string | null>(readSyncCode);
   const [syncMetadata, setSyncMetadata] = useState<SyncMetadata | null>(readSyncMetadata);
+  const [syncBaseline, setSyncBaseline] = useState<SyncBaseline | null>(readSyncBaseline);
   const [syncDialogOpen, setSyncDialogOpen] = useState(false);
   const [syncView, setSyncView] = useState<'main' | 'connect' | 'preview' | 'conflict'>('main');
   const [syncCodeInput, setSyncCodeInput] = useState('');
@@ -315,6 +325,8 @@ export default function Home() {
   const [syncHistoryLoading, setSyncHistoryLoading] = useState(false);
   const [selectedSyncHistory, setSelectedSyncHistory] = useState<SyncHistorySummary | null>(null);
   const [syncHistoryRestoreOpen, setSyncHistoryRestoreOpen] = useState(false);
+  const [cloudLoadDirtyConfirmOpen, setCloudLoadDirtyConfirmOpen] = useState(false);
+  const [pendingDirtyCloudLoadCode, setPendingDirtyCloudLoadCode] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const activeDeck = decks.find((item) => item.id === activeDeckId) ?? decks[0];
@@ -342,6 +354,11 @@ export default function Home() {
   const rivalGroups = useMemo(() => references.groups.filter((group) => isRivalGroupId(group.id)), []);
   const standardGroups = useMemo(() => references.groups.filter((group) => !isRivalGroupId(group.id)), []);
   const ownedTotalsByBase = useMemo(() => inventoryTotalsByBase(inventory, versionToBase), [inventory]);
+  const currentSyncFingerprint = useMemo(
+    () => createSyncPayloadFingerprint(createBuilderTransfer(decks, activeDeckId, candidateIds, inventory)),
+    [activeDeckId, candidateIds, decks, inventory],
+  );
+  const hasUnsavedSyncChanges = Boolean(syncCode && syncBaseline?.code === syncCode && syncBaseline.fingerprint !== currentSyncFingerprint);
   const sortOptions = cardType === 'member'
     ? [...memberSortOptions, ...commonSortOptions]
     : cardType === 'live'
@@ -407,10 +424,12 @@ export default function Home() {
       else localStorage.removeItem(SYNC_CODE_STORAGE_KEY);
       if (syncMetadata) localStorage.setItem(SYNC_META_STORAGE_KEY, JSON.stringify(syncMetadata));
       else localStorage.removeItem(SYNC_META_STORAGE_KEY);
+      if (syncBaseline && syncBaseline.code === syncCode) localStorage.setItem(SYNC_BASELINE_STORAGE_KEY, JSON.stringify(syncBaseline));
+      else localStorage.removeItem(SYNC_BASELINE_STORAGE_KEY);
     } catch {
       // Cloud sync stays usable for the current page even if metadata cannot be retained.
     }
-  }, [syncCode, syncMetadata]);
+  }, [syncBaseline, syncCode, syncMetadata]);
 
   const filteredCards = useMemo(() => {
     return cards
@@ -660,12 +679,14 @@ export default function Home() {
     setSyncBusy(true);
     setSyncMessage(null);
     try {
-      const result = await createCloudSync(syncApiUrl, currentSyncPayload());
+      const payload = currentSyncPayload();
+      const result = await createCloudSync(syncApiUrl, payload);
       const code = normalizeSyncCode(result.code);
       if (!code) throw new Error('invalid sync code');
       const metadata = { revision: result.revision, cloudUpdatedAt: result.updatedAt, lastSyncedAt: new Date().toISOString() };
       setSyncCode(code);
       setSyncMetadata(metadata);
+      setSyncBaseline(createSyncBaseline(code, payload));
       setSyncHistory([]);
       setSyncMessage({ kind: 'success', text: '現在のデータを保存し、同期コードを作成しました。' });
     } catch (error) {
@@ -697,6 +718,20 @@ export default function Home() {
       setSyncBusy(false);
     }
   };
+  const requestCloudImport = (codeValue: string) => {
+    if (hasUnsavedSyncChanges) {
+      setPendingDirtyCloudLoadCode(codeValue);
+      setCloudLoadDirtyConfirmOpen(true);
+      return;
+    }
+    void prepareCloudImport(codeValue);
+  };
+  const confirmDirtyCloudLoad = () => {
+    const code = pendingDirtyCloudLoadCode;
+    setCloudLoadDirtyConfirmOpen(false);
+    setPendingDirtyCloudLoadCode(null);
+    if (code) void prepareCloudImport(code);
+  };
   const saveToCloud = async (force = false) => {
     if (!syncCode || !syncMetadata) {
       setSyncMessage({ kind: 'error', text: '先にクラウドから読み込み、同期状態を確認してください。' });
@@ -705,8 +740,10 @@ export default function Home() {
     setSyncBusy(true);
     setSyncMessage(null);
     try {
-      const result = await saveCloudSync(syncApiUrl, syncCode, currentSyncPayload(), syncMetadata.revision, force);
+      const payload = currentSyncPayload();
+      const result = await saveCloudSync(syncApiUrl, syncCode, payload, syncMetadata.revision, force);
       setSyncMetadata({ revision: result.revision, cloudUpdatedAt: result.updatedAt, lastSyncedAt: new Date().toISOString() });
+      setSyncBaseline(createSyncBaseline(syncCode, payload));
       setSyncView('main');
       setSyncForceConfirm(false);
       setSyncMessage({ kind: 'success', text: '現在の端末データをクラウドへ保存しました。' });
@@ -730,6 +767,7 @@ export default function Home() {
     setInventory({ ...value.inventory });
     setSyncCode(code);
     setSyncMetadata({ revision, cloudUpdatedAt: updatedAt, lastSyncedAt: new Date().toISOString() });
+    setSyncBaseline(createSyncBaseline(code, createBuilderTransfer(value.decks, value.activeDeckId, value.candidates, value.inventory)));
     setClearedDeckForUndo(null);
     setPendingRemovalId(null);
     setDeckOpen(true);
@@ -782,11 +820,14 @@ export default function Home() {
     }
     setSyncCode(null);
     setSyncMetadata(null);
+    setSyncBaseline(null);
     setSyncCodeInput('');
     setPendingCloudImport(null);
     setSyncHistory([]);
     setSelectedSyncHistory(null);
     setSyncHistoryRestoreOpen(false);
+    setCloudLoadDirtyConfirmOpen(false);
+    setPendingDirtyCloudLoadCode(null);
     setSyncView('main');
     setSyncMessage({ kind: 'success', text: 'この端末の同期を解除しました。クラウドデータは残っています。' });
   };
@@ -913,7 +954,7 @@ export default function Home() {
       </div>
 
         <div className="result-tools">
-        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button><Button className="cloud-sync-button" onClick={openCloudSync} size="sm" type="button" variant="outline"><Cloud />クラウド同期{syncCode ? <span aria-label="接続済み">●</span> : null}</Button></div>
+        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button><Button className="cloud-sync-button" onClick={openCloudSync} size="sm" type="button" variant="outline"><Cloud />クラウド同期{syncCode ? <span aria-label="接続済み">●</span> : null}{hasUnsavedSyncChanges ? <span aria-label="この端末に未保存の変更があります" className="cloud-sync-dirty-dot" title="この端末に未保存の変更があります" /> : null}</Button></div>
         <div className="result-bar" aria-live="polite"><div><SlidersHorizontal aria-hidden="true" /><strong>{displayGroups.length}</strong><span>{groupIdenticalCards ? `種を表示（元カード${filteredCards.length}枚）` : '枚が見つかりました'}</span></div>{hasFilters && <Button variant="ghost" onClick={resetFilters}><X /> 条件をクリア</Button>}</div>
       </div>
       {displayGroups.length ? <div className="card-grid">{displayGroups.slice(0, visibleCount).map((group) => {
@@ -957,11 +998,17 @@ export default function Home() {
         <DialogHeader><DialogTitle>クラウド同期</DialogTitle><DialogDescription>デッキ・候補・所持カードを、同期コードを使って手動で共有します。検索条件や表示設定は同期しません。</DialogDescription></DialogHeader>
         {syncView === 'main' && !syncCode && <div className="cloud-sync-unconnected"><Button disabled={syncBusy} onClick={createSyncConnection} type="button"><CloudUpload />{syncBusy ? '作成中…' : '同期コードを作成'}</Button><Button disabled={syncBusy} onClick={() => { setSyncView('connect'); setSyncMessage(null); }} type="button" variant="outline"><CloudDownload />既存の同期コードを入力</Button><p>同期コードを作成すると、現在の全デッキ・候補・所持カードが初期データとして保存されます。</p></div>}
         {syncView === 'connect' && <div className="cloud-sync-connect"><div className="data-transfer-heading"><button onClick={() => setSyncView('main')} type="button">← 戻る</button><strong>既存コードへ接続</strong></div><label htmlFor="cloud-sync-code-input"><span>同期コード</span><Input autoCapitalize="characters" autoComplete="off" id="cloud-sync-code-input" onChange={(event) => { setSyncCodeInput(event.target.value); setSyncMessage(null); }} placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" spellCheck={false} value={syncCodeInput} /></label><p>コードを確認後、クラウド内容のプレビューを表示します。この時点では端末データを変更しません。</p><Button disabled={syncBusy || !syncCodeInput.trim()} onClick={() => void prepareCloudImport(syncCodeInput)} type="button">{syncBusy ? '確認中…' : 'クラウド内容を確認'}</Button></div>}
-        {syncView === 'main' && syncCode && <div className="cloud-sync-connected"><div className="cloud-sync-code"><span>同期コード</span><strong>{formatSyncCode(syncCode)}</strong><Button onClick={copySyncCode} size="sm" type="button" variant="outline">{syncCodeCopied ? <Check /> : <Copy />}{syncCodeCopied ? 'コピーしました' : 'コピー'}</Button></div><p className="cloud-sync-warning">このコードを知っている人は同期データへアクセスできます。第三者へ公開せず、安全に保管してください。</p><dl className="cloud-sync-meta"><div><dt>クラウド最終更新</dt><dd>{formatSyncDate(syncMetadata?.cloudUpdatedAt)}</dd></div><div><dt>この端末の最終同期</dt><dd>{formatSyncDate(syncMetadata?.lastSyncedAt)}</dd></div><div><dt>revision</dt><dd>{syncMetadata?.revision ?? '未確認'}</dd></div></dl><div className="cloud-sync-actions"><Button disabled={syncBusy || !syncMetadata} onClick={() => void saveToCloud(false)} type="button"><CloudUpload />{syncBusy ? '処理中…' : 'クラウドへ保存'}</Button><Button disabled={syncBusy} onClick={() => void prepareCloudImport(syncCode)} type="button" variant="outline"><CloudDownload />クラウドから読み込み</Button></div>{!syncMetadata && <p className="cloud-sync-note">同期状態を確認するため、先に「クラウドから読み込み」を実行してください。</p>}<section className="cloud-sync-history"><div className="cloud-sync-history-header"><h3>過去の状態</h3><Button disabled={syncBusy || syncHistoryLoading} onClick={() => void refreshSyncHistory(syncCode)} size="sm" type="button" variant="ghost">{syncHistoryLoading ? '確認中…' : '更新'}</Button></div>{syncHistoryLoading && syncHistory.length === 0 ? <p className="cloud-sync-history-empty">過去の状態を確認しています…</p> : syncHistory.length === 0 ? <p className="cloud-sync-history-empty">過去の状態はまだありません</p> : <div className="cloud-sync-history-list">{syncHistory.map((item) => <section className={selectedSyncHistory?.id === item.id ? 'selected' : ''} key={item.id}><div><strong>{formatSyncDate(item.savedAt)}</strong><span>元revision {item.sourceRevision}</span><span>デッキ {item.deckCount}件・候補 {item.candidateCount}種類・所持 {item.inventoryCount}種類</span></div><Button aria-pressed={selectedSyncHistory?.id === item.id} disabled={syncBusy} onClick={() => setSelectedSyncHistory(item)} size="sm" type="button" variant="outline">内容を見る</Button></section>)}</div>}{selectedSyncHistory && <div className="cloud-sync-history-selected"><strong>{formatSyncDate(selectedSyncHistory.savedAt)} の状態</strong><span>デッキ {selectedSyncHistory.deckCount}件・候補 {selectedSyncHistory.candidateCount}種類・所持 {selectedSyncHistory.inventoryCount}種類</span><Button disabled={syncBusy || !syncMetadata} onClick={() => setSyncHistoryRestoreOpen(true)} size="sm" type="button" variant="outline">この状態に戻す</Button></div>}</section><Button className="cloud-sync-disconnect" disabled={syncBusy} onClick={disconnectCloudSync} size="sm" type="button" variant="ghost">この端末の同期を解除</Button></div>}
+        {syncView === 'main' && syncCode && <div className="cloud-sync-connected"><div className="cloud-sync-code"><span>同期コード</span><strong>{formatSyncCode(syncCode)}</strong><Button onClick={copySyncCode} size="sm" type="button" variant="outline">{syncCodeCopied ? <Check /> : <Copy />}{syncCodeCopied ? 'コピーしました' : 'コピー'}</Button></div><p className="cloud-sync-warning">このコードを知っている人は同期データへアクセスできます。第三者へ公開せず、安全に保管してください。</p>{hasUnsavedSyncChanges && <p aria-live="polite" className="cloud-sync-local-change">この端末に未保存の変更があります。</p>}<dl className="cloud-sync-meta"><div><dt>クラウド最終更新</dt><dd>{formatSyncDate(syncMetadata?.cloudUpdatedAt)}</dd></div><div><dt>この端末の最終同期</dt><dd>{formatSyncDate(syncMetadata?.lastSyncedAt)}</dd></div><div><dt>revision</dt><dd>{syncMetadata?.revision ?? '未確認'}</dd></div></dl><div className="cloud-sync-actions"><Button disabled={syncBusy || !syncMetadata} onClick={() => void saveToCloud(false)} type="button"><CloudUpload />{syncBusy ? '処理中…' : 'クラウドへ保存'}</Button><Button disabled={syncBusy} onClick={() => requestCloudImport(syncCode)} type="button" variant="outline"><CloudDownload />クラウドから読み込み</Button></div>{!syncMetadata && <p className="cloud-sync-note">同期状態を確認するため、先に「クラウドから読み込み」を実行してください。</p>}<section className="cloud-sync-history"><div className="cloud-sync-history-header"><h3>過去の状態</h3><Button disabled={syncBusy || syncHistoryLoading} onClick={() => void refreshSyncHistory(syncCode)} size="sm" type="button" variant="ghost">{syncHistoryLoading ? '確認中…' : '更新'}</Button></div>{syncHistoryLoading && syncHistory.length === 0 ? <p className="cloud-sync-history-empty">過去の状態を確認しています…</p> : syncHistory.length === 0 ? <p className="cloud-sync-history-empty">過去の状態はまだありません</p> : <div className="cloud-sync-history-list">{syncHistory.map((item) => <section className={selectedSyncHistory?.id === item.id ? 'selected' : ''} key={item.id}><div><strong>{formatSyncDate(item.savedAt)}</strong><span>元revision {item.sourceRevision}</span><span>デッキ {item.deckCount}件・候補 {item.candidateCount}種類・所持 {item.inventoryCount}種類</span></div><Button aria-pressed={selectedSyncHistory?.id === item.id} disabled={syncBusy} onClick={() => setSelectedSyncHistory(item)} size="sm" type="button" variant="outline">内容を見る</Button></section>)}</div>}{selectedSyncHistory && <div className="cloud-sync-history-selected"><strong>{formatSyncDate(selectedSyncHistory.savedAt)} の状態</strong><span>デッキ {selectedSyncHistory.deckCount}件・候補 {selectedSyncHistory.candidateCount}種類・所持 {selectedSyncHistory.inventoryCount}種類</span><Button disabled={syncBusy || !syncMetadata} onClick={() => setSyncHistoryRestoreOpen(true)} size="sm" type="button" variant="outline">この状態に戻す</Button></div>}</section><Button className="cloud-sync-disconnect" disabled={syncBusy} onClick={disconnectCloudSync} size="sm" type="button" variant="ghost">この端末の同期を解除</Button></div>}
         {syncView === 'preview' && pendingCloudImport && <div className="cloud-sync-preview"><div className="data-transfer-heading"><button onClick={() => { setPendingCloudImport(null); setSyncView(syncCode ? 'main' : 'connect'); }} type="button">← 戻る</button><strong>クラウドから読み込む内容</strong></div><dl><div><dt>デッキ</dt><dd>{cloudPreviewDeckCount}件</dd></div><div><dt>候補</dt><dd>{cloudPreviewCandidateCount}種類</dd></div><div><dt>所持登録</dt><dd>{cloudPreviewInventoryKinds}種類</dd></div><div><dt>クラウド更新</dt><dd>{formatSyncDate(pendingCloudImport.updatedAt)}</dd></div></dl><p>現在のこの端末の全デッキ・候補・所持カードを、クラウド状態で置き換えます。実行直後は1回だけ元に戻せます。</p><div className="cloud-sync-actions"><Button onClick={confirmCloudImport} type="button">この内容を読み込む</Button><Button onClick={() => setSyncDialogOpen(false)} type="button" variant="outline">キャンセル</Button></div></div>}
-        {syncView === 'conflict' && <div className="cloud-sync-conflict"><strong>別の端末で更新されています</strong><p>古い状態からの保存は中止しました。最新のクラウドデータを読み込むか、操作をキャンセルしてください。</p><div className="cloud-sync-actions"><Button disabled={syncBusy || !syncCode} onClick={() => syncCode && void prepareCloudImport(syncCode)} type="button"><CloudDownload />最新データを読み込む</Button><Button onClick={() => { setSyncView('main'); setSyncMessage(null); setSyncForceConfirm(false); }} type="button" variant="outline">キャンセル</Button></div>{!syncForceConfirm ? <button className="cloud-force-link" onClick={() => setSyncForceConfirm(true)} type="button">現在の端末データで上書きする場合</button> : <div className="cloud-force-confirm" role="alert"><strong>本当にクラウドを上書きしますか？</strong><p>別端末の最新データは失われます。</p><div><Button disabled={syncBusy} onClick={() => void saveToCloud(true)} type="button" variant="destructive">上書きを実行</Button><Button onClick={() => setSyncForceConfirm(false)} type="button" variant="outline">戻る</Button></div></div>}</div>}
+        {syncView === 'conflict' && <div className="cloud-sync-conflict"><strong>別の端末で更新されています</strong><p>古い状態からの保存は中止しました。最新のクラウドデータを読み込むか、操作をキャンセルしてください。</p><div className="cloud-sync-actions"><Button disabled={syncBusy || !syncCode} onClick={() => syncCode && requestCloudImport(syncCode)} type="button"><CloudDownload />最新データを読み込む</Button><Button onClick={() => { setSyncView('main'); setSyncMessage(null); setSyncForceConfirm(false); }} type="button" variant="outline">キャンセル</Button></div>{!syncForceConfirm ? <button className="cloud-force-link" onClick={() => setSyncForceConfirm(true)} type="button">現在の端末データで上書きする場合</button> : <div className="cloud-force-confirm" role="alert"><strong>本当にクラウドを上書きしますか？</strong><p>別端末の最新データは失われます。</p><div><Button disabled={syncBusy} onClick={() => void saveToCloud(true)} type="button" variant="destructive">上書きを実行</Button><Button onClick={() => setSyncForceConfirm(false)} type="button" variant="outline">戻る</Button></div></div>}</div>}
         {syncMessage && <p aria-live="polite" className={`cloud-sync-message ${syncMessage.kind}`}>{syncMessage.text}</p>}
         <DialogFooter className="cloud-sync-footer"><DialogClose render={<Button type="button" variant="outline" />}>閉じる</DialogClose></DialogFooter>
+      </DialogContent>
+    </Dialog>
+    <Dialog onOpenChange={(open) => { setCloudLoadDirtyConfirmOpen(open); if (!open) setPendingDirtyCloudLoadCode(null); }} open={cloudLoadDirtyConfirmOpen}>
+      <DialogContent className="cloud-load-dirty-dialog">
+        <DialogHeader><DialogTitle>クラウドから読み込みますか？</DialogTitle><DialogDescription>この端末にクラウドへ保存していない変更があります。クラウドから読み込むと、この端末の現在データは置き換えられます。</DialogDescription></DialogHeader>
+        <DialogFooter><Button onClick={() => { setCloudLoadDirtyConfirmOpen(false); setPendingDirtyCloudLoadCode(null); }} type="button" variant="outline">キャンセル</Button><Button onClick={confirmDirtyCloudLoad} type="button">クラウド内容を確認する</Button></DialogFooter>
       </DialogContent>
     </Dialog>
     <Dialog onOpenChange={setSyncHistoryRestoreOpen} open={syncHistoryRestoreOpen}>
