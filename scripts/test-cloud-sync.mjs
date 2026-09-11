@@ -77,6 +77,8 @@ test('sync baseline compares only version 3 sync data and returns clean after an
   const baseline = createSyncBaseline(code, basePayload);
   assert.deepEqual(normalizeSyncBaseline(baseline), baseline);
   assert.equal(normalizeSyncBaseline({ ...baseline, code: 'bad' }), null);
+  assert.equal(isSyncPayloadDirty(code, null, basePayload), true, 'an existing connection without a recorded baseline must be saved or loaded once');
+  assert.equal(isSyncPayloadDirty(null, baseline, basePayload), false, 'an unconnected device never shows an unsaved sync state');
 
   const reorderedEquivalent = {
     ...basePayload,
@@ -87,13 +89,19 @@ test('sync baseline compares only version 3 sync data and returns clean after an
   };
   assert.equal(createSyncPayloadFingerprint(reorderedEquivalent), baseline.fingerprint);
 
-  const changed = { ...basePayload, candidates: [...basePayload.candidates, 'PL!SP-bp1-003'] };
-  assert.notEqual(createSyncPayloadFingerprint(changed), baseline.fingerprint);
-  assert.equal(isSyncPayloadDirty(code, baseline, changed), true);
-  assert.equal(isSyncPayloadDirty(code, createSyncBaseline(code, changed), changed), false);
-  assert.equal(isSyncPayloadDirty(code, baseline, changed), true, 'a rejected save keeps the prior baseline and remains dirty');
-  assert.equal(createSyncPayloadFingerprint({ ...changed, candidates: basePayload.candidates }), baseline.fingerprint);
-  assert.equal(isSyncPayloadDirty(code, baseline, { ...changed, candidates: basePayload.candidates }), false);
+  const changedCandidate = { ...basePayload, candidates: [...basePayload.candidates, 'PL!SP-bp1-003'] };
+  const changedInventory = { ...basePayload, inventory: [{ cardId: 'PL!SP-bp1-001-R', count: 3 }] };
+  const changedDeckCards = { ...basePayload, decks: [{ ...basePayload.decks[0], cards: [{ baseCardId: 'PL!SP-bp1-001', count: 3 }] }] };
+  const changedDeckName = { ...basePayload, decks: [{ ...basePayload.decks[0], name: '試作デッキ' }] };
+  const changedActiveDeck = { ...basePayload, activeDeckId: 'deck-2', decks: [...basePayload.decks, { id: 'deck-2', name: 'デッキ2', cards: [] }] };
+  for (const changed of [changedCandidate, changedInventory, changedDeckCards, changedDeckName, changedActiveDeck]) {
+    assert.notEqual(createSyncPayloadFingerprint(changed), baseline.fingerprint);
+    assert.equal(isSyncPayloadDirty(code, baseline, changed), true);
+  }
+  assert.equal(isSyncPayloadDirty(code, createSyncBaseline(code, changedDeckCards), changedDeckCards), false, 'a successful save records the changed deck as clean');
+  assert.equal(isSyncPayloadDirty(code, baseline, changedDeckCards), true, 'a rejected save keeps the prior baseline and remains dirty');
+  assert.equal(createSyncPayloadFingerprint({ ...changedCandidate, candidates: basePayload.candidates }), baseline.fingerprint);
+  assert.equal(isSyncPayloadDirty(code, baseline, { ...changedCandidate, candidates: basePayload.candidates }), false);
 });
 
 test('worker validates version 3 snapshots and rejects malformed payloads', () => {
