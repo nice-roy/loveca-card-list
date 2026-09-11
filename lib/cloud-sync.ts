@@ -105,6 +105,10 @@ export function createSyncBaseline(code: string, payload: BuilderTransferData): 
   return { version: 1, code, fingerprint: createSyncPayloadFingerprint(payload) };
 }
 
+export function isSyncPayloadDirty(code: string | null, baseline: SyncBaseline | null, payload: BuilderTransferData) {
+  return Boolean(code && baseline?.code === code && baseline.fingerprint !== createSyncPayloadFingerprint(payload));
+}
+
 export function normalizeSyncBaseline(value: unknown): SyncBaseline | null {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
   const item = value as Record<string, unknown>;

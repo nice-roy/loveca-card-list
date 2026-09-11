@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { clearSyncConnectionStorage, createCloudSync, createSyncBaseline, createSyncPayloadFingerprint, formatSyncCode, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY } from '../lib/cloud-sync.ts';
+import { clearSyncConnectionStorage, createCloudSync, createSyncBaseline, createSyncPayloadFingerprint, formatSyncCode, isSyncPayloadDirty, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY } from '../lib/cloud-sync.ts';
 import { createSyncService, generateSyncCode, hashSyncCode, validateSyncPayload } from '../sync-worker/core.ts';
 
 const basePayload = {
@@ -89,7 +89,11 @@ test('sync baseline compares only version 3 sync data and returns clean after an
 
   const changed = { ...basePayload, candidates: [...basePayload.candidates, 'PL!SP-bp1-003'] };
   assert.notEqual(createSyncPayloadFingerprint(changed), baseline.fingerprint);
+  assert.equal(isSyncPayloadDirty(code, baseline, changed), true);
+  assert.equal(isSyncPayloadDirty(code, createSyncBaseline(code, changed), changed), false);
+  assert.equal(isSyncPayloadDirty(code, baseline, changed), true, 'a rejected save keeps the prior baseline and remains dirty');
   assert.equal(createSyncPayloadFingerprint({ ...changed, candidates: basePayload.candidates }), baseline.fingerprint);
+  assert.equal(isSyncPayloadDirty(code, baseline, { ...changed, candidates: basePayload.candidates }), false);
 });
 
 test('worker validates version 3 snapshots and rejects malformed payloads', () => {

@@ -24,7 +24,7 @@ import { INVENTORY_STORAGE_KEY, MAX_OWNED_QUANTITY, inventoryTotalsByBase, match
 import { createShortageCardsText, getDeckOwnershipStatuses, getShortageEntries, type DeckOwnershipStatus } from '@/lib/deck-ownership';
 import { CARD_TYPE_STORAGE_KEY, normalizeCardTypeFilter, type CardTypeFilter } from '@/lib/card-type-preference';
 import { GROUP_STORAGE_KEY, normalizeGroupPreference } from '@/lib/group-preference';
-import { clearSyncConnectionStorage, CloudSyncError, createSyncBaseline, createSyncPayloadFingerprint, createCloudSync, formatSyncCode, getSyncApiUrl, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncBaseline, type SyncHistorySummary, type SyncMetadata } from '@/lib/cloud-sync';
+import { clearSyncConnectionStorage, CloudSyncError, createSyncBaseline, createCloudSync, formatSyncCode, getSyncApiUrl, isSyncPayloadDirty, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncBaseline, type SyncHistorySummary, type SyncMetadata } from '@/lib/cloud-sync';
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
@@ -354,11 +354,10 @@ export default function Home() {
   const rivalGroups = useMemo(() => references.groups.filter((group) => isRivalGroupId(group.id)), []);
   const standardGroups = useMemo(() => references.groups.filter((group) => !isRivalGroupId(group.id)), []);
   const ownedTotalsByBase = useMemo(() => inventoryTotalsByBase(inventory, versionToBase), [inventory]);
-  const currentSyncFingerprint = useMemo(
-    () => createSyncPayloadFingerprint(createBuilderTransfer(decks, activeDeckId, candidateIds, inventory)),
-    [activeDeckId, candidateIds, decks, inventory],
+  const hasUnsavedSyncChanges = useMemo(
+    () => isSyncPayloadDirty(syncCode, syncBaseline, createBuilderTransfer(decks, activeDeckId, candidateIds, inventory)),
+    [activeDeckId, candidateIds, decks, inventory, syncBaseline, syncCode],
   );
-  const hasUnsavedSyncChanges = Boolean(syncCode && syncBaseline?.code === syncCode && syncBaseline.fingerprint !== currentSyncFingerprint);
   const sortOptions = cardType === 'member'
     ? [...memberSortOptions, ...commonSortOptions]
     : cardType === 'live'
@@ -954,7 +953,7 @@ export default function Home() {
       </div>
 
         <div className="result-tools">
-        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button><Button className="cloud-sync-button" onClick={openCloudSync} size="sm" type="button" variant="outline"><Cloud />クラウド同期{syncCode ? <span aria-label="接続済み">●</span> : null}{hasUnsavedSyncChanges ? <span aria-label="この端末に未保存の変更があります" className="cloud-sync-dirty-dot" title="この端末に未保存の変更があります" /> : null}</Button></div>
+        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button><Button className="cloud-sync-button" onClick={openCloudSync} size="sm" type="button" variant="outline"><Cloud />クラウド同期{hasUnsavedSyncChanges ? <span aria-label="この端末に未保存の変更があります" className="cloud-sync-dirty-dot" title="この端末に未保存の変更があります" /> : null}</Button></div>
         <div className="result-bar" aria-live="polite"><div><SlidersHorizontal aria-hidden="true" /><strong>{displayGroups.length}</strong><span>{groupIdenticalCards ? `種を表示（元カード${filteredCards.length}枚）` : '枚が見つかりました'}</span></div>{hasFilters && <Button variant="ghost" onClick={resetFilters}><X /> 条件をクリア</Button>}</div>
       </div>
       {displayGroups.length ? <div className="card-grid">{displayGroups.slice(0, visibleCount).map((group) => {
