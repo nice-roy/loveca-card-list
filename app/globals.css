@@ -126,6 +126,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .official-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 12px; color: #af296b; font-size: .72rem; font-weight: 800; text-decoration: none; } .official-link:hover { text-decoration: underline; } .official-link svg { width: 13px; }
 .card-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-top: 12px; }
 .card-links .official-link,.purchase-link { display: inline-flex; align-items: center; min-height: 44px; gap: 5px; margin-top: 0; color: #af296b; font-size: .72rem; font-weight: 800; text-decoration: none; }
+.grouped-card-links { padding-top: 10px; border-top: 1px solid #f0e4ea; }
 .builder-actions { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 7px; margin-top: 12px; }
 .builder-actions button { min-height: 38px; }
 .builder-actions .candidate-active { border-color: #d673a5; background: #fff0f7; color: #a52c68; }

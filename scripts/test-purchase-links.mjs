@@ -3,10 +3,12 @@ import {execFileSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {applyOfficialHeartCorrections} from './heart-data-fixtures.mjs';
+import {baseCardId, cardlaboLinksForDisplay, groupCardsForDisplay} from '../lib/card-grouping.ts';
 
 const cards = JSON.parse(fs.readFileSync('app/data/cards.json','utf8'));
 const before = JSON.parse(execFileSync('git',['show','5ea459c6326ac7a0c7dbec5638ac36f7a6282b3e:app/data/cards.json'],{encoding:'utf8',maxBuffer:10*1024*1024}));
 const audit = JSON.parse(fs.readFileSync('docs/purchase-links-audit.json','utf8'));
+const verifiedCards = JSON.parse(execFileSync('git',['show','73927d6824c108cb7a47400dc619994b9d7e4c52:app/data/cards.json'],{encoding:'utf8',maxBuffer:100*1024*1024}));
 const groupAudit = JSON.parse(fs.readFileSync('app/data/nijigasaki-hasunosora-audit.json','utf8'));
 const strip = ({purchaseLinks,...rest})=>rest;
 test('all pre-existing card fields and ordering are unchanged before appended rival records',()=>{
@@ -35,6 +37,29 @@ test('only Liella and Aqours have verified individual HTTPS purchase links',()=>
   }
   assert.equal(count,audit.registered.length);
   assert.equal(audit.registered.length+audit.unregistered.length,783);
+});
+test('every historically verified Card Labo link remains attached to the same physical card version',()=>{
+  const currentById=new Map(cards.map(card=>[card.id,card]));
+  const verified=verifiedCards.flatMap(card=>(card.purchaseLinks||[]).filter(link=>link.shopId==='cardlabo').map(link=>({card,link})));
+  assert.equal(verified.length,767);
+  for(const {card,link} of verified){
+    const current=currentById.get(card.id);
+    assert.ok(current,`missing card ${card.id}`);
+    assert.equal(current.cardNumber,card.cardNumber);
+    assert.ok(current.purchaseLinks?.some(item=>item.shopId===link.shopId&&item.url===link.url),`missing verified link ${card.cardNumber}`);
+  }
+});
+test('grouped display exposes every verified physical-version purchase link without combining versions',()=>{
+  const grouped=groupCardsForDisplay(cards);
+  const linkedGroups=grouped.filter(group=>group.cards.some(card=>card.purchaseLinks?.some(link=>link.shopId==='cardlabo')));
+  const displayed=linkedGroups.flatMap(group=>cardlaboLinksForDisplay(group.cards));
+  assert.equal(displayed.length,767);
+  assert.equal(new Set(displayed.map(link=>`${link.cardId}:${link.url}`)).size,767);
+  assert.ok(linkedGroups.some(group=>group.cards.length>1&&cardlaboLinksForDisplay(group.cards).length>1));
+  for(const link of displayed){
+    assert.equal(baseCardId(link.cardNumber),baseCardId(cards.find(card=>card.id===link.cardId).cardNumber));
+    assert.match(link.url,/^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/);
+  }
 });
 test('pool adds only member/live audited records and keeps card images absent',()=>{
   assert.equal(cards.length,1817);
