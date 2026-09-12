@@ -87,3 +87,12 @@
 - 基本ハート、ブレードハート、必要ハート、効果文内のアイコンは公式の色・種類・個数を保つ。
 - `heart03` のような内部トークンや、色を失ったハート表記を画面に残さない。
 - 変更後は `npm run check` を実行する。画面・実機の確認が必要な変更は `docs/MANUAL_REGRESSION_CHECKLIST.md` も実施する。
+
+
+## GitHub更新フロー
+
+- `main` を直接更新しない。
+- 変更は作業branchで行い、`main` 向けPull Requestを作成する。
+- merge前に `Quality checks / quality` の成功を確認する。
+- 成功後にPull Requestを通常mergeする。
+- force pushは使用しない。
