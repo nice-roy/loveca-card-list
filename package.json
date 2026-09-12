@@ -10,6 +10,8 @@
     "validate:utf8": "node scripts/validate-utf8.mjs",
     "build": "npm run validate:utf8 && vite build",
     "start": "vite preview",
+    "test": "node --experimental-strip-types --test scripts/test-*.mjs",
+    "check": "npm test && npm run build",
     "test:deck-builder": "node --experimental-strip-types --test scripts/test-deck-builder.mjs",
     "test:deck-ownership": "node --experimental-strip-types --test scripts/test-deck-ownership.mjs",
     "test:member-options": "node --experimental-strip-types --test scripts/test-member-options.mjs",
