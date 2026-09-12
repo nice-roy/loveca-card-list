@@ -1,6 +1,9 @@
 name: Stage 2 Playwright validation
 
 on:
+  push:
+    branches:
+      - stage2-playwright-validation
   workflow_dispatch:
 
 jobs:
