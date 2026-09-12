@@ -10,6 +10,7 @@ const before = JSON.parse(execFileSync('git',['show','5ea459c6326ac7a0c7dbec5638
 const audit = JSON.parse(fs.readFileSync('docs/purchase-links-audit.json','utf8'));
 const verifiedCards = JSON.parse(execFileSync('git',['show','73927d6824c108cb7a47400dc619994b9d7e4c52:app/data/cards.json'],{encoding:'utf8',maxBuffer:100*1024*1024}));
 const groupAudit = JSON.parse(fs.readFileSync('app/data/nijigasaki-hasunosora-audit.json','utf8'));
+const pageSource = fs.readFileSync('app/page.tsx','utf8');
 const strip = ({purchaseLinks,...rest})=>rest;
 test('all pre-existing card fields and ordering are unchanged before appended rival records',()=>{
   const restored=structuredClone(cards.slice(0,before.length));
@@ -60,6 +61,15 @@ test('grouped display exposes every verified physical-version purchase link with
     assert.equal(baseCardId(link.cardNumber),baseCardId(cards.find(card=>card.id===link.cardId).cardNumber));
     assert.match(link.url,/^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/);
   }
+});
+test('grouped cards show purchase links once on the card surface and not again in version details',()=>{
+  const groupedSection=pageSource.slice(pageSource.indexOf('{isGrouped && <div className="card-links grouped-card-links">'),pageSource.indexOf('{isGrouped ? <details className="version-details">'));
+  const versionDetailsSection=pageSource.slice(pageSource.indexOf('{isGrouped ? <details className="version-details">'),pageSource.indexOf('</details> : <div className="card-links">'));
+  assert.match(groupedSection,/groupedPurchaseLinks\.map/);
+  assert.match(groupedSection,/カードラボで購入/);
+  assert.match(versionDetailsSection,/version\.officialUrl/);
+  assert.doesNotMatch(versionDetailsSection,/version\.purchaseLinks/);
+  assert.doesNotMatch(versionDetailsSection,/カードラボで購入/);
 });
 test('pool adds only member/live audited records and keeps card images absent',()=>{
   assert.equal(cards.length,1817);
