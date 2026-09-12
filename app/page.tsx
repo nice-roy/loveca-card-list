@@ -961,8 +961,9 @@ export default function Home() {
         <button className={otherGroupActive ? 'active' : ''} onClick={() => changeGroup('other')} title="ライバルグループとその他ライブを表示">その他 <span>{cards.filter((card) => matchesGroupFilter(card, 'other')).length}</span></button>
       </nav>
       {otherGroupActive && <nav className="rival-group-switcher" aria-label="その他のグループを切り替え">
-        <div className="other-group-section"><span>ライバルグループ</span><div><button className={groupId === 'other' ? 'active' : ''} onClick={() => changeGroup('other')} type="button">すべて</button>{rivalGroups.map((group) => <button className={groupId === group.id ? 'active' : ''} key={group.id} onClick={() => changeGroup(group.id)} type="button">{group.label}</button>)}</div></div>
-        {otherLiveGroup && <div className="other-group-section"><span>その他ライブ</span><div><button className={groupId === otherLiveGroup.id ? 'active' : ''} onClick={() => changeGroup(otherLiveGroup.id)} type="button">その他ライブ</button></div></div>}
+        <button className={groupId === 'other' ? 'active' : ''} onClick={() => changeGroup('other')} type="button">すべて</button>
+        {rivalGroups.map((group) => <button className={groupId === group.id ? 'active' : ''} key={group.id} onClick={() => changeGroup(group.id)} type="button">{group.label}</button>)}
+        {otherLiveGroup && <button className={groupId === otherLiveGroup.id ? 'active' : ''} onClick={() => changeGroup(otherLiveGroup.id)} type="button">その他ライブ</button>}
       </nav>}
 
       <div className="filter-panel">
