@@ -31,6 +31,13 @@ test('cross-group and rival parent filtering retain official affiliations', () =
   assert.equal(cards.filter((card) => matchesGroupFilter(card, 'aqours')).length, 305);
 });
 
+test('other parent filter combines rival groups and other live cards without changing child filters', () => {
+  const other = cards.filter((card) => matchesGroupFilter(card, 'other'));
+  assert.ok(other.length > 0);
+  assert.ok(other.every((card) => card.groupIds.some((groupId) => ['a-rise', 'saint-snow', 'sunny-passion', 'other-live'].includes(groupId))));
+  assert.ok(cards.filter((card) => matchesGroupFilter(card, 'other-live')).every((card) => other.includes(card)));
+});
+
 test('rival member references and base-card display grouping are valid', () => {
   assert.deepEqual(missingMemberMetadata(references.members), []);
   assert.deepEqual(references.groups.filter((group) => ['a-rise', 'saint-snow', 'sunny-passion'].includes(group.id)).map((group) => group.label), ['A-RISE', 'Saint Snow', 'Sunny Passion']);

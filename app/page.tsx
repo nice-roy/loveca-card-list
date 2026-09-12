@@ -19,7 +19,7 @@ import { matchesFreewordSearch } from '@/lib/freeword-search';
 import { BUILDER_STORAGE_KEY, MAX_DECK_QUANTITY, changeDeckQuantity, createAiConsultationText, createDeckId, createDeckRecipeText, duplicateDeckName, emptyDeckForBulkClear, groupDeckEntriesByMetric, nextDefaultDeckName, normalizeBuilderState, removeDeckCardIfSingle, restoreDeckAfterBulkClear, type DeckGroup, type DeckQuantities, type SavedDeck } from '@/lib/deck-builder';
 import { createBuilderTransfer, createBuilderTransferText, validateBuilderTransferText, type ValidatedBuilderTransfer } from '@/lib/builder-transfer';
 import { groupMemberOptions, type MemberDisplayMode, type MemberOptionGroup } from '@/lib/member-options';
-import { isRivalGroupId, matchesGroupFilter, matchesMemberGroupFilter } from '@/lib/group-filter';
+import { isOtherGroupId, isRivalGroupId, matchesGroupFilter, matchesMemberGroupFilter } from '@/lib/group-filter';
 import { INVENTORY_STORAGE_KEY, MAX_OWNED_QUANTITY, inventoryTotalsByBase, matchesInventoryFilter, normalizeInventory, setOwnedQuantity, type InventoryFilter, type InventoryQuantities } from '@/lib/inventory';
 import { createShortageCardsText, getDeckOwnershipStatuses, getShortageEntries, type DeckOwnershipStatus } from '@/lib/deck-ownership';
 import { CARD_TYPE_STORAGE_KEY, normalizeCardTypeFilter, type CardTypeFilter } from '@/lib/card-type-preference';
@@ -29,7 +29,8 @@ import { clearSyncConnectionStorage, CloudSyncError, createSyncBaseline, createC
 
 const cards = cardsJson as Card[];
 const references = referencesJson as ReferenceData;
-const selectableGroupIds = new Set(['all', 'rivals', ...references.groups.filter((group) => group.enabled).map((group) => group.id)]);
+const selectableGroupIds = new Set(['all', 'other', ...references.groups.filter((group) => group.enabled).map((group) => group.id)]);
+const TOP_GROUP_IDS = ['muse', 'aqours', 'nijigasaki', 'liella', 'hasunosora'] as const;
 const cardsByBuilderId = new Map<string, Card[]>();
 for (const card of cards) {
   const id = baseCardId(card.cardNumber);
@@ -365,7 +366,7 @@ export default function Home() {
   const selectedMemberIdSet = useMemo(() => new Set(memberIds), [memberIds]);
   const selectedProductIdSet = useMemo(() => new Set(productIds), [productIds]);
   const availableMembers = useMemo(() => references.members.filter((member) => matchesMemberGroupFilter(member, groupId)), [groupId]);
-  const memberOptionGroups = useMemo(() => groupMemberOptions(availableMembers, groupId === 'rivals' ? 'all' : groupId, references.groups, memberDisplayMode), [availableMembers, groupId, memberDisplayMode]);
+  const memberOptionGroups = useMemo(() => groupMemberOptions(availableMembers, groupId, references.groups, memberDisplayMode), [availableMembers, groupId, memberDisplayMode]);
   const availableProducts = useMemo(() => {
     const availableProductIds = getProductIdsForGroup(groupId);
     return references.products.filter((product) => availableProductIds.has(product.id));
@@ -374,9 +375,10 @@ export default function Home() {
   const availableScores = useMemo(() => numericOptions(cards, groupId, 'score'), [groupId]);
   const memberTotal = useMemo(() => cards.filter((card) => card.cardType === 'member').length, []);
   const liveTotal = useMemo(() => cards.filter((card) => card.cardType === 'live').length, []);
-  const enabledGroupLabels = useMemo(() => references.groups.filter((group) => group.enabled).map((group) => group.label), []);
   const rivalGroups = useMemo(() => references.groups.filter((group) => isRivalGroupId(group.id)), []);
-  const standardGroups = useMemo(() => references.groups.filter((group) => !isRivalGroupId(group.id)), []);
+  const topGroups = useMemo(() => TOP_GROUP_IDS.map((id) => references.groups.find((group) => group.id === id)).filter((group): group is ReferenceData['groups'][number] => Boolean(group && group.enabled)), []);
+  const otherLiveGroup = useMemo(() => references.groups.find((group) => group.id === 'other-live'), []);
+  const otherGroupActive = groupId === 'other' || isOtherGroupId(groupId);
   const ownedTotalsByBase = useMemo(() => inventoryTotalsByBase(inventory, versionToBase), [inventory]);
   const hasUnsavedSyncChanges = useMemo(
     () => isSyncPayloadDirty(syncCode, syncBaseline, createBuilderTransfer(decks, activeDeckId, candidateIds, inventory)),
@@ -946,21 +948,21 @@ export default function Home() {
     <section className="intro" id="top"><div>
       <p className="eyebrow"><Sparkles /> LOVE LIVE! OFFICIAL CARD GAME</p>
       <h1>すべての出会いを、<br /><em>ひとつのカードリストに。</em></h1>
-      <p className="intro-copy">グループを横断して、カード番号・名前・効果からすばやく探せます。現在は{enabledGroupLabels.join('・')}の{cards.length}枚を収録しています。</p>
+      <p className="intro-copy">μ&apos;s、Aqours、虹ヶ咲、Liella!、蓮ノ空を中心に、ライバルグループやその他ライブを含む{cards.length}枚を収録しています。</p>
     </div><div className="total-card" aria-label="登録カード総数"><small>CARDS IN MASTER</small><strong>{cards.length}</strong><span>メンバー {memberTotal} · ライブ {liveTotal}</span></div></section>
 
     <section className="workspace" aria-label="カード検索">
       <nav className="group-switcher" aria-label="グループを切り替え">
         <button className={groupId === 'all' ? 'active' : ''} onClick={() => changeGroup('all')}>すべて <span>{cards.length}</span></button>
-        {standardGroups.map((group) => {
+        {topGroups.map((group) => {
           const count = cards.filter((card) => card.groupIds.includes(group.id)).length;
           return <button className={groupId === group.id ? 'active' : ''} disabled={!group.enabled} key={group.id} onClick={() => changeGroup(group.id)} title={group.enabled ? `${group.label}だけ表示` : '今後追加予定'}>{group.label} <span>{count || '準備中'}</span></button>;
         })}
-        <button className={groupId === 'rivals' || isRivalGroupId(groupId) ? 'active' : ''} onClick={() => changeGroup('rivals')} title="ライバルカードを表示">ライバル <span>{cards.filter((card) => matchesGroupFilter(card, 'rivals')).length}</span></button>
+        <button className={otherGroupActive ? 'active' : ''} onClick={() => changeGroup('other')} title="ライバルグループとその他ライブを表示">その他 <span>{cards.filter((card) => matchesGroupFilter(card, 'other')).length}</span></button>
       </nav>
-      {(groupId === 'rivals' || isRivalGroupId(groupId)) && <nav className="rival-group-switcher" aria-label="ライバルグループを切り替え">
-        <button className={groupId === 'rivals' ? 'active' : ''} onClick={() => changeGroup('rivals')} type="button">すべて</button>
-        {rivalGroups.map((group) => <button className={groupId === group.id ? 'active' : ''} key={group.id} onClick={() => changeGroup(group.id)} type="button">{group.label}</button>)}
+      {otherGroupActive && <nav className="rival-group-switcher" aria-label="その他のグループを切り替え">
+        <div className="other-group-section"><span>ライバルグループ</span><div><button className={groupId === 'other' ? 'active' : ''} onClick={() => changeGroup('other')} type="button">すべて</button>{rivalGroups.map((group) => <button className={groupId === group.id ? 'active' : ''} key={group.id} onClick={() => changeGroup(group.id)} type="button">{group.label}</button>)}</div></div>
+        {otherLiveGroup && <div className="other-group-section"><span>その他ライブ</span><div><button className={groupId === otherLiveGroup.id ? 'active' : ''} onClick={() => changeGroup(otherLiveGroup.id)} type="button">その他ライブ</button></div></div>}
       </nav>}
 
       <div className="filter-panel">

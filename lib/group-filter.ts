@@ -6,9 +6,14 @@ export function isRivalGroupId(groupId: string) {
   return RIVAL_GROUP_IDS.includes(groupId as (typeof RIVAL_GROUP_IDS)[number]);
 }
 
+export function isOtherGroupId(groupId: string) {
+  return isRivalGroupId(groupId) || groupId === 'other-live';
+}
+
 export function matchesGroupFilter(card: Pick<Card, 'groupIds'>, groupId: string) {
   if (groupId === 'all') return true;
   if (groupId === 'rivals') return card.groupIds.some((id) => isRivalGroupId(id));
+  if (groupId === 'other') return card.groupIds.some((id) => isOtherGroupId(id));
   return card.groupIds.includes(groupId);
 }
 
@@ -16,5 +21,6 @@ export function matchesMemberGroupFilter(member: { groupId: string; groupIds?: s
   if (groupId === 'all') return true;
   const groupIds = member.groupIds ?? [member.groupId];
   if (groupId === 'rivals') return groupIds.some((id) => isRivalGroupId(id));
+  if (groupId === 'other') return groupIds.some((id) => isRivalGroupId(id));
   return groupIds.includes(groupId);
 }
