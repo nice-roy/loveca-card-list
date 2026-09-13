@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { type PointerEvent as ReactPointerEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Cloud, CloudDownload, CloudUpload, Copy, ExternalLink, Layers3, ListPlus, Minus, Plus, RotateCcw, Search, SlidersHorizontal, Sparkles, Trash2, X } from 'lucide-react';
 import cardsJson from './data/cards.json';
 import livePurchaseLinksJson from './data/live-purchase-links.json';
@@ -358,6 +358,7 @@ export default function Home() {
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [mobileControlPanel, setMobileControlPanel] = useState<MobileControlPanel>(null);
+  const mobilePanelSwipeRef = useRef<{ position: number; time: number } | null>(null);
   const activeDeck = decks.find((item) => item.id === activeDeckId) ?? decks[0];
   const deck = activeDeck.cards;
   const setDeck = (next: DeckQuantities | ((current: DeckQuantities) => DeckQuantities)) => {
@@ -401,6 +402,49 @@ export default function Home() {
     mediaQuery.addEventListener('change', syncDeckMode);
     return () => mediaQuery.removeEventListener('change', syncDeckMode);
   }, []);
+
+  useEffect(() => {
+    if (!window.matchMedia('(max-width: 760px)').matches) return;
+    const launcher = document.querySelector<HTMLElement>('.deck-launcher');
+    const header = document.querySelector<HTMLElement>('.deck-header');
+    let launcherStart: { x: number; time: number } | null = null;
+    let headerStart: { x: number; time: number } | null = null;
+    const isDecisiveSwipe = (distance: number, elapsed: number, minimum: number) => distance >= minimum || (distance >= 24 && distance / Math.max(1, elapsed) >= 0.55);
+    const onLauncherPointerDown = (event: PointerEvent) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      launcherStart = { x: event.clientX, time: event.timeStamp };
+      launcher?.setPointerCapture(event.pointerId);
+    };
+    const onLauncherPointerUp = (event: PointerEvent) => {
+      if (!launcherStart) return;
+      const start = launcherStart;
+      launcherStart = null;
+      if (isDecisiveSwipe(start.x - event.clientX, event.timeStamp - start.time, 48)) setDeckOpen(true);
+    };
+    const onHeaderPointerDown = (event: PointerEvent) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      const rect = header?.getBoundingClientRect();
+      if (!rect || event.clientY > rect.top + 28) return;
+      headerStart = { x: event.clientX, time: event.timeStamp };
+      header?.setPointerCapture(event.pointerId);
+    };
+    const onHeaderPointerUp = (event: PointerEvent) => {
+      if (!headerStart) return;
+      const start = headerStart;
+      headerStart = null;
+      if (isDecisiveSwipe(event.clientX - start.x, event.timeStamp - start.time, 56)) setDeckOpen(false);
+    };
+    launcher?.addEventListener('pointerdown', onLauncherPointerDown);
+    launcher?.addEventListener('pointerup', onLauncherPointerUp);
+    header?.addEventListener('pointerdown', onHeaderPointerDown);
+    header?.addEventListener('pointerup', onHeaderPointerUp);
+    return () => {
+      launcher?.removeEventListener('pointerdown', onLauncherPointerDown);
+      launcher?.removeEventListener('pointerup', onLauncherPointerUp);
+      header?.removeEventListener('pointerdown', onHeaderPointerDown);
+      header?.removeEventListener('pointerup', onHeaderPointerUp);
+    };
+  }, [deckOpen]);
 
   useEffect(() => {
     try {
@@ -625,6 +669,19 @@ export default function Home() {
   const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length || costIds.length || scoreIds.length || !groupIdenticalCards || candidateOnly || inventoryFilter !== 'all');
   const mobileFilterCount = Number(cardType !== 'all') + memberIds.length + productIds.length + costIds.length + scoreIds.length + Number(inventoryFilter !== 'all');
   const toggleMobileControlPanel = (panel: Exclude<MobileControlPanel, null>) => setMobileControlPanel((current) => current === panel ? null : panel);
+  const startMobilePanelSwipe = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    mobilePanelSwipeRef.current = { position: event.clientY, time: event.timeStamp };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+  const endMobilePanelSwipe = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const start = mobilePanelSwipeRef.current;
+    mobilePanelSwipeRef.current = null;
+    if (!start) return;
+    const distance = event.clientY - start.position;
+    const velocity = -distance / Math.max(1, event.timeStamp - start.time);
+    if (distance <= -56 || (distance <= -24 && velocity >= 0.55)) setMobileControlPanel(null);
+  };
   const finishCopy = async (kind: 'recipe' | 'ai', text: string) => {
     const copied = await copyText(text);
     setCopyFeedback(copied ? kind : 'error');
@@ -971,11 +1028,13 @@ export default function Home() {
           <button aria-controls="mobile-sort-panel" aria-expanded={mobileControlPanel === 'sort'} className={sortKey !== DEFAULT_SORT || mobileControlPanel === 'sort' ? 'active' : ''} onClick={() => toggleMobileControlPanel('sort')} type="button"><ArrowUpDown aria-hidden="true" />並び順</button>
         </div>
         <div aria-label="検索パネル" className={`mobile-panel-section mobile-search-panel${mobileControlPanel === 'search' ? ' mobile-open' : ''}`} id="mobile-search-panel" role="region">
+          <div aria-hidden="true" className="mobile-panel-drag-handle" onPointerCancel={() => { mobilePanelSwipeRef.current = null; }} onPointerDown={startMobilePanelSwipe} onPointerUp={endMobilePanelSwipe} />
           <div className="mobile-panel-heading"><strong>カード検索</strong><button aria-label="検索を閉じる" onClick={() => setMobileControlPanel(null)} type="button"><X /></button></div>
-          <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" className="search-input" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
+          <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" autoComplete="off" className="search-input" enterKeyHint="search" id="card-search" inputMode="search" name="card-search" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
         </div>
         <div className={`select-grid${cardType === 'member' ? ' with-cost-filter' : ''}`}>
           <div aria-label="絞り込みパネル" className={`mobile-panel-section mobile-filter-fields${mobileControlPanel === 'filters' ? ' mobile-open' : ''}`} id="mobile-filter-panel" role="region">
+          <div aria-hidden="true" className="mobile-panel-drag-handle" onPointerCancel={() => { mobilePanelSwipeRef.current = null; }} onPointerDown={startMobilePanelSwipe} onPointerUp={endMobilePanelSwipe} />
           <div className="mobile-panel-heading"><strong>絞り込み</strong><button aria-label="絞り込みを閉じる" onClick={() => setMobileControlPanel(null)} type="button"><X /></button></div>
           <div className="filter-field card-type-filter"><span className="filter-label" id="card-type-label">カード種類</span><div aria-labelledby="card-type-label" className="card-type-segment" role="group"><button aria-pressed={cardType === 'all'} className={cardType === 'all' ? 'active' : ''} onClick={() => changeCardType('all')} type="button">すべて</button><button aria-pressed={cardType === 'member'} className={cardType === 'member' ? 'active' : ''} onClick={() => changeCardType('member')} type="button">メンバー</button><button aria-pressed={cardType === 'live'} className={cardType === 'live' ? 'active' : ''} onClick={() => changeCardType('live')} type="button">ライブ</button></div></div>
           {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" memberDisplayMode={memberDisplayMode} onChange={updateMemberIds} onMemberDisplayModeChange={setMemberDisplayMode} optionGroups={memberOptionGroups} options={availableMembers} selectedIds={memberIds} />}
@@ -985,6 +1044,7 @@ export default function Home() {
           <label className="filter-field"><span className="filter-label">所持状態</span><NativeSelect className="select-control" value={inventoryFilter} onChange={(event) => { setInventoryFilter(event.target.value as InventoryFilter); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="owned">所持のみ</NativeSelectOption><NativeSelectOption value="unowned">未所持のみ</NativeSelectOption></NativeSelect></label>
           </div>
           <div aria-label="並び順パネル" className={`mobile-panel-section mobile-sort-field${mobileControlPanel === 'sort' ? ' mobile-open' : ''}`} id="mobile-sort-panel" role="region">
+          <div aria-hidden="true" className="mobile-panel-drag-handle" onPointerCancel={() => { mobilePanelSwipeRef.current = null; }} onPointerDown={startMobilePanelSwipe} onPointerUp={endMobilePanelSwipe} />
           <div className="mobile-panel-heading"><strong>並び順</strong><button aria-label="並び順を閉じる" onClick={() => setMobileControlPanel(null)} type="button"><X /></button></div>
           <label className="filter-field"><span className="filter-label"><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label>
           </div>
