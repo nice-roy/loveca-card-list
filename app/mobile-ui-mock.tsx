@@ -99,6 +99,7 @@ function VariantPage({ variant }: { variant: Variant }) {
 
   const open = (next: Exclude<Sheet, null>) => setSheet(current => current === next && variant !== 'c' ? null : next);
   const visibleCards = useMemo(() => [...mockCards, ...mockCards, ...mockCards].filter(card => (type === 'all' || card.type === type) && (group === 'all' || card.group === group) && `${card.name} ${card.number}`.toLowerCase().includes(search.toLowerCase())).sort((a,b) => sort === 'name' ? a.name.localeCompare(b.name, 'ja') : sort === 'metric' ? a.metric.localeCompare(b.metric, 'ja', { numeric: true }) : a.number.localeCompare(b.number, 'ja', { numeric: true })), [group, search, sort, type]);
+  const showAEmptyState = variant === 'a' && visibleCards.length === 0;
   const applyFilter = () => { setType(draftType); setGroup(draftGroup); setSheet(null); };
   const resetFilter = () => { setDraftType('all'); setDraftGroup('all'); setType('all'); setGroup('all'); };
   const activeSheet = sheet;
@@ -108,7 +109,10 @@ function VariantPage({ variant }: { variant: Variant }) {
     {variant === 'b' ? <div className={`mock-b-controls ${compact ? 'compact' : 'expanded'}`}><div className="mock-b-expanded"><label>⌕ 検索<input aria-label="カード検索" placeholder="カード名・番号" value={search} onChange={(event) => setSearch(event.target.value)} /></label><div className="mock-b-row"><button onClick={() => open('filter')} type="button">☷ 絞り込み</button><button onClick={() => open('sort')} type="button">↕ 並び順</button></div></div><CompactBar active={activeSheet} className="mock-b-compact" onOpen={open} /></div> : <div className="mock-sticky-controls"><CompactBar active={activeSheet} onOpen={open} />{variant === 'a' && sheet && <InlinePanel onClose={() => setSheet(null)} search={search} setSearch={setSearch} sheet={sheet} setSort={setSort} setType={setType} sort={sort} type={type} />}</div>}
     {variant === 'b' && sheet && <div className="mock-b-inline"><InlinePanel onClose={() => setSheet(null)} search={search} setSearch={setSearch} sheet={sheet} setSort={setSort} setType={setType} sort={sort} type={type} /></div>}
     <section className="mock-list-heading"><p>{variants[variant].subtitle}</p><strong>{visibleCards.length}枚</strong></section>
-    <section className="mock-card-list">{visibleCards.map((card,index) => <><MockCardView card={card} key={`${card.number}-${index}`} />{index === 5 && <aside className="mock-inline-ad" key="ad">インライン広告枠<br /><small>固定しない比較用表示</small></aside>}</>)}</section>
+    <section className={`mock-card-list${showAEmptyState ? ' is-empty' : ''}`}>
+      {showAEmptyState && <div className="mock-empty-state" role="status" aria-live="polite"><strong>該当するカードがありません</strong><span>検索文字を変更するか、入力を削除してください。</span></div>}
+      {visibleCards.map((card,index) => <><MockCardView card={card} key={`${card.number}-${index}`} />{index === 5 && <aside className="mock-inline-ad" key="ad">インライン広告枠<br /><small>固定しない比較用表示</small></aside>}</>)}
+    </section>
     <button className="mock-deck-fab" onClick={() => setDeckOpen(true)} type="button">▣ <span>デッキ</span><b>4</b></button>
     {deckOpen && <div className="mock-deck-popover" role="dialog"><strong>デッキ 4</strong><span>コンパクトFABの位置確認用です。</span><button onClick={() => setDeckOpen(false)} type="button">閉じる</button></div>}
     {variant === 'c' && sheet && <BottomSheet applyFilter={applyFilter} close={() => setSheet(null)} draftGroup={draftGroup} draftType={draftType} resetFilter={resetFilter} search={search} setDraftGroup={setDraftGroup} setDraftType={setDraftType} setSearch={setSearch} setSort={setSort} sheet={sheet} sort={sort} />}
