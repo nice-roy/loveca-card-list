@@ -11,7 +11,7 @@ const audit = JSON.parse(fs.readFileSync('docs/purchase-links-audit.json','utf8'
 const verifiedCards = JSON.parse(execFileSync('git',['show','73927d6824c108cb7a47400dc619994b9d7e4c52:app/data/cards.json'],{encoding:'utf8',maxBuffer:100*1024*1024}));
 const groupAudit = JSON.parse(fs.readFileSync('app/data/nijigasaki-hasunosora-audit.json','utf8'));
 const pageSource = fs.readFileSync('app/page.tsx','utf8');
-const strip = ({purchaseLinks,...rest})=>rest;
+const strip = ({purchaseLinks: _purchaseLinks,...rest})=>rest;
 test('all pre-existing card fields and ordering are unchanged before appended rival records',()=>{
   const restored=structuredClone(cards.slice(0,before.length));
   for(const update of groupAudit.existingCardAffiliationUpdates){
