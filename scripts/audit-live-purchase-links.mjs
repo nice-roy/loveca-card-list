@@ -4,6 +4,8 @@ import { createHash } from 'node:crypto';
 
 const cards = JSON.parse(fs.readFileSync('app/data/cards.json', 'utf8'));
 const liveCards = cards.filter((card) => card.cardType === 'live');
+const auditedOverlay = JSON.parse(fs.readFileSync('app/data/live-purchase-links.json', 'utf8'));
+const auditedOverlayById = new Map(auditedOverlay.map((record) => [record.cardId, record]));
 const workDir = 'work/live-purchase-links';
 const cacheDir = `${workDir}/cache`;
 fs.mkdirSync(cacheDir, { recursive: true });
@@ -56,7 +58,7 @@ async function collectPrefix(prefix) {
   return { prefix, pages: seen.size, candidates };
 }
 
-const missingCards = liveCards.filter((card) => !(card.purchaseLinks ?? []).some((link) => link.shopId === 'cardlabo'));
+const missingCards = liveCards.filter((card) => !(card.purchaseLinks ?? []).some((link) => link.shopId === 'cardlabo') && !auditedOverlayById.has(card.id));
 const prefixes = [...new Set(missingCards.map((card) => `${card.cardNumber.split('-').slice(0, 2).join('-')}-`))];
 const prefixQueue = [...prefixes];
 const listings = [];
@@ -134,13 +136,13 @@ async function worker() {
 await Promise.all(Array.from({ length: 10 }, worker));
 auditedMissing.sort((left, right) => missingCards.findIndex((card) => card.id === left.id) - missingCards.findIndex((card) => card.id === right.id));
 
-const existing = liveCards.filter((card) => (card.purchaseLinks ?? []).some((link) => link.shopId === 'cardlabo')).map((card) => ({
+const existing = liveCards.filter((card) => (card.purchaseLinks ?? []).some((link) => link.shopId === 'cardlabo') || auditedOverlayById.has(card.id)).map((card) => ({
   id: card.id,
   cardNumber: card.cardNumber,
   name: card.name,
   groupIds: card.groupIds,
   classification: 'existing',
-  links: card.purchaseLinks.filter((link) => link.shopId === 'cardlabo'),
+  links: (card.purchaseLinks ?? []).filter((link) => link.shopId === 'cardlabo').concat(auditedOverlayById.has(card.id) ? [auditedOverlayById.get(card.id)] : []),
 }));
 const resultsById = new Map([...existing, ...auditedMissing].map((entry) => [entry.id, entry]));
 const results = liveCards.map((card) => resultsById.get(card.id));

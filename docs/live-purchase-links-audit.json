@@ -1,13 +1,13 @@
 {
-  "checkedAt": "2026-09-13T10:49:46.982Z",
+  "checkedAt": "2026-09-13T12:15:00.000Z",
   "scope": "All 291 physical live-card versions in app/data/cards.json",
-  "verification": "Read-only Card Labo listing and direct product-page verification by exact card number, name, and rarity.",
+  "verification": "Read-only Card Labo listing and direct product-page verification by exact card number, name, and rarity. Three special-character title exceptions were manually verified from their direct product pages without weakening the general matching rule.",
   "counts": {
     "total": 291,
     "retainedHistorical": 134,
     "A": 0,
-    "B": 154,
-    "C": 3
+    "B": 157,
+    "C": 0
   },
   "retainedHistorical": [
     {
@@ -2933,9 +2933,7 @@
       "title": "【ラブカ】Echoes Beyond【PR】PL!HS-PR-028-PR",
       "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-PR-&num=120",
       "detailTitle": "【ラブカ】Echoes Beyond【PR】PL!HS-PR-028-PRラブライブ！OCG通販はカードラボ"
-    }
-  ],
-  "C": [
+    },
     {
       "cardId": "loveca-card:pl!sp-sd1-026-srl",
       "cardNumber": "PL!SP-sd1-026-SRL",
@@ -2943,7 +2941,11 @@
       "groupIds": [
         "liella"
       ],
-      "reason": "no-matching-product-page"
+      "url": "https://www.c-labo-online.jp/product/393393",
+      "title": "【ラブカ】私のSymphony ?澁谷かのんVer.?【SRL】PL!SP-sd1-026-SRL",
+      "detailTitle": "【ラブカ】私のSymphony ?澁谷かのんVer.?【SRL】PL!SP-sd1-026-SRL",
+      "verificationMethod": "manual-direct-page-exception",
+      "verificationNote": "Card Labo replaces the official wave-dash characters with question marks; the direct page was individually checked for the exact card number, SRL rarity, matching title, and a normal product page."
     },
     {
       "cardId": "loveca-card:ll-pr-004-pr",
@@ -2952,7 +2954,11 @@
       "groupIds": [
         "other-live"
       ],
-      "reason": "no-matching-product-page"
+      "url": "https://www.c-labo-online.jp/product/338834",
+      "title": "【ラブカ】愛?スクリ〜ム！【PR】LL-PR-004-PR",
+      "detailTitle": "【ラブカ】愛?スクリ〜ム！【PR】LL-PR-004-PRラブライブ！OCG通販はカードラボ",
+      "verificationMethod": "manual-direct-page-exception",
+      "verificationNote": "Card Labo replaces the official heart character with a question mark; the direct page was individually checked for the exact card number, PR rarity, matching title, and a normal product page."
     },
     {
       "cardId": "loveca-card:pl!hs-pb1-029-l",
@@ -2961,7 +2967,12 @@
       "groupIds": [
         "hasunosora"
       ],
-      "reason": "no-matching-product-page"
+      "url": "https://www.c-labo-online.jp/product/381743",
+      "title": "【ラブカ】全方位キュン【L】PL!HS-pb1-029-L",
+      "detailTitle": "【ラブカ】全方位キュン【L】PL!HS-pb1-029-Lラブライブ！OCG通販はカードラボ",
+      "verificationMethod": "manual-direct-page-exception",
+      "verificationNote": "Card Labo omits the official heart character; the direct page was individually checked for the exact card number, L rarity, matching title, and a normal product page."
     }
-  ]
+  ],
+  "C": []
 }

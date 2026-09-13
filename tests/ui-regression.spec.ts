@@ -68,6 +68,9 @@ test('監査済みライブカードのCard Laboリンクをまとめ表示ON/OF
     ['PL!S-bp6-019-L', 'Step! ZERO to ONE', 'https://www.c-labo-online.jp/product/386698'],
     ['LL-bp5-001-L', 'Live with a smile!', 'https://www.c-labo-online.jp/product/368566'],
     ['PL!-bp4-026-L', 'ダイヤモンドプリンセスの憂鬱', 'https://www.c-labo-online.jp/product/350919'],
+    ['PL!SP-sd1-026-SRL', '私のSymphony 〜澁谷かのんVer.〜', 'https://www.c-labo-online.jp/product/393393'],
+    ['LL-PR-004-PR', '愛♡スクリ～ム！', 'https://www.c-labo-online.jp/product/338834'],
+    ['PL!HS-pb1-029-L', '全方位キュン♡', 'https://www.c-labo-online.jp/product/381743'],
   ] as const;
 
   await expect(grouping).toBeChecked();
