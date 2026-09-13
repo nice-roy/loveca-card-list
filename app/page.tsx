@@ -437,12 +437,12 @@ export default function Home() {
     launcher?.addEventListener('pointerdown', onLauncherPointerDown);
     launcher?.addEventListener('pointerup', onLauncherPointerUp);
     header?.addEventListener('pointerdown', onHeaderPointerDown);
-    header?.addEventListener('pointerup', onHeaderPointerUp);
+    document.addEventListener('pointerup', onHeaderPointerUp);
     return () => {
       launcher?.removeEventListener('pointerdown', onLauncherPointerDown);
       launcher?.removeEventListener('pointerup', onLauncherPointerUp);
       header?.removeEventListener('pointerdown', onHeaderPointerDown);
-      header?.removeEventListener('pointerup', onHeaderPointerUp);
+      document.removeEventListener('pointerup', onHeaderPointerUp);
     };
   }, [deckOpen]);
 
