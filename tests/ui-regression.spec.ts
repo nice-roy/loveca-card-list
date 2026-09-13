@@ -61,6 +61,32 @@ test('まとめカード表面のCard Laboリンクとバージョン詳細の�
   await expect(card.getByRole('link', {name: /カードラボで購入/})).toHaveCount(2);
 });
 
+test('監査済みライブカードのCard Laboリンクをまとめ表示ON/OFFで保持する', async ({page}) => {
+  const search = page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'});
+  const grouping = page.getByRole('checkbox', {name: '同一カードをまとめる'});
+  const cases = [
+    ['PL!S-bp6-019-L', 'Step! ZERO to ONE', 'https://www.c-labo-online.jp/product/386698'],
+    ['LL-bp5-001-L', 'Live with a smile!', 'https://www.c-labo-online.jp/product/368566'],
+    ['PL!-bp4-026-L', 'ダイヤモンドプリンセスの憂鬱', 'https://www.c-labo-online.jp/product/350919'],
+  ] as const;
+
+  await expect(grouping).toBeChecked();
+  for (const [cardNumber, name, url] of cases) {
+    await search.fill(cardNumber);
+    const card = page.getByRole('article').filter({hasText: name}).filter({hasText: cardNumber});
+    await expect(card).toHaveCount(1);
+    await expect(card.getByRole('link', {name: 'カードラボで購入'})).toHaveAttribute('href', url);
+  }
+
+  await grouping.uncheck();
+  for (const [cardNumber, name, url] of cases) {
+    await search.fill(cardNumber);
+    const card = page.getByRole('article').filter({hasText: name}).filter({hasText: cardNumber});
+    await expect(card).toHaveCount(1);
+    await expect(card.getByRole('link', {name: 'カードラボで購入'})).toHaveAttribute('href', url);
+  }
+});
+
 test('所持・候補・デッキ4枚上限の基本操作が成立する', async ({page}) => {
   const cardNumber = 'PL!SP-bp5-021-N';
   await page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'}).fill(cardNumber);
