@@ -1,0 +1,2967 @@
+{
+  "checkedAt": "2026-09-13T10:49:46.982Z",
+  "scope": "All 291 physical live-card versions in app/data/cards.json",
+  "verification": "Read-only Card Labo listing and direct product-page verification by exact card number, name, and rarity.",
+  "counts": {
+    "total": 291,
+    "retainedHistorical": 134,
+    "A": 0,
+    "B": 154,
+    "C": 3
+  },
+  "retainedHistorical": [
+    {
+      "cardId": "loveca-card:pl!sp-bp4-023-l",
+      "cardNumber": "PL!SP-bp4-023-L",
+      "name": "Dazzling Game",
+      "url": "https://www.c-labo-online.jp/product/350928",
+      "title": "【ラブカ】Dazzling Game【L】PL!SP-bp4-023-L",
+      "detailTitle": "【ラブカ】Dazzling Game【L】PL!SP-bp4-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-023-srl",
+      "cardNumber": "PL!SP-bp4-023-SRL",
+      "name": "Dazzling Game",
+      "url": "https://www.c-labo-online.jp/product/393378",
+      "title": "【ラブカ】Dazzling Game【SRL】PL!SP-bp4-023-SRL",
+      "detailTitle": "【ラブカ】Dazzling Game【SRL】PL!SP-bp4-023-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp7-028-l",
+      "cardNumber": "PL!SP-bp7-028-L",
+      "name": "未来の音が聴こえる",
+      "url": "https://www.c-labo-online.jp/product/403319",
+      "title": "【ラブカ】未来の音が聴こえる【L】PL!SP-bp7-028-L",
+      "detailTitle": "【ラブカ】未来の音が聴こえる【L】PL!SP-bp7-028-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-027-l",
+      "cardNumber": "PL!SP-bp2-027-L",
+      "name": "UNIVERSE!!",
+      "url": "https://www.c-labo-online.jp/product/319952",
+      "title": "【ラブカ】UNIVERSE!!【L】PL!SP-bp2-027-L",
+      "detailTitle": "【ラブカ】UNIVERSE!!【L】PL!SP-bp2-027-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-027-srl",
+      "cardNumber": "PL!SP-bp2-027-SRL",
+      "name": "UNIVERSE!!",
+      "url": "https://www.c-labo-online.jp/product/393377",
+      "title": "【ラブカ】UNIVERSE!!【SRL】PL!SP-bp2-027-SRL",
+      "detailTitle": "【ラブカ】UNIVERSE!!【SRL】PL!SP-bp2-027-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp5-024-l",
+      "cardNumber": "PL!SP-bp5-024-L",
+      "name": "MIRACLE NEW STORY",
+      "url": "https://www.c-labo-online.jp/product/368586",
+      "title": "【ラブカ】MIRACLE NEW STORY【L】PL!SP-bp5-024-L",
+      "detailTitle": "【ラブカ】MIRACLE NEW STORY【L】PL!SP-bp5-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-027-l",
+      "cardNumber": "PL!SP-bp1-027-L",
+      "name": "Sing！Shine！Smile！",
+      "url": "https://www.c-labo-online.jp/product/299917",
+      "title": "【ラブカ】Sing！Shine！Smile！【L】PL!SP-bp1-027-L",
+      "detailTitle": "【ラブカ】Sing！Shine！Smile！【L】PL!SP-bp1-027-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-027-srl",
+      "cardNumber": "PL!SP-bp1-027-SRL",
+      "name": "Sing！Shine！Smile！",
+      "url": "https://www.c-labo-online.jp/product/393372",
+      "title": "【ラブカ】Sing！Shine！Smile！【SRL】PL!SP-bp1-027-SRL",
+      "detailTitle": "【ラブカ】Sing！Shine！Smile！【SRL】PL!SP-bp1-027-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-024-l",
+      "cardNumber": "PL!SP-bp4-024-L",
+      "name": "ノンフィクション!!",
+      "url": "https://www.c-labo-online.jp/product/350929",
+      "title": "【ラブカ】ノンフィクション!!【L】PL!SP-bp4-024-L",
+      "detailTitle": "【ラブカ】ノンフィクション!!【L】PL!SP-bp4-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-024-secl",
+      "cardNumber": "PL!SP-bp4-024-SECL",
+      "name": "ノンフィクション!!",
+      "url": "https://www.c-labo-online.jp/product/393344",
+      "title": "【ラブカ】ノンフィクション!!【SECL】PL!SP-bp4-024-SECL",
+      "detailTitle": "【ラブカ】ノンフィクション!!【SECL】PL!SP-bp4-024-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-024-srl",
+      "cardNumber": "PL!SP-bp4-024-SRL",
+      "name": "ノンフィクション!!",
+      "url": "https://www.c-labo-online.jp/product/393379",
+      "title": "【ラブカ】ノンフィクション!!【SRL】PL!SP-bp4-024-SRL",
+      "detailTitle": "【ラブカ】ノンフィクション!!【SRL】PL!SP-bp4-024-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp5-025-l",
+      "cardNumber": "PL!SP-bp5-025-L",
+      "name": "常夏☆サンシャイン",
+      "url": "https://www.c-labo-online.jp/product/368587",
+      "title": "【ラブカ】常夏☆サンシャイン【L】PL!SP-bp5-025-L",
+      "detailTitle": "【ラブカ】常夏☆サンシャイン【L】PL!SP-bp5-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-024-l",
+      "cardNumber": "PL!SP-pb1-024-L",
+      "name": "ニュートラル",
+      "url": "https://www.c-labo-online.jp/product/312188",
+      "title": "【ラブカ】ニュートラル【L】PL!SP-pb1-024-L",
+      "detailTitle": "【ラブカ】ニュートラル【L】PL!SP-pb1-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-024-srl",
+      "cardNumber": "PL!SP-pb1-024-SRL",
+      "name": "ニュートラル",
+      "url": "https://www.c-labo-online.jp/product/393387",
+      "title": "【ラブカ】ニュートラル【SRL】PL!SP-pb1-024-SRL",
+      "detailTitle": "【ラブカ】ニュートラル【SRL】PL!SP-pb1-024-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-025-l",
+      "cardNumber": "PL!SP-pb1-025-L",
+      "name": "Jellyfish",
+      "url": "https://www.c-labo-online.jp/product/312189",
+      "title": "【ラブカ】Jellyfish【L】PL!SP-pb1-025-L",
+      "detailTitle": "【ラブカ】Jellyfish【L】PL!SP-pb1-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-025-secl",
+      "cardNumber": "PL!SP-pb1-025-SECL",
+      "name": "Jellyfish",
+      "url": "https://www.c-labo-online.jp/product/403191",
+      "title": "【ラブカ】Jellyfish【SECL】PL!SP-pb1-025-SECL",
+      "detailTitle": "【ラブカ】Jellyfish【SECL】PL!SP-pb1-025-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-025-srl",
+      "cardNumber": "PL!SP-pb1-025-SRL",
+      "name": "Jellyfish",
+      "url": "https://www.c-labo-online.jp/product/393388",
+      "title": "【ラブカ】Jellyfish【SRL】PL!SP-pb1-025-SRL",
+      "detailTitle": "【ラブカ】Jellyfish【SRL】PL!SP-pb1-025-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb2-048-l",
+      "cardNumber": "PL!SP-pb2-048-L",
+      "name": "ディストーション",
+      "url": "https://www.c-labo-online.jp/product/393442",
+      "title": "【ラブカ】ディストーション【L】PL!SP-pb2-048-L",
+      "detailTitle": "【ラブカ】ディストーション【L】PL!SP-pb2-048-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-024-l",
+      "cardNumber": "PL!SP-bp2-024-L",
+      "name": "ビタミンSUMMER！",
+      "url": "https://www.c-labo-online.jp/product/319949",
+      "title": "【ラブカ】ビタミンSUMMER!【L】PL!SP-bp2-024-L",
+      "detailTitle": "【ラブカ】ビタミンSUMMER!【L】PL!SP-bp2-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-024-secl",
+      "cardNumber": "PL!SP-bp2-024-SECL",
+      "name": "ビタミンSUMMER!",
+      "url": "https://www.c-labo-online.jp/product/368257",
+      "title": "【ラブカ】ビタミンSUMMER！【SECL】PL!SP-bp2-024-SECL",
+      "detailTitle": "【ラブカ】ビタミンSUMMER！【SECL】PL!SP-bp2-024-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-024-srl",
+      "cardNumber": "PL!SP-bp2-024-SRL",
+      "name": "ビタミンSUMMER!",
+      "url": "https://www.c-labo-online.jp/product/393374",
+      "title": "【ラブカ】ビタミンSUMMER!【SRL】PL!SP-bp2-024-SRL",
+      "detailTitle": "【ラブカ】ビタミンSUMMER!【SRL】PL!SP-bp2-024-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-028-l",
+      "cardNumber": "PL!SP-bp4-028-L",
+      "name": "DAISUKI FULL POWER",
+      "url": "https://www.c-labo-online.jp/product/350933",
+      "title": "【ラブカ】DAISUKI FULL POWER【L】PL!SP-bp4-028-L",
+      "detailTitle": "【ラブカ】DAISUKI FULL POWER【L】PL!SP-bp4-028-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-028-srl",
+      "cardNumber": "PL!SP-bp4-028-SRL",
+      "name": "DAISUKI FULL POWER",
+      "url": "https://www.c-labo-online.jp/product/393383",
+      "title": "【ラブカ】DAISUKI FULL POWER【SRL】PL!SP-bp4-028-SRL",
+      "detailTitle": "【ラブカ】DAISUKI FULL POWER【SRL】PL!SP-bp4-028-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp5-023-l",
+      "cardNumber": "PL!SP-bp5-023-L",
+      "name": "Shooting Voice!!",
+      "url": "https://www.c-labo-online.jp/product/368585",
+      "title": "【ラブカ】Shooting Voice!!【L】PL!SP-bp5-023-L",
+      "detailTitle": "【ラブカ】Shooting Voice!!【L】PL!SP-bp5-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp7-027-l",
+      "cardNumber": "PL!SP-bp7-027-L",
+      "name": "What a Wonderful Dream!!",
+      "url": "https://www.c-labo-online.jp/product/403318",
+      "title": "【ラブカ】What a Wonderful Dream!!【L】PL!SP-bp7-027-L",
+      "detailTitle": "【ラブカ】What a Wonderful Dream!!【L】PL!SP-bp7-027-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb2-049-l",
+      "cardNumber": "PL!SP-pb2-049-L",
+      "name": "ニュートラル",
+      "url": "https://www.c-labo-online.jp/product/393443",
+      "title": "【ラブカ】ニュートラル【L】PL!SP-pb2-049-L",
+      "detailTitle": "【ラブカ】ニュートラル【L】PL!SP-pb2-049-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-025-l",
+      "cardNumber": "PL!SP-bp2-025-L",
+      "name": "Bubble Rise",
+      "url": "https://www.c-labo-online.jp/product/319950",
+      "title": "【ラブカ】Bubble Rise【L】PL!SP-bp2-025-L",
+      "detailTitle": "【ラブカ】Bubble Rise【L】PL!SP-bp2-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-025-srl",
+      "cardNumber": "PL!SP-bp2-025-SRL",
+      "name": "Bubble Rise",
+      "url": "https://www.c-labo-online.jp/product/393375",
+      "title": "【ラブカ】Bubble Rise【SRL】PL!SP-bp2-025-SRL",
+      "detailTitle": "【ラブカ】Bubble Rise【SRL】PL!SP-bp2-025-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-026-l",
+      "cardNumber": "PL!SP-bp2-026-L",
+      "name": "笑顔のPromise",
+      "url": "https://www.c-labo-online.jp/product/319951",
+      "title": "【ラブカ】笑顔のPromise【L】PL!SP-bp2-026-L",
+      "detailTitle": "【ラブカ】笑顔のPromise【L】PL!SP-bp2-026-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-026-srl",
+      "cardNumber": "PL!SP-bp2-026-SRL",
+      "name": "笑顔のPromise",
+      "url": "https://www.c-labo-online.jp/product/393376",
+      "title": "【ラブカ】笑顔のPromise【SRL】PL!SP-bp2-026-SRL",
+      "detailTitle": "【ラブカ】笑顔のPromise【SRL】PL!SP-bp2-026-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-026-l",
+      "cardNumber": "PL!SP-bp4-026-L",
+      "name": "Wish Song",
+      "url": "https://www.c-labo-online.jp/product/350931",
+      "title": "【ラブカ】Wish Song【L】PL!SP-bp4-026-L",
+      "detailTitle": "【ラブカ】Wish Song【L】PL!SP-bp4-026-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-026-srl",
+      "cardNumber": "PL!SP-bp4-026-SRL",
+      "name": "Wish Song",
+      "url": "https://www.c-labo-online.jp/product/393381",
+      "title": "【ラブカ】Wish Song【SRL】PL!SP-bp4-026-SRL",
+      "detailTitle": "【ラブカ】Wish Song【SRL】PL!SP-bp4-026-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-029-l",
+      "cardNumber": "PL!SP-bp4-029-L",
+      "name": "追いかける夢の先で",
+      "url": "https://www.c-labo-online.jp/product/350934",
+      "title": "【ラブカ】追いかける夢の先で【L】PL!SP-bp4-029-L",
+      "detailTitle": "【ラブカ】追いかける夢の先で【L】PL!SP-bp4-029-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-029-srl",
+      "cardNumber": "PL!SP-bp4-029-SRL",
+      "name": "追いかける夢の先で",
+      "url": "https://www.c-labo-online.jp/product/393384",
+      "title": "【ラブカ】追いかける夢の先で【SRL】PL!SP-bp4-029-SRL",
+      "detailTitle": "【ラブカ】追いかける夢の先で【SRL】PL!SP-bp4-029-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-026-l",
+      "cardNumber": "PL!SP-pb1-026-L",
+      "name": "Jump Into the New World",
+      "url": "https://www.c-labo-online.jp/product/312190",
+      "title": "【ラブカ】Jump Into the New World【L】PL!SP-pb1-026-L",
+      "detailTitle": "【ラブカ】Jump Into the New World【L】PL!SP-pb1-026-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-026-l＋",
+      "cardNumber": "PL!SP-pb1-026-L＋",
+      "name": "Jump Into the New World",
+      "url": "https://www.c-labo-online.jp/product/312175",
+      "title": "【ラブカ】Jump Into the New World【L+】PL!SP-pb1-026-L+",
+      "detailTitle": "【ラブカ】Jump Into the New World【L+】PL!SP-pb1-026-L+"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-026-srl",
+      "cardNumber": "PL!SP-pb1-026-SRL",
+      "name": "Jump Into the New World",
+      "url": "https://www.c-labo-online.jp/product/393389",
+      "title": "【ラブカ】Jump Into the New World【SRL】PL!SP-pb1-026-SRL",
+      "detailTitle": "【ラブカ】Jump Into the New World【SRL】PL!SP-pb1-026-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb2-045-l",
+      "cardNumber": "PL!SP-pb2-045-L",
+      "name": "絶対的LOVER",
+      "url": "https://www.c-labo-online.jp/product/393439",
+      "title": "【ラブカ】絶対的LOVER【L】PL!SP-pb2-045-L",
+      "detailTitle": "【ラブカ】絶対的LOVER【L】PL!SP-pb2-045-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd1-026-sd",
+      "cardNumber": "PL!SP-sd1-026-SD",
+      "name": "私のSymphony 〜澁谷かのんVer.〜",
+      "url": "https://www.c-labo-online.jp/product/300021",
+      "title": "【ラブカ】私のSymphony 〜澁谷かのんVer.〜【SD】PL!SP-sd1-026-SD",
+      "detailTitle": "【ラブカ】私のSymphony 〜澁谷かのんVer.〜【SD】PL!SP-sd1-026-SD"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd2-025-p",
+      "cardNumber": "PL!SP-sd2-025-P",
+      "name": "Aspire",
+      "url": "https://www.c-labo-online.jp/product/386738",
+      "title": "【ラブカ】Aspire【P】PL!SP-sd2-025-P",
+      "detailTitle": "【ラブカ】Aspire【P】PL!SP-sd2-025-P"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd2-025-sd2",
+      "cardNumber": "PL!SP-sd2-025-SD2",
+      "name": "Aspire",
+      "url": "https://www.c-labo-online.jp/product/386768",
+      "title": "【ラブカ】Aspire【SD2】PL!SP-sd2-025-SD2",
+      "detailTitle": "【ラブカ】Aspire【SD2】PL!SP-sd2-025-SD2"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-026-l",
+      "cardNumber": "PL!SP-bp1-026-L",
+      "name": "未来予報ハレルヤ！",
+      "url": "https://www.c-labo-online.jp/product/299916",
+      "title": "【ラブカ】未来予報ハレルヤ！【L】PL!SP-bp1-026-L",
+      "detailTitle": "【ラブカ】未来予報ハレルヤ！【L】PL!SP-bp1-026-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-026-secl",
+      "cardNumber": "PL!SP-bp1-026-SECL",
+      "name": "未来予報ハレルヤ！",
+      "url": "https://www.c-labo-online.jp/product/393343",
+      "title": "【ラブカ】未来予報ハレルヤ！【SECL】PL!SP-bp1-026-SECL",
+      "detailTitle": "【ラブカ】未来予報ハレルヤ！【SECL】PL!SP-bp1-026-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-026-srl",
+      "cardNumber": "PL!SP-bp1-026-SRL",
+      "name": "未来予報ハレルヤ！",
+      "url": "https://www.c-labo-online.jp/product/393371",
+      "title": "【ラブカ】未来予報ハレルヤ！【SRL】PL!SP-bp1-026-SRL",
+      "detailTitle": "【ラブカ】未来予報ハレルヤ！【SRL】PL!SP-bp1-026-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp7-025-l",
+      "cardNumber": "PL!SP-bp7-025-L",
+      "name": "Memories",
+      "url": "https://www.c-labo-online.jp/product/403316",
+      "title": "【ラブカ】Memories【L】PL!SP-bp7-025-L",
+      "detailTitle": "【ラブカ】Memories【L】PL!SP-bp7-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp7-026-l",
+      "cardNumber": "PL!SP-bp7-026-L",
+      "name": "Dears",
+      "url": "https://www.c-labo-online.jp/product/403317",
+      "title": "【ラブカ】Dears【L】PL!SP-bp7-026-L",
+      "detailTitle": "【ラブカ】Dears【L】PL!SP-bp7-026-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-023-l",
+      "cardNumber": "PL!SP-pb1-023-L",
+      "name": "ディストーション",
+      "url": "https://www.c-labo-online.jp/product/312187",
+      "title": "【ラブカ】ディストーション【L】PL!SP-pb1-023-L",
+      "detailTitle": "【ラブカ】ディストーション【L】PL!SP-pb1-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb1-023-srl",
+      "cardNumber": "PL!SP-pb1-023-SRL",
+      "name": "ディストーション",
+      "url": "https://www.c-labo-online.jp/product/393386",
+      "title": "【ラブカ】ディストーション【SRL】PL!SP-pb1-023-SRL",
+      "detailTitle": "【ラブカ】ディストーション【SRL】PL!SP-pb1-023-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd1-025-sd",
+      "cardNumber": "PL!SP-sd1-025-SD",
+      "name": "未来は風のように",
+      "url": "https://www.c-labo-online.jp/product/300020",
+      "title": "【ラブカ】未来は風のように【SD】PL!SP-sd1-025-SD",
+      "detailTitle": "【ラブカ】未来は風のように【SD】PL!SP-sd1-025-SD"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd1-025-srl",
+      "cardNumber": "PL!SP-sd1-025-SRL",
+      "name": "未来は風のように",
+      "url": "https://www.c-labo-online.jp/product/393392",
+      "title": "【ラブカ】未来は風のように【SRL】PL!SP-sd1-025-SRL",
+      "detailTitle": "【ラブカ】未来は風のように【SRL】PL!SP-sd1-025-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd2-024-p",
+      "cardNumber": "PL!SP-sd2-024-P",
+      "name": "アイコトバ！",
+      "url": "https://www.c-labo-online.jp/product/386737",
+      "title": "【ラブカ】アイコトバ！【P】PL!SP-sd2-024-P",
+      "detailTitle": "【ラブカ】アイコトバ！【P】PL!SP-sd2-024-P"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd2-024-sd2",
+      "cardNumber": "PL!SP-sd2-024-SD2",
+      "name": "アイコトバ！",
+      "url": "https://www.c-labo-online.jp/product/386767",
+      "title": "【ラブカ】アイコトバ！【SD2】PL!SP-sd2-024-SD2",
+      "detailTitle": "【ラブカ】アイコトバ！【SD2】PL!SP-sd2-024-SD2"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-024-l",
+      "cardNumber": "PL!SP-bp1-024-L",
+      "name": "Tiny Stars",
+      "url": "https://www.c-labo-online.jp/product/299914",
+      "title": "【ラブカ】Tiny Stars【L】PL!SP-bp1-024-L",
+      "detailTitle": "【ラブカ】Tiny Stars【L】PL!SP-bp1-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-024-srl",
+      "cardNumber": "PL!SP-bp1-024-SRL",
+      "name": "Tiny Stars",
+      "url": "https://www.c-labo-online.jp/product/393369",
+      "title": "【ラブカ】Tiny Stars【SRL】PL!SP-bp1-024-SRL",
+      "detailTitle": "【ラブカ】Tiny Stars【SRL】PL!SP-bp1-024-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-025-l",
+      "cardNumber": "PL!SP-bp1-025-L",
+      "name": "Starlight Prologue",
+      "url": "https://www.c-labo-online.jp/product/299915",
+      "title": "【ラブカ】Starlight Prologue【L】PL!SP-bp1-025-L",
+      "detailTitle": "【ラブカ】Starlight Prologue【L】PL!SP-bp1-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-025-l＋",
+      "cardNumber": "PL!SP-bp1-025-L＋",
+      "name": "Starlight Prologue",
+      "url": "https://www.c-labo-online.jp/product/312174",
+      "title": "【ラブカ】Starlight Prologue【L+】PL!SP-bp1-025-L+",
+      "detailTitle": "【ラブカ】Starlight Prologue【L+】PL!SP-bp1-025-L+"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-025-secl",
+      "cardNumber": "PL!SP-bp1-025-SECL",
+      "name": "Starlight Prologue",
+      "url": "https://www.c-labo-online.jp/product/393342",
+      "title": "【ラブカ】Starlight Prologue【SECL】PL!SP-bp1-025-SECL",
+      "detailTitle": "【ラブカ】Starlight Prologue【SECL】PL!SP-bp1-025-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-025-srl",
+      "cardNumber": "PL!SP-bp1-025-SRL",
+      "name": "Starlight Prologue",
+      "url": "https://www.c-labo-online.jp/product/393370",
+      "title": "【ラブカ】Starlight Prologue【SRL】PL!SP-bp1-025-SRL",
+      "detailTitle": "【ラブカ】Starlight Prologue【SRL】PL!SP-bp1-025-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-025-l",
+      "cardNumber": "PL!SP-bp4-025-L",
+      "name": "Special Color",
+      "url": "https://www.c-labo-online.jp/product/350930",
+      "title": "【ラブカ】Special Color【L】PL!SP-bp4-025-L",
+      "detailTitle": "【ラブカ】Special Color【L】PL!SP-bp4-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-025-srl",
+      "cardNumber": "PL!SP-bp4-025-SRL",
+      "name": "Special Color",
+      "url": "https://www.c-labo-online.jp/product/393380",
+      "title": "【ラブカ】Special Color【SRL】PL!SP-bp4-025-SRL",
+      "detailTitle": "【ラブカ】Special Color【SRL】PL!SP-bp4-025-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-030-l",
+      "cardNumber": "PL!SP-bp4-030-L",
+      "name": "Second Sparkle",
+      "url": "https://www.c-labo-online.jp/product/350935",
+      "title": "【ラブカ】Second Sparkle【L】PL!SP-bp4-030-L",
+      "detailTitle": "【ラブカ】Second Sparkle【L】PL!SP-bp4-030-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-030-srl",
+      "cardNumber": "PL!SP-bp4-030-SRL",
+      "name": "Second Sparkle",
+      "url": "https://www.c-labo-online.jp/product/393385",
+      "title": "【ラブカ】Second Sparkle【SRL】PL!SP-bp4-030-SRL",
+      "detailTitle": "【ラブカ】Second Sparkle【SRL】PL!SP-bp4-030-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp7-024-l",
+      "cardNumber": "PL!SP-bp7-024-L",
+      "name": "WE WILL!!",
+      "url": "https://www.c-labo-online.jp/product/403315",
+      "title": "【ラブカ】WE WILL!!【L】PL!SP-bp7-024-L",
+      "detailTitle": "【ラブカ】WE WILL!!【L】PL!SP-bp7-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp7-024-secl",
+      "cardNumber": "PL!SP-bp7-024-SECL",
+      "name": "WE WILL!!",
+      "url": "https://www.c-labo-online.jp/product/403190",
+      "title": "【ラブカ】WE WILL!!【SECL】PL!SP-bp7-024-SECL",
+      "detailTitle": "【ラブカ】WE WILL!!【SECL】PL!SP-bp7-024-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb2-050-l",
+      "cardNumber": "PL!SP-pb2-050-L",
+      "name": "Jellyfish",
+      "url": "https://www.c-labo-online.jp/product/393444",
+      "title": "【ラブカ】Jellyfish【L】PL!SP-pb2-050-L",
+      "detailTitle": "【ラブカ】Jellyfish【L】PL!SP-pb2-050-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd1-024-p",
+      "cardNumber": "PL!SP-sd1-024-P",
+      "name": "シェキラ☆☆☆",
+      "url": "https://www.c-labo-online.jp/product/386733",
+      "title": "【ラブカ】シェキラ☆☆☆【P】PL!SP-sd1-024-P",
+      "detailTitle": "【ラブカ】シェキラ☆☆☆【P】PL!SP-sd1-024-P"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd1-024-sd",
+      "cardNumber": "PL!SP-sd1-024-SD",
+      "name": "シェキラ☆☆☆",
+      "url": "https://www.c-labo-online.jp/product/300019",
+      "title": "【ラブカ】シェキラ☆☆☆【SD】PL!SP-sd1-024-SD",
+      "detailTitle": "【ラブカ】シェキラ☆☆☆【SD】PL!SP-sd1-024-SD"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd1-024-sd2",
+      "cardNumber": "PL!SP-sd1-024-SD2",
+      "name": "シェキラ☆☆☆",
+      "url": "https://www.c-labo-online.jp/product/386743",
+      "title": "【ラブカ】シェキラ☆☆☆【SD2/再録】PL!SP-sd1-024-SD2",
+      "detailTitle": "【ラブカ】シェキラ☆☆☆【SD2/再録】PL!SP-sd1-024-SD2"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd1-024-srl",
+      "cardNumber": "PL!SP-sd1-024-SRL",
+      "name": "シェキラ☆☆☆",
+      "url": "https://www.c-labo-online.jp/product/393391",
+      "title": "【ラブカ】シェキラ☆☆☆【SRL】PL!SP-sd1-024-SRL",
+      "detailTitle": "【ラブカ】シェキラ☆☆☆【SRL】PL!SP-sd1-024-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-023-l",
+      "cardNumber": "PL!SP-bp1-023-L",
+      "name": "START!! True dreams",
+      "url": "https://www.c-labo-online.jp/product/299913",
+      "title": "【ラブカ】START!! True dreams【L】PL!SP-bp1-023-L",
+      "detailTitle": "【ラブカ】START!! True dreams【L】PL!SP-bp1-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp1-023-srl",
+      "cardNumber": "PL!SP-bp1-023-SRL",
+      "name": "START!! True dreams",
+      "url": "https://www.c-labo-online.jp/product/393368",
+      "title": "【ラブカ】START!! True dreams【SRL】PL!SP-bp1-023-SRL",
+      "detailTitle": "【ラブカ】START!! True dreams【SRL】PL!SP-bp1-023-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-023-l",
+      "cardNumber": "PL!SP-bp2-023-L",
+      "name": "Go!! リスタート",
+      "url": "https://www.c-labo-online.jp/product/319948",
+      "title": "【ラブカ】Go!! リスタート【L】PL!SP-bp2-023-L",
+      "detailTitle": "【ラブカ】Go!! リスタート【L】PL!SP-bp2-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp2-023-srl",
+      "cardNumber": "PL!SP-bp2-023-SRL",
+      "name": "Go!! リスタート",
+      "url": "https://www.c-labo-online.jp/product/393373",
+      "title": "【ラブカ】Go!! リスタート【SRL】PL!SP-bp2-023-SRL",
+      "detailTitle": "【ラブカ】Go!! リスタート【SRL】PL!SP-bp2-023-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-027-l",
+      "cardNumber": "PL!SP-bp4-027-L",
+      "name": "Chance Day, Chance Way!",
+      "url": "https://www.c-labo-online.jp/product/350932",
+      "title": "【ラブカ】Chance Day, Chance Way！【L】PL!SP-bp4-027-L",
+      "detailTitle": "【ラブカ】Chance Day, Chance Way！【L】PL!SP-bp4-027-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp4-027-srl",
+      "cardNumber": "PL!SP-bp4-027-SRL",
+      "name": "Chance Day, Chance Way!",
+      "url": "https://www.c-labo-online.jp/product/393382",
+      "title": "【ラブカ】Chance Day, Chance Way!【SRL】PL!SP-bp4-027-SRL",
+      "detailTitle": "【ラブカ】Chance Day, Chance Way!【SRL】PL!SP-bp4-027-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp5-026-l",
+      "cardNumber": "PL!SP-bp5-026-L",
+      "name": "Let's be ONE",
+      "url": "https://www.c-labo-online.jp/product/368588",
+      "title": "【ラブカ】Let's be ONE【L】PL!SP-bp5-026-L",
+      "detailTitle": "【ラブカ】Let's be ONE【L】PL!SP-bp5-026-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp7-023-l",
+      "cardNumber": "PL!SP-bp7-023-L",
+      "name": "START!! True dreams",
+      "url": "https://www.c-labo-online.jp/product/403314",
+      "title": "【ラブカ】START!! True dreams【L】PL!SP-bp7-023-L",
+      "detailTitle": "【ラブカ】START!! True dreams【L】PL!SP-bp7-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp7-023-secl",
+      "cardNumber": "PL!SP-bp7-023-SECL",
+      "name": "START!! True dreams",
+      "url": "https://www.c-labo-online.jp/product/403189",
+      "title": "【ラブカ】START!! True dreams【SECL】PL!SP-bp7-023-SECL",
+      "detailTitle": "【ラブカ】START!! True dreams【SECL】PL!SP-bp7-023-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb2-047-l",
+      "cardNumber": "PL!SP-pb2-047-L",
+      "name": "Welcome to 僕らのセカイ",
+      "url": "https://www.c-labo-online.jp/product/393441",
+      "title": "【ラブカ】Welcome to 僕らのセカイ【L】PL!SP-pb2-047-L",
+      "detailTitle": "【ラブカ】Welcome to 僕らのセカイ【L】PL!SP-pb2-047-L"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd1-023-sd",
+      "cardNumber": "PL!SP-sd1-023-SD",
+      "name": "WE WILL!!",
+      "url": "https://www.c-labo-online.jp/product/300018",
+      "title": "【ラブカ】WE WILL!!【SD】PL!SP-sd1-023-SD",
+      "detailTitle": "【ラブカ】WE WILL!!【SD】PL!SP-sd1-023-SD"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd1-023-srl",
+      "cardNumber": "PL!SP-sd1-023-SRL",
+      "name": "WE WILL!!",
+      "url": "https://www.c-labo-online.jp/product/393390",
+      "title": "【ラブカ】WE WILL!!【SRL】PL!SP-sd1-023-SRL",
+      "detailTitle": "【ラブカ】WE WILL!!【SRL】PL!SP-sd1-023-SRL"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd2-023-p",
+      "cardNumber": "PL!SP-sd2-023-P",
+      "name": "始まりは君の空",
+      "url": "https://www.c-labo-online.jp/product/386736",
+      "title": "【ラブカ】始まりは君の空【P】PL!SP-sd2-023-P",
+      "detailTitle": "【ラブカ】始まりは君の空【P】PL!SP-sd2-023-P"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-sd2-023-sd2",
+      "cardNumber": "PL!SP-sd2-023-SD2",
+      "name": "始まりは君の空",
+      "url": "https://www.c-labo-online.jp/product/386766",
+      "title": "【ラブカ】始まりは君の空【SD2】PL!SP-sd2-023-SD2",
+      "detailTitle": "【ラブカ】始まりは君の空【SD2】PL!SP-sd2-023-SD2"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-023-secl",
+      "cardNumber": "PL!S-bp2-023-SECL",
+      "name": "MY舞☆TONIGHT",
+      "url": "https://www.c-labo-online.jp/product/403183",
+      "title": "【ラブカ】MY舞☆TONIGHT【SECL】PL!S-bp2-023-SECL",
+      "detailTitle": "【ラブカ】MY舞☆TONIGHT【SECL】PL!S-bp2-023-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp7-019-l",
+      "cardNumber": "PL!S-bp7-019-L",
+      "name": "なんどだって約束！",
+      "url": "https://www.c-labo-online.jp/product/403300",
+      "title": "【ラブカ】なんどだって約束！【L】PL!S-bp7-019-L",
+      "detailTitle": "【ラブカ】なんどだって約束！【L】PL!S-bp7-019-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp7-020-l",
+      "cardNumber": "PL!S-bp7-020-L",
+      "name": "HAPPY PARTY TRAIN",
+      "url": "https://www.c-labo-online.jp/product/403301",
+      "title": "【ラブカ】HAPPY PARTY TRAIN【L】PL!S-bp7-020-L",
+      "detailTitle": "【ラブカ】HAPPY PARTY TRAIN【L】PL!S-bp7-020-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp7-020-secl",
+      "cardNumber": "PL!S-bp7-020-SECL",
+      "name": "HAPPY PARTY TRAIN",
+      "url": "https://www.c-labo-online.jp/product/403184",
+      "title": "【ラブカ】HAPPY PARTY TRAIN【SECL】PL!S-bp7-020-SECL",
+      "detailTitle": "【ラブカ】HAPPY PARTY TRAIN【SECL】PL!S-bp7-020-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp7-021-l",
+      "cardNumber": "PL!S-bp7-021-L",
+      "name": "僕らの旅は終わらない",
+      "url": "https://www.c-labo-online.jp/product/403302",
+      "title": "【ラブカ】僕らの旅は終わらない【L】PL!S-bp7-021-L",
+      "detailTitle": "【ラブカ】僕らの旅は終わらない【L】PL!S-bp7-021-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp7-022-l",
+      "cardNumber": "PL!S-bp7-022-L",
+      "name": "恋になりたいAQUARIUM",
+      "url": "https://www.c-labo-online.jp/product/403303",
+      "title": "【ラブカ】恋になりたいAQUARIUM【L】PL!S-bp7-022-L",
+      "detailTitle": "【ラブカ】恋になりたいAQUARIUM【L】PL!S-bp7-022-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp7-022-secl",
+      "cardNumber": "PL!S-bp7-022-SECL",
+      "name": "恋になりたいAQUARIUM",
+      "url": "https://www.c-labo-online.jp/product/403185",
+      "title": "【ラブカ】恋になりたいAQUARIUM【SECL】PL!S-bp7-022-SECL",
+      "detailTitle": "【ラブカ】恋になりたいAQUARIUM【SECL】PL!S-bp7-022-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp7-023-l",
+      "cardNumber": "PL!S-bp7-023-L",
+      "name": "夜空はなんでも知ってるの？",
+      "url": "https://www.c-labo-online.jp/product/403304",
+      "title": "【ラブカ】夜空はなんでも知ってるの？【L】PL!S-bp7-023-L",
+      "detailTitle": "【ラブカ】夜空はなんでも知ってるの？【L】PL!S-bp7-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp7-024-l",
+      "cardNumber": "PL!S-bp7-024-L",
+      "name": "ときめき分類学",
+      "url": "https://www.c-labo-online.jp/product/403305",
+      "title": "【ラブカ】ときめき分類学【L】PL!S-bp7-024-L",
+      "detailTitle": "【ラブカ】ときめき分類学【L】PL!S-bp7-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp7-025-l",
+      "cardNumber": "PL!S-bp7-025-L",
+      "name": "Guilty Night, Guilty Kiss!",
+      "url": "https://www.c-labo-online.jp/product/403306",
+      "title": "【ラブカ】Guilty Night, Guilty Kiss!【L】PL!S-bp7-025-L",
+      "detailTitle": "【ラブカ】Guilty Night, Guilty Kiss!【L】PL!S-bp7-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-024-secl",
+      "cardNumber": "PL!S-bp2-024-SECL",
+      "name": "君のこころは輝いてるかい？",
+      "url": "https://www.c-labo-online.jp/product/386593",
+      "title": "【ラブカ】君のこころは輝いてるかい？【SECL】PL!S-bp2-024-SECL",
+      "detailTitle": "【ラブカ】君のこころは輝いてるかい？【SECL】PL!S-bp2-024-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp6-019-l",
+      "cardNumber": "PL!S-bp6-019-L",
+      "name": "Step! ZERO to ONE",
+      "url": "https://www.c-labo-online.jp/product/386698",
+      "title": "【ラブカ】Step! ZERO to ONE【L】PL!S-bp6-019-L",
+      "detailTitle": "【ラブカ】Step! ZERO to ONE【L】PL!S-bp6-019-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp6-020-l",
+      "cardNumber": "PL!S-bp6-020-L",
+      "name": "冒険Type A, B, C!!",
+      "url": "https://www.c-labo-online.jp/product/386699",
+      "title": "【ラブカ】冒険Type A, B, C!!【L】PL!S-bp6-020-L",
+      "detailTitle": "【ラブカ】冒険Type A, B, C!!【L】PL!S-bp6-020-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp6-021-l",
+      "cardNumber": "PL!S-bp6-021-L",
+      "name": "MIRAI TICKET",
+      "url": "https://www.c-labo-online.jp/product/386700",
+      "title": "【ラブカ】MIRAI TICKET【L】PL!S-bp6-021-L",
+      "detailTitle": "【ラブカ】MIRAI TICKET【L】PL!S-bp6-021-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp6-022-l",
+      "cardNumber": "PL!S-bp6-022-L",
+      "name": "近未来ハッピーエンド",
+      "url": "https://www.c-labo-online.jp/product/386701",
+      "title": "【ラブカ】近未来ハッピーエンド【L】PL!S-bp6-022-L",
+      "detailTitle": "【ラブカ】近未来ハッピーエンド【L】PL!S-bp6-022-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp6-023-l",
+      "cardNumber": "PL!S-bp6-023-L",
+      "name": "GALAXY HidE and SeeK",
+      "url": "https://www.c-labo-online.jp/product/386702",
+      "title": "【ラブカ】GALAXY HidE and SeeK【L】PL!S-bp6-023-L",
+      "detailTitle": "【ラブカ】GALAXY HidE and SeeK【L】PL!S-bp6-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp6-024-l",
+      "cardNumber": "PL!S-bp6-024-L",
+      "name": "コワレヤスキ",
+      "url": "https://www.c-labo-online.jp/product/386703",
+      "title": "【ラブカ】コワレヤスキ【L】PL!S-bp6-024-L",
+      "detailTitle": "【ラブカ】コワレヤスキ【L】PL!S-bp6-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp5-019-l",
+      "cardNumber": "PL!S-bp5-019-L",
+      "name": "not ALONE not HITORI",
+      "url": "https://www.c-labo-online.jp/product/368574",
+      "title": "【ラブカ】not ALONE not HITORI【L】PL!S-bp5-019-L",
+      "detailTitle": "【ラブカ】not ALONE not HITORI【L】PL!S-bp5-019-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp5-020-l",
+      "cardNumber": "PL!S-bp5-020-L",
+      "name": "Landing action Yeah!!",
+      "url": "https://www.c-labo-online.jp/product/368575",
+      "title": "【ラブカ】Landing action Yeah!!【L】PL!S-bp5-020-L",
+      "detailTitle": "【ラブカ】Landing action Yeah!!【L】PL!S-bp5-020-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp5-021-l",
+      "cardNumber": "PL!S-bp5-021-L",
+      "name": "夢で夜空を照らしたい",
+      "url": "https://www.c-labo-online.jp/product/368576",
+      "title": "【ラブカ】夢で夜空を照らしたい【L】PL!S-bp5-021-L",
+      "detailTitle": "【ラブカ】夢で夜空を照らしたい【L】PL!S-bp5-021-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp5-021-secl",
+      "cardNumber": "PL!S-bp5-021-SECL",
+      "name": "夢で夜空を照らしたい",
+      "url": "https://www.c-labo-online.jp/product/368255",
+      "title": "【ラブカ】夢で夜空を照らしたい【SECL】PL!S-bp5-021-SECL",
+      "detailTitle": "【ラブカ】夢で夜空を照らしたい【SECL】PL!S-bp5-021-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!s-sd1-019-sd",
+      "cardNumber": "PL!S-sd1-019-SD",
+      "name": "未来の僕らは知ってるよ",
+      "url": "https://www.c-labo-online.jp/product/368823",
+      "title": "【ラブカ】未来の僕らは知ってるよ【SD】PL!S-sd1-019-SD",
+      "detailTitle": "【ラブカ】未来の僕らは知ってるよ【SD】PL!S-sd1-019-SD"
+    },
+    {
+      "cardId": "loveca-card:pl!s-sd1-020-sd",
+      "cardNumber": "PL!S-sd1-020-SD",
+      "name": "JIMO-AI Dash!",
+      "url": "https://www.c-labo-online.jp/product/368824",
+      "title": "【ラブカ】JIMO-AI Dash!【SD】PL!S-sd1-020-SD",
+      "detailTitle": "【ラブカ】JIMO-AI Dash!【SD】PL!S-sd1-020-SD"
+    },
+    {
+      "cardId": "loveca-card:pl!s-sd1-021-sd",
+      "cardNumber": "PL!S-sd1-021-SD",
+      "name": "永久hours",
+      "url": "https://www.c-labo-online.jp/product/368825",
+      "title": "【ラブカ】永久hours【SD】PL!S-sd1-021-SD",
+      "detailTitle": "【ラブカ】永久hours【SD】PL!S-sd1-021-SD"
+    },
+    {
+      "cardId": "loveca-card:pl!s-sd1-022-sd",
+      "cardNumber": "PL!S-sd1-022-SD",
+      "name": "Jump up HIGH!!",
+      "url": "https://www.c-labo-online.jp/product/368826",
+      "title": "【ラブカ】Jump up HIGH!!【SD】PL!S-sd1-022-SD",
+      "detailTitle": "【ラブカ】Jump up HIGH!!【SD】PL!S-sd1-022-SD"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp3-019-l",
+      "cardNumber": "PL!S-bp3-019-L",
+      "name": "MIRACLE WAVE",
+      "url": "https://www.c-labo-online.jp/product/334893",
+      "title": "【ラブカ】MIRACLE WAVE【L】PL!S-bp3-019-L",
+      "detailTitle": "【ラブカ】MIRACLE WAVE【L】PL!S-bp3-019-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp3-020-l",
+      "cardNumber": "PL!S-bp3-020-L",
+      "name": "ダイスキだったらダイジョウブ！",
+      "url": "https://www.c-labo-online.jp/product/334894",
+      "title": "【ラブカ】ダイスキだったらダイジョウブ！【L】PL!S-bp3-020-L",
+      "detailTitle": "【ラブカ】ダイスキだったらダイジョウブ！【L】PL!S-bp3-020-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp3-021-l",
+      "cardNumber": "PL!S-bp3-021-L",
+      "name": "想いよひとつになれ",
+      "url": "https://www.c-labo-online.jp/product/334895",
+      "title": "【ラブカ】想いよひとつになれ【L】PL!S-bp3-021-L",
+      "detailTitle": "【ラブカ】想いよひとつになれ【L】PL!S-bp3-021-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp3-022-l",
+      "cardNumber": "PL!S-bp3-022-L",
+      "name": "Fantastic Departure!",
+      "url": "https://www.c-labo-online.jp/product/334896",
+      "title": "【ラブカ】Fantastic Departure!【L】PL!S-bp3-022-L",
+      "detailTitle": "【ラブカ】Fantastic Departure!【L】PL!S-bp3-022-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp3-023-l",
+      "cardNumber": "PL!S-bp3-023-L",
+      "name": "KOKORO Magic “A to Z”",
+      "url": "https://www.c-labo-online.jp/product/334897",
+      "title": "【ラブカ】KOKORO Magic “A to Z”【L】PL!S-bp3-023-L",
+      "detailTitle": "【ラブカ】KOKORO Magic “A to Z”【L】PL!S-bp3-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp3-024-l",
+      "cardNumber": "PL!S-bp3-024-L",
+      "name": "Deep Resonance",
+      "url": "https://www.c-labo-online.jp/product/334898",
+      "title": "【ラブカ】Deep Resonance【L】PL!S-bp3-024-L",
+      "detailTitle": "【ラブカ】Deep Resonance【L】PL!S-bp3-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp3-025-l",
+      "cardNumber": "PL!S-bp3-025-L",
+      "name": "SUKI for you, DREAM for you!",
+      "url": "https://www.c-labo-online.jp/product/334899",
+      "title": "【ラブカ】SUKI for you, DREAM for you!【L】PL!S-bp3-025-L",
+      "detailTitle": "【ラブカ】SUKI for you, DREAM for you!【L】PL!S-bp3-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pb1-019-l",
+      "cardNumber": "PL!S-pb1-019-L",
+      "name": "元気全開DAY！DAY！DAY！",
+      "url": "https://www.c-labo-online.jp/product/323477",
+      "title": "【ラブカ】元気全開DAY！DAY！DAY！【L】PL!S-pb1-019-L",
+      "detailTitle": "【ラブカ】元気全開DAY！DAY！DAY！【L】PL!S-pb1-019-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pb1-020-l",
+      "cardNumber": "PL!S-pb1-020-L",
+      "name": "トリコリコPLEASE!!",
+      "url": "https://www.c-labo-online.jp/product/323478",
+      "title": "【ラブカ】トリコリコPLEASE!!【L】PL!S-pb1-020-L",
+      "detailTitle": "【ラブカ】トリコリコPLEASE!!【L】PL!S-pb1-020-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pb1-021-l",
+      "cardNumber": "PL!S-pb1-021-L",
+      "name": "Strawberry Trapper",
+      "url": "https://www.c-labo-online.jp/product/323479",
+      "title": "【ラブカ】Strawberry Trapper【L】PL!S-pb1-021-L",
+      "detailTitle": "【ラブカ】Strawberry Trapper【L】PL!S-pb1-021-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pb1-022-l",
+      "cardNumber": "PL!S-pb1-022-L",
+      "name": "逃走迷走メビウスループ",
+      "url": "https://www.c-labo-online.jp/product/323480",
+      "title": "【ラブカ】逃走迷走メビウスループ【L】PL!S-pb1-022-L",
+      "detailTitle": "【ラブカ】逃走迷走メビウスループ【L】PL!S-pb1-022-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pb1-022-l＋",
+      "cardNumber": "PL!S-pb1-022-L＋",
+      "name": "逃走迷走メビウスループ",
+      "url": "https://www.c-labo-online.jp/product/323457",
+      "title": "【ラブカ】逃走迷走メビウスループ【L+】PL!S-pb1-022-L+",
+      "detailTitle": "【ラブカ】逃走迷走メビウスループ【L+】PL!S-pb1-022-L+"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pb1-023-l",
+      "cardNumber": "PL!S-pb1-023-L",
+      "name": "Next SPARKLING!!",
+      "url": "https://www.c-labo-online.jp/product/323481",
+      "title": "【ラブカ】Next SPARKLING!!【L】PL!S-pb1-023-L",
+      "detailTitle": "【ラブカ】Next SPARKLING!!【L】PL!S-pb1-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pb1-023-l＋",
+      "cardNumber": "PL!S-pb1-023-L＋",
+      "name": "Next SPARKLING!!",
+      "url": "https://www.c-labo-online.jp/product/323458",
+      "title": "【ラブカ】Next SPARKLING!!【L+】PL!S-pb1-023-L+",
+      "detailTitle": "【ラブカ】Next SPARKLING!!【L+】PL!S-pb1-023-L+"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pb1-024-l",
+      "cardNumber": "PL!S-pb1-024-L",
+      "name": "僕らの走ってきた道は・・・",
+      "url": "https://www.c-labo-online.jp/product/323482",
+      "title": "【ラブカ】僕らの走ってきた道は・・・【L】PL!S-pb1-024-L",
+      "detailTitle": "【ラブカ】僕らの走ってきた道は・・・【L】PL!S-pb1-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-019-l",
+      "cardNumber": "PL!S-bp2-019-L",
+      "name": "WATER BLUE NEW WORLD",
+      "url": "https://www.c-labo-online.jp/product/319940",
+      "title": "【ラブカ】WATER BLUE NEW WORLD【L】PL!S-bp2-019-L",
+      "detailTitle": "【ラブカ】WATER BLUE NEW WORLD【L】PL!S-bp2-019-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-020-l",
+      "cardNumber": "PL!S-bp2-020-L",
+      "name": "DREAMY COLOR",
+      "url": "https://www.c-labo-online.jp/product/319941",
+      "title": "【ラブカ】DREAMY COLOR【L】PL!S-bp2-020-L",
+      "detailTitle": "【ラブカ】DREAMY COLOR【L】PL!S-bp2-020-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-021-l",
+      "cardNumber": "PL!S-bp2-021-L",
+      "name": "未体験HORIZON",
+      "url": "https://www.c-labo-online.jp/product/319942",
+      "title": "【ラブカ】未体験HORIZON【L】PL!S-bp2-021-L",
+      "detailTitle": "【ラブカ】未体験HORIZON【L】PL!S-bp2-021-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-022-l",
+      "cardNumber": "PL!S-bp2-022-L",
+      "name": "未熟DREAMER",
+      "url": "https://www.c-labo-online.jp/product/319943",
+      "title": "【ラブカ】未熟DREAMER【L】PL!S-bp2-022-L",
+      "detailTitle": "【ラブカ】未熟DREAMER【L】PL!S-bp2-022-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-023-l",
+      "cardNumber": "PL!S-bp2-023-L",
+      "name": "MY舞☆TONIGHT",
+      "url": "https://www.c-labo-online.jp/product/319944",
+      "title": "【ラブカ】MY舞☆TONIGHT【L】PL!S-bp2-023-L",
+      "detailTitle": "【ラブカ】MY舞☆TONIGHT【L】PL!S-bp2-023-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-024-l",
+      "cardNumber": "PL!S-bp2-024-L",
+      "name": "君のこころは輝いてるかい？",
+      "url": "https://www.c-labo-online.jp/product/319945",
+      "title": "【ラブカ】君のこころは輝いてるかい？【L】PL!S-bp2-024-L",
+      "detailTitle": "【ラブカ】君のこころは輝いてるかい？【L】PL!S-bp2-024-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-025-l",
+      "cardNumber": "PL!S-bp2-025-L",
+      "name": "青空Jumping Heart",
+      "url": "https://www.c-labo-online.jp/product/319946",
+      "title": "【ラブカ】青空Jumping Heart【L】PL!S-bp2-025-L",
+      "detailTitle": "【ラブカ】青空Jumping Heart【L】PL!S-bp2-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp2-026-l",
+      "cardNumber": "PL!S-bp2-026-L",
+      "name": "ユメ語るよりユメ歌おう",
+      "url": "https://www.c-labo-online.jp/product/319947",
+      "title": "【ラブカ】ユメ語るよりユメ歌おう【L】PL!S-bp2-026-L",
+      "detailTitle": "【ラブカ】ユメ語るよりユメ歌おう【L】PL!S-bp2-026-L"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pr-022-pr",
+      "cardNumber": "PL!S-PR-022-PR",
+      "name": "HAPPY PARTY TRAIN",
+      "url": "https://www.c-labo-online.jp/product/327219",
+      "title": "【ラブカ】HAPPY PARTY TRAIN【PR】PL!S-PR-022-PR",
+      "detailTitle": "【ラブカ】HAPPY PARTY TRAIN【PR】PL!S-PR-022-PR"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pr-023-pr",
+      "cardNumber": "PL!S-PR-023-PR",
+      "name": "恋になりたいAQUARIUM",
+      "url": "https://www.c-labo-online.jp/product/327218",
+      "title": "【ラブカ】恋になりたいAQUARIUM【PR】PL!S-PR-023-PR",
+      "detailTitle": "【ラブカ】恋になりたいAQUARIUM【PR】PL!S-PR-023-PR"
+    },
+    {
+      "cardId": "loveca-card:pl!s-pr-024-pr",
+      "cardNumber": "PL!S-PR-024-PR",
+      "name": "勇気はどこに?君の胸に!",
+      "url": "https://www.c-labo-online.jp/product/327217",
+      "title": "【ラブカ】勇気はどこに?君の胸に!【PR】PL!S-PR-024-PR",
+      "detailTitle": "【ラブカ】勇気はどこに?君の胸に!【PR】PL!S-PR-024-PR"
+    }
+  ],
+  "A": [],
+  "B": [
+    {
+      "cardId": "loveca-card:pl!-bp4-022-secl",
+      "cardNumber": "PL!-bp4-022-SECL",
+      "name": "No brand girls",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386592",
+      "title": "【ラブカ】No brand girls【SECL】PL!-bp4-022-SECL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】No brand girls【SECL】PL!-bp4-022-SECLラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp6-019-l",
+      "cardNumber": "PL!-bp6-019-L",
+      "name": "Music S.T.A.R.T!!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386692",
+      "title": "【ラブカ】Music S.T.A.R.T!!【L】PL!-bp6-019-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp6-&num=120",
+      "detailTitle": "【ラブカ】Music S.T.A.R.T!!【L】PL!-bp6-019-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp6-020-l",
+      "cardNumber": "PL!-bp6-020-L",
+      "name": "Dancing stars on me!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386693",
+      "title": "【ラブカ】Dancing stars on me!【L】PL!-bp6-020-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp6-&num=120",
+      "detailTitle": "【ラブカ】Dancing stars on me!【L】PL!-bp6-020-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp6-021-l",
+      "cardNumber": "PL!-bp6-021-L",
+      "name": "Wonderful Rush",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386694",
+      "title": "【ラブカ】Wonderful Rush【L】PL!-bp6-021-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp6-&num=120",
+      "detailTitle": "【ラブカ】Wonderful Rush【L】PL!-bp6-021-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp6-022-l",
+      "cardNumber": "PL!-bp6-022-L",
+      "name": "Dreamin' Go! Go!!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386695",
+      "title": "【ラブカ】Dreamin' Go! Go!!【L】PL!-bp6-022-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp6-&num=120",
+      "detailTitle": "【ラブカ】Dreamin' Go! Go!!【L】PL!-bp6-022-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp6-023-l",
+      "cardNumber": "PL!-bp6-023-L",
+      "name": "sweet&sweet holiday",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386696",
+      "title": "【ラブカ】sweet&sweet holiday【L】PL!-bp6-023-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp6-&num=120",
+      "detailTitle": "【ラブカ】sweet&sweet holiday【L】PL!-bp6-023-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp6-024-l",
+      "cardNumber": "PL!-bp6-024-L",
+      "name": "錯覚CROSSROADS",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386697",
+      "title": "【ラブカ】錯覚CROSSROADS【L】PL!-bp6-024-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp6-&num=120",
+      "detailTitle": "【ラブカ】錯覚CROSSROADS【L】PL!-bp6-024-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-020-secl",
+      "cardNumber": "PL!-bp3-020-SECL",
+      "name": "Snow halation",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368254",
+      "title": "【ラブカ】Snow halation【SECL】PL!-bp3-020-SECL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】Snow halation【SECL】PL!-bp3-020-SECLラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp5-019-l",
+      "cardNumber": "PL!-bp5-019-L",
+      "name": "それは僕たちの奇跡",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368568",
+      "title": "【ラブカ】それは僕たちの奇跡【L】PL!-bp5-019-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120",
+      "detailTitle": "【ラブカ】それは僕たちの奇跡【L】PL!-bp5-019-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp5-020-l",
+      "cardNumber": "PL!-bp5-020-L",
+      "name": "Wonder zone",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368569",
+      "title": "【ラブカ】Wonder zone【L】PL!-bp5-020-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120",
+      "detailTitle": "【ラブカ】Wonder zone【L】PL!-bp5-020-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp5-021-l",
+      "cardNumber": "PL!-bp5-021-L",
+      "name": "SUNNY DAY SONG",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368570",
+      "title": "【ラブカ】SUNNY DAY SONG【L】PL!-bp5-021-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120",
+      "detailTitle": "【ラブカ】SUNNY DAY SONG【L】PL!-bp5-021-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp5-022-l",
+      "cardNumber": "PL!-bp5-022-L",
+      "name": "A song for You! You? You!!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368571",
+      "title": "【ラブカ】A song for You! You? You!!【L】PL!-bp5-022-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120",
+      "detailTitle": "【ラブカ】A song for You! You? You!!【L】PL!-bp5-022-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp5-023-l",
+      "cardNumber": "PL!-bp5-023-L",
+      "name": "乙姫心で恋宮殿",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368572",
+      "title": "【ラブカ】乙姫心で恋宮殿【L】PL!-bp5-023-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120",
+      "detailTitle": "【ラブカ】乙姫心で恋宮殿【L】PL!-bp5-023-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp4-019-l",
+      "cardNumber": "PL!-bp4-019-L",
+      "name": "Angelic Angel",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350912",
+      "title": "【ラブカ】Angelic Angel【L】PL!-bp4-019-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】Angelic Angel【L】PL!-bp4-019-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp4-020-l",
+      "cardNumber": "PL!-bp4-020-L",
+      "name": "Love wing bell",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350913",
+      "title": "【ラブカ】Love wing bell【L】PL!-bp4-020-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】Love wing bell【L】PL!-bp4-020-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp4-021-l",
+      "cardNumber": "PL!-bp4-021-L",
+      "name": "?←HEARTBEAT",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350914",
+      "title": "【ラブカ】？←HEARTBEAT【L】PL!-bp4-021-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】？←HEARTBEAT【L】PL!-bp4-021-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp4-022-l",
+      "cardNumber": "PL!-bp4-022-L",
+      "name": "No brand girls",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350915",
+      "title": "【ラブカ】No brand girls【L】PL!-bp4-022-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】No brand girls【L】PL!-bp4-022-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp4-023-l",
+      "cardNumber": "PL!-bp4-023-L",
+      "name": "もぎゅっと\"love\"で接近中！",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350916",
+      "title": "【ラブカ】もぎゅっと\"love\"で接近中！【L】PL!-bp4-023-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】もぎゅっと\"love\"で接近中！【L】PL!-bp4-023-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp4-024-l",
+      "cardNumber": "PL!-bp4-024-L",
+      "name": "小夜啼鳥恋詩",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350917",
+      "title": "【ラブカ】小夜啼鳥恋詩【L】PL!-bp4-024-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】小夜啼鳥恋詩【L】PL!-bp4-024-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp4-025-l",
+      "cardNumber": "PL!-bp4-025-L",
+      "name": "微熱からMystery",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350918",
+      "title": "【ラブカ】微熱からMystery【L】PL!-bp4-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】微熱からMystery【L】PL!-bp4-025-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp4-026-l",
+      "cardNumber": "PL!-bp4-026-L",
+      "name": "ダイヤモンドプリンセスの憂鬱",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350919",
+      "title": "【ラブカ】ダイヤモンドプリンセスの憂鬱【L】PL!-bp4-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】ダイヤモンドプリンセスの憂鬱【L】PL!-bp4-026-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-020-l＋",
+      "cardNumber": "PL!-bp3-020-L＋",
+      "name": "Snow halation",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/340599",
+      "title": "【ラブカ】Snow halation【L+】PL!-bp3-020-L+",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】Snow halation【L+】PL!-bp3-020-L+ラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-pb1-028-l",
+      "cardNumber": "PL!-pb1-028-L",
+      "name": "WAO-WAO Powerful day!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/340627",
+      "title": "【ラブカ】WAO-WAO Powerful day!【L】PL!-pb1-028-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120",
+      "detailTitle": "【ラブカ】WAO-WAO Powerful day!【L】PL!-pb1-028-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-pb1-029-l",
+      "cardNumber": "PL!-pb1-029-L",
+      "name": "知らないLove＊教えてLove",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/340628",
+      "title": "【ラブカ】知らないLove＊教えてLove【L】PL!-pb1-029-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120",
+      "detailTitle": "【ラブカ】知らないLove＊教えてLove【L】PL!-pb1-029-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-pb1-030-l",
+      "cardNumber": "PL!-pb1-030-L",
+      "name": "Cutie Panther",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/340629",
+      "title": "【ラブカ】Cutie Panther【L】PL!-pb1-030-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120",
+      "detailTitle": "【ラブカ】Cutie Panther【L】PL!-pb1-030-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-pb1-031-l",
+      "cardNumber": "PL!-pb1-031-L",
+      "name": "輝夜の城で踊りたい",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/340630",
+      "title": "【ラブカ】輝夜の城で踊りたい【L】PL!-pb1-031-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120",
+      "detailTitle": "【ラブカ】輝夜の城で踊りたい【L】PL!-pb1-031-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-pb1-032-l",
+      "cardNumber": "PL!-pb1-032-L",
+      "name": "SENTIMENTAL StepS",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/340631",
+      "title": "【ラブカ】SENTIMENTAL StepS【L】PL!-pb1-032-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120",
+      "detailTitle": "【ラブカ】SENTIMENTAL StepS【L】PL!-pb1-032-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-pb1-033-l",
+      "cardNumber": "PL!-pb1-033-L",
+      "name": "KiRa-KiRa Sensation!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/340632",
+      "title": "【ラブカ】KiRa-KiRa Sensation!【L】PL!-pb1-033-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120",
+      "detailTitle": "【ラブカ】KiRa-KiRa Sensation!【L】PL!-pb1-033-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-019-l",
+      "cardNumber": "PL!-bp3-019-L",
+      "name": "僕らのLIVE 君とのLIFE",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334885",
+      "title": "【ラブカ】僕らのLIVE 君とのLIFE【L】PL!-bp3-019-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】僕らのLIVE 君とのLIFE【L】PL!-bp3-019-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-020-l",
+      "cardNumber": "PL!-bp3-020-L",
+      "name": "Snow halation",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334886",
+      "title": "【ラブカ】Snow halation【L】PL!-bp3-020-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】Snow halation【L】PL!-bp3-020-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-021-l",
+      "cardNumber": "PL!-bp3-021-L",
+      "name": "愛してるばんざーい!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334887",
+      "title": "【ラブカ】愛してるばんざーい!【L】PL!-bp3-021-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】愛してるばんざーい!【L】PL!-bp3-021-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-022-l",
+      "cardNumber": "PL!-bp3-022-L",
+      "name": "ユメノトビラ",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334888",
+      "title": "【ラブカ】ユメノトビラ【L】PL!-bp3-022-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】ユメノトビラ【L】PL!-bp3-022-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-023-l",
+      "cardNumber": "PL!-bp3-023-L",
+      "name": "ミはμ'sicのミ",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334889",
+      "title": "【ラブカ】ミはμ'sicのミ【L】PL!-bp3-023-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】ミはμ'sicのミ【L】PL!-bp3-023-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-024-l",
+      "cardNumber": "PL!-bp3-024-L",
+      "name": "夏色えがおで1,2,Jump!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334890",
+      "title": "【ラブカ】夏色えがおで1,2,Jump!【L】PL!-bp3-024-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】夏色えがおで1,2,Jump!【L】PL!-bp3-024-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-025-l",
+      "cardNumber": "PL!-bp3-025-L",
+      "name": "タカラモノズ",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334891",
+      "title": "【ラブカ】タカラモノズ【L】PL!-bp3-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】タカラモノズ【L】PL!-bp3-025-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp3-026-l",
+      "cardNumber": "PL!-bp3-026-L",
+      "name": "Oh,Love&Peace!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334892",
+      "title": "【ラブカ】Oh,Love&Peace!【L】PL!-bp3-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120",
+      "detailTitle": "【ラブカ】Oh,Love&Peace!【L】PL!-bp3-026-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-sd1-019-sd",
+      "cardNumber": "PL!-sd1-019-SD",
+      "name": "START:DASH!!",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334929",
+      "title": "【ラブカ】START:DASH!!【SD】PL!-sd1-019-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120",
+      "detailTitle": "【ラブカ】START:DASH!!【SD】PL!-sd1-019-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-sd1-020-sd",
+      "cardNumber": "PL!-sd1-020-SD",
+      "name": "きっと青春が聞こえる",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334930",
+      "title": "【ラブカ】きっと青春が聞こえる【SD】PL!-sd1-020-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120",
+      "detailTitle": "【ラブカ】きっと青春が聞こえる【SD】PL!-sd1-020-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-sd1-021-sd",
+      "cardNumber": "PL!-sd1-021-SD",
+      "name": "これからのSomeday",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334931",
+      "title": "【ラブカ】これからのSomeday【SD】PL!-sd1-021-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120",
+      "detailTitle": "【ラブカ】これからのSomeday【SD】PL!-sd1-021-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-sd1-022-sd",
+      "cardNumber": "PL!-sd1-022-SD",
+      "name": "僕らは今のなかで",
+      "groupIds": [
+        "muse"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334932",
+      "title": "【ラブカ】僕らは今のなかで【SD】PL!-sd1-022-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120",
+      "detailTitle": "【ラブカ】僕らは今のなかで【SD】PL!-sd1-022-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!-bp5-024-l",
+      "cardNumber": "PL!-bp5-024-L",
+      "name": "Private Wars",
+      "groupIds": [
+        "a-rise"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368573",
+      "title": "【ラブカ】Private Wars【L】PL!-bp5-024-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120",
+      "detailTitle": "【ラブカ】Private Wars【L】PL!-bp5-024-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp5-022-l",
+      "cardNumber": "PL!S-bp5-022-L",
+      "name": "SELF CONTROL!!",
+      "groupIds": [
+        "saint-snow"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368577",
+      "title": "【ラブカ】SELF CONTROL!!【L】PL!S-bp5-022-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120&page=2",
+      "detailTitle": "【ラブカ】SELF CONTROL!!【L】PL!S-bp5-022-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!s-bp5-023-l",
+      "cardNumber": "PL!S-bp5-023-L",
+      "name": "Awaken the power",
+      "groupIds": [
+        "aqours",
+        "saint-snow"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368578",
+      "title": "【ラブカ】Awaken the power【L】PL!S-bp5-023-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120&page=2",
+      "detailTitle": "【ラブカ】Awaken the power【L】PL!S-bp5-023-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-bp5-027-l",
+      "cardNumber": "PL!SP-bp5-027-L",
+      "name": "HOT PASSION!!",
+      "groupIds": [
+        "sunny-passion"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368589",
+      "title": "【ラブカ】HOT PASSION!!【L】PL!SP-bp5-027-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21SP-bp5-&num=120",
+      "detailTitle": "【ラブカ】HOT PASSION!!【L】PL!SP-bp5-027-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!sp-pb2-046-l",
+      "cardNumber": "PL!SP-pb2-046-L",
+      "name": "Butterfly Wing",
+      "groupIds": [
+        "other-live"
+      ],
+      "url": "https://www.c-labo-online.jp/product/393440",
+      "title": "【ラブカ】Butterfly Wing【L】PL!SP-pb2-046-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21SP-pb2-&num=120",
+      "detailTitle": "【ラブカ】Butterfly Wing【L】PL!SP-pb2-046-L"
+    },
+    {
+      "cardId": "loveca-card:ll-bp5-001-l",
+      "cardNumber": "LL-bp5-001-L",
+      "name": "Live with a smile!",
+      "groupIds": [
+        "other-live"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368566",
+      "title": "【ラブカ】LIVE with a smile!【L】LL-bp5-001-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=LL-bp5-&num=120",
+      "detailTitle": "【ラブカ】LIVE with a smile!【L】LL-bp5-001-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:ll-bp5-002-l",
+      "cardNumber": "LL-bp5-002-L",
+      "name": "Bring the LOVE！",
+      "groupIds": [
+        "other-live"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368567",
+      "title": "【ラブカ】Bring the LOVE！【L】LL-bp5-002-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=LL-bp5-&num=120",
+      "detailTitle": "【ラブカ】Bring the LOVE！【L】LL-bp5-002-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp1-026-secl",
+      "cardNumber": "PL!N-bp1-026-SECL",
+      "name": "Poppin' Up!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403186",
+      "title": "【ラブカ】Poppin' Up!【SECL】PL!N-bp1-026-SECL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp1-&num=120",
+      "detailTitle": "【ラブカ】Poppin' Up!【SECL】PL!N-bp1-026-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp7-025-l",
+      "cardNumber": "PL!N-bp7-025-L",
+      "name": "Colorful Dreams! Colorful Smiles!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403307",
+      "title": "【ラブカ】Colorful Dreams! Colorful Smiles!【L】PL!N-bp7-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp7-&num=120",
+      "detailTitle": "【ラブカ】Colorful Dreams! Colorful Smiles!【L】PL!N-bp7-025-L"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp7-025-secl",
+      "cardNumber": "PL!N-bp7-025-SECL",
+      "name": "Colorful Dreams! Colorful Smiles!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403187",
+      "title": "【ラブカ】Colorful Dreams! Colorful Smiles!【SECL】PL!N-bp7-025-SECL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp7-&num=120",
+      "detailTitle": "【ラブカ】Colorful Dreams! Colorful Smiles!【SECL】PL!N-bp7-025-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp7-026-l",
+      "cardNumber": "PL!N-bp7-026-L",
+      "name": "Just Believe!!!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403308",
+      "title": "【ラブカ】Just Believe!!!【L】PL!N-bp7-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp7-&num=120",
+      "detailTitle": "【ラブカ】Just Believe!!!【L】PL!N-bp7-026-L"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp7-026-secl",
+      "cardNumber": "PL!N-bp7-026-SECL",
+      "name": "Just Believe!!!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403188",
+      "title": "【ラブカ】Just Believe!!!【SECL】PL!N-bp7-026-SECL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp7-&num=120",
+      "detailTitle": "【ラブカ】Just Believe!!!【SECL】PL!N-bp7-026-SECL"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp7-027-l",
+      "cardNumber": "PL!N-bp7-027-L",
+      "name": "オードリー",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403309",
+      "title": "【ラブカ】オードリー【L】PL!N-bp7-027-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp7-&num=120",
+      "detailTitle": "【ラブカ】オードリー【L】PL!N-bp7-027-L"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp7-028-l",
+      "cardNumber": "PL!N-bp7-028-L",
+      "name": "Cooking with Love",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403310",
+      "title": "【ラブカ】Cooking with Love【L】PL!N-bp7-028-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp7-&num=120",
+      "detailTitle": "【ラブカ】Cooking with Love【L】PL!N-bp7-028-L"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp7-029-l",
+      "cardNumber": "PL!N-bp7-029-L",
+      "name": "Burn!!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403311",
+      "title": "【ラブカ】Burn!!【L】PL!N-bp7-029-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp7-&num=120",
+      "detailTitle": "【ラブカ】Burn!!【L】PL!N-bp7-029-L"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp7-030-l",
+      "cardNumber": "PL!N-bp7-030-L",
+      "name": "Cheer Mode",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403312",
+      "title": "【ラブカ】Cheer Mode【L】PL!N-bp7-030-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp7-&num=120",
+      "detailTitle": "【ラブカ】Cheer Mode【L】PL!N-bp7-030-L"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp7-031-l",
+      "cardNumber": "PL!N-bp7-031-L",
+      "name": "Like a Treasure",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403313",
+      "title": "【ラブカ】Like a Treasure【L】PL!N-bp7-031-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp7-&num=120",
+      "detailTitle": "【ラブカ】Like a Treasure【L】PL!N-bp7-031-L"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd1-026-p",
+      "cardNumber": "PL!N-sd1-026-P",
+      "name": "夢が僕らの太陽さ",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403325",
+      "title": "【ラブカ】夢が僕らの太陽さ【P】PL!N-sd1-026-P",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120",
+      "detailTitle": "【ラブカ】夢が僕らの太陽さ【P】PL!N-sd1-026-P"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd1-026-sd2",
+      "cardNumber": "PL!N-sd1-026-SD2",
+      "name": "夢が僕らの太陽さ",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403335",
+      "title": "【ラブカ】夢が僕らの太陽さ【SD2/再録】PL!N-sd1-026-SD2",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120&page=2",
+      "detailTitle": "【ラブカ】夢が僕らの太陽さ【SD2/再録】PL!N-sd1-026-SD2"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd2-025-p",
+      "cardNumber": "PL!N-sd2-025-P",
+      "name": "ワンダーメイツ",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403328",
+      "title": "【ラブカ】ワンダーメイツ【P】PL!N-sd2-025-P",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-sd2-&num=120",
+      "detailTitle": "【ラブカ】ワンダーメイツ【P】PL!N-sd2-025-P"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd2-025-sd2",
+      "cardNumber": "PL!N-sd2-025-SD2",
+      "name": "ワンダーメイツ",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403360",
+      "title": "【ラブカ】ワンダーメイツ【SD2】PL!N-sd2-025-SD2",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-sd2-&num=120",
+      "detailTitle": "【ラブカ】ワンダーメイツ【SD2】PL!N-sd2-025-SD2"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd2-026-p",
+      "cardNumber": "PL!N-sd2-026-P",
+      "name": "Fire Bird",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403329",
+      "title": "【ラブカ】Fire Bird【P】PL!N-sd2-026-P",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-sd2-&num=120",
+      "detailTitle": "【ラブカ】Fire Bird【P】PL!N-sd2-026-P"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd2-026-sd2",
+      "cardNumber": "PL!N-sd2-026-SD2",
+      "name": "Fire Bird",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403361",
+      "title": "【ラブカ】Fire Bird【SD2】PL!N-sd2-026-SD2",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-sd2-&num=120",
+      "detailTitle": "【ラブカ】Fire Bird【SD2】PL!N-sd2-026-SD2"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd2-027-p",
+      "cardNumber": "PL!N-sd2-027-P",
+      "name": "決意の光",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403330",
+      "title": "【ラブカ】決意の光【P】PL!N-sd2-027-P",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-sd2-&num=120",
+      "detailTitle": "【ラブカ】決意の光【P】PL!N-sd2-027-P"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd2-027-sd2",
+      "cardNumber": "PL!N-sd2-027-SD2",
+      "name": "決意の光",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/403362",
+      "title": "【ラブカ】決意の光【SD2】PL!N-sd2-027-SD2",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-sd2-&num=120",
+      "detailTitle": "【ラブカ】決意の光【SD2】PL!N-sd2-027-SD2"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp3-028-secl",
+      "cardNumber": "PL!N-bp3-028-SECL",
+      "name": "ツナガルコネクト",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368256",
+      "title": "【ラブカ】ツナガルコネクト【SECL】PL!N-bp3-028-SECL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120&page=2",
+      "detailTitle": "【ラブカ】ツナガルコネクト【SECL】PL!N-bp3-028-SECLラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp5-025-l",
+      "cardNumber": "PL!N-bp5-025-L",
+      "name": "SINGING, DREAMING, NOW!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368579",
+      "title": "【ラブカ】SINGING,DREAMING,NOW!【L】PL!N-bp5-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120&page=2",
+      "detailTitle": "【ラブカ】SINGING,DREAMING,NOW!【L】PL!N-bp5-025-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp5-026-l",
+      "cardNumber": "PL!N-bp5-026-L",
+      "name": "TOKIMEKI Runners",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368580",
+      "title": "【ラブカ】TOKIMEKI Runners【L】PL!N-bp5-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120&page=2",
+      "detailTitle": "【ラブカ】TOKIMEKI Runners【L】PL!N-bp5-026-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp5-027-l",
+      "cardNumber": "PL!N-bp5-027-L",
+      "name": "ミラクル STAY TUNE！",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368581",
+      "title": "【ラブカ】ミラクル STAY TUNE！【L】PL!N-bp5-027-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120&page=2",
+      "detailTitle": "【ラブカ】ミラクル STAY TUNE！【L】PL!N-bp5-027-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp5-028-l",
+      "cardNumber": "PL!N-bp5-028-L",
+      "name": "CHASE!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368582",
+      "title": "【ラブカ】CHASE!【L】PL!N-bp5-028-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120&page=2",
+      "detailTitle": "【ラブカ】CHASE!【L】PL!N-bp5-028-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp5-029-l",
+      "cardNumber": "PL!N-bp5-029-L",
+      "name": "無敵級*ビリーバー",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368583",
+      "title": "【ラブカ】無敵級*ビリーバー【L】PL!N-bp5-029-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120&page=2",
+      "detailTitle": "【ラブカ】無敵級*ビリーバー【L】PL!N-bp5-029-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp5-030-l",
+      "cardNumber": "PL!N-bp5-030-L",
+      "name": "繚乱！ビクトリーロード",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368584",
+      "title": "【ラブカ】繚乱！ビクトリーロード【L】PL!N-bp5-030-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp5-&num=120&page=2",
+      "detailTitle": "【ラブカ】繚乱！ビクトリーロード【L】PL!N-bp5-030-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp4-032-l＋",
+      "cardNumber": "PL!N-bp4-032-L＋",
+      "name": "Blue!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/355289",
+      "title": "【ラブカ】Blue!【L+】PL!N-bp4-032-L+",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】Blue!【L+】PL!N-bp4-032-L+ラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-pb1-037-l",
+      "cardNumber": "PL!N-pb1-037-L",
+      "name": "Cara Tesoro",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/355327",
+      "title": "【ラブカ】Cara Tesoro【L】PL!N-pb1-037-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120&page=3",
+      "detailTitle": "【ラブカ】Cara Tesoro【L】PL!N-pb1-037-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-pb1-038-l",
+      "cardNumber": "PL!N-pb1-038-L",
+      "name": "PHOENIX",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/355328",
+      "title": "【ラブカ】PHOENIX【L】PL!N-pb1-038-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120&page=2",
+      "detailTitle": "【ラブカ】PHOENIX【L】PL!N-pb1-038-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-pb1-039-l",
+      "cardNumber": "PL!N-pb1-039-L",
+      "name": "Stellar Stream",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/355329",
+      "title": "【ラブカ】Stellar Stream【L】PL!N-pb1-039-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120&page=3",
+      "detailTitle": "【ラブカ】Stellar Stream【L】PL!N-pb1-039-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-pb1-040-l",
+      "cardNumber": "PL!N-pb1-040-L",
+      "name": "どこにいても君は君",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/355330",
+      "title": "【ラブカ】どこにいても君は君【L】PL!N-pb1-040-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120&page=3",
+      "detailTitle": "【ラブカ】どこにいても君は君【L】PL!N-pb1-040-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-pb1-041-l",
+      "cardNumber": "PL!N-pb1-041-L",
+      "name": "PASTEL",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/355331",
+      "title": "【ラブカ】PASTEL【L】PL!N-pb1-041-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120&page=2",
+      "detailTitle": "【ラブカ】PASTEL【L】PL!N-pb1-041-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-pb1-041-l＋",
+      "cardNumber": "PL!N-pb1-041-L＋",
+      "name": "PASTEL",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/355290",
+      "title": "【ラブカ】PASTEL【L+】PL!N-pb1-041-L+",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120&page=2",
+      "detailTitle": "【ラブカ】PASTEL【L+】PL!N-pb1-041-L+ラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-pb1-042-l",
+      "cardNumber": "PL!N-pb1-042-L",
+      "name": "Eternalize Love!!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/355332",
+      "title": "【ラブカ】Eternalize Love!!【L】PL!N-pb1-042-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-pb1-&num=120&page=3",
+      "detailTitle": "【ラブカ】Eternalize Love!!【L】PL!N-pb1-042-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp4-025-l",
+      "cardNumber": "PL!N-bp4-025-L",
+      "name": "VIVID WORLD",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350920",
+      "title": "【ラブカ】VIVID WORLD【L】PL!N-bp4-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】VIVID WORLD【L】PL!N-bp4-025-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp4-026-l",
+      "cardNumber": "PL!N-bp4-026-L",
+      "name": "DIVE!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350921",
+      "title": "【ラブカ】DIVE！【L】PL!N-bp4-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】DIVE！【L】PL!N-bp4-026-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp4-027-l",
+      "cardNumber": "PL!N-bp4-027-L",
+      "name": "EMOTION",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350922",
+      "title": "【ラブカ】EMOTION【L】PL!N-bp4-027-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】EMOTION【L】PL!N-bp4-027-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp4-028-l",
+      "cardNumber": "PL!N-bp4-028-L",
+      "name": "stars we chase",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350923",
+      "title": "【ラブカ】stars we chase【L】PL!N-bp4-028-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】stars we chase【L】PL!N-bp4-028-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp4-029-l",
+      "cardNumber": "PL!N-bp4-029-L",
+      "name": "Rise Up High!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350924",
+      "title": "【ラブカ】Rise Up High!【L】PL!N-bp4-029-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】Rise Up High!【L】PL!N-bp4-029-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp4-030-l",
+      "cardNumber": "PL!N-bp4-030-L",
+      "name": "Daydream Mermaid",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350925",
+      "title": "【ラブカ】Daydream Mermaid【L】PL!N-bp4-030-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120&page=2",
+      "detailTitle": "【ラブカ】Daydream Mermaid【L】PL!N-bp4-030-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp4-031-l",
+      "cardNumber": "PL!N-bp4-031-L",
+      "name": "NEO SKY, NEO MAP!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350926",
+      "title": "【ラブカ】NEO SKY, NEO MAP!【L】PL!N-bp4-031-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】NEO SKY, NEO MAP!【L】PL!N-bp4-031-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp4-032-l",
+      "cardNumber": "PL!N-bp4-032-L",
+      "name": "Blue!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/350927",
+      "title": "【ラブカ】Blue!【L】PL!N-bp4-032-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp4-&num=120",
+      "detailTitle": "【ラブカ】Blue!【L】PL!N-bp4-032-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp3-025-l",
+      "cardNumber": "PL!N-bp3-025-L",
+      "name": "Awakening Promise",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334900",
+      "title": "【ラブカ】Awakening Promise【L】PL!N-bp3-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120&page=2",
+      "detailTitle": "【ラブカ】Awakening Promise【L】PL!N-bp3-025-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp3-026-l",
+      "cardNumber": "PL!N-bp3-026-L",
+      "name": "サイコーハート",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334901",
+      "title": "【ラブカ】サイコーハート【L】PL!N-bp3-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120&page=2",
+      "detailTitle": "【ラブカ】サイコーハート【L】PL!N-bp3-026-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp3-027-l",
+      "cardNumber": "PL!N-bp3-027-L",
+      "name": "La Bella Patria",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334902",
+      "title": "【ラブカ】La Bella Patria【L】PL!N-bp3-027-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120&page=2",
+      "detailTitle": "【ラブカ】La Bella Patria【L】PL!N-bp3-027-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp3-028-l",
+      "cardNumber": "PL!N-bp3-028-L",
+      "name": "ツナガルコネクト",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334903",
+      "title": "【ラブカ】ツナガルコネクト【L】PL!N-bp3-028-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120&page=2",
+      "detailTitle": "【ラブカ】ツナガルコネクト【L】PL!N-bp3-028-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp3-029-l",
+      "cardNumber": "PL!N-bp3-029-L",
+      "name": "未来ハーモニー",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334904",
+      "title": "【ラブカ】未来ハーモニー【L】PL!N-bp3-029-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120&page=2",
+      "detailTitle": "【ラブカ】未来ハーモニー【L】PL!N-bp3-029-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp3-030-l",
+      "cardNumber": "PL!N-bp3-030-L",
+      "name": "Love U my friends",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334905",
+      "title": "【ラブカ】Love U my friends【L】PL!N-bp3-030-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120&page=2",
+      "detailTitle": "【ラブカ】Love U my friends【L】PL!N-bp3-030-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp3-031-l",
+      "cardNumber": "PL!N-bp3-031-L",
+      "name": "MONSTER GIRLS",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334906",
+      "title": "【ラブカ】MONSTER GIRLS【L】PL!N-bp3-031-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120&page=2",
+      "detailTitle": "【ラブカ】MONSTER GIRLS【L】PL!N-bp3-031-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp3-032-l",
+      "cardNumber": "PL!N-bp3-032-L",
+      "name": "THE SECRET NiGHT",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/334907",
+      "title": "【ラブカ】THE SECRET NiGHT【L】PL!N-bp3-032-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-bp3-&num=120&page=2",
+      "detailTitle": "【ラブカ】THE SECRET NiGHT【L】PL!N-bp3-032-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp1-025-l",
+      "cardNumber": "PL!N-bp1-025-L",
+      "name": "虹色Passions！",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299908",
+      "title": "【ラブカ】虹色Passions！【L】PL!N-bp1-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp1-&num=120",
+      "detailTitle": "【ラブカ】虹色Passions！【L】PL!N-bp1-025-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp1-026-l",
+      "cardNumber": "PL!N-bp1-026-L",
+      "name": "Poppin' Up!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299909",
+      "title": "【ラブカ】Poppin' Up!【L】PL!N-bp1-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp1-&num=120",
+      "detailTitle": "【ラブカ】Poppin' Up!【L】PL!N-bp1-026-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp1-027-l",
+      "cardNumber": "PL!N-bp1-027-L",
+      "name": "Solitude Rain",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299910",
+      "title": "【ラブカ】Solitude Rain【L】PL!N-bp1-027-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp1-&num=120",
+      "detailTitle": "【ラブカ】Solitude Rain【L】PL!N-bp1-027-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp1-028-l",
+      "cardNumber": "PL!N-bp1-028-L",
+      "name": "Butterfly",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299911",
+      "title": "【ラブカ】Butterfly【L】PL!N-bp1-028-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp1-&num=120",
+      "detailTitle": "【ラブカ】Butterfly【L】PL!N-bp1-028-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-bp1-029-l",
+      "cardNumber": "PL!N-bp1-029-L",
+      "name": "Eutopia",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299912",
+      "title": "【ラブカ】Eutopia【L】PL!N-bp1-029-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21N-bp1-&num=120",
+      "detailTitle": "【ラブカ】Eutopia【L】PL!N-bp1-029-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd1-025-sd",
+      "cardNumber": "PL!N-sd1-025-SD",
+      "name": "Colorful Dreams! Colorful Smiles!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299979",
+      "title": "【ラブカ】Colorful Dreams! Colorful Smiles!【SD】PL!N-sd1-025-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120&page=2",
+      "detailTitle": "【ラブカ】Colorful Dreams! Colorful Smiles!【SD】PL!N-sd1-025-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd1-026-sd",
+      "cardNumber": "PL!N-sd1-026-SD",
+      "name": "夢が僕らの太陽さ",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299980",
+      "title": "【ラブカ】夢が僕らの太陽さ【SD】PL!N-sd1-026-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120",
+      "detailTitle": "【ラブカ】夢が僕らの太陽さ【SD】PL!N-sd1-026-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd1-027-sd",
+      "cardNumber": "PL!N-sd1-027-SD",
+      "name": "Just Believe!!!",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299981",
+      "title": "【ラブカ】Just Believe!!!【SD】PL!N-sd1-027-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120&page=2",
+      "detailTitle": "【ラブカ】Just Believe!!!【SD】PL!N-sd1-027-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!n-sd1-028-sd",
+      "cardNumber": "PL!N-sd1-028-SD",
+      "name": "Dream with You",
+      "groupIds": [
+        "nijigasaki"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299982",
+      "title": "【ラブカ】Dream with You【SD】PL!N-sd1-028-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21-sd1-&num=120",
+      "detailTitle": "【ラブカ】Dream with You【SD】PL!N-sd1-028-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp6-025-l",
+      "cardNumber": "PL!HS-bp6-025-L",
+      "name": "ツバサ・ラ・リベルテ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386704",
+      "title": "【ラブカ】ツバサ・ラ・リベルテ【L】PL!HS-bp6-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp6-&num=120",
+      "detailTitle": "【ラブカ】ツバサ・ラ・リベルテ【L】PL!HS-bp6-025-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp6-026-l",
+      "cardNumber": "PL!HS-bp6-026-L",
+      "name": "可惜夜花火",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386705",
+      "title": "【ラブカ】可惜夜花火【L】PL!HS-bp6-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp6-&num=120",
+      "detailTitle": "【ラブカ】可惜夜花火【L】PL!HS-bp6-026-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp6-027-l",
+      "cardNumber": "PL!HS-bp6-027-L",
+      "name": "月夜見海月",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386706",
+      "title": "【ラブカ】月夜見海月【L】PL!HS-bp6-027-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp6-&num=120",
+      "detailTitle": "【ラブカ】月夜見海月【L】PL!HS-bp6-027-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp6-028-l",
+      "cardNumber": "PL!HS-bp6-028-L",
+      "name": "ブルウモーメント",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386707",
+      "title": "【ラブカ】ブルウモーメント【L】PL!HS-bp6-028-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp6-&num=120",
+      "detailTitle": "【ラブカ】ブルウモーメント【L】PL!HS-bp6-028-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp6-029-l",
+      "cardNumber": "PL!HS-bp6-029-L",
+      "name": "Proof",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386708",
+      "title": "【ラブカ】Proof【L】PL!HS-bp6-029-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp6-&num=120",
+      "detailTitle": "【ラブカ】Proof【L】PL!HS-bp6-029-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp6-030-l",
+      "cardNumber": "PL!HS-bp6-030-L",
+      "name": "Very! Very! COCO夏っ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386709",
+      "title": "【ラブカ】Very! Very! COCO夏っ【L】PL!HS-bp6-030-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp6-&num=120",
+      "detailTitle": "【ラブカ】Very! Very! COCO夏っ【L】PL!HS-bp6-030-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp6-031-l",
+      "cardNumber": "PL!HS-bp6-031-L",
+      "name": "ファンファーレ！！！",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386710",
+      "title": "【ラブカ】ファンファーレ！！！【L】PL!HS-bp6-031-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp6-&num=120",
+      "detailTitle": "【ラブカ】ファンファーレ！！！【L】PL!HS-bp6-031-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp6-032-l",
+      "cardNumber": "PL!HS-bp6-032-L",
+      "name": "フュージョンクラスト",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386711",
+      "title": "【ラブカ】フュージョンクラスト【L】PL!HS-bp6-032-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp6-&num=120",
+      "detailTitle": "【ラブカ】フュージョンクラスト【L】PL!HS-bp6-032-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-cl1-009-cl",
+      "cardNumber": "PL!HS-cl1-009-CL",
+      "name": "水彩世界",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386720",
+      "title": "【ラブカ】水彩世界【CL】PL!HS-cl1-009-CL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-cl1-&num=120",
+      "detailTitle": "【ラブカ】水彩世界【CL】PL!HS-cl1-009-CLラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-cl1-010-cl",
+      "cardNumber": "PL!HS-cl1-010-CL",
+      "name": "AWOKE",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386721",
+      "title": "【ラブカ】AWOKE【CL】PL!HS-cl1-010-CL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-cl1-&num=120",
+      "detailTitle": "【ラブカ】AWOKE【CL】PL!HS-cl1-010-CLラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-cl1-011-cl",
+      "cardNumber": "PL!HS-cl1-011-CL",
+      "name": "ド！ド！ド！",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386722",
+      "title": "【ラブカ】ド！ド！ド！【CL】PL!HS-cl1-011-CL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-cl1-&num=120",
+      "detailTitle": "【ラブカ】ド！ド！ド！【CL】PL!HS-cl1-011-CLラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-cl1-012-cl",
+      "cardNumber": "PL!HS-cl1-012-CL",
+      "name": "Edelied",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386723",
+      "title": "【ラブカ】Edelied【CL】PL!HS-cl1-012-CL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-cl1-&num=120",
+      "detailTitle": "【ラブカ】Edelied【CL】PL!HS-cl1-012-CLラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-sd1-018-secl",
+      "cardNumber": "PL!HS-sd1-018-SECL",
+      "name": "Dream Believers（105期Ver.）",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/386594",
+      "title": "【ラブカ】Dream Believers（105期Ver.）【SECL】PL!HS-sd1-018-SECL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-sd1-&num=120",
+      "detailTitle": "【ラブカ】Dream Believers（105期Ver.）【SECL】PL!HS-sd1-018-SECLラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-022-l＋",
+      "cardNumber": "PL!HS-bp2-022-L＋",
+      "name": "アオクハルカ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/381712",
+      "title": "【ラブカ】アオクハルカ【L+】PL!HS-bp2-022-L+",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】アオクハルカ【L+】PL!HS-bp2-022-L+ラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-024-l＋",
+      "cardNumber": "PL!HS-bp2-024-L＋",
+      "name": "レディバグ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/381713",
+      "title": "【ラブカ】レディバグ【L+】PL!HS-bp2-024-L+",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】レディバグ【L+】PL!HS-bp2-024-L+ラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-026-l＋",
+      "cardNumber": "PL!HS-bp2-026-L＋",
+      "name": "みらくりえーしょん",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/381714",
+      "title": "【ラブカ】みらくりえーしょん【L+】PL!HS-bp2-026-L+",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】みらくりえーしょん【L+】PL!HS-bp2-026-L+ラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pb1-025-l",
+      "cardNumber": "PL!HS-pb1-025-L",
+      "name": "抱きしめる花びら",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/381739",
+      "title": "【ラブカ】抱きしめる花びら【L】PL!HS-pb1-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-pb1-&num=120",
+      "detailTitle": "【ラブカ】抱きしめる花びら【L】PL!HS-pb1-025-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pb1-026-l",
+      "cardNumber": "PL!HS-pb1-026-L",
+      "name": "雪舞う空と二秒の永遠",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/381740",
+      "title": "【ラブカ】雪舞う空と二秒の永遠【L】PL!HS-pb1-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-pb1-&num=120",
+      "detailTitle": "【ラブカ】雪舞う空と二秒の永遠【L】PL!HS-pb1-026-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pb1-027-l",
+      "cardNumber": "PL!HS-pb1-027-L",
+      "name": "ユメワズライ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/381741",
+      "title": "【ラブカ】ユメワズライ【L】PL!HS-pb1-027-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-pb1-&num=120",
+      "detailTitle": "【ラブカ】ユメワズライ【L】PL!HS-pb1-027-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pb1-028-l",
+      "cardNumber": "PL!HS-pb1-028-L",
+      "name": "COMPASS",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/381742",
+      "title": "【ラブカ】COMPASS【L】PL!HS-pb1-028-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-pb1-&num=120",
+      "detailTitle": "【ラブカ】COMPASS【L】PL!HS-pb1-028-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pb1-030-l",
+      "cardNumber": "PL!HS-pb1-030-L",
+      "name": "Edelied",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/381744",
+      "title": "【ラブカ】Edelied【L】PL!HS-pb1-030-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-pb1-&num=120",
+      "detailTitle": "【ラブカ】Edelied【L】PL!HS-pb1-030-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp1-019-secl",
+      "cardNumber": "PL!HS-bp1-019-SECL",
+      "name": "Dream Believers",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368258",
+      "title": "【ラブカ】Dream Believers【SECL】PL!HS-bp1-019-SECL",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp1-&num=120",
+      "detailTitle": "【ラブカ】Dream Believers【SECL】PL!HS-bp1-019-SECLラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp5-017-l",
+      "cardNumber": "PL!HS-bp5-017-L",
+      "name": "Dream Believers（104期Ver.）",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368590",
+      "title": "【ラブカ】Dream Believers (104期 Ver.)【L】PL!HS-bp5-017-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp5-&num=120",
+      "detailTitle": "【ラブカ】Dream Believers (104期 Ver.)【L】PL!HS-bp5-017-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp5-018-l",
+      "cardNumber": "PL!HS-bp5-018-L",
+      "name": "AURORA FLOWER",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368591",
+      "title": "【ラブカ】AURORA FLOWER【L】PL!HS-bp5-018-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp5-&num=120",
+      "detailTitle": "【ラブカ】AURORA FLOWER【L】PL!HS-bp5-018-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp5-019-l",
+      "cardNumber": "PL!HS-bp5-019-L",
+      "name": "ハナムスビ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368592",
+      "title": "【ラブカ】ハナムスビ【L】PL!HS-bp5-019-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp5-&num=120",
+      "detailTitle": "【ラブカ】ハナムスビ【L】PL!HS-bp5-019-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp5-020-l",
+      "cardNumber": "PL!HS-bp5-020-L",
+      "name": "バアドケージ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368593",
+      "title": "【ラブカ】バアドケージ【L】PL!HS-bp5-020-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp5-&num=120",
+      "detailTitle": "【ラブカ】バアドケージ【L】PL!HS-bp5-020-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp5-021-l",
+      "cardNumber": "PL!HS-bp5-021-L",
+      "name": "ジョーショーキリュー",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368594",
+      "title": "【ラブカ】ジョーショーキリュー【L】PL!HS-bp5-021-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp5-&num=120",
+      "detailTitle": "【ラブカ】ジョーショーキリュー【L】PL!HS-bp5-021-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp5-022-l",
+      "cardNumber": "PL!HS-bp5-022-L",
+      "name": "Retrofuture",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368595",
+      "title": "【ラブカ】Retrofuture【L】PL!HS-bp5-022-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp5-&num=120",
+      "detailTitle": "【ラブカ】Retrofuture【L】PL!HS-bp5-022-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-sd1-017-sd",
+      "cardNumber": "PL!HS-sd1-017-SD",
+      "name": "夏めきペイン",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368791",
+      "title": "【ラブカ】夏めきペイン【SD】PL!HS-sd1-017-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-sd1-&num=120",
+      "detailTitle": "【ラブカ】夏めきペイン【SD】PL!HS-sd1-017-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-sd1-018-sd",
+      "cardNumber": "PL!HS-sd1-018-SD",
+      "name": "Dream Believers（105期Ver.）",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368792",
+      "title": "【ラブカ】Dream Believers（105期Ver.）【SD】PL!HS-sd1-018-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-sd1-&num=120",
+      "detailTitle": "【ラブカ】Dream Believers（105期Ver.）【SD】PL!HS-sd1-018-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-sd1-019-sd",
+      "cardNumber": "PL!HS-sd1-019-SD",
+      "name": "アイドゥーミー！",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368793",
+      "title": "【ラブカ】アイドゥーミー！【SD】PL!HS-sd1-019-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-sd1-&num=120",
+      "detailTitle": "【ラブカ】アイドゥーミー！【SD】PL!HS-sd1-019-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-sd1-020-sd",
+      "cardNumber": "PL!HS-sd1-020-SD",
+      "name": "Link to the FUTURE（104期Ver.）",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/368794",
+      "title": "【ラブカ】Link to the FUTURE（104期Ver.）【SD】PL!HS-sd1-020-SD",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-sd1-&num=120",
+      "detailTitle": "【ラブカ】Link to the FUTURE（104期Ver.）【SD】PL!HS-sd1-020-SDラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-019-l",
+      "cardNumber": "PL!HS-bp2-019-L",
+      "name": "Bloom the smile, Bloom the dream!",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/319953",
+      "title": "【ラブカ】Bloom the smile, Bloom the dream!【L】PL!HS-bp2-019-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】Bloom the smile, Bloom the dream!【L】PL!HS-bp2-019-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-020-l",
+      "cardNumber": "PL!HS-bp2-020-L",
+      "name": "Link to the FUTURE",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/319954",
+      "title": "【ラブカ】Link to the FUTURE【L】PL!HS-bp2-020-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】Link to the FUTURE【L】PL!HS-bp2-020-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-021-l",
+      "cardNumber": "PL!HS-bp2-021-L",
+      "name": "眩耀夜行",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/319955",
+      "title": "【ラブカ】眩耀夜行【L】PL!HS-bp2-021-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】眩耀夜行【L】PL!HS-bp2-021-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-022-l",
+      "cardNumber": "PL!HS-bp2-022-L",
+      "name": "アオクハルカ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/319956",
+      "title": "【ラブカ】アオクハルカ【L】PL!HS-bp2-022-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】アオクハルカ【L】PL!HS-bp2-022-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-023-l",
+      "cardNumber": "PL!HS-bp2-023-L",
+      "name": "Mirage Voyage",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/319957",
+      "title": "【ラブカ】Mirage Voyage【L】PL!HS-bp2-023-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】Mirage Voyage【L】PL!HS-bp2-023-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-024-l",
+      "cardNumber": "PL!HS-bp2-024-L",
+      "name": "レディバグ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/319958",
+      "title": "【ラブカ】レディバグ【L】PL!HS-bp2-024-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】レディバグ【L】PL!HS-bp2-024-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-025-l",
+      "cardNumber": "PL!HS-bp2-025-L",
+      "name": "ココン東西",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/319959",
+      "title": "【ラブカ】ココン東西【L】PL!HS-bp2-025-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】ココン東西【L】PL!HS-bp2-025-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp2-026-l",
+      "cardNumber": "PL!HS-bp2-026-L",
+      "name": "みらくりえーしょん",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/319960",
+      "title": "【ラブカ】みらくりえーしょん【L】PL!HS-bp2-026-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp2-&num=120",
+      "detailTitle": "【ラブカ】みらくりえーしょん【L】PL!HS-bp2-026-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp1-019-l",
+      "cardNumber": "PL!HS-bp1-019-L",
+      "name": "Dream Believers",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299918",
+      "title": "【ラブカ】Dream Believers【L】PL!HS-bp1-019-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp1-&num=120",
+      "detailTitle": "【ラブカ】Dream Believers【L】PL!HS-bp1-019-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp1-020-l",
+      "cardNumber": "PL!HS-bp1-020-L",
+      "name": "365 Days",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299919",
+      "title": "【ラブカ】365 Days【L】PL!HS-bp1-020-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp1-&num=120",
+      "detailTitle": "【ラブカ】365 Days【L】PL!HS-bp1-020-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp1-021-l",
+      "cardNumber": "PL!HS-bp1-021-L",
+      "name": "Holiday∞Holiday",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299920",
+      "title": "【ラブカ】Holiday∞Holiday【L】PL!HS-bp1-021-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp1-&num=120",
+      "detailTitle": "【ラブカ】Holiday∞Holiday【L】PL!HS-bp1-021-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp1-022-l",
+      "cardNumber": "PL!HS-bp1-022-L",
+      "name": "AWOKE",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299921",
+      "title": "【ラブカ】AWOKE【L】PL!HS-bp1-022-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp1-&num=120",
+      "detailTitle": "【ラブカ】AWOKE【L】PL!HS-bp1-022-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-bp1-023-l",
+      "cardNumber": "PL!HS-bp1-023-L",
+      "name": "ド！ド！ド！",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/299922",
+      "title": "【ラブカ】ド！ド！ド！【L】PL!HS-bp1-023-L",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-bp1-&num=120",
+      "detailTitle": "【ラブカ】ド！ド！ド！【L】PL!HS-bp1-023-Lラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pr-010-pr",
+      "cardNumber": "PL!HS-PR-010-PR",
+      "name": "Reflection in the mirror",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/305868",
+      "title": "【ラブカ】Reflection in the mirror【PR】PL!HS-PR-010-PR",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-PR-&num=120",
+      "detailTitle": "【ラブカ】Reflection in the mirror【PR】PL!HS-PR-010-PRラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pr-011-pr",
+      "cardNumber": "PL!HS-PR-011-PR",
+      "name": "Sparkly Spot",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/305869",
+      "title": "【ラブカ】Sparkly Spot【PR】PL!HS-PR-011-PR",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-PR-&num=120",
+      "detailTitle": "【ラブカ】Sparkly Spot【PR】PL!HS-PR-011-PRラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pr-012-pr",
+      "cardNumber": "PL!HS-PR-012-PR",
+      "name": "アイデンティティ",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/305870",
+      "title": "【ラブカ】アイデンティティ【PR】PL!HS-PR-012-PR",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-PR-&num=120",
+      "detailTitle": "【ラブカ】アイデンティティ【PR】PL!HS-PR-012-PRラブライブ！OCG通販はカードラボ"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pr-028-pr",
+      "cardNumber": "PL!HS-PR-028-PR",
+      "name": "Echoes Beyond",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "url": "https://www.c-labo-online.jp/product/364041",
+      "title": "【ラブカ】Echoes Beyond【PR】PL!HS-PR-028-PR",
+      "listing": "https://www.c-labo-online.jp/product-list/0/0/normal?keyword=PL%21HS-PR-&num=120",
+      "detailTitle": "【ラブカ】Echoes Beyond【PR】PL!HS-PR-028-PRラブライブ！OCG通販はカードラボ"
+    }
+  ],
+  "C": [
+    {
+      "cardId": "loveca-card:pl!sp-sd1-026-srl",
+      "cardNumber": "PL!SP-sd1-026-SRL",
+      "name": "私のSymphony 〜澁谷かのんVer.〜",
+      "groupIds": [
+        "liella"
+      ],
+      "reason": "no-matching-product-page"
+    },
+    {
+      "cardId": "loveca-card:ll-pr-004-pr",
+      "cardNumber": "LL-PR-004-PR",
+      "name": "愛♡スクリ～ム！",
+      "groupIds": [
+        "other-live"
+      ],
+      "reason": "no-matching-product-page"
+    },
+    {
+      "cardId": "loveca-card:pl!hs-pb1-029-l",
+      "cardNumber": "PL!HS-pb1-029-L",
+      "name": "全方位キュン♡",
+      "groupIds": [
+        "hasunosora"
+      ],
+      "reason": "no-matching-product-page"
+    }
+  ]
+}
