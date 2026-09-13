@@ -663,14 +663,6 @@ export default function Home() {
     setDeck(restoreDeckAfterBulkClear(clearedDeckForUndo.cards));
     setClearedDeckForUndo(null);
   };
-  const openDataTransfer = () => {
-    setDataTransferView('menu');
-    setDataTransferText('');
-    setDataTransferErrors([]);
-    setDataTransferCopyFeedback(null);
-    setPendingDataImport(null);
-    setDataTransferOpen(true);
-  };
   const currentSyncPayload = () => createBuilderTransfer(decks, activeDeckId, candidateIds, inventory);
   const setSyncFailure = (error: unknown) => {
     const text = error instanceof CloudSyncError ? error.message : 'クラウド同期に失敗しました。時間をおいてもう一度お試しください。';
