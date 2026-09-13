@@ -406,7 +406,6 @@ export default function Home() {
   useEffect(() => {
     if (!window.matchMedia('(max-width: 760px)').matches) return;
     const launcher = document.querySelector<HTMLElement>('.deck-launcher');
-    const header = document.querySelector<HTMLElement>('.deck-header');
     let launcherStart: { x: number; time: number } | null = null;
     let headerStart: { x: number; time: number } | null = null;
     const isDecisiveSwipe = (distance: number, elapsed: number, minimum: number) => distance >= minimum || (distance >= 24 && distance / Math.max(1, elapsed) >= 0.55);
@@ -423,10 +422,11 @@ export default function Home() {
     };
     const onHeaderPointerDown = (event: PointerEvent) => {
       if (event.pointerType === 'mouse' && event.button !== 0) return;
-      const rect = header?.getBoundingClientRect();
+      const target = event.target instanceof Element ? event.target.closest<HTMLElement>('.deck-header') : null;
+      const rect = target?.getBoundingClientRect();
       if (!rect || event.clientY > rect.top + 28) return;
       headerStart = { x: event.clientX, time: event.timeStamp };
-      header?.setPointerCapture(event.pointerId);
+      target?.setPointerCapture(event.pointerId);
     };
     const onHeaderPointerUp = (event: PointerEvent) => {
       if (!headerStart) return;
@@ -436,12 +436,12 @@ export default function Home() {
     };
     launcher?.addEventListener('pointerdown', onLauncherPointerDown);
     launcher?.addEventListener('pointerup', onLauncherPointerUp);
-    header?.addEventListener('pointerdown', onHeaderPointerDown);
+    document.addEventListener('pointerdown', onHeaderPointerDown);
     document.addEventListener('pointerup', onHeaderPointerUp);
     return () => {
       launcher?.removeEventListener('pointerdown', onLauncherPointerDown);
       launcher?.removeEventListener('pointerup', onLauncherPointerUp);
-      header?.removeEventListener('pointerdown', onHeaderPointerDown);
+      document.removeEventListener('pointerdown', onHeaderPointerDown);
       document.removeEventListener('pointerup', onHeaderPointerUp);
     };
   }, [deckOpen]);
