@@ -128,7 +128,7 @@ test('PCでは従来の検索・絞り込み・並び順を常時表示する', 
   await expect(page.getByRole('toolbar', {name: 'カード一覧の操作'})).toBeHidden();
   await expect(page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'})).toBeVisible();
   await expect(page.getByRole('group', {name: 'カード種類'})).toBeVisible();
-  await expect(page.getByLabel('並び順', {exact: true})).toBeVisible();
+  await expect(page.locator('#mobile-sort-panel').getByRole('combobox')).toBeVisible();
 });
 
 test.describe('iPhone SE2向け操作バー', () => {
