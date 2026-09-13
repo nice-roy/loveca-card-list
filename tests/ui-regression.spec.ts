@@ -154,6 +154,10 @@ test.describe('iPhone SE2向け操作バー', () => {
     await searchButton.click();
     await expect(search).toBeVisible();
     expect(await search.evaluate((input) => Number.parseFloat(getComputedStyle(input).fontSize))).toBeGreaterThanOrEqual(16);
+    await expect(search).toHaveAttribute('autocomplete', 'off');
+    await expect(search).toHaveAttribute('inputmode', 'search');
+    await expect(search).toHaveAttribute('name', 'card-search');
+    await expect(search).toHaveAttribute('id', 'card-search');
 
     await filterButton.click();
     await expect(search).toBeHidden();
@@ -182,6 +186,39 @@ test.describe('iPhone SE2向け操作バー', () => {
 
     await search.fill('PL!S-bp6-019-L');
     await expect(page.getByRole('article').filter({hasText: 'Step! ZERO to ONE'})).toBeVisible();
+  });
+
+  test('パネルのドラッグハンドルとデッキつまみは専用領域から操作できる', async ({page}) => {
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    await toolbar.getByRole('button', {name: /^絞り込み/}).click();
+    const filterPanel = page.getByRole('region', {name: '絞り込みパネル'});
+    await expect(filterPanel.getByRole('group', {name: 'カード種類'})).toBeVisible();
+
+    const panelHandle = filterPanel.locator('.mobile-panel-drag-handle');
+    const panelBox = await panelHandle.boundingBox();
+    expect(panelBox).not.toBeNull();
+    await page.mouse.move((panelBox?.x ?? 0) + 24, (panelBox?.y ?? 0) + 8);
+    await page.mouse.down();
+    await page.mouse.move((panelBox?.x ?? 0) + 24, (panelBox?.y ?? 0) - 64, {steps: 3});
+    await page.mouse.up();
+    await expect(filterPanel).toBeHidden();
+
+    const deckHandle = page.getByRole('button', {name: /デッキを開く/});
+    const deckBox = await deckHandle.boundingBox();
+    expect(deckBox).not.toBeNull();
+    expect(deckBox?.width ?? Infinity).toBeLessThanOrEqual(48);
+    await deckHandle.click();
+    const deckDialog = page.getByRole('dialog', {name: 'デッキ'});
+    await expect(deckDialog).toBeVisible();
+
+    const deckHeader = page.locator('.deck-header');
+    const headerBox = await deckHeader.boundingBox();
+    expect(headerBox).not.toBeNull();
+    await page.mouse.move((headerBox?.x ?? 0) + 120, (headerBox?.y ?? 0) + 14);
+    await page.mouse.down();
+    await page.mouse.move((headerBox?.x ?? 0) + 190, (headerBox?.y ?? 0) + 14, {steps: 3});
+    await page.mouse.up();
+    await expect(deckDialog).toBeHidden();
   });
 });
 
