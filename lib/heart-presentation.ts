@@ -48,7 +48,7 @@ export function splitEffectTextForDisplay(text: string): EffectFragment[] {
     if (bracketBladeToken) fragments.push({ type: 'icon', icon: bladeIcon(tokenColors[bracketBladeToken]) });
     else if (bladeToken) fragments.push({ type: 'icon', icon: bladeIcon(tokenColors[bladeToken]) });
     else if (bracketHeartToken) fragments.push({ type: 'icon', icon: heartIcon(bracketHeartToken) });
-    else if (/^heart/.test(value)) fragments.push({ type: 'icon', icon: heartIcon(value) });
+    else if (value.startsWith('heart')) fragments.push({ type: 'icon', icon: heartIcon(value) });
     else if (/^\[(ALL|全)ブレード\]$/.test(value)) fragments.push({ type: 'icon', icon: bladeIcon('any', true) });
     else if (value === '[ブレード]') fragments.push({ type: 'icon', icon: bladeIcon() });
     else if (value === '◇') fragments.push({ type: 'icon', icon: heartIcon('heart0') });
