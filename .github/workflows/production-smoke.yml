@@ -17,4 +17,4 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
-      - run: npx playwright test production-smoke/production-smoke.spec.ts
+      - run: npx playwright test --config=production-smoke/playwright.config.ts
