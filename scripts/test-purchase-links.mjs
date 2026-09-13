@@ -59,8 +59,8 @@ test('all 291 physical live-card versions have a stable retained, A, B, or C aud
   assert.equal(liveAudit.counts.total,291);
   assert.equal(liveAudit.counts.retainedHistorical,134);
   assert.equal(liveAudit.counts.A,0);
-  assert.equal(liveAudit.counts.B,154);
-  assert.equal(liveAudit.counts.C,3);
+  assert.equal(liveAudit.counts.B,157);
+  assert.equal(liveAudit.counts.C,0);
   assert.equal(audited.length,291);
   assert.equal(new Set(audited.map(record=>record.cardId)).size,291);
   for(const record of [...liveAudit.retainedHistorical,...liveAudit.B]){
@@ -74,15 +74,23 @@ test('all 291 physical live-card versions have a stable retained, A, B, or C aud
     assert.ok(record.title.includes(record.cardNumber.replaceAll('＋','+'))||record.title.includes(record.cardNumber));
     assert.ok(record.detailTitle.startsWith(record.title),`direct-page title mismatch ${record.cardNumber}`);
   }
-  for(const record of liveAudit.C){
-    const card=liveCards.find(item=>item.id===record.cardId);
-    assert.ok(card,`missing unconfirmed live card ${record.cardNumber}`);
-    assert.ok(!(card.purchaseLinks??[]).some(link=>link.shopId==='cardlabo'),`unconfirmed card must not receive a guessed URL: ${record.cardNumber}`);
+  assert.deepEqual(liveAudit.C,[]);
+  const manualExceptions={
+    'PL!SP-sd1-026-SRL':'https://www.c-labo-online.jp/product/393393',
+    'LL-PR-004-PR':'https://www.c-labo-online.jp/product/338834',
+    'PL!HS-pb1-029-L':'https://www.c-labo-online.jp/product/381743',
+  };
+  for(const [cardNumber,url] of Object.entries(manualExceptions)){
+    const record=liveAudit.B.find(item=>item.cardNumber===cardNumber);
+    assert.ok(record,`missing manual exception ${cardNumber}`);
+    assert.equal(record.url,url);
+    assert.equal(record.verificationMethod,'manual-direct-page-exception');
+    assert.ok(record.verificationNote);
   }
 });
 test('audited live-link overlay rejects missing, duplicate, conflicting, and wrong-version records',()=>{
-  assert.equal(auditedLiveLinks.length,154);
-  assert.equal(new Set(auditedLiveLinks.map(record=>record.cardId)).size,154);
+  assert.equal(auditedLiveLinks.length,157);
+  assert.equal(new Set(auditedLiveLinks.map(record=>record.cardId)).size,157);
   const sample=auditedLiveLinks[0];
   assert.throws(()=>applyAuditedPurchaseLinks(rawCards,[sample,sample]),/Duplicate audited purchase-link card id/);
   assert.throws(()=>applyAuditedPurchaseLinks(rawCards,[{...sample,cardId:'missing-card'}]),/missing physical card/);

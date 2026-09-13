@@ -1076,5 +1076,26 @@
     "shopId": "cardlabo",
     "label": "カードラボで購入",
     "url": "https://www.c-labo-online.jp/product/364041"
+  },
+  {
+    "cardId": "loveca-card:pl!sp-sd1-026-srl",
+    "cardNumber": "PL!SP-sd1-026-SRL",
+    "shopId": "cardlabo",
+    "label": "カードラボで購入",
+    "url": "https://www.c-labo-online.jp/product/393393"
+  },
+  {
+    "cardId": "loveca-card:ll-pr-004-pr",
+    "cardNumber": "LL-PR-004-PR",
+    "shopId": "cardlabo",
+    "label": "カードラボで購入",
+    "url": "https://www.c-labo-online.jp/product/338834"
+  },
+  {
+    "cardId": "loveca-card:pl!hs-pb1-029-l",
+    "cardNumber": "PL!HS-pb1-029-L",
+    "shopId": "cardlabo",
+    "label": "カードラボで購入",
+    "url": "https://www.c-labo-online.jp/product/381743"
   }
 ]
