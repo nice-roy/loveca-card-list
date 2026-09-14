@@ -7,7 +7,18 @@ export function splitFreewordSearchTerms(query: string) {
     .trim()
     .split(/[\s\u3000]+/u)
     .filter(Boolean)
-    .map((term) => term.toLocaleLowerCase('ja'));
+    .map(normalizeFreewordSearchText);
+}
+
+/**
+ * Normalizes only case and whitespace for free-word comparison.
+ * Display strings remain untouched; this lets names match with or without
+ * half-width, full-width, or repeated spaces.
+ */
+export function normalizeFreewordSearchText(value: string) {
+  return value
+    .toLocaleLowerCase('ja')
+    .replace(/[\s\u3000]+/gu, '');
 }
 
 /**
@@ -17,6 +28,6 @@ export function matchesFreewordSearch(searchText: string, query: string) {
   const terms = splitFreewordSearchTerms(query);
   if (terms.length === 0) return true;
 
-  const normalizedText = searchText.toLocaleLowerCase('ja');
+  const normalizedText = normalizeFreewordSearchText(searchText);
   return terms.every((term) => normalizedText.includes(term));
 }
