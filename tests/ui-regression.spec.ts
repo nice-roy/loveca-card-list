@@ -41,6 +41,13 @@ test('複数語のフリーワード検索は順序によらずAND検索にな�
   await expect(page.getByRole('heading', {name: '該当するカードがありません'})).toBeVisible();
 });
 
+test('PCでも空白なしのメンバー名検索は正式名のカードに一致する', async ({page}) => {
+  const search = page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'});
+
+  await search.fill('唐可可');
+  await expect(page.getByRole('article').filter({hasText: '唐 可可'}).first()).toBeVisible();
+});
+
 test('まとめカード表面のCard Laboリンクとバージョン詳細の公式リンクを守る', async ({page}) => {
   await page.getByRole('navigation', {name: 'グループを切り替え'}).getByRole('button', {name: /^Aqours(?:\s|$)/}).click();
   await page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'}).fill('PL!S-bp2-001');
@@ -186,6 +193,15 @@ test.describe('iPhone SE2向け操作バー', () => {
 
     await search.fill('PL!S-bp6-019-L');
     await expect(page.getByRole('article').filter({hasText: 'Step! ZERO to ONE'})).toBeVisible();
+  });
+
+  test('スマホでも空白なしのメンバー名検索は正式名のカードに一致する', async ({page}) => {
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    await toolbar.getByRole('button', {name: '検索', exact: true}).click();
+
+    const search = page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'});
+    await search.fill('唐可可');
+    await expect(page.getByRole('article').filter({hasText: '唐 可可'}).first()).toBeVisible();
   });
 
   test('4項目のstickyバーからデッキを開け、右下の旧入口は表示されない', async ({page}) => {
