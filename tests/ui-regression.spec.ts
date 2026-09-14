@@ -188,19 +188,26 @@ test.describe('iPhone SE2向け操作バー', () => {
     await expect(page.getByRole('article').filter({hasText: 'Step! ZERO to ONE'})).toBeVisible();
   });
 
-  test('デッキ入口は小型タブとして表示され、タップでデッキを開ける', async ({page}) => {
-    const deckButton = page.getByRole('button', {name: /デッキを開く/});
-    await expect(deckButton).toBeVisible();
+  test('4項目のstickyバーからデッキを開け、右下の旧入口は表示されない', async ({page}) => {
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    const deckButton = toolbar.getByRole('button', {name: /デッキ/});
+    await expect(toolbar.getByRole('button')).toHaveCount(4);
     await expect(deckButton).toContainText('デッキ');
     await expect(deckButton).toContainText('0');
+    await expect(page.locator('.deck-launcher')).toBeHidden();
 
+    const toolbarBox = await toolbar.boundingBox();
     const deckBox = await deckButton.boundingBox();
+    expect(toolbarBox).not.toBeNull();
     expect(deckBox).not.toBeNull();
-    expect(deckBox?.height ?? Infinity).toBeGreaterThanOrEqual(36);
-    expect(deckBox?.height ?? Infinity).toBeLessThanOrEqual(44);
-    expect(deckBox?.y ?? 0).toBeGreaterThan(600);
+    expect(toolbarBox?.height ?? Infinity).toBeLessThanOrEqual(56);
+    expect(deckBox?.height ?? 0).toBeGreaterThanOrEqual(40);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(2);
 
+    await toolbar.getByRole('button', {name: /^検索$/}).click();
+    await expect(page.getByRole('region', {name: '検索パネル'})).toBeVisible();
     await deckButton.click();
+    await expect(page.getByRole('region', {name: '検索パネル'})).toBeHidden();
     await expect(page.getByRole('dialog', {name: 'デッキ'})).toBeVisible();
   });
 });
