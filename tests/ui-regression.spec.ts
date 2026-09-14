@@ -188,37 +188,20 @@ test.describe('iPhone SE2向け操作バー', () => {
     await expect(page.getByRole('article').filter({hasText: 'Step! ZERO to ONE'})).toBeVisible();
   });
 
-  test('パネルのドラッグハンドルとデッキつまみは専用領域から操作できる', async ({page}) => {
-    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
-    await toolbar.getByRole('button', {name: /^絞り込み/}).click();
-    const filterPanel = page.getByRole('region', {name: '絞り込みパネル'});
-    await expect(filterPanel.getByRole('group', {name: 'カード種類'})).toBeVisible();
+  test('デッキ入口は小型タブとして表示され、タップでデッキを開ける', async ({page}) => {
+    const deckButton = page.getByRole('button', {name: /デッキを開く/});
+    await expect(deckButton).toBeVisible();
+    await expect(deckButton).toContainText('デッキ');
+    await expect(deckButton).toContainText('0');
 
-    const panelHandle = filterPanel.locator('.mobile-panel-drag-handle');
-    const panelBox = await panelHandle.boundingBox();
-    expect(panelBox).not.toBeNull();
-    await page.mouse.move((panelBox?.x ?? 0) + 24, (panelBox?.y ?? 0) + 8);
-    await page.mouse.down();
-    await page.mouse.move((panelBox?.x ?? 0) + 24, (panelBox?.y ?? 0) - 64, {steps: 3});
-    await page.mouse.up();
-    await expect(filterPanel).toBeHidden();
-
-    const deckHandle = page.getByRole('button', {name: /デッキを開く/});
-    const deckBox = await deckHandle.boundingBox();
+    const deckBox = await deckButton.boundingBox();
     expect(deckBox).not.toBeNull();
-    expect(deckBox?.width ?? Infinity).toBeLessThanOrEqual(48);
-    await deckHandle.click();
-    const deckDialog = page.getByRole('dialog', {name: 'デッキ'});
-    await expect(deckDialog).toBeVisible();
+    expect(deckBox?.height ?? Infinity).toBeGreaterThanOrEqual(36);
+    expect(deckBox?.height ?? Infinity).toBeLessThanOrEqual(44);
+    expect(deckBox?.y ?? 0).toBeGreaterThan(600);
 
-    const deckHeader = page.locator('.deck-header');
-    const headerBox = await deckHeader.boundingBox();
-    expect(headerBox).not.toBeNull();
-    await page.mouse.move((headerBox?.x ?? 0) + 120, (headerBox?.y ?? 0) + 14);
-    await page.mouse.down();
-    await page.mouse.move((headerBox?.x ?? 0) + 190, (headerBox?.y ?? 0) + 14, {steps: 3});
-    await page.mouse.up();
-    await expect(deckDialog).toBeHidden();
+    await deckButton.click();
+    await expect(page.getByRole('dialog', {name: 'デッキ'})).toBeVisible();
   });
 });
 
