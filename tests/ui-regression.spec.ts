@@ -209,6 +209,52 @@ test.describe('iPhone SE2向け操作バー', () => {
     await deckButton.click();
     await expect(page.getByRole('region', {name: '検索パネル'})).toBeHidden();
     await expect(page.getByRole('dialog', {name: 'デッキ'})).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(deckButton).toHaveAttribute('aria-expanded', 'false');
+    await page.mouse.wheel(0, 900);
+    await expect(toolbar).toBeInViewport();
+    await toolbar.getByRole('button', {name: /^絞り込み/}).click();
+    await expect(page.getByRole('region', {name: '絞り込みパネル'})).toBeVisible();
+  });
+
+  test('デッキ 0・12・60でも4項目バーの幅と高さを維持する', async ({page}) => {
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    const setDeckTotal = async (total: number) => {
+      await page.evaluate((nextTotal) => {
+        const key = 'loveca-card-list:deck-builder:v1';
+        const state = JSON.parse(localStorage.getItem(key) ?? '{}');
+        state.decks[0].cards = {'PL!SP-bp5-021': nextTotal};
+        localStorage.setItem(key, JSON.stringify(state));
+      }, total);
+      await page.reload();
+    };
+
+    for (const total of [0, 12, 60]) {
+      await setDeckTotal(total);
+      const deckButton = toolbar.getByRole('button', {name: /デッキ/});
+      await expect(deckButton).toContainText('デッキ');
+      await expect(deckButton).toContainText(String(total));
+      await expect(toolbar).toHaveCSS('height', '56px');
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(2);
+    }
+  });
+
+  test('絞り込み10件のバッジでも4項目バーは1行に収まる', async ({page}) => {
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    await toolbar.getByRole('button', {name: /^絞り込み/}).click();
+    const filterPanel = page.getByRole('region', {name: '絞り込みパネル'});
+    const memberTrigger = filterPanel.locator('.multi-select-trigger').first();
+    await memberTrigger.click();
+
+    const options = page.getByRole('checkbox');
+    await expect(options.nth(9)).toBeVisible();
+    for (let index = 0; index < 10; index += 1) await options.nth(index).click();
+    await page.keyboard.press('Escape');
+
+    const filterButton = toolbar.getByRole('button', {name: /^絞り込み/});
+    await expect(filterButton).toContainText('10');
+    await expect(toolbar).toHaveCSS('height', '56px');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(2);
   });
 });
 
