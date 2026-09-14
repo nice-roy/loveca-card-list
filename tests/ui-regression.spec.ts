@@ -124,6 +124,138 @@ test('クラウド同期ダイアログを通信なしで開ける', async ({pag
   await expect(dialog.getByRole('button', {name: '既存の同期コードを入力'})).toBeVisible();
 });
 
+test('PCでは従来の検索・絞り込み・並び順を常時表示する', async ({page}) => {
+  await expect(page.getByRole('toolbar', {name: 'カード一覧の操作'})).toBeHidden();
+  await expect(page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'})).toBeVisible();
+  await expect(page.getByRole('group', {name: 'カード種類'})).toBeVisible();
+  await expect(page.locator('#mobile-sort-panel').getByRole('combobox')).toBeVisible();
+});
+
+test.describe('iPhone SE2向け操作バー', () => {
+  test.use({viewport: {width: 375, height: 667}});
+
+  test('ブランドは流れ、stickyバーから3パネルを排他的に操作できる', async ({page}) => {
+    const header = page.locator('.site-header');
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    const searchButton = toolbar.getByRole('button', {name: '検索', exact: true});
+    const filterButton = toolbar.getByRole('button', {name: /^絞り込み/});
+    const sortButton = toolbar.getByRole('button', {name: '並び順', exact: true});
+    const search = page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'});
+
+    await expect(toolbar).toBeVisible();
+    await expect(search).toBeHidden();
+    await expect(header).toHaveCSS('position', 'static');
+    await expect(page.locator('.filter-panel')).toHaveCSS('position', 'sticky');
+
+    await page.mouse.wheel(0, 900);
+    await expect(header).not.toBeInViewport();
+    await expect(toolbar).toBeInViewport();
+
+    await searchButton.click();
+    await expect(search).toBeVisible();
+    expect(await search.evaluate((input) => Number.parseFloat(getComputedStyle(input).fontSize))).toBeGreaterThanOrEqual(16);
+    await expect(search).toHaveAttribute('autocomplete', 'off');
+    await expect(search).toHaveAttribute('inputmode', 'search');
+    await expect(search).toHaveAttribute('name', 'card-search');
+    await expect(search).toHaveAttribute('id', 'card-search');
+
+    await filterButton.click();
+    await expect(search).toBeHidden();
+    await expect(page.getByRole('region', {name: '絞り込みパネル'})).toBeVisible();
+    await expect(page.getByRole('region', {name: '並び順パネル'})).toBeHidden();
+
+    await sortButton.click();
+    await expect(page.getByRole('region', {name: '絞り込みパネル'})).toBeHidden();
+    await expect(page.getByRole('region', {name: '並び順パネル'})).toBeVisible();
+    await sortButton.click();
+    await expect(page.getByRole('region', {name: '並び順パネル'})).toBeHidden();
+  });
+
+  test('検索結果0件でも位置と入力を保ち、文字を戻すとカードが再表示される', async ({page}) => {
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    await page.mouse.wheel(0, 900);
+    await toolbar.getByRole('button', {name: '検索', exact: true}).click();
+    const search = page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'});
+
+    await search.fill('PL!S-bp6-019-L');
+    await expect(page.getByRole('article').filter({hasText: 'Step! ZERO to ONE'})).toBeVisible();
+    await search.fill('zzzzzz-存在しないカード番号');
+    await expect(page.getByRole('heading', {name: '該当するカードがありません'})).toBeVisible();
+    await expect(search).toBeVisible();
+    expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(200);
+
+    await search.fill('PL!S-bp6-019-L');
+    await expect(page.getByRole('article').filter({hasText: 'Step! ZERO to ONE'})).toBeVisible();
+  });
+
+  test('4項目のstickyバーからデッキを開け、右下の旧入口は表示されない', async ({page}) => {
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    const deckButton = toolbar.getByRole('button', {name: /デッキ/});
+    await expect(toolbar.getByRole('button')).toHaveCount(4);
+    await expect(deckButton).toContainText('デッキ');
+    await expect(deckButton).toContainText('0');
+    await expect(page.locator('.deck-launcher')).toBeHidden();
+
+    const toolbarBox = await toolbar.boundingBox();
+    const deckBox = await deckButton.boundingBox();
+    expect(toolbarBox).not.toBeNull();
+    expect(deckBox).not.toBeNull();
+    expect(toolbarBox?.height ?? Infinity).toBeLessThanOrEqual(56);
+    expect(deckBox?.height ?? 0).toBeGreaterThanOrEqual(40);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(2);
+
+    await toolbar.getByRole('button', {name: /^検索$/}).click();
+    await expect(page.getByRole('region', {name: '検索パネル'})).toBeVisible();
+    await deckButton.click();
+    await expect(page.getByRole('region', {name: '検索パネル'})).toBeHidden();
+    await expect(page.getByRole('dialog', {name: 'デッキ'})).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(deckButton).toHaveAttribute('aria-expanded', 'false');
+    await page.mouse.wheel(0, 900);
+    await expect(toolbar).toBeInViewport();
+    await toolbar.getByRole('button', {name: /^絞り込み/}).click();
+    await expect(page.getByRole('region', {name: '絞り込みパネル'})).toBeVisible();
+  });
+
+  test('デッキ 0・12・60でも4項目バーの幅と高さを維持する', async ({page}) => {
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    const setDeckTotal = async (total: number) => {
+      await page.evaluate((nextTotal) => {
+        const key = 'loveca-card-list:deck-builder:v1';
+        const state = JSON.parse(localStorage.getItem(key) ?? '{}');
+        state.decks[0].cards = {'PL!SP-bp5-021': nextTotal};
+        localStorage.setItem(key, JSON.stringify(state));
+      }, total);
+      await page.reload();
+    };
+
+    for (const total of [0, 12, 60]) {
+      await setDeckTotal(total);
+      const deckButton = toolbar.getByRole('button', {name: /デッキ/});
+      await expect(deckButton).toContainText('デッキ');
+      await expect(deckButton).toContainText(String(total));
+      await expect(toolbar).toHaveCSS('height', '56px');
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(2);
+    }
+  });
+
+  test('絞り込み10件のバッジでも4項目バーは1行に収まる', async ({page}) => {
+    const toolbar = page.getByRole('toolbar', {name: 'カード一覧の操作'});
+    const filterButton = toolbar.getByRole('button', {name: /^絞り込み/});
+    await page.evaluate(() => {
+      const target = [...document.querySelectorAll<HTMLButtonElement>('.mobile-control-bar button')]
+        .find((button) => button.textContent?.includes('絞り込み'));
+      const badge = document.createElement('span');
+      badge.textContent = '10';
+      target?.append(badge);
+    });
+
+    await expect(filterButton).toContainText('10');
+    await expect(toolbar).toHaveCSS('height', '56px');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(2);
+  });
+});
+
 test.describe('スマホ縦幅', () => {
   test.use({viewport: {width: 390, height: 844}});
 
@@ -132,7 +264,7 @@ test.describe('スマホ縦幅', () => {
     await groupNavigation.getByRole('button', {name: /^その他(?:\s|$)/}).click();
     await expect(page.getByRole('navigation', {name: 'その他のグループを切り替え'})).toBeVisible();
 
-    const deckButton = page.getByRole('button', {name: /デッキを開く/});
+    const deckButton = page.getByRole('toolbar', {name: 'カード一覧の操作'}).getByRole('button', {name: /デッキ/});
     const syncButton = page.getByRole('button', {name: 'クラウド同期'});
     await expect(deckButton).toBeInViewport();
     await expect(syncButton).toBeVisible();

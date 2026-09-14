@@ -43,6 +43,7 @@ const validVersionIds = new Set(cards.map((card) => card.id));
 const versionToBase = new Map(cards.map((card) => [card.id, baseCardId(card.cardNumber)]));
 const PAGE_SIZE = 48;
 const MEMBER_DISPLAY_MODE_STORAGE_KEY = 'loveca-card-list:member-display-mode:v1';
+type MobileControlPanel = 'search' | 'filters' | 'sort' | null;
 const DEFAULT_SORT: SortKey = 'cardNumberAsc';
 const commonSortOptions: { value: SortKey; label: string }[] = [
   { value: 'cardNumberAsc', label: 'カード番号：昇順' },
@@ -356,6 +357,7 @@ export default function Home() {
   const [pendingDirtyCloudLoadCode, setPendingDirtyCloudLoadCode] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>(DEFAULT_SORT);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [mobileControlPanel, setMobileControlPanel] = useState<MobileControlPanel>(null);
   const activeDeck = decks.find((item) => item.id === activeDeckId) ?? decks[0];
   const deck = activeDeck.cards;
   const setDeck = (next: DeckQuantities | ((current: DeckQuantities) => DeckQuantities)) => {
@@ -621,6 +623,8 @@ export default function Home() {
     .filter((entry): entry is { id: string; card: Card } => Boolean(entry.card))
     .sort((left, right) => compareNullable(left.id, right.id)), [candidateIds, deck]);
   const hasFilters = Boolean(query || groupId !== 'all' || memberIds.length || cardType !== 'all' || productIds.length || costIds.length || scoreIds.length || !groupIdenticalCards || candidateOnly || inventoryFilter !== 'all');
+  const mobileFilterCount = Number(cardType !== 'all') + memberIds.length + productIds.length + costIds.length + scoreIds.length + Number(inventoryFilter !== 'all');
+  const toggleMobileControlPanel = (panel: Exclude<MobileControlPanel, null>) => setMobileControlPanel((current) => current === panel ? null : panel);
   const finishCopy = async (kind: 'recipe' | 'ai', text: string) => {
     const copied = await copyText(text);
     setCopyFeedback(copied ? kind : 'error');
@@ -961,15 +965,30 @@ export default function Home() {
       </nav>}
 
       <div className="filter-panel">
-        <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" className="search-input" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
+        <div className="mobile-control-bar" aria-label="カード一覧の操作" role="toolbar">
+          <button aria-controls="mobile-search-panel" aria-expanded={mobileControlPanel === 'search'} className={query || mobileControlPanel === 'search' ? 'active' : ''} onClick={() => toggleMobileControlPanel('search')} type="button"><Search aria-hidden="true" />検索</button>
+          <button aria-controls="mobile-filter-panel" aria-expanded={mobileControlPanel === 'filters'} className={mobileFilterCount || mobileControlPanel === 'filters' ? 'active' : ''} onClick={() => toggleMobileControlPanel('filters')} type="button"><SlidersHorizontal aria-hidden="true" />絞り込み{mobileFilterCount > 0 && <span>{mobileFilterCount}</span>}</button>
+          <button aria-controls="mobile-sort-panel" aria-expanded={mobileControlPanel === 'sort'} className={sortKey !== DEFAULT_SORT || mobileControlPanel === 'sort' ? 'active' : ''} onClick={() => toggleMobileControlPanel('sort')} type="button"><ArrowUpDown aria-hidden="true" />並び順</button>
+          <button aria-expanded={deckOpen} className={deckOpen ? 'mobile-deck-button active' : 'mobile-deck-button'} onClick={() => { setMobileControlPanel(null); setDeckOpen(true); }} type="button"><ListPlus aria-hidden="true" />デッキ <span>{deckTotal}</span></button>
+        </div>
+        <div aria-label="検索パネル" className={`mobile-panel-section mobile-search-panel${mobileControlPanel === 'search' ? ' mobile-open' : ''}`} id="mobile-search-panel" role="region">
+          <div className="mobile-panel-heading"><strong>カード検索</strong><button aria-label="検索を閉じる" onClick={() => setMobileControlPanel(null)} type="button"><X /></button></div>
+          <div className="search-wrap"><Search aria-hidden="true" /><Input aria-label="カード名、カード番号、効果テキストで検索" autoComplete="off" className="search-input" enterKeyHint="search" id="card-search" inputMode="search" name="card-search" onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="カード名・カード番号・効果から検索" type="search" value={query} />{query && <button className="clear-search" onClick={() => setQuery('')} aria-label="検索語を消去"><X /></button>}</div>
+        </div>
         <div className={`select-grid${cardType === 'member' ? ' with-cost-filter' : ''}`}>
+          <div aria-label="絞り込みパネル" className={`mobile-panel-section mobile-filter-fields${mobileControlPanel === 'filters' ? ' mobile-open' : ''}`} id="mobile-filter-panel" role="region">
+          <div className="mobile-panel-heading"><strong>絞り込み</strong><button aria-label="絞り込みを閉じる" onClick={() => setMobileControlPanel(null)} type="button"><X /></button></div>
           <div className="filter-field card-type-filter"><span className="filter-label" id="card-type-label">カード種類</span><div aria-labelledby="card-type-label" className="card-type-segment" role="group"><button aria-pressed={cardType === 'all'} className={cardType === 'all' ? 'active' : ''} onClick={() => changeCardType('all')} type="button">すべて</button><button aria-pressed={cardType === 'member'} className={cardType === 'member' ? 'active' : ''} onClick={() => changeCardType('member')} type="button">メンバー</button><button aria-pressed={cardType === 'live'} className={cardType === 'live' ? 'active' : ''} onClick={() => changeCardType('live')} type="button">ライブ</button></div></div>
           {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" memberDisplayMode={memberDisplayMode} onChange={updateMemberIds} onMemberDisplayModeChange={setMemberDisplayMode} optionGroups={memberOptionGroups} options={availableMembers} selectedIds={memberIds} />}
           {cardType === 'member' && <MultiSelect key="cost" emptyLabel="すべてのコスト" id="cost-filter" label="コスト" onChange={updateCostIds} options={availableCosts} selectedIds={costIds} />}
           {cardType === 'live' && <MultiSelect key="score" emptyLabel="すべてのスコア" id="score-filter" label="スコア" onChange={updateScoreIds} options={availableScores} selectedIds={scoreIds} />}
           <MultiSelect className="product-filter" emptyLabel="すべての商品" id="product-filter" label="収録商品" onChange={updateProductIds} options={availableProducts} selectedIds={productIds} />
           <label className="filter-field"><span className="filter-label">所持状態</span><NativeSelect className="select-control" value={inventoryFilter} onChange={(event) => { setInventoryFilter(event.target.value as InventoryFilter); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="owned">所持のみ</NativeSelectOption><NativeSelectOption value="unowned">未所持のみ</NativeSelectOption></NativeSelect></label>
+          </div>
+          <div aria-label="並び順パネル" className={`mobile-panel-section mobile-sort-field${mobileControlPanel === 'sort' ? ' mobile-open' : ''}`} id="mobile-sort-panel" role="region">
+          <div className="mobile-panel-heading"><strong>並び順</strong><button aria-label="並び順を閉じる" onClick={() => setMobileControlPanel(null)} type="button"><X /></button></div>
           <label className="filter-field"><span className="filter-label"><ArrowUpDown /> 並び順</span><NativeSelect className="select-control" value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>{sortOptions.map((option) => <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>)}</NativeSelect></label>
+          </div>
         </div>
       </div>
 
