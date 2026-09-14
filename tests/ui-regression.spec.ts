@@ -244,12 +244,12 @@ test.describe('iPhone SE2向け操作バー', () => {
     await toolbar.getByRole('button', {name: /^絞り込み/}).click();
     const filterPanel = page.getByRole('region', {name: '絞り込みパネル'});
     const memberTrigger = filterPanel.locator('.multi-select-trigger').first();
-    await memberTrigger.click();
-
-    const options = page.getByRole('checkbox');
-    await expect(options.nth(9)).toBeVisible();
-    for (let index = 0; index < 10; index += 1) await options.nth(index).click();
-    await page.keyboard.press('Escape');
+    for (let index = 0; index < 10; index += 1) {
+      await memberTrigger.click();
+      const option = page.getByRole('checkbox').nth(index);
+      await expect(option).toBeVisible();
+      await option.click();
+    }
 
     const filterButton = toolbar.getByRole('button', {name: /^絞り込み/});
     await expect(filterButton).toContainText('10');
