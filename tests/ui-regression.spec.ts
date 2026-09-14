@@ -220,7 +220,7 @@ test.describe('スマホ縦幅', () => {
     await groupNavigation.getByRole('button', {name: /^その他(?:\s|$)/}).click();
     await expect(page.getByRole('navigation', {name: 'その他のグループを切り替え'})).toBeVisible();
 
-    const deckButton = page.getByRole('button', {name: /デッキを開く/});
+    const deckButton = page.getByRole('toolbar', {name: 'カード一覧の操作'}).getByRole('button', {name: /デッキ/});
     const syncButton = page.getByRole('button', {name: 'クラウド同期'});
     await expect(deckButton).toBeInViewport();
     await expect(syncButton).toBeVisible();
