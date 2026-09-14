@@ -248,7 +248,7 @@ test.describe('iPhone SE2向け操作バー', () => {
       await memberTrigger.click();
       const option = page.getByRole('checkbox').nth(index);
       await expect(option).toBeVisible();
-      await option.click();
+      await option.check({force: true});
     }
 
     const filterButton = toolbar.getByRole('button', {name: /^絞り込み/});
