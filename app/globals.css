@@ -457,11 +457,12 @@ footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25p
   .intro { grid-template-columns: 1fr; gap: 24px; padding-top: 39px; } .intro h1 { font-size: clamp(2.05rem,10vw,3.5rem); } .intro-copy { margin-top: 17px; line-height: 1.75; }
   .total-card { min-width: 0; display: grid; grid-template-columns: 1fr auto; align-items: end; padding: 18px 20px; } .total-card small { grid-column: 1; } .total-card strong { grid-column: 2; grid-row: 1/span 2; margin: 0; font-size: 2.7rem; } .total-card span { grid-column: 1; }
   .filter-panel { top: 0; z-index: 30; padding: 0; overflow: visible; border-radius: 16px; background: rgba(255,251,253,.94); box-shadow: 0 10px 28px rgba(79,44,66,.12); }
-  .mobile-control-bar { height: 56px; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 5px; padding: 7px; }
-  .mobile-control-bar button { min-width: 0; display: flex; align-items: center; justify-content: center; gap: 5px; border: 1px solid #ead9e3; border-radius: 11px; background: #fff; color: #704f63; font-size: .74rem; font-weight: 850; }
+  .mobile-control-bar { height: 56px; display: grid; grid-template-columns: .85fr 1.2fr 1fr 1.25fr; gap: 4px; padding: 7px; }
+  .mobile-control-bar button { min-width: 0; display: flex; align-items: center; justify-content: center; gap: 3px; padding: 0 4px; border: 1px solid #ead9e3; border-radius: 10px; background: #fff; color: #704f63; font-size: .69rem; font-weight: 850; white-space: nowrap; }
   .mobile-control-bar button.active { border-color: #ca6798; background: #fff0f7; color: #a72c68; }
-  .mobile-control-bar button > svg { width: 14px; height: 14px; }
-  .mobile-control-bar button > span { min-width: 18px; height: 18px; display: grid; place-items: center; padding: 0 4px; border-radius: 999px; background: #bd3a77; color: white; font-size: .61rem; }
+  .mobile-control-bar button > svg { flex: 0 0 auto; width: 13px; height: 13px; }
+  .mobile-control-bar button > span { min-width: 18px; height: 18px; display: grid; flex: 0 0 auto; place-items: center; padding: 0 4px; border-radius: 999px; background: #bd3a77; color: white; font-size: .61rem; }
+  .mobile-deck-button { gap: 3px !important; }
   .mobile-panel-section { display: none; }
   .mobile-panel-section.mobile-open { display: grid; gap: 10px; padding: 12px; border-top: 1px solid #eadde4; background: rgba(255,251,253,.98); }
   .mobile-panel-heading { display: flex; align-items: center; justify-content: space-between; color: #704f63; font-size: .76rem; }
@@ -498,10 +499,8 @@ footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25p
   .deck-manager-footer { margin: 0 -14px -14px; }
   .deck-clear-dialog { padding: 14px; }
   .deck-clear-footer { margin: 0 -14px -14px; }
-  .deck-launcher { right: max(8px,env(safe-area-inset-right)); bottom: max(8px,env(safe-area-inset-bottom)); min-height: 40px; height: 40px; flex-direction: row; justify-content: center; gap: 5px; padding: 6px 10px 6px 9px; border-radius: 999px; touch-action: auto; }
-  .deck-launcher svg { width: 16px; }
-  .deck-launcher > span { font-size: .7rem; line-height: 1; }
-  .deck-launcher strong { min-width: 24px; width: 24px; height: 24px; padding: 0; font-size: .7rem; }
+  .deck-launcher { display: none; }
+
   .deck-sheet { width: 100vw !important; }
   .deck-scroll { padding: 12px; }
   .deck-card-details summary { padding-right: 112px; }
