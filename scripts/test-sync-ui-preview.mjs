@@ -8,6 +8,7 @@ const page = fs.readFileSync('app/page.tsx', 'utf8');
 const entry = fs.readFileSync('main.tsx', 'utf8');
 const syncDialog = fs.readFileSync('components/cloud-sync-dialog.tsx', 'utf8');
 const syncEntry = fs.readFileSync('components/cloud-sync-entry.tsx', 'utf8');
+const globalStyles = fs.readFileSync('app/globals.css', 'utf8');
 
 test('sync UI Preview is route-scoped and reuses the production presentation component', () => {
   assert.match(entry, /\/sync-ui-preview/);
@@ -64,4 +65,17 @@ test('connected sync metadata starts collapsed under details information', () =>
   for (const label of ['クラウド最終更新', 'この端末の最終同期', 'revision']) {
     assert.match(syncDialog, new RegExp(label));
   }
+});
+
+test('cloud sync dialog is the bounded touch-scroll container on small viewports', () => {
+  const baseRule = globalStyles.match(/\.cloud-sync-dialog \{[^}]+\}/)?.[0] ?? '';
+  assert.match(baseRule, /max-height: calc\(100dvh - 24px\)/);
+  assert.match(baseRule, /overflow-x: hidden/);
+  assert.match(baseRule, /overflow-y: auto/);
+  assert.match(baseRule, /overscroll-behavior: contain/);
+  assert.match(baseRule, /-webkit-overflow-scrolling: touch/);
+
+  assert.match(globalStyles, /max-height: calc\(100dvh - 16px - env\(safe-area-inset-top\) - env\(safe-area-inset-bottom\)\)/);
+  assert.match(globalStyles, /scroll-padding-bottom: max\(14px,env\(safe-area-inset-bottom\)\)/);
+  assert.match(globalStyles, /\.cloud-sync-footer \{[^}]*padding-bottom: max\(14px,env\(safe-area-inset-bottom\)\)/);
 });
