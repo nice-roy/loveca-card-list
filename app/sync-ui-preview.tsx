@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { CloudSyncDialog, type CloudImportPreview, type CloudSyncMessage, type CloudSyncView } from '@/components/cloud-sync-dialog';
+import { CloudSyncEntry } from '@/components/cloud-sync-entry';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import type { SyncHistorySummary, SyncMetadata } from '@/lib/cloud-sync';
+import { getCloudSyncEntryStatus } from '@/lib/cloud-sync-status';
 import './sync-ui-preview.css';
 
 type Scenario = 'unconnected' | 'connected' | 'dirty' | 'cloud-updated' | 'error' | 'history' | 'no-history';
@@ -34,7 +36,7 @@ const scenarios: { id: Scenario; label: string; description: string }[] = [
 
 export default function SyncUiPreview() {
   const [scenario, setScenario] = useState<Scenario>('unconnected');
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [view, setView] = useState<CloudSyncView>('main');
   const [syncCode, setSyncCode] = useState<string | null>(null);
   const [metadata, setMetadata] = useState<SyncMetadata | null>(null);
@@ -47,6 +49,12 @@ export default function SyncUiPreview() {
   const [forceConfirm, setForceConfirm] = useState(false);
   const [message, setMessage] = useState<CloudSyncMessage>(null);
   const [confirmation, setConfirmation] = useState<Confirmation>(null);
+  const entryStatus = getCloudSyncEntryStatus({
+    connected: Boolean(syncCode),
+    hasCloudUpdate: view === 'conflict',
+    hasError: message?.kind === 'error',
+    hasUnsavedChanges: dirty,
+  });
 
   const applyScenario = (next: Scenario) => {
     const connected = next !== 'unconnected';
@@ -62,7 +70,7 @@ export default function SyncUiPreview() {
     setForceConfirm(false);
     setMessage(next === 'error' ? { kind: 'error', text: '通信できませんでした。ネットワークを確認して、もう一度お試しください。' } : null);
     setView(next === 'cloud-updated' ? 'conflict' : 'main');
-    setOpen(true);
+    setOpen(false);
   };
 
   const showImportPreview = () => {
@@ -79,8 +87,8 @@ export default function SyncUiPreview() {
     </header>
     <section className="sync-preview-scenarios" aria-label="確認する同期状態">
       <h2>確認する状態</h2>
-      <div>{scenarios.map((item) => <button aria-pressed={scenario === item.id} key={item.id} onClick={() => applyScenario(item.id)} type="button"><strong>{item.label}</strong><span>{item.description}</span></button>)}</div>
-      <Button onClick={() => setOpen(true)} type="button">選択中の同期UIを開く</Button>
+      <div className="sync-preview-state-grid">{scenarios.map((item) => <button aria-pressed={scenario === item.id} key={item.id} onClick={() => applyScenario(item.id)} type="button"><strong>{item.label}</strong><span>{item.description}</span></button>)}</div>
+      <div className="sync-preview-entry"><span>本番と共通の入口表示</span><CloudSyncEntry onClick={() => setOpen(true)} status={entryStatus} /></div>
     </section>
     <section className="sync-preview-safety">
       <h2>安全仕様</h2>

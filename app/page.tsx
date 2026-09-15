@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Cloud, Copy, ExternalLink, Layers3, ListPlus, Minus, Plus, RotateCcw, Search, SlidersHorizontal, Sparkles, Trash2, X } from 'lucide-react';
+import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Copy, ExternalLink, Layers3, ListPlus, Minus, Plus, RotateCcw, Search, SlidersHorizontal, Sparkles, Trash2, X } from 'lucide-react';
 import cardsJson from './data/cards.json';
 import livePurchaseLinksJson from './data/live-purchase-links.json';
 import referencesJson from './data/reference-data.json';
@@ -14,6 +14,7 @@ import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { CloudSyncDialog } from '@/components/cloud-sync-dialog';
+import { CloudSyncEntry } from '@/components/cloud-sync-entry';
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 import { baseCardId, cardlaboLinksForDisplay, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
 import { parseCandidateImportText } from '@/lib/candidate-import';
@@ -29,6 +30,7 @@ import { GROUP_STORAGE_KEY, normalizeGroupPreference } from '@/lib/group-prefere
 import { heartDisplayLabel, HEART_COLOR_LABELS, splitEffectTextForDisplay, type EffectIcon, type HeartColor } from '@/lib/heart-presentation';
 import { applyAuditedPurchaseLinks, type AuditedPurchaseLink } from '@/lib/purchase-links';
 import { clearSyncConnectionStorage, CloudSyncError, createSyncBaseline, createCloudSync, getSyncApiUrl, isSyncPayloadDirty, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncBaseline, type SyncHistorySummary, type SyncMetadata } from '@/lib/cloud-sync';
+import { getCloudSyncEntryStatus } from '@/lib/cloud-sync-status';
 
 const cards = applyAuditedPurchaseLinks(cardsJson as Card[], livePurchaseLinksJson as AuditedPurchaseLink[]);
 const references = referencesJson as ReferenceData;
@@ -389,6 +391,12 @@ export default function Home() {
     () => isSyncPayloadDirty(syncCode, syncBaseline, createBuilderTransfer(decks, activeDeckId, candidateIds, inventory)),
     [activeDeckId, candidateIds, decks, inventory, syncBaseline, syncCode],
   );
+  const cloudSyncEntryStatus = getCloudSyncEntryStatus({
+    connected: Boolean(syncCode),
+    hasCloudUpdate: syncView === 'conflict',
+    hasError: syncMessage?.kind === 'error',
+    hasUnsavedChanges: hasUnsavedSyncChanges,
+  });
   const sortOptions = cardType === 'member'
     ? [...memberSortOptions, ...commonSortOptions]
     : cardType === 'live'
@@ -994,7 +1002,7 @@ export default function Home() {
       </div>
 
         <div className="result-tools">
-        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button><Button className="cloud-sync-button" onClick={openCloudSync} size="sm" type="button" variant="outline"><Cloud />クラウド同期{hasUnsavedSyncChanges ? <span aria-label="この端末に未保存の変更があります" className="cloud-sync-dirty-dot" title="この端末に未保存の変更があります" /> : null}</Button></div>
+        <div className="view-toggles"><label className="group-toggle"><input checked={groupIdenticalCards} onChange={(event) => { setGroupIdenticalCards(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>同一カードをまとめる</span></label><label className="group-toggle candidate-toggle"><input checked={candidateOnly} onChange={(event) => { setCandidateOnly(event.target.checked); setVisibleCount(PAGE_SIZE); }} type="checkbox" /><span>候補のみ表示</span></label><Button className="candidate-import-button" onClick={openCandidateImport} size="sm" type="button" variant="outline"><Bookmark />候補を一括追加</Button><CloudSyncEntry onClick={openCloudSync} status={cloudSyncEntryStatus} /></div>
         <div className="result-bar" aria-live="polite"><div><SlidersHorizontal aria-hidden="true" /><strong>{displayGroups.length}</strong><span>{groupIdenticalCards ? `種を表示（元カード${filteredCards.length}枚）` : '枚が見つかりました'}</span></div>{hasFilters && <Button variant="ghost" onClick={resetFilters}><X /> 条件をクリア</Button>}</div>
       </div>
       {displayGroups.length ? <div className="card-grid">{displayGroups.slice(0, visibleCount).map((group) => {

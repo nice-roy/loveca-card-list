@@ -102,7 +102,10 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .data-transfer-button { min-height: 36px; padding-inline: 10px; border-color: #d9c4db; color: #704566; background: #fffafe; white-space: nowrap; }
 .cloud-sync-button { min-height: 36px; padding-inline: 10px; border-color: #c9d7e7; color: #3d627f; background: #f8fbff; white-space: nowrap; }
 .cloud-sync-button svg { width: 15px; height: 15px; }
-.cloud-sync-button .cloud-sync-dirty-dot { width: 7px; height: 7px; display: inline-block; flex: 0 0 auto; border-radius: 999px; background: #d88335; box-shadow: 0 0 0 2px #fff; }
+.cloud-sync-status-label { display: inline-flex; align-items: center; min-height: 20px; padding: 2px 6px; border-radius: 999px; background: #e8eef4; color: #516777; font-size: .62rem; font-weight: 900; line-height: 1; }
+.cloud-sync-status-dirty .cloud-sync-status-label,.cloud-sync-status-cloud-updated .cloud-sync-status-label { background: #fff0d8; color: #8a5a1d; }
+.cloud-sync-status-error .cloud-sync-status-label { background: #fde8e8; color: #a03d3d; }
+.cloud-sync-status-connected .cloud-sync-status-label { background: #e4f4eb; color: #397257; }
 .result-bar { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .result-bar > div { display: flex; align-items: baseline; gap: 6px; color: #74616d; } .result-bar > div svg { width: 16px; align-self: center; margin-right: 3px; }
 .result-bar strong { color: #31232c; font-size: 1.4rem; } .result-bar span { font-size: .82rem; }
@@ -285,6 +288,10 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .cloud-sync-code > strong { min-width: 0; overflow-wrap: anywhere; color: #345d7a; font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: .78rem; letter-spacing: .04em; }
 .cloud-sync-warning { margin: 0; padding: 9px 10px; border: 1px solid #e7cc8e; border-radius: 10px; background: #fff9e9; color: #765d29; font-size: .69rem; line-height: 1.5; }
 .cloud-sync-local-change { margin: 0; padding: 9px 10px; border: 1px solid #e6c997; border-radius: 10px; background: #fffaf0; color: #775725; font-size: .7rem; font-weight: 800; line-height: 1.5; }
+.cloud-sync-details { margin: 0; border: 1px solid #dce5eb; border-radius: 9px; background: #f8fbfd; }
+.cloud-sync-details summary { padding: 8px 10px; color: #5f7380; cursor: pointer; font-size: .7rem; font-weight: 900; }
+.cloud-sync-details[open] summary { border-bottom: 1px solid #e2e9ee; }
+.cloud-sync-details .cloud-sync-meta { padding: 8px; }
 .cloud-sync-meta,.cloud-sync-preview dl { display: grid; gap: 6px; margin: 0; }
 .cloud-sync-meta div,.cloud-sync-preview dl div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 9px; border-radius: 8px; background: #f1f6fa; font-size: .69rem; }
 .cloud-sync-meta dt,.cloud-sync-preview dt { color: #6a7e8c; font-weight: 800; }
