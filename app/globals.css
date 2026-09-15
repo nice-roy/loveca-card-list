@@ -100,8 +100,9 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .candidate-toggle { color: #8a3562; }
 .candidate-import-button { min-height: 36px; padding-inline: 10px; white-space: nowrap; }
 .data-transfer-button { min-height: 36px; padding-inline: 10px; border-color: #d9c4db; color: #704566; background: #fffafe; white-space: nowrap; }
-.cloud-sync-button { min-height: 36px; padding-inline: 10px; border-color: #c9d7e7; color: #3d627f; background: #f8fbff; white-space: nowrap; }
+.cloud-sync-button { min-height: 36px; gap: 5px; padding-inline: 8px; border-color: #c9d7e7; color: #3d627f; background: #f8fbff; white-space: nowrap; }
 .cloud-sync-button svg { width: 15px; height: 15px; }
+.cloud-sync-button-label { font-size: .72rem; font-weight: 800; }
 .cloud-sync-status-label { display: inline-flex; align-items: center; min-height: 20px; padding: 2px 6px; border-radius: 999px; background: #e8eef4; color: #516777; font-size: .62rem; font-weight: 900; line-height: 1; }
 .cloud-sync-status-dirty .cloud-sync-status-label,.cloud-sync-status-cloud-updated .cloud-sync-status-label { background: #fff0d8; color: #8a5a1d; }
 .cloud-sync-status-error .cloud-sync-status-label { background: #fde8e8; color: #a03d3d; }
