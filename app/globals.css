@@ -100,9 +100,13 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .candidate-toggle { color: #8a3562; }
 .candidate-import-button { min-height: 36px; padding-inline: 10px; white-space: nowrap; }
 .data-transfer-button { min-height: 36px; padding-inline: 10px; border-color: #d9c4db; color: #704566; background: #fffafe; white-space: nowrap; }
-.cloud-sync-button { min-height: 36px; padding-inline: 10px; border-color: #c9d7e7; color: #3d627f; background: #f8fbff; white-space: nowrap; }
+.cloud-sync-button { min-height: 36px; gap: 5px; padding-inline: 8px; border-color: #c9d7e7; color: #3d627f; background: #f8fbff; white-space: nowrap; }
 .cloud-sync-button svg { width: 15px; height: 15px; }
-.cloud-sync-button .cloud-sync-dirty-dot { width: 7px; height: 7px; display: inline-block; flex: 0 0 auto; border-radius: 999px; background: #d88335; box-shadow: 0 0 0 2px #fff; }
+.cloud-sync-button-label { font-size: .72rem; font-weight: 800; }
+.cloud-sync-status-label { display: inline-flex; align-items: center; min-height: 20px; padding: 2px 6px; border-radius: 999px; background: #e8eef4; color: #516777; font-size: .62rem; font-weight: 900; line-height: 1; }
+.cloud-sync-status-dirty .cloud-sync-status-label,.cloud-sync-status-cloud-updated .cloud-sync-status-label { background: #fff0d8; color: #8a5a1d; }
+.cloud-sync-status-error .cloud-sync-status-label { background: #fde8e8; color: #a03d3d; }
+.cloud-sync-status-connected .cloud-sync-status-label { background: #e4f4eb; color: #397257; }
 .result-bar { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .result-bar > div { display: flex; align-items: baseline; gap: 6px; color: #74616d; } .result-bar > div svg { width: 16px; align-self: center; margin-right: 3px; }
 .result-bar strong { color: #31232c; font-size: 1.4rem; } .result-bar span { font-size: .82rem; }
@@ -270,7 +274,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .data-transfer-preview-note.legacy-warning strong { color: #76531a; }
 .data-transfer-copy-error { margin: 0; color: #a23c47; font-size: .7rem; font-weight: 800; }
 .data-transfer-footer { margin: 0 -18px -18px; }
-.cloud-sync-dialog { z-index: 71; width: min(590px,calc(100vw - 24px)); max-width: none; padding: 18px; border: 1px solid #dce4ed; background: #fbfdff; }
+.cloud-sync-dialog { z-index: 71; width: min(590px,calc(100vw - 24px)); max-width: none; max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); min-height: 0; padding: 18px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; border: 1px solid #dce4ed; background: #fbfdff; }
 .cloud-sync-dialog [data-slot="dialog-title"] { color: #345f7e; font-size: 1rem; font-weight: 900; }
 .cloud-sync-dialog [data-slot="dialog-description"] { padding-right: 28px; font-size: .76rem; line-height: 1.55; }
 .cloud-sync-unconnected { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
@@ -285,12 +289,19 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .cloud-sync-code > strong { min-width: 0; overflow-wrap: anywhere; color: #345d7a; font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: .78rem; letter-spacing: .04em; }
 .cloud-sync-warning { margin: 0; padding: 9px 10px; border: 1px solid #e7cc8e; border-radius: 10px; background: #fff9e9; color: #765d29; font-size: .69rem; line-height: 1.5; }
 .cloud-sync-local-change { margin: 0; padding: 9px 10px; border: 1px solid #e6c997; border-radius: 10px; background: #fffaf0; color: #775725; font-size: .7rem; font-weight: 800; line-height: 1.5; }
+.cloud-sync-details { margin: 0; border: 1px solid #dce5eb; border-radius: 9px; background: #f8fbfd; }
+.cloud-sync-details summary { padding: 8px 10px; color: #5f7380; cursor: pointer; font-size: .7rem; font-weight: 900; }
+.cloud-sync-details[open] summary { border-bottom: 1px solid #e2e9ee; }
+.cloud-sync-details .cloud-sync-meta { padding: 8px; }
 .cloud-sync-meta,.cloud-sync-preview dl { display: grid; gap: 6px; margin: 0; }
 .cloud-sync-meta div,.cloud-sync-preview dl div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 9px; border-radius: 8px; background: #f1f6fa; font-size: .69rem; }
 .cloud-sync-meta dt,.cloud-sync-preview dt { color: #6a7e8c; font-weight: 800; }
 .cloud-sync-meta dd,.cloud-sync-preview dd { margin: 0; color: #355c77; font-weight: 900; text-align: right; }
 .cloud-sync-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.cloud-sync-actions button { flex: 1 1 190px; min-height: 40px; }
+.cloud-sync-actions button { flex: 1 1 190px; min-height: 46px; }
+.cloud-sync-action-copy { min-width: 0; display: grid; gap: 2px; line-height: 1.05; text-align: left; }
+.cloud-sync-action-copy strong { font-size: .71rem; font-weight: 900; }
+.cloud-sync-action-copy small { color: currentColor; font-size: .58rem; font-weight: 750; opacity: .72; }
 .cloud-sync-disconnect { justify-self: start; color: #7a6b73; }
 .cloud-sync-history { min-width: 0; display: grid; gap: 8px; padding-top: 12px; border-top: 1px solid #dce5ec; }
 .cloud-sync-history-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
@@ -308,12 +319,14 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .cloud-sync-history-selected strong { color: #315c78; font-size: .72rem; }
 .cloud-sync-history-selected span { color: #657d8d; font-size: .64rem; line-height: 1.4; }
 .cloud-sync-history-selected button { grid-column: 2; grid-row: 1 / 3; min-height: 34px; font-size: .65rem; }
-.cloud-history-restore-dialog { z-index: 73; width: min(470px,calc(100vw - 24px)); max-width: none; padding: 18px; border: 1px solid #dce4ed; background: #fbfdff; }
+.cloud-history-restore-dialog,.cloud-disconnect-dialog { z-index: 73; width: min(470px,calc(100vw - 24px)); max-width: none; padding: 18px; border: 1px solid #dce4ed; background: #fbfdff; }
 .cloud-load-dirty-dialog { z-index: 73; width: min(470px,calc(100vw - 24px)); max-width: none; padding: 18px; border: 1px solid #dce4ed; background: #fbfdff; }
 .cloud-load-dirty-dialog [data-slot="dialog-title"] { color: #345f7e; font-size: 1rem; font-weight: 900; }
 .cloud-load-dirty-dialog [data-slot="dialog-description"] { padding-right: 28px; font-size: .76rem; line-height: 1.55; }
-.cloud-history-restore-dialog [data-slot="dialog-title"] { color: #345f7e; font-size: 1rem; font-weight: 900; }
-.cloud-history-restore-dialog [data-slot="dialog-description"] { padding-right: 28px; font-size: .76rem; line-height: 1.55; }
+.cloud-history-restore-dialog [data-slot="dialog-title"],.cloud-disconnect-dialog [data-slot="dialog-title"] { color: #345f7e; font-size: 1rem; font-weight: 900; }
+.cloud-history-restore-dialog [data-slot="dialog-description"],.cloud-disconnect-dialog [data-slot="dialog-description"] { padding-right: 28px; font-size: .76rem; line-height: 1.55; }
+.cloud-disconnect-confirm { border-color: #e1b8bd; background: #fff1f2; color: #923f48; }
+.cloud-disconnect-confirm:hover { background: #fbe3e5; }
 .cloud-history-restore-summary { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin: 0; }
 .cloud-history-restore-summary div { display: grid; gap: 3px; padding: 9px; border-radius: 9px; background: #f1f6fa; text-align: center; }
 .cloud-history-restore-summary dt { color: #6a7e8c; font-size: .65rem; font-weight: 800; }
@@ -493,9 +506,9 @@ footer { width: min(1440px,calc(100% - 40px)); margin: 56px auto 0; padding: 25p
   .candidate-import-footer { margin: 0 -14px -14px; }
   .data-transfer-dialog { padding: 14px; }
   .data-transfer-footer { margin: 0 -14px -14px; }
-  .cloud-sync-dialog { padding: 14px; }
-  .cloud-sync-footer { margin: 0 -14px -14px; }
-  .cloud-history-restore-dialog { padding: 14px; }
+  .cloud-sync-dialog { max-height: calc(100vh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); max-height: calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); padding: 14px; scroll-padding-bottom: max(14px,env(safe-area-inset-bottom)); }
+  .cloud-sync-footer { margin: 0 -14px -14px; padding-bottom: max(14px,env(safe-area-inset-bottom)); }
+  .cloud-history-restore-dialog,.cloud-disconnect-dialog { padding: 14px; }
   .deck-manager-dialog,.deck-delete-dialog { padding: 14px; }
   .deck-manager-footer { margin: 0 -14px -14px; }
   .deck-clear-dialog { padding: 14px; }

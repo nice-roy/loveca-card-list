@@ -124,11 +124,117 @@ test('所持・候補・デッキ4枚上限の基本操作が成立する', asyn
 });
 
 test('クラウド同期ダイアログを通信なしで開ける', async ({page}) => {
-  await page.getByRole('button', {name: 'クラウド同期'}).click();
+  const entry = page.getByRole('button', {name: 'クラウド同期'});
+  await expect(entry).toContainText('未接続');
+  await entry.click();
   const dialog = page.getByRole('dialog', {name: 'クラウド同期'});
   await expect(dialog).toBeVisible();
   await expect(dialog.getByRole('button', {name: '同期コードを作成'})).toBeVisible();
   await expect(dialog.getByRole('button', {name: '既存の同期コードを入力'})).toBeVisible();
+});
+
+test('Production候補にmock同期UI routeを公開しない', async ({page}) => {
+  await page.goto('/sync-ui-preview');
+  await expect(page.getByLabel('登録カード総数')).toContainText('1817');
+  await expect(page.getByRole('heading', {name: 'クラウド同期UI 安全確認'})).toHaveCount(0);
+});
+
+test('接続済み同期UIで方向・詳細情報・解除影響を確認できる', async ({page}) => {
+  await page.evaluate(() => {
+    localStorage.setItem('loveca-card-list:sync-code:v1', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+    localStorage.setItem('loveca-card-list:sync-meta:v1', JSON.stringify({
+      revision: 3,
+      cloudUpdatedAt: '2026-09-15T00:00:00.000Z',
+      lastSyncedAt: '2026-09-15T00:01:00.000Z',
+    }));
+  });
+  await page.reload();
+
+  const entry = page.getByRole('button', {name: 'クラウド同期'});
+  await expect(entry).toContainText('未保存あり');
+  await entry.click();
+  const dialog = page.getByRole('dialog', {name: 'クラウド同期'});
+  await expect(dialog.getByText('この端末に未保存の変更があります。')).toBeVisible();
+  await expect(dialog.getByRole('button', {name: /クラウドへ保存/})).toContainText('この端末 → クラウド');
+  await expect(dialog.getByRole('button', {name: /クラウドから読み込み/})).toContainText('クラウド → この端末');
+  await expect(dialog.getByText('クラウド最終更新')).toBeHidden();
+  await dialog.getByText('詳細情報', {exact: true}).click();
+  await expect(dialog.getByText('クラウド最終更新')).toBeVisible();
+  await expect(dialog.getByText('この端末の最終同期')).toBeVisible();
+  await expect(dialog.getByText('revision', {exact: true})).toBeVisible();
+});
+
+test('同期解除は確認・キャンセルでき、警告色の確定操作だけが解除する', async ({page}) => {
+  await page.evaluate(() => {
+    localStorage.setItem('loveca-card-list:sync-code:v1', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+    localStorage.setItem('loveca-card-list:sync-meta:v1', JSON.stringify({
+      revision: 3,
+      cloudUpdatedAt: '2026-09-15T00:00:00.000Z',
+      lastSyncedAt: '2026-09-15T00:01:00.000Z',
+    }));
+  });
+  await page.reload();
+  await page.getByRole('button', {name: 'クラウド同期'}).click();
+  const dialog = page.getByRole('dialog', {name: 'クラウド同期'});
+  await dialog.getByRole('button', {name: 'この端末の同期を解除'}).click();
+  const confirmation = page.getByRole('dialog', {name: 'この端末の同期を解除しますか？'});
+  await expect(confirmation).toContainText('クラウド上の同期データと、この端末のデッキ・候補・所持カードは削除されません。');
+  const confirm = confirmation.getByRole('button', {name: '同期を解除', exact: true});
+  await expect(confirm).toHaveClass(/cloud-disconnect-confirm/);
+  await expect(confirm).toHaveCSS('color', 'rgb(146, 63, 72)');
+  await confirmation.getByRole('button', {name: 'キャンセル'}).click();
+  await expect(confirmation).toBeHidden();
+  await expect(dialog.getByText('同期コード', {exact: true})).toBeVisible();
+
+  await dialog.getByRole('button', {name: 'この端末の同期を解除'}).click();
+  await confirmation.getByRole('button', {name: '同期を解除', exact: true}).click();
+  await expect(dialog.getByRole('button', {name: '同期コードを作成'})).toBeVisible();
+});
+
+test.describe('Production同期UIのスマホ内スクロール', () => {
+  test.use({viewport: {width: 375, height: 667}});
+
+  test('詳細情報と履歴相当の高さでも最下部の閉じるへ到達できる', async ({page}) => {
+    await page.evaluate(() => {
+      localStorage.setItem('loveca-card-list:sync-code:v1', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+      localStorage.setItem('loveca-card-list:sync-meta:v1', JSON.stringify({
+        revision: 3,
+        cloudUpdatedAt: '2026-09-15T00:00:00.000Z',
+        lastSyncedAt: '2026-09-15T00:01:00.000Z',
+      }));
+    });
+    await page.reload();
+    await page.getByRole('button', {name: 'クラウド同期'}).click();
+    const dialog = page.getByRole('dialog', {name: 'クラウド同期'});
+    await dialog.getByText('詳細情報', {exact: true}).click();
+    await dialog.locator('.cloud-sync-history').evaluate((history) => {
+      const fixture = document.createElement('div');
+      fixture.dataset.testFixture = 'history-height';
+      fixture.style.height = '320px';
+      fixture.setAttribute('aria-hidden', 'true');
+      history.append(fixture);
+    });
+
+    const metrics = await dialog.evaluate((element) => ({
+      clientHeight: element.clientHeight,
+      clientWidth: element.clientWidth,
+      overflowX: getComputedStyle(element).overflowX,
+      overflowY: getComputedStyle(element).overflowY,
+      scrollHeight: element.scrollHeight,
+      scrollWidth: element.scrollWidth,
+    }));
+    expect(metrics.scrollHeight).toBeGreaterThan(metrics.clientHeight);
+    expect(metrics.overflowY).toBe('auto');
+    expect(metrics.overflowX).toBe('hidden');
+    expect(metrics.scrollWidth - metrics.clientWidth).toBeLessThanOrEqual(1);
+
+    await dialog.evaluate((element) => { element.scrollTop = element.scrollHeight; });
+    await expect.poll(() => dialog.evaluate((element) => element.scrollTop)).toBeGreaterThan(0);
+    const close = dialog.getByRole('button', {name: '閉じる', exact: true});
+    await expect(close).toBeInViewport();
+    await close.click();
+    await expect(dialog).toBeHidden();
+  });
 });
 
 test('PCでは従来の検索・絞り込み・並び順を常時表示する', async ({page}) => {
