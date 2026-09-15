@@ -325,6 +325,8 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .cloud-load-dirty-dialog [data-slot="dialog-description"] { padding-right: 28px; font-size: .76rem; line-height: 1.55; }
 .cloud-history-restore-dialog [data-slot="dialog-title"],.cloud-disconnect-dialog [data-slot="dialog-title"] { color: #345f7e; font-size: 1rem; font-weight: 900; }
 .cloud-history-restore-dialog [data-slot="dialog-description"],.cloud-disconnect-dialog [data-slot="dialog-description"] { padding-right: 28px; font-size: .76rem; line-height: 1.55; }
+.cloud-disconnect-confirm { border-color: #e1b8bd; background: #fff1f2; color: #923f48; }
+.cloud-disconnect-confirm:hover { background: #fbe3e5; }
 .cloud-history-restore-summary { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin: 0; }
 .cloud-history-restore-summary div { display: grid; gap: 3px; padding: 9px; border-radius: 9px; background: #f1f6fa; text-align: center; }
 .cloud-history-restore-summary dt { color: #6a7e8c; font-size: .65rem; font-weight: 800; }
