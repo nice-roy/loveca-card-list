@@ -184,7 +184,7 @@ test('同期解除は確認・キャンセルでき、警告色の確定操作�
   await expect(confirm).toHaveCSS('color', 'rgb(146, 63, 72)');
   await confirmation.getByRole('button', {name: 'キャンセル'}).click();
   await expect(confirmation).toBeHidden();
-  await expect(dialog.getByText('同期コード')).toBeVisible();
+  await expect(dialog.getByText('同期コード', {exact: true})).toBeVisible();
 
   await dialog.getByRole('button', {name: 'この端末の同期を解除'}).click();
   await confirmation.getByRole('button', {name: '同期を解除', exact: true}).click();
