@@ -69,4 +69,23 @@ test.describe('同期UI mockのスマホ内スクロール', () => {
     await expect(dialog.getByRole('button', {name: '内容を見る'})).toHaveCount(2);
     await expectScrollableToClose(page);
   });
+
+  test('保存・読み込みの方向と同期解除の影響範囲を明示する', async ({page}) => {
+    const dialog = await openScenario(page, '同期済み');
+    await expect(dialog.getByRole('button', {name: /クラウドへ保存/})).toContainText('この端末 → クラウド');
+    await expect(dialog.getByRole('button', {name: /クラウドから読み込み/})).toContainText('クラウド → この端末');
+
+    await dialog.getByRole('button', {name: 'この端末の同期を解除'}).click();
+    const confirmation = page.getByRole('dialog', {name: 'この端末の同期を解除しますか？'});
+    await expect(confirmation).toContainText('この端末と同期コードの関連付けだけを解除します。');
+    await expect(confirmation).toContainText('クラウド上の同期データと、この端末のデッキ・候補・所持カードは削除されません。');
+    await expect(confirmation).toContainText('ほかの端末の同期にも影響しません。');
+    await confirmation.getByRole('button', {name: 'キャンセル'}).click();
+    await expect(confirmation).toBeHidden();
+
+    await dialog.getByRole('button', {name: 'この端末の同期を解除'}).click();
+    await confirmation.getByRole('button', {name: '同期を解除', exact: true}).click();
+    await expect(dialog.getByRole('button', {name: '同期コードを作成'})).toBeVisible();
+    await expect(dialog.getByText('この端末のmock同期を解除しました。')).toBeVisible();
+  });
 });

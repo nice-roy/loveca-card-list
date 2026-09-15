@@ -10,7 +10,7 @@ import { getCloudSyncEntryStatus } from '@/lib/cloud-sync-status';
 import './sync-ui-preview.css';
 
 type Scenario = 'unconnected' | 'connected' | 'dirty' | 'cloud-updated' | 'error' | 'history' | 'no-history';
-type Confirmation = 'restore' | 'disconnect' | null;
+type Confirmation = 'restore' | null;
 
 const MOCK_CODE = 'MOCKMOCKMOCKMOCKMOCKMOCKMOCKMOCK';
 const MOCK_METADATA: SyncMetadata = {
@@ -110,7 +110,20 @@ export default function SyncUiPreview() {
       onConfirmImport={() => { setPendingImport(null); setSyncCode(MOCK_CODE); setMetadata(MOCK_METADATA); setDirty(false); setView('main'); setMessage({ kind: 'success', text: 'mockデータをこのPreview画面へ読み込みました。' }); }}
       onCopyCode={() => setCopied(true)}
       onCreate={() => { setSyncCode(MOCK_CODE); setMetadata(MOCK_METADATA); setHistory([]); setView('main'); setMessage({ kind: 'success', text: 'mock同期コードを作成しました。' }); }}
-      onDisconnect={() => setConfirmation('disconnect')}
+      onDisconnect={() => {
+        setScenario('unconnected');
+        setSyncCode(null);
+        setMetadata(null);
+        setDirty(false);
+        setHistory([]);
+        setSelectedHistory(null);
+        setPendingImport(null);
+        setCodeInput('');
+        setCopied(false);
+        setForceConfirm(false);
+        setView('main');
+        setMessage({ kind: 'success', text: 'この端末のmock同期を解除しました。クラウドデータを模したfixtureは削除されません。' });
+      }}
       onForceConfirmChange={setForceConfirm}
       onLoad={showImportPreview}
       onOpenChange={setOpen}
@@ -132,9 +145,9 @@ export default function SyncUiPreview() {
 
     <Dialog onOpenChange={(next) => !next && setConfirmation(null)} open={confirmation !== null}>
       <DialogContent className="cloud-history-restore-dialog">
-        <DialogHeader><DialogTitle>{confirmation === 'restore' ? '過去のクラウド状態へ戻しますか？' : 'この端末の同期を解除しますか？'}</DialogTitle><DialogDescription>{confirmation === 'restore' ? '選択したmock履歴を新しいrevisionとして復元します。' : 'mock上の接続表示だけを未接続へ戻します。'}</DialogDescription></DialogHeader>
+        <DialogHeader><DialogTitle>過去のクラウド状態へ戻しますか？</DialogTitle><DialogDescription>選択したmock履歴を新しいrevisionとして復元します。</DialogDescription></DialogHeader>
         <p className="sync-preview-confirm-note">Preview内の状態変化だけです。Worker・D1・同期APIへは送信されません。</p>
-        <DialogFooter><Button onClick={() => setConfirmation(null)} type="button" variant="outline">キャンセル</Button><Button onClick={() => { if (confirmation === 'restore') { setSelectedHistory(null); setMessage({ kind: 'success', text: '選択したmock履歴を復元しました。' }); } else { applyScenario('unconnected'); setMessage({ kind: 'success', text: 'mock同期を解除しました。' }); } setConfirmation(null); }} type="button">{confirmation === 'restore' ? 'この状態に戻す' : '同期を解除'}</Button></DialogFooter>
+        <DialogFooter><Button onClick={() => setConfirmation(null)} type="button" variant="outline">キャンセル</Button><Button onClick={() => { setSelectedHistory(null); setMessage({ kind: 'success', text: '選択したmock履歴を復元しました。' }); setConfirmation(null); }} type="button">この状態に戻す</Button></DialogFooter>
       </DialogContent>
     </Dialog>
   </main>;

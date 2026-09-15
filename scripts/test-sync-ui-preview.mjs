@@ -79,3 +79,19 @@ test('cloud sync dialog is the bounded touch-scroll container on small viewports
   assert.match(globalStyles, /scroll-padding-bottom: max\(14px,env\(safe-area-inset-bottom\)\)/);
   assert.match(globalStyles, /\.cloud-sync-footer \{[^}]*padding-bottom: max\(14px,env\(safe-area-inset-bottom\)\)/);
 });
+
+test('save and load actions state their opposite data directions without changing the sync scope', () => {
+  assert.match(syncDialog, /クラウドへ保存[\s\S]*この端末 → クラウド/);
+  assert.match(syncDialog, /クラウドから読み込み[\s\S]*クラウド → この端末/);
+  assert.match(syncDialog, /デッキ・候補・所持カード/);
+  assert.match(syncDialog, /検索条件や表示設定は同期しません/);
+});
+
+test('disconnect confirmation accurately preserves cloud and local user data', () => {
+  assert.match(syncDialog, /この端末の同期を解除しますか？/);
+  assert.match(syncDialog, /この端末と同期コードの関連付けだけを解除します/);
+  assert.match(syncDialog, /クラウド上の同期データと、この端末のデッキ・候補・所持カードは削除されません/);
+  assert.match(syncDialog, /ほかの端末の同期にも影響しません/);
+  assert.match(syncDialog, /キャンセル/);
+  assert.match(syncDialog, /confirmDisconnect/);
+});
