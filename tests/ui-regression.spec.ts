@@ -138,6 +138,53 @@ test('PCでは従来の検索・絞り込み・並び順を常時表示する', 
   await expect(page.locator('#mobile-sort-panel').getByRole('combobox')).toBeVisible();
 });
 
+test.describe('PC検索結果のレイアウト安定性', () => {
+  test.use({viewport: {width: 1600, height: 1400}});
+
+  test('0件表示を経ても中央コンテンツの横位置を維持する', async ({page}) => {
+    const search = page.getByRole('searchbox', {name: 'カード名、カード番号、効果テキストで検索'});
+    const measure = () => page.evaluate(() => {
+      const box = (selector: string) => {
+        const element = document.querySelector(selector);
+        if (!element) throw new Error(`${selector} was not found`);
+        const rect = element.getBoundingClientRect();
+        return {left: rect.left, right: rect.right, width: rect.width};
+      };
+      return {
+        clientWidth: document.documentElement.clientWidth,
+        horizontalOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        hasVerticalScrollbar: document.documentElement.scrollHeight > document.documentElement.clientHeight,
+        workspace: box('.workspace'),
+        filterPanel: box('.filter-panel'),
+        search: box('.search-input'),
+      };
+    });
+    const expectSameHorizontalLayout = (before: Awaited<ReturnType<typeof measure>>, after: Awaited<ReturnType<typeof measure>>) => {
+      expect(after.clientWidth).toBe(before.clientWidth);
+      expect(after.horizontalOverflow).toBeLessThanOrEqual(1);
+      for (const key of ['workspace', 'filterPanel', 'search'] as const) {
+        expect(Math.abs(after[key].left - before[key].left)).toBeLessThanOrEqual(1);
+        expect(Math.abs(after[key].right - before[key].right)).toBeLessThanOrEqual(1);
+        expect(Math.abs(after[key].width - before[key].width)).toBeLessThanOrEqual(1);
+      }
+    };
+
+    const initial = await measure();
+    expect(initial.hasVerticalScrollbar).toBe(true);
+    await search.fill('zzzzzz-存在しないカード番号');
+    await expect(page.getByRole('heading', {name: '該当するカードがありません'})).toBeVisible();
+    const empty = await measure();
+    expect(empty.hasVerticalScrollbar).toBe(false);
+    expectSameHorizontalLayout(initial, empty);
+
+    await search.fill('唐可可');
+    await expect(page.getByRole('article').filter({hasText: '唐 可可'}).first()).toBeVisible();
+    const restored = await measure();
+    expect(restored.hasVerticalScrollbar).toBe(true);
+    expectSameHorizontalLayout(initial, restored);
+  });
+});
+
 test.describe('iPhone SE2向け操作バー', () => {
   test.use({viewport: {width: 375, height: 667}});
 
