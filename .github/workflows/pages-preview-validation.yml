@@ -1,0 +1,59 @@
+# Temporary W2.2 validation. No environment, named secrets, or deployment steps.
+name: Pages Preview validation (no deploy)
+
+on:
+  push:
+    branches: [validation/w2-2-preview-no-deploy]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-preview-validation
+  cancel-in-progress: false
+
+jobs:
+  preview-tests:
+    if: >-
+      github.repository == 'nice-roy/loveca-card-list' &&
+      github.ref == 'refs/heads/validation/w2-2-preview-no-deploy' &&
+      github.actor == 'nice-roy' &&
+      github.triggering_actor == 'nice-roy' &&
+      vars.PAGES_PREVIEW_ENABLED == 'false'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      VITE_SYNC_API_URL: ''
+      npm_config_cache: /tmp/loveca-pages-validation-npm
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '22.22.2'
+          package-manager-cache: false
+      - name: Verify Preview settings
+        run: |
+          test "${VITE_SYNC_API_URL+x}" = x
+          test -z "$VITE_SYNC_API_URL"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          node --version
+          npm --version
+      - run: npm ci
+      - run: npm run check
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test
+      - run: npm run build
+      - name: Record successful validation
+        run: |
+          test -s dist/index.html
+          {
+            echo 'Preview-condition validation passed; no deployment performed.'
+            echo "Source SHA: $GITHUB_SHA"
+            echo 'VITE_SYNC_API_URL is explicitly empty.'
+            echo 'npm ci / check / Chromium install / Playwright / final build succeeded.'
+            sha256sum dist/index.html
+          } >> "$GITHUB_STEP_SUMMARY"
