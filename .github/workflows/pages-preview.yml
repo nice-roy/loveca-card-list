@@ -1,0 +1,193 @@
+# W2.3 REVIEW CANDIDATE: keep PAGES_PREVIEW_ENABLED=false.
+# Activation also requires the separately approved Variables:read credential.
+name: Pages Preview
+
+on:
+  workflow_run:
+    workflows: [Quality checks]
+    types: [completed]
+
+permissions: {}
+
+# Serialize this project's deploys; never cancel a deployment mid-flight.
+concurrency:
+  group: loveca-pages-preview
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    if: >-
+      github.repository == 'nice-roy/loveca-card-list' &&
+      github.ref == 'refs/heads/main' &&
+      vars.PAGES_PREVIEW_ENABLED == 'true' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.actor == 'nice-roy' &&
+      github.triggering_actor == 'nice-roy'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    outputs:
+      sha: ${{ steps.guard.outputs.sha }}
+      pr: ${{ steps.guard.outputs.pr }}
+      branch: ${{ steps.guard.outputs.branch }}
+      base_sha: ${{ steps.guard.outputs.base_sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.workflow_sha }}
+          persist-credentials: false
+          sparse-checkout: .github/pages-preview
+      - id: guard
+        name: Validate triggering Quality run and current PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TRUSTED_SHA: ${{ github.workflow_sha }}
+          PREVIEW_ENABLED: ${{ vars.PAGES_PREVIEW_ENABLED }}
+        run: python3 .github/pages-preview/guard.py gate
+
+  build:
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      VITE_SYNC_API_URL: ''
+      npm_config_cache: /tmp/loveca-pages-build-npm
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+      artifact_digest: ${{ steps.upload.outputs.artifact-digest }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ needs.gate.outputs.sha }}
+          persist-credentials: false
+          # Existing purchase-link tests read a historical commit with git show.
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '22.22.2'
+          package-manager-cache: false
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check
+      - run: npx playwright test
+      - name: Preserve file types for inspection on the deploy runner
+        run: |
+          test -d dist && test ! -L dist
+          tar --format=ustar -C dist -cf "$RUNNER_TEMP/dist.tar" .
+      - id: upload
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: pages-dist-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/dist.tar
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+
+  deploy:
+    needs: [gate, build]
+    if: >-
+      needs.gate.result == 'success' &&
+      needs.build.result == 'success' &&
+      vars.PAGES_PREVIEW_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment:
+      name: pages-preview
+      # Suppress GitHub records only; this does NOT disable Wrangler publishing.
+      deployment: false
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    env:
+      TRUSTED_SHA: ${{ github.workflow_sha }}
+      EXPECTED_SHA: ${{ needs.gate.outputs.sha }}
+      EXPECTED_PR: ${{ needs.gate.outputs.pr }}
+      EXPECTED_BASE_SHA: ${{ needs.gate.outputs.base_sha }}
+      npm_config_cache: /tmp/loveca-pages-deploy-npm
+      npm_config_ignore_scripts: 'true'
+      npm_config_offline: 'true'
+      WRANGLER_SEND_METRICS: 'false'
+    steps:
+      # No repository checkout, PR scripts, PR config, or restored caches here.
+      - name: Fetch trusted helpers and locked tool dependencies from workflow SHA
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, json, os, pathlib, re, urllib.request
+          sha = os.environ['TRUSTED_SHA']
+          assert re.fullmatch(r'[0-9a-f]{40}', sha)
+          root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'pages-control'
+          root.mkdir()
+          for name in ('guard.py', 'artifact.py', 'package.json', 'package-lock.json'):
+              url = 'https://api.github.com/repos/nice-roy/loveca-card-list/contents/.github/pages-preview/' + name + '?ref=' + sha
+              req = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'})
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  data = json.load(response)
+              assert data['type'] == 'file' and data['encoding'] == 'base64'
+              (root / name).write_bytes(base64.b64decode(data['content']))
+          PY
+      - id: live_switch
+        name: Read live repository switch before any Cloudflare credential use
+        env:
+          PAGES_VARIABLES_READ_TOKEN: ${{ secrets.PAGES_VARIABLES_READ_TOKEN }}
+        run: python3 "$RUNNER_TEMP/pages-control/guard.py" switch
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '22.22.2'
+          package-manager-cache: false
+      - name: Install locked Wrangler without Cloudflare credentials
+        working-directory: ${{ runner.temp }}/pages-control
+        env:
+          npm_config_offline: 'false'
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          test "$(node -p "require('./node_modules/wrangler/package.json').version")" = '4.92.0'
+          ./node_modules/.bin/wrangler --version
+      - name: Verify same-run artifact digest and reject non-static assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: ${{ needs.build.outputs.artifact_id }}
+          ARTIFACT_DIGEST: ${{ needs.build.outputs.artifact_digest }}
+        run: python3 "$RUNNER_TEMP/pages-control/artifact.py"
+      - id: publish
+        name: Revalidate then deploy Preview only
+        if: steps.live_switch.outputs.enabled == 'true'
+        uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0 # v4
+        env:
+          GH_TOKEN: ${{ github.token }}
+          # Environment secret, Variables:read only. GITHUB_ prefix is reserved.
+          PAGES_VARIABLES_READ_TOKEN: ${{ secrets.PAGES_VARIABLES_READ_TOKEN }}
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: ${{ runner.temp }}/pages-control
+          wranglerVersion: '4.92.0'
+          packageManager: npm
+          # Also disable wrangler-action's separate GitHub deployment integration.
+          gitHubToken: ''
+          preCommands: python3 "$RUNNER_TEMP/pages-control/guard.py" preflight
+          command: >-
+            pages deploy ${{ runner.temp }}/pages-static
+            --project-name=loveca-card-list
+            --branch=pr-${{ needs.gate.outputs.pr }}
+            --commit-hash=${{ needs.gate.outputs.sha }}
+            --commit-message=Pages-Preview
+            --commit-dirty=true
+      - name: Verify Preview metadata and Production canonical after any attempt
+        if: always() && steps.publish.outcome != 'skipped'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DEPLOY_ID: ${{ steps.publish.outputs.pages-deployment-id }}
+          DEPLOY_URL: ${{ steps.publish.outputs.deployment-url }}
+          DEPLOY_ENVIRONMENT: ${{ steps.publish.outputs.pages-environment }}
+          DEPLOY_ALIAS: ${{ steps.publish.outputs.pages-deployment-alias-url }}
+        run: python3 "$RUNNER_TEMP/pages-control/guard.py" postflight
