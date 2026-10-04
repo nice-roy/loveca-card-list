@@ -85,7 +85,7 @@ def verify_zip(data, api_digest, upload_digest):
         return archive.read(entry)
 
 
-def inspect_tar(data):
+def inspect_tar(data, trusted_headers=None):
     require(len(data) <= MAX_ARCHIVE, "TAR exceeds bound")
     archive = tarfile.open(fileobj=io.BytesIO(data), mode="r:")
     files, names, total = [], set(), 0
@@ -98,8 +98,9 @@ def inspect_tar(data):
             name = name[2:]
         require(name and not name.startswith("/") and "\\" not in name,
                 "Absolute/ambiguous path rejected")
+        trusted_header = name == "_headers" and trusted_headers is not None
         parts = name.split("/")
-        require(all(p and not p.startswith(".") and p.lower() not in BANNED
+        require(all(p and not p.startswith(".") and (p.lower() not in BANNED or trusted_header)
                     and re.fullmatch(r"[A-Za-z0-9_][A-Za-z0-9_.-]*", p) for p in parts),
                 "Hidden, reserved or unsafe path rejected")
         require(name.lower() not in names, "Duplicate/case-colliding TAR member")
@@ -108,12 +109,14 @@ def inspect_tar(data):
         require(not entry.pax_headers and not entry.sparse, "Extended/sparse TAR rejected")
         if entry.isdir():
             continue
-        require(Path(name).suffix.lower() in EXTENSIONS, "Non-static extension rejected")
+        require(trusted_header or Path(name).suffix.lower() in EXTENSIONS, "Non-static extension rejected")
         require(not entry.mode & 0o111, "Executable file mode rejected")
         require(0 <= entry.size <= MAX_FILE, "File exceeds Pages size limit")
         total += entry.size
         require(total <= MAX_ARCHIVE, "Expanded artifact exceeds bound")
-        files.append((name, archive.extractfile(entry).read()))
+        content = archive.extractfile(entry).read()
+        require(not trusted_header or content == trusted_headers, "Unapproved headers")
+        files.append((name, content))
     require(any(name == "index.html" for name, _ in files), "index.html missing")
     # No file may also be the ancestor directory of another file.
     file_names = {n for n, _ in files}

@@ -227,8 +227,11 @@ def check_project(project, branch):
     require(cfg["preview_deployment_setting"] == "none", "Git preview auto-deploy ON")
     canonical = project["canonical_deployment"]
     require(canonical["environment"] == "production", "Canonical is not production")
-    require(canonical["id"] == PRODUCTION_ID, "Production canonical baseline changed")
-    require(canonical["deployment_trigger"]["metadata"]["commit_hash"] == PRODUCTION_SHA,
+    from ledger import expected_canonical
+    expected = expected_canonical()
+    require(canonical["latest_stage"]["status"] == "success", "Canonical not successful")
+    require(canonical["id"] == expected["id"], "Production canonical baseline changed")
+    require(canonical["deployment_trigger"]["metadata"]["commit_hash"] == expected["sha"],
             "Production source baseline changed")
     return canonical["id"]
 
