@@ -1,0 +1,233 @@
+# REVIEW CANDIDATE v2 — no Secret copies, not installed or executed.
+name: Pages Production
+'on':
+  workflow_dispatch:
+    inputs:
+      candidate_run:
+        description: Completed Pages Candidate run ID, attempt 1
+        required: true
+        type: string
+      manifest_sha256:
+        description: Approved manifest SHA256, 64 hex
+        required: true
+        type: string
+      artifact_digest:
+        description: Approved artifact ZIP digest, 64 hex without prefix
+        required: true
+        type: string
+      previous_id:
+        description: Approved old Production Deployment UUID
+        required: true
+        type: string
+      previous_sha:
+        description: Approved old Production source SHA, 40 hex
+        required: true
+        type: string
+      readiness_evidence_sha256:
+        description: SHA256 of approved UI/CSP/sync readiness report
+        required: true
+        type: string
+      confirm:
+        description: Type PUBLISH only with separate explicit Production authorization
+        required: true
+        type: string
+permissions: {}
+env:
+  TRUSTED_SHA: ${{ github.workflow_sha }}
+  VITE_SYNC_API_URL: ${{ vars.VITE_SYNC_API_URL }}
+  WRANGLER_SEND_METRICS: 'false'
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      deployments: read
+    steps:
+    - name: Fetch immutable main control files; no source checkout
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        python3 - <<'PYCODE'
+        import base64, json, os, pathlib, re, urllib.request
+        sha = os.environ['TRUSTED_SHA']
+        assert re.fullmatch(r'[0-9a-f]{40}', sha)
+        root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'pages-control'
+        root.mkdir()
+        class NoRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self, *args, **kwargs): return None
+        files = {'pages-preview': ('guard.py', 'artifact.py', 'package.json', 'package-lock.json'),
+                 'pages-release': ('ledger.py', 'package.py', 'release.py', 'candidate-playwright.config.mjs')}
+        try:
+            for directory, names in files.items():
+                for name in names:
+                    url = 'https://api.github.com/repos/nice-roy/loveca-card-list/contents/.github/' + directory + '/' + name + '?ref=' + sha
+                    request = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'})
+                    with urllib.request.build_opener(NoRedirect).open(request, timeout=30) as response:
+                        raw = response.read(2 * 1024 * 1024 + 1)
+                    assert len(raw) <= 2 * 1024 * 1024
+                    data = json.loads(raw)
+                    assert data['type'] == 'file' and data['encoding'] == 'base64'
+                    (root / name).write_bytes(base64.b64decode(data['content']))
+        except Exception:
+            raise SystemExit('Trusted helper fetch STOP')
+        PYCODE
+    - name: Summarize immutable artifact and approval scope
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: python3 "$RUNNER_TEMP/pages-control/release.py" review
+  approval:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      deployments: read
+    steps:
+    - name: Fetch immutable main control files; no source checkout
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        python3 - <<'PYCODE'
+        import base64, json, os, pathlib, re, urllib.request
+        sha = os.environ['TRUSTED_SHA']
+        assert re.fullmatch(r'[0-9a-f]{40}', sha)
+        root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'pages-control'
+        root.mkdir()
+        class NoRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self, *args, **kwargs): return None
+        files = {'pages-preview': ('guard.py', 'artifact.py', 'package.json', 'package-lock.json'),
+                 'pages-release': ('ledger.py', 'package.py', 'release.py', 'candidate-playwright.config.mjs')}
+        try:
+            for directory, names in files.items():
+                for name in names:
+                    url = 'https://api.github.com/repos/nice-roy/loveca-card-list/contents/.github/' + directory + '/' + name + '?ref=' + sha
+                    request = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'})
+                    with urllib.request.build_opener(NoRedirect).open(request, timeout=30) as response:
+                        raw = response.read(2 * 1024 * 1024 + 1)
+                    assert len(raw) <= 2 * 1024 * 1024
+                    data = json.loads(raw)
+                    assert data['type'] == 'file' and data['encoding'] == 'base64'
+                    (root / name).write_bytes(base64.b64decode(data['content']))
+        except Exception:
+            raise SystemExit('Trusted helper fetch STOP')
+        PYCODE
+    - name: Bind owner approval to this run and exact artifact
+      id: approve
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: python3 "$RUNNER_TEMP/pages-control/release.py" approval
+    needs: review
+    environment:
+      name: pages-production
+      deployment: false
+    if: github.run_attempt == 1 && github.ref == 'refs/heads/main' && github.actor == 'nice-roy' && github.triggering_actor
+      == 'nice-roy'
+    outputs:
+      binding: ${{ steps.approve.outputs.binding }}
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      deployments: write
+    steps:
+    - name: Fetch immutable main control files; no source checkout
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        python3 - <<'PYCODE'
+        import base64, json, os, pathlib, re, urllib.request
+        sha = os.environ['TRUSTED_SHA']
+        assert re.fullmatch(r'[0-9a-f]{40}', sha)
+        root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'pages-control'
+        root.mkdir()
+        class NoRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self, *args, **kwargs): return None
+        files = {'pages-preview': ('guard.py', 'artifact.py', 'package.json', 'package-lock.json'),
+                 'pages-release': ('ledger.py', 'package.py', 'release.py', 'candidate-playwright.config.mjs')}
+        try:
+            for directory, names in files.items():
+                for name in names:
+                    url = 'https://api.github.com/repos/nice-roy/loveca-card-list/contents/.github/' + directory + '/' + name + '?ref=' + sha
+                    request = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'})
+                    with urllib.request.build_opener(NoRedirect).open(request, timeout=30) as response:
+                        raw = response.read(2 * 1024 * 1024 + 1)
+                    assert len(raw) <= 2 * 1024 * 1024
+                    data = json.loads(raw)
+                    assert data['type'] == 'file' and data['encoding'] == 'base64'
+                    (root / name).write_bytes(base64.b64decode(data['content']))
+        except Exception:
+            raise SystemExit('Trusted helper fetch STOP')
+        PYCODE
+    - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+      with:
+        node-version: 22.22.2
+        package-manager-cache: false
+    - name: Install locked tool without Cloudflare credentials
+      working-directory: ${{ runner.temp }}/pages-control
+      env:
+        npm_config_offline: 'false'
+      run: |
+        test "$(node --version)" = 'v22.22.2'
+        test "$(npm --version)" = '10.9.7'
+        npm ci --ignore-scripts --no-audit --no-fund
+        test "$(node -p "require('./node_modules/wrangler/package.json').version")" = '4.92.0'
+    - name: Read all gates; Production also records one-use intent
+      id: preflight
+      env:
+        GH_TOKEN: ${{ github.token }}
+        PAGES_VARIABLES_READ_TOKEN: ${{ secrets.PAGES_VARIABLES_READ_TOKEN }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      run: python3 "$RUNNER_TEMP/pages-control/release.py" preflight production
+    - name: One Wrangler publish; never rerun
+      id: publish
+      uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0
+      env:
+        GH_TOKEN: ${{ github.token }}
+        PAGES_VARIABLES_READ_TOKEN: ${{ secrets.PAGES_VARIABLES_READ_TOKEN }}
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        workingDirectory: ${{ runner.temp }}/pages-control
+        wranglerVersion: 4.92.0
+        packageManager: npm
+        gitHubToken: ''
+        preCommands: python3 "$RUNNER_TEMP/pages-control/release.py" last-check production
+        command: pages deploy ${{ runner.temp }}/pages-static --project-name=loveca-card-list --branch=main --commit-hash=${{
+          steps.preflight.outputs.sha }} --commit-message=Approved-exact-candidate --commit-dirty=true
+    - name: Verify served bytes, CSP, metadata and canonical
+      id: postflight
+      env:
+        GH_TOKEN: ${{ github.token }}
+        PAGES_VARIABLES_READ_TOKEN: ${{ secrets.PAGES_VARIABLES_READ_TOKEN }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        DEPLOY_ID: ${{ steps.publish.outputs.pages-deployment-id }}
+        DEPLOY_URL: ${{ steps.publish.outputs.deployment-url }}
+        DEPLOY_ENVIRONMENT: ${{ steps.publish.outputs.pages-environment }}
+      run: python3 "$RUNNER_TEMP/pages-control/release.py" postflight production
+    - name: Read outcome after failure; no recovery writes
+      if: always() && (failure() || cancelled())
+      env:
+        GH_TOKEN: ${{ github.token }}
+        PAGES_VARIABLES_READ_TOKEN: ${{ secrets.PAGES_VARIABLES_READ_TOKEN }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      run: python3 "$RUNNER_TEMP/pages-control/release.py" audit-failure
+    needs: approval
+    environment:
+      name: pages-preview
+      deployment: false
+    concurrency:
+      group: loveca-pages-project-deploy
+      cancel-in-progress: false
+    env:
+      npm_config_ignore_scripts: 'true'
+      npm_config_offline: 'true'
+      npm_config_cache: /tmp/loveca-release-tool-npm
+      APPROVAL_BINDING: ${{ needs.approval.outputs.binding }}
+    if: needs.approval.result == 'success' && github.run_attempt == 1
