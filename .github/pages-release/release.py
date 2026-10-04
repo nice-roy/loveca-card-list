@@ -127,6 +127,22 @@ def live_configuration():
             'Live build endpoint changed')
 
 
+def deployment_is_terminal(deployment):
+    """Fail closed; only the observed superseded skip extends terminal statuses."""
+    if not isinstance(deployment, dict):
+        return False
+    stage = deployment.get('latest_stage')
+    if not isinstance(stage, dict) or not isinstance(stage.get('status'), str):
+        return False
+    if type(deployment.get('is_skipped')) is not bool or 'skip_reason' not in deployment:
+        return False
+    status = stage['status']
+    if status in ('success', 'failure', 'canceled'):
+        return deployment['is_skipped'] is False and deployment['skip_reason'] is None
+    return (status == 'skipped' and deployment['is_skipped'] is True
+            and deployment['skip_reason'] == 'superseded_queued_build')
+
+
 def no_competitors():
     own = int(os.environ['GITHUB_RUN_ID'])
     for status in ACTIVE:
@@ -143,7 +159,7 @@ def no_competitors():
         deployments = cf(f'/deployments?per_page=25&page={page}')
         require(isinstance(deployments, list), 'Invalid CF deployment list')
         for d in deployments:
-            require(d['latest_stage']['status'] in ('success', 'failure', 'canceled'),
+            require(deployment_is_terminal(d),
                     'Cloudflare deployment not terminal')
         if len(deployments) < 25:
             return
