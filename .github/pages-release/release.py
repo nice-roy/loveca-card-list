@@ -134,13 +134,13 @@ def deployment_is_terminal(deployment):
     stage = deployment.get('latest_stage')
     if not isinstance(stage, dict) or not isinstance(stage.get('status'), str):
         return False
-    if type(deployment.get('is_skipped')) is not bool or 'skip_reason' not in deployment:
+    if type(deployment.get('is_skipped')) is not bool:
         return False
     status = stage['status']
     if status in ('success', 'failure', 'canceled'):
-        return deployment['is_skipped'] is False and deployment['skip_reason'] is None
+        return deployment['is_skipped'] is False and deployment.get('skip_reason') is None
     return (status == 'skipped' and deployment['is_skipped'] is True
-            and deployment['skip_reason'] == 'superseded_queued_build')
+            and deployment.get('skip_reason') == 'superseded_queued_build')
 
 
 def no_competitors():
