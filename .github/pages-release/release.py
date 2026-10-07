@@ -134,13 +134,13 @@ def deployment_is_terminal(deployment):
     stage = deployment.get('latest_stage')
     if not isinstance(stage, dict) or not isinstance(stage.get('status'), str):
         return False
-    if type(deployment.get('is_skipped')) is not bool or 'skip_reason' not in deployment:
+    if type(deployment.get('is_skipped')) is not bool:
         return False
     status = stage['status']
     if status in ('success', 'failure', 'canceled'):
-        return deployment['is_skipped'] is False and deployment['skip_reason'] is None
+        return deployment['is_skipped'] is False and deployment.get('skip_reason') is None
     return (status == 'skipped' and deployment['is_skipped'] is True
-            and deployment['skip_reason'] == 'superseded_queued_build')
+            and deployment.get('skip_reason') == 'superseded_queued_build')
 
 
 def no_competitors():
@@ -447,6 +447,60 @@ def audit_failure():
         'intent_id': data.get('intent_id'), 'run': os.environ['GITHUB_RUN_ID']})
 
 
+def _trusted_stop_locations():
+    """Snapshot code identities from the workflow's immutable, colocated helpers."""
+    try:
+        root = Path(__file__).resolve().parent
+        allowed = (
+            ('release.py', globals(), 'inputs output summary number entry quality candidate_gate project live_configuration deployment_is_terminal no_competitors current_context candidate_artifact artifacts receipt review approved approval_binding approval publish_approval state_path preflight last_check verify_deployment http_verify postflight audit_failure'),
+            ('guard.py', sys.modules['guard'].__dict__, 'require request_json strict_json gh read_switch cf'),
+            ('artifact.py', artifact.__dict__, 'download_zip validate_metadata verify_zip inspect_tar write_static'),
+            ('package.py', package.__dict__, 'sha origin csp headers canonical_json metadata zip_members records context check_content pack verify check_local'),
+            ('ledger.py', ledger.__dict__, 'entries provenance expected_canonical write begin finish'),
+        )
+        locations = []
+        for filename, namespace, names in allowed:
+            expected = root / filename
+            if Path(namespace['__file__']).resolve() != expected:
+                continue
+            for name in names.split():
+                function = namespace.get(name)
+                if (type(function) is type(_trusted_stop_locations)
+                        and function.__globals__ is namespace
+                        and Path(function.__code__.co_filename).resolve() == expected):
+                    locations.append((function.__code__, namespace, filename + ':' + name))
+        return tuple(locations)
+    except BaseException:
+        return ()
+
+
+_STOP_LOCATIONS = _trusted_stop_locations()
+
+
+def _report_stop_locations(error):
+    """Emit at most eight trusted locations; never format exception data or paths."""
+    try:
+        locations = []
+        tb = error.__traceback__
+        for _ in range(64):
+            if tb is None:
+                break
+            for code, namespace, label in _STOP_LOCATIONS:
+                if tb.tb_frame.f_code is code and tb.tb_frame.f_globals is namespace:
+                    line = tb.tb_lineno
+                    if type(line) is int and 1 <= line <= 1000000:
+                        locations.append(label + ':' + str(line))
+                        locations = locations[-8:]
+                    break
+            tb = tb.tb_next
+        print('Release STOP locations: ' + (' > '.join(locations) or 'UNKNOWN'), file=sys.stderr)
+    except BaseException:
+        try:
+            print('Release STOP locations: UNKNOWN', file=sys.stderr)
+        except BaseException:
+            pass
+
+
 if __name__ == '__main__':
     try:
         command = sys.argv[1]
@@ -460,5 +514,5 @@ if __name__ == '__main__':
         else: raise RuntimeError('Unknown release mode')
     except Exception as error:
         # Never print remote bodies, URLs with credentials, endpoint values or exception repr.
-        print('Release STOP:', type(error).__name__, '(details suppressed; inspect step and approved inputs)', file=sys.stderr)
+        _report_stop_locations(error)
         sys.exit(1)
