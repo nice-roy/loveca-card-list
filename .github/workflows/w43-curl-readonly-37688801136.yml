@@ -1,0 +1,288 @@
+name: W4.3 curl read-only 37688801136
+'on':
+  push:
+    branches: [diagnostic/w43-curl-37688801136]
+    paths: [.github/workflows/w43-curl-readonly-37688801136.yml]
+permissions: {}
+jobs:
+  curl-readonly:
+    if: >-
+      ${{ github.repository == 'nice-roy/loveca-card-list' &&
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/diagnostic/w43-curl-37688801136' &&
+          github.actor == 'nice-roy' && github.triggering_actor == 'nice-roy' &&
+          github.run_attempt == 1 && github.run_number == 1 }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Verify curl then root; remaining files only after full PASS
+        shell: bash
+        run: |
+          python3 - <<'PYCODE'
+          """One authorized push/run; sequential one-plus-four static GETs. No release execution."""
+          from concurrent.futures import ThreadPoolExecutor
+          from datetime import datetime, timezone
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+          import sys
+          from types import SimpleNamespace
+
+          REPO = 'nice-roy/loveca-card-list'
+          BRANCH = 'diagnostic/w43-curl-37688801136'
+          WORKFLOW = '.github/workflows/w43-curl-readonly-37688801136.yml'
+          NAME = 'W4.3 curl read-only 37688801136'
+          BASE_SHA = '064307a378d4b6f32a719e5cd19176ef49f83b48'
+          BASE = 'https://1b1e7c46.loveca-card-list.pages.dev'
+          MANIFEST = 'ecf257592bc54397554a23899a4efe908e3e8d6611a87b46ae768184620c8de5'
+          FILES = [{'path': 'index.html', 'sha256': 'eebf5ae57e40ca7ca0007a1eeef8f300c7984262083b266189fe15f450183ac9', 'size': 1472, 'csp_sha256': '1577d961faa88b6815f01948c779be2585b666e7b05b617cb73bbb5aa77bf04c'}, {'path': 'assets/index-5d8lM0t2.js', 'sha256': '6491ce4c81612903c071c488018283a6fdbedef71bfa2a5a4b3d56215af3feb7', 'size': 1979833}, {'path': 'assets/index-DhRKG_tC.css', 'sha256': 'b6d42112921a180d7983f6be1d2cd8314a398479c6521e8e95fd911945fc8d56', 'size': 238413}, {'path': 'favicon.svg', 'sha256': 'e6d2e59b7b5bbb0342e0fb496dfc262decbfe4426bbb7b047aec8d467d1dc6f7', 'size': 712}, {'path': 'og.png', 'sha256': '306c46c5970a5f4072e8a4c6fb92e23b6193530fcd8fd2bf9ad12538ac91174d', 'size': 1740825}]
+          EXPECTED_CSP_SHA256 = next(f['csp_sha256'] for f in FILES if f['path']=='index.html')
+          NOT_CHECKED = 'NOT_CHECKED'
+          GETS = []
+          CURRENT = None
+          META = {'curl_version':'UNKNOWN','proxy_precondition':'NOT_CHECKED'}
+          PROXIES = ('http_proxy','https_proxy','all_proxy','HTTP_PROXY','HTTPS_PROXY','ALL_PROXY')
+
+          class SafeStop(Exception):
+              def __init__(self, code): self.code = code
+
+          def require(value, reason='ENTRY_STOP'):
+              if not value:
+                  mapping = {'HTTP_PROXY_CONFIGURATION_STOP':'PROXY', 'HTTP_CLIENT_VERSION_STOP':'CLIENT_VERSION',
+                             'HTTP_TRANSPORT_STOP':'TRANSPORT', 'HTTP_STATUS_STOP':'HTTP_STATUS',
+                             'Served file does not match manifest':'CONTENT_MISMATCH',
+                             'Live CSP/header mismatch':'HEADER_MISMATCH', 'HTTP_HEADERS_STOP':'HEADER_FORMAT',
+                             'Unsafe HTTP base':'REQUEST_GUARD', 'Unsafe HTTP path':'REQUEST_GUARD'}
+                  raise SafeStop(mapping.get(reason,'ENTRY_STOP'))
+
+          def stamp(): return datetime.now(timezone.utc).isoformat()
+          def sha(data): return hashlib.sha256(data).hexdigest()
+          artifact = SimpleNamespace(MAX_FILE=25*1024*1024)
+          package = SimpleNamespace(sha=sha)
+
+          def gate():
+              expected = {'GITHUB_REPOSITORY': REPO, 'GITHUB_REF': 'refs/heads/' + BRANCH,
+                          'GITHUB_EVENT_NAME': 'push', 'GITHUB_ACTOR': 'nice-roy',
+                          'GITHUB_TRIGGERING_ACTOR': 'nice-roy', 'GITHUB_RUN_ATTEMPT': '1',
+                          'GITHUB_RUN_NUMBER': '1', 'GITHUB_WORKFLOW': NAME,
+                          'GITHUB_WORKFLOW_REF': REPO + '/' + WORKFLOW + '@refs/heads/' + BRANCH}
+              require(all(os.environ.get(k) == v for k, v in expected.items()))
+              head = os.environ.get('GITHUB_SHA', '')
+              require(re.fullmatch('[0-9a-f]{40}', head) is not None)
+              require(os.environ.get('GITHUB_WORKFLOW_SHA') == head)
+              run = os.environ.get('GITHUB_RUN_ID', '')
+              require(re.fullmatch('[1-9][0-9]{0,19}', run) is not None)
+              event_path = Path(os.environ['GITHUB_EVENT_PATH'])
+              require(event_path.stat().st_size <= 2 * 1024 * 1024)
+              event = json.loads(event_path.read_text())
+              require(event['repository']['full_name'] == REPO and event['ref'] == expected['GITHUB_REF'])
+              require(event['sender']['login'] == 'nice-roy')
+              require(event['before'] == BASE_SHA and event['after'] == head)
+              require(event.get('deleted') is False and event.get('forced') is False)
+              require(event['head_commit']['id'] == head and len(event['commits']) == 1)
+              commit = event['commits'][0]
+              require(commit['id'] == head and head != BASE_SHA)
+              require(len(FILES) == 5 and len({f['path'] for f in FILES}) == 5)
+              return {'diagnostic_run': int(run), 'attempt': 1, 'workflow_sha': head,
+                      'candidate_sha': BASE_SHA, 'candidate_run': 37688801136, 'candidate_attempt': 1,
+                      'artifact_id': 11512726105, 'manifest_sha256': MANIFEST}
+
+          def image_field(name):
+              value = os.environ.get(name, '')
+              return value if re.fullmatch('[A-Za-z0-9._-]{1,80}', value) else 'UNKNOWN'
+
+          def run_curl(args, **kwargs):
+              require(kwargs == {'stdin':subprocess.DEVNULL,'stdout':subprocess.PIPE,
+                                 'stderr':subprocess.DEVNULL,'env':{'PATH':'/usr/bin:/bin','LANG':'C'},
+                                 'timeout':5 if args==['/usr/bin/curl','-q','--version'] else 35,
+                                 'check':False}, 'Unsafe HTTP base')
+              if args == ['/usr/bin/curl','-q','--version']:
+                  result = subprocess.run(args, **kwargs)
+                  match = re.match(rb'curl ([0-9]+)\.([0-9]+)\.([0-9]+) ',result.stdout)
+                  if match:
+                      META['curl_version']='.'.join(x.decode('ascii') for x in match.groups())
+                  require(result.returncode==0 and match is not None and tuple(map(int,match.groups())) >= (8,4,0),
+                          'HTTP_CLIENT_VERSION_STOP')
+                  return result
+              require(CURRENT is not None, 'Unsafe HTTP base')
+              f = FILES[len(GETS)] if len(GETS)<5 else None
+              require(f is not None and CURRENT['path']==f['path'], 'Unsafe HTTP base')
+              body_path = args[args.index('--output')+1]
+              header_path = args[args.index('--dump-header')+1]
+              url = BASE + ('/' if f['path']=='index.html' else '/'+f['path'])
+              expected_args = ['/usr/bin/curl', '-q', '--silent', '--globoff', '--path-as-is', '--proto', '=https', '--proto-redir', '=https', '--disallow-username-in-url', '--no-netrc', '--no-location', '--max-redirs', '0', '--retry', '0', '--request', 'GET', '--max-time', '30', '--max-filesize', str(artifact.MAX_FILE + 1), '--header', 'Accept-Encoding: identity', '--header', 'Cache-Control: no-cache', '--dump-header', header_path, '--output', body_path, '--write-out', '%{http_code}', '--url', url]
+              require(args == expected_args and url not in GETS, 'Unsafe HTTP base')
+              require(not any(os.environ.get(k) for k in PROXIES),'HTTP_PROXY_CONFIGURATION_STOP')
+              GETS.append(url)
+              CURRENT['started_at']=stamp()
+              try:
+                  result = subprocess.run(args, **kwargs)
+              except subprocess.TimeoutExpired:
+                  CURRENT['failure']='TIMEOUT'
+                  raise
+              except Exception:
+                  CURRENT['failure']='PROCESS_ERROR'
+                  raise
+              finally:
+                  CURRENT['finished_at']=stamp()
+              CURRENT['http_status'] = int(result.stdout) if re.fullmatch(rb'[1-5][0-9]{2}',result.stdout) else 'UNKNOWN'
+              if result.returncode:
+                  CURRENT['failure']={5:'PROXY_DNS',6:'DNS',7:'CONNECT',28:'TIMEOUT',35:'TLS',60:'TLS',63:'SIZE_LIMIT'}.get(result.returncode,'TRANSPORT')
+                  return result
+              with Path(header_path).open('rb') as src: raw=src.read(65537)
+              if len(raw)<=65536:
+                  matches=re.findall(rb'(?im)^cf-ray:[ \t]*([0-9a-f]{16}-[A-Z]{3})\r?$',raw)
+                  if len(matches)==1: CURRENT['cf_ray']=matches[0].decode('ascii')
+              if CURRENT['http_status']!=200:
+                  CURRENT['failure']='REDIRECT' if isinstance(CURRENT['http_status'],int) and 300<=CURRENT['http_status']<400 else 'HTTP_NON_200'
+                  if CURRENT['http_status']==403:
+                      with Path(body_path).open('rb') as src: body=src.read(8192)
+                      CURRENT['error_1010']=bool(re.fullmatch(rb'\s*error code:\s*1010\s*',body,re.I))
+                  return result
+              with Path(body_path).open('rb') as src: body=src.read(artifact.MAX_FILE+1)
+              CURRENT.update({'actual_size':len(body),'actual_sha256':sha(body),
+                              'size_match':len(body)==f['size'],'sha256_match':sha(body)==f['sha256']})
+              if f['path'].endswith('.html') and len(raw)<=65536:
+                  # Observations only; the mechanically reused strict parser makes the decision.
+                  block=raw.removesuffix(b'\r\n\r\n').split(b'\r\n\r\n')[-1]
+                  values={}
+                  for line in block.split(b'\r\n')[1:]:
+                      n,sep,v=line.partition(b':')
+                      if sep: values.setdefault(n.lower(),[]).append(v.lstrip(b' \t').decode('iso-8859-1'))
+                  c=values.get(b'content-security-policy',[])
+                  n=values.get(b'x-content-type-options',[])
+                  CURRENT['csp_match']=len(c)==1 and sha(c[0].encode('utf-8'))==EXPECTED_CSP_SHA256
+                  CURRENT['nosniff_match']=n==['nosniff']
+              return result
+
+          def http_verify(base, manifest):
+              # Review candidate: native curl identity, no browser/script execution.
+              import subprocess
+              import tempfile
+
+              require(re.fullmatch(r'https://(?:[0-9a-f]{8}\.)?loveca-card-list\.pages\.dev', base), 'Unsafe HTTP base')
+              # Do not silently change an explicitly configured proxy/network route.
+              require(not any(os.environ.get(k) for k in (
+                  'http_proxy', 'https_proxy', 'all_proxy', 'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY')),
+                  'HTTP_PROXY_CONFIGURATION_STOP')
+              child_env = {'PATH': '/usr/bin:/bin', 'LANG': 'C'}
+              try:
+                  version = run_curl(['/usr/bin/curl', '-q', '--version'],
+                                           stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
+                                           stderr=subprocess.DEVNULL, env=child_env,
+                                           timeout=5, check=False)
+                  match = re.match(rb'curl ([0-9]+)\.([0-9]+)\.([0-9]+) ', version.stdout)
+                  require(version.returncode == 0 and match is not None
+                          and tuple(map(int, match.groups())) >= (8, 4, 0), 'HTTP_CLIENT_VERSION_STOP')
+              except Exception:
+                  raise RuntimeError('HTTP_CLIENT_VERSION_STOP') from None
+
+              def check_file(f):
+                  if f['path'] == '_headers':
+                      return  # _headers is configuration, not a public asset.
+                  # Same path construction, with the artifact's existing safe-path grammar.
+                  require(all(re.fullmatch(r'[A-Za-z0-9_][A-Za-z0-9_.-]*', p)
+                              for p in f['path'].split('/')), 'Unsafe HTTP path')
+                  path = '/' if f['path'] == 'index.html' else '/' + f['path']
+                  with tempfile.TemporaryDirectory(prefix='pages-http-') as directory:
+                      body_path = Path(directory) / 'body'
+                      header_path = Path(directory) / 'headers'
+                      args = [
+                          '/usr/bin/curl', '-q', '--silent', '--globoff', '--path-as-is',
+                          '--proto', '=https', '--proto-redir', '=https',
+                          '--disallow-username-in-url', '--no-netrc', '--no-location',
+                          '--max-redirs', '0', '--retry', '0', '--request', 'GET',
+                          '--max-time', '30', '--max-filesize', str(artifact.MAX_FILE + 1),
+                          '--header', 'Accept-Encoding: identity',
+                          '--header', 'Cache-Control: no-cache',
+                          '--dump-header', str(header_path), '--output', str(body_path),
+                          '--write-out', '%{http_code}', '--url', base + path,
+                      ]
+                      try:
+                          result = run_curl(args, stdin=subprocess.DEVNULL,
+                                                  stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+                                                  env=child_env, timeout=35, check=False)
+                      except Exception:
+                          raise RuntimeError('HTTP_TRANSPORT_STOP') from None
+                      # Includes TLS/DNS/timeout/size-limit errors. No retries or fallback client.
+                      require(result.returncode == 0, 'HTTP_TRANSPORT_STOP')
+                      require(result.stdout == b'200', 'HTTP_STATUS_STOP')
+                      with body_path.open('rb') as source:
+                          body = source.read(artifact.MAX_FILE + 1)
+                      require(len(body) == f['size'] and package.sha(body) == f['sha256'],
+                              'Served file does not match manifest')
+                      if f['path'].endswith('.html'):
+                          with header_path.open('rb') as source:
+                              raw = source.read(65537)
+                          require(len(raw) <= 65536 and raw.endswith(b'\r\n\r\n'), 'HTTP_HEADERS_STOP')
+                          blocks = raw[:-4].split(b'\r\n\r\n')
+                          # Only informational blocks may precede the final response.
+                          require(all(re.fullmatch(rb'HTTP/(?:1\.[01]|2|3) 1[0-9]{2}(?: [^\r\n]*)?',
+                                                   b.split(b'\r\n', 1)[0])
+                                      and not re.match(rb'HTTP/[^ ]+ 101(?: |$)', b)
+                                      for b in blocks[:-1]), 'HTTP_HEADERS_STOP')
+                          lines = blocks[-1].split(b'\r\n')
+                          require(re.fullmatch(rb'HTTP/(?:1\.[01]|2|3) 200(?: [^\r\n]*)?', lines[0]),
+                                  'HTTP_HEADERS_STOP')
+                          headers = {}
+                          for line in lines[1:]:
+                              name, separator, value = line.partition(b':')
+                              require(separator and re.fullmatch(rb'[!#$%&\x27*+.^_`|~0-9A-Za-z-]+', name)
+                                      and b'\r' not in value and b'\n' not in value, 'HTTP_HEADERS_STOP')
+                              name = name.decode('ascii').lower()
+                              if name in ('content-security-policy', 'x-content-type-options'):
+                                  require(name not in headers, 'HTTP_HEADERS_STOP')
+                                  headers[name] = value.lstrip(b' \t').decode('iso-8859-1')
+                          require(sha(headers.get('content-security-policy', '').encode('utf-8')) == EXPECTED_CSP_SHA256
+                                  and headers.get('x-content-type-options') == 'nosniff', 'Live CSP/header mismatch')
+
+              with ThreadPoolExecutor(max_workers=4) as pool:
+                  list(pool.map(check_file, manifest['files']))
+
+          def main():
+              global CURRENT
+              rows=[{'path':f['path'],'http_status':'NOT_REQUESTED','actual_size':NOT_CHECKED,
+                     'actual_sha256':NOT_CHECKED,'expected_size':f['size'],'expected_sha256':f['sha256'],
+                     'size_match':NOT_CHECKED,'sha256_match':NOT_CHECKED,'csp_match':NOT_CHECKED,
+                     'nosniff_match':NOT_CHECKED,'error_1010':NOT_CHECKED,'cf_ray':'UNKNOWN',
+                     'result':'NOT_REQUESTED','failure':'NONE'} for f in FILES]
+              result={'result':'FAIL','classification':'D','get_count':0,'metadata':META,'rows':rows}
+              try:
+                  META.update(gate())
+                  META.update({'runner_image':image_field('ImageOS'),'image_version':image_field('ImageVersion'),
+                               'runner_os':image_field('RUNNER_OS'),'checked_at':stamp()})
+                  run_curl(['/usr/bin/curl','-q','--version'],stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,
+                           stderr=subprocess.DEVNULL,env={'PATH':'/usr/bin:/bin','LANG':'C'},timeout=5,check=False)
+                  META['proxy_precondition']='STOP' if any(os.environ.get(k) for k in PROXIES) else 'PASS'
+                  require(META['proxy_precondition']=='PASS','HTTP_PROXY_CONFIGURATION_STOP')
+                  for f,row in zip(FILES,rows):
+                      CURRENT=row
+                      try:
+                          http_verify(BASE, {'files':[f]})
+                          row['result']='PASS'
+                      except Exception as exc:
+                          row['result']='FAIL'
+                          if row['failure']=='NONE':
+                              row['failure']=exc.code if isinstance(exc,SafeStop) else 'OTHER_STOP'
+                          result['classification']='A' if row['http_status']!=200 and isinstance(row['http_status'],int) else ('B' if row['http_status']==200 else 'D')
+                          break
+                  else:
+                      result.update({'result':'PASS','classification':'C'})
+              except Exception as exc:
+                  result['precondition_failure']=exc.code if isinstance(exc,SafeStop) else 'PRECONDITION_STOP'
+              result['get_count']=len(GETS)
+              text=json.dumps(result,sort_keys=True)
+              print('W43_CURL_RESULT_BEGIN\n'+text+'\nW43_CURL_RESULT_END')
+              with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as out:
+                  out.write('## W4.3 curl read-only result\n```json\n'+text+'\n```\n')
+              return 0 if result['result']=='PASS' else 1
+
+          if __name__=='__main__':
+              try: sys.exit(main())
+              except Exception:
+                  print('W43_CURL_STOP: SAFE_OUTPUT_OR_INTERNAL_FAILURE')
+                  sys.exit(1)
+          PYCODE
