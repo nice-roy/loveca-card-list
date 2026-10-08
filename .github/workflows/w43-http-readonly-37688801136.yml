@@ -1,0 +1,217 @@
+name: W4.3 HTTP read-only 37688801136
+'on':
+  push:
+    branches: [diagnostic/w43-http-37688801136]
+    paths: [.github/workflows/w43-http-readonly-37688801136.yml]
+permissions: {}
+jobs:
+  http-readonly:
+    if: >-
+      ${{ github.repository == 'nice-roy/loveca-card-list' &&
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/diagnostic/w43-http-37688801136' &&
+          github.actor == 'nice-roy' && github.triggering_actor == 'nice-roy' &&
+          github.run_attempt == 1 && github.run_number == 1 }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Compare five fixed Candidate files; GET only, no retries
+        shell: bash
+        run: |
+          python3 - <<'PYCODE'
+          """Fixed-target, five-GET diagnostic. Standard library only; no release execution."""
+          from concurrent.futures import ThreadPoolExecutor
+          from datetime import datetime, timezone
+          import hashlib
+          import http.client
+          import json
+          import os
+          from pathlib import Path
+          import platform
+          import re
+          import socket
+          import ssl
+          import sys
+          import threading
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+
+          REPO = 'nice-roy/loveca-card-list'
+          BRANCH = 'diagnostic/w43-http-37688801136'
+          WORKFLOW = '.github/workflows/w43-http-readonly-37688801136.yml'
+          NAME = 'W4.3 HTTP read-only 37688801136'
+          BASE_SHA = '064307a378d4b6f32a719e5cd19176ef49f83b48'
+          BASE = 'https://1b1e7c46.loveca-card-list.pages.dev'
+          MANIFEST = 'ecf257592bc54397554a23899a4efe908e3e8d6611a87b46ae768184620c8de5'
+          FILES = [{'path': 'assets/index-5d8lM0t2.js', 'sha256': '6491ce4c81612903c071c488018283a6fdbedef71bfa2a5a4b3d56215af3feb7', 'size': 1979833}, {'path': 'assets/index-DhRKG_tC.css', 'sha256': 'b6d42112921a180d7983f6be1d2cd8314a398479c6521e8e95fd911945fc8d56', 'size': 238413}, {'path': 'favicon.svg', 'sha256': 'e6d2e59b7b5bbb0342e0fb496dfc262decbfe4426bbb7b047aec8d467d1dc6f7', 'size': 712}, {'path': 'index.html', 'sha256': 'eebf5ae57e40ca7ca0007a1eeef8f300c7984262083b266189fe15f450183ac9', 'size': 1472, 'csp_sha256': '1577d961faa88b6815f01948c779be2585b666e7b05b617cb73bbb5aa77bf04c'}, {'path': 'og.png', 'sha256': '306c46c5970a5f4072e8a4c6fb92e23b6193530fcd8fd2bf9ad12538ac91174d', 'size': 1740825}]
+          MAX_READ = 26214401
+          ERROR_READ = 8192
+          TIMEOUT = 30
+          NOT_CHECKED = 'NOT_CHECKED'
+          SEEN = set()
+          LOCK = threading.Lock()
+
+          def require(condition):
+              if not condition:
+                  raise RuntimeError()
+
+          def stamp():
+              return datetime.now(timezone.utc).isoformat()
+
+          def sha(data):
+              return hashlib.sha256(data).hexdigest()
+
+          def target(f):
+              return BASE + ('/' if f['path'] == 'index.html' else '/' + f['path'])
+
+          def gate():
+              expected = {'GITHUB_REPOSITORY': REPO, 'GITHUB_REF': 'refs/heads/' + BRANCH,
+                          'GITHUB_EVENT_NAME': 'push', 'GITHUB_ACTOR': 'nice-roy',
+                          'GITHUB_TRIGGERING_ACTOR': 'nice-roy', 'GITHUB_RUN_ATTEMPT': '1',
+                          'GITHUB_RUN_NUMBER': '1', 'GITHUB_WORKFLOW': NAME,
+                          'GITHUB_WORKFLOW_REF': REPO + '/' + WORKFLOW + '@refs/heads/' + BRANCH}
+              require(all(os.environ.get(k) == v for k, v in expected.items()))
+              head = os.environ.get('GITHUB_SHA', '')
+              require(re.fullmatch('[0-9a-f]{40}', head) is not None)
+              require(os.environ.get('GITHUB_WORKFLOW_SHA') == head)
+              run = os.environ.get('GITHUB_RUN_ID', '')
+              require(re.fullmatch('[1-9][0-9]{0,19}', run) is not None)
+              event_path = Path(os.environ['GITHUB_EVENT_PATH'])
+              require(event_path.stat().st_size <= 2 * 1024 * 1024)
+              event = json.loads(event_path.read_text())
+              require(event['repository']['full_name'] == REPO and event['ref'] == expected['GITHUB_REF'])
+              require(event['sender']['login'] == 'nice-roy')
+              require(event['before'] == BASE_SHA and event['after'] == head)
+              require(event.get('deleted') is False and event.get('forced') is False)
+              require(event['head_commit']['id'] == head and len(event['commits']) == 1)
+              commit = event['commits'][0]
+              require(commit['id'] == head)
+              require(len(FILES) == 5 and len({f['path'] for f in FILES}) == 5)
+              return {'diagnostic_run': int(run), 'attempt': 1, 'workflow_sha': head,
+                      'candidate_sha': BASE_SHA, 'candidate_run': 37688801136, 'candidate_attempt': 1,
+                      'artifact_id': 11512726105, 'manifest_sha256': MANIFEST}
+
+          def image_field(name):
+              value = os.environ.get(name, '')
+              return value if re.fullmatch('[A-Za-z0-9._-]{1,80}', value) else 'UNKNOWN'
+
+          def audit(event, args):
+              if event != 'urllib.Request':
+                  return
+              url, data, headers, method = args
+              require(url in {target(f) for f in FILES} and data is None and method == 'GET')
+              require(not any(k.lower() in ('authorization', 'cookie', 'proxy-authorization', 'user-agent') for k in headers))
+              require({k.lower(): v for k, v in headers.items()} ==
+                      {'accept-encoding': 'identity', 'cache-control': 'no-cache'})
+              with LOCK:
+                  require(url not in SEEN and len(SEEN) < 5)
+                  SEEN.add(url)
+
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, req, fp, code, msg, headers, newurl):
+                  return None
+
+          def failure_kind(error):
+              if isinstance(error, urllib.error.URLError):
+                  return failure_kind(error.reason)
+              if isinstance(error, UnicodeError): return 'URL_TEXT_ENCODING'
+              if isinstance(error, http.client.InvalidURL): return 'URL_CONSTRUCTION'
+              if isinstance(error, ssl.SSLError): return 'TLS'
+              if isinstance(error, socket.gaierror): return 'DNS'
+              if isinstance(error, (TimeoutError, socket.timeout)): return 'TIMEOUT'
+              if isinstance(error, (OSError, http.client.HTTPException)): return 'COMMUNICATION'
+              return 'OTHER_UNRESOLVED'
+
+          def ray(headers):
+              value = headers.get('CF-Ray')
+              return value if isinstance(value, str) and re.fullmatch('[0-9a-fA-F]{16}-[A-Z]{3}', value) else 'UNKNOWN'
+
+          def redirect_kind(location, url):
+              if not isinstance(location, str): return 'UNKNOWN_NOT_FOLLOWED'
+              try:
+                  parsed = urllib.parse.urlsplit(urllib.parse.urljoin(url, location))
+                  base = urllib.parse.urlsplit(BASE)
+                  if parsed.scheme != base.scheme or parsed.netloc != base.netloc: return 'OTHER_ORIGIN_NOT_FOLLOWED'
+                  if parsed.query or parsed.fragment: return 'QUERY_OR_FRAGMENT_NOT_FOLLOWED'
+                  urls = {target(f) for f in FILES}
+                  return 'MANIFEST_TARGET_NOT_FOLLOWED' if parsed.geturl() in urls else 'OTHER_PATH_NOT_FOLLOWED'
+              except BaseException:
+                  return 'UNKNOWN_NOT_FOLLOWED'
+
+          def check_one(f):
+              row = {'path': f['path'], 'started_at': stamp(), 'stage': 'NOT_REQUESTED',
+                     'http_status': NOT_CHECKED, 'expected_size': f['size'], 'actual_size': NOT_CHECKED,
+                     'size_match': NOT_CHECKED, 'expected_sha256': f['sha256'], 'actual_sha256': NOT_CHECKED,
+                     'sha_match': NOT_CHECKED, 'csp_match': NOT_CHECKED, 'nosniff_match': NOT_CHECKED,
+                     'cf_ray': 'UNKNOWN', 'error_1010': NOT_CHECKED, 'failures': []}
+              if 'csp_sha256' in f: row['expected_csp_sha256'] = f['csp_sha256']
+              try:
+                  request = urllib.request.Request(target(f), headers={'Accept-Encoding': 'identity', 'Cache-Control': 'no-cache'})
+                  row['stage'] = 'COMMUNICATION_ATTEMPTED'
+                  opener = urllib.request.build_opener(NoRedirect)
+                  with opener.open(request, timeout=TIMEOUT) as response:
+                      row.update(stage='HTTP_RESPONSE', http_status=response.status, cf_ray=ray(response.headers))
+                      if response.status != 200:
+                          row['failures'].append('HTTP_NON_200')
+                      else:
+                          body = response.read(MAX_READ)
+                          row.update(stage='BODY_READ', actual_size=len(body), actual_sha256=sha(body),
+                                     size_match=len(body) == f['size'], sha_match=sha(body) == f['sha256'])
+                          if not row['size_match']: row['failures'].append('SIZE_MISMATCH')
+                          if not row['sha_match']: row['failures'].append('HASH_MISMATCH')
+                          if f['path'].endswith('.html'):
+                              csp = response.headers.get('Content-Security-Policy')
+                              row['actual_csp_sha256'] = sha(csp.encode('utf-8')) if isinstance(csp, str) else 'MISSING'
+                              row['csp_match'] = row['actual_csp_sha256'] == f['csp_sha256']
+                              row['nosniff_match'] = response.headers.get('X-Content-Type-Options') == 'nosniff'
+                              if not row['csp_match']: row['failures'].append('CSP_MISMATCH')
+                              if not row['nosniff_match']: row['failures'].append('NOSNIFF_MISMATCH')
+                          else:
+                              row.update(csp_match='NOT_APPLICABLE', nosniff_match='NOT_APPLICABLE')
+              except urllib.error.HTTPError as error:
+                  try:
+                      row.update(stage='HTTP_ERROR', http_status=error.code, cf_ray=ray(error.headers))
+                      row['failures'].append('HTTP_' + str(error.code // 100) + 'XX')
+                      if 300 <= error.code < 400:
+                          row['redirect'] = redirect_kind(error.headers.get('Location'), target(f))
+                      body = error.read(ERROR_READ)
+                      row['error_1010'] = bool(re.fullmatch(rb'\s*error code:\s*1010\s*', body, re.I))
+                  except BaseException as read_error:
+                      row['failures'].append('ERROR_BODY_' + failure_kind(read_error))
+                  finally:
+                      try: error.close()
+                      except BaseException: pass
+              except BaseException as error:
+                  row['failures'].append(failure_kind(error))
+              row.update(finished_at=stamp(), result='PASS' if not row['failures'] else 'FAIL')
+              return row
+
+          def collect():
+              with ThreadPoolExecutor(max_workers=4) as pool:
+                  return list(pool.map(check_one, FILES))
+
+          def main():
+              metadata = gate()
+              metadata.update(runner_os='Linux', image_os=image_field('ImageOS'), image_version=image_field('ImageVersion'),
+                              python=platform.python_version(), requested_gets=5, max_workers=4,
+                              timeout_seconds=TIMEOUT, max_read=MAX_READ, error_read=ERROR_READ,
+                              redirect_following=False, custom_user_agent=False)
+              sys.addaudithook(audit)
+              rows = collect()
+              passed = len(rows) == 5 and len(SEEN) == 5 and all(r['result'] == 'PASS' for r in rows)
+              result = {'metadata': metadata, 'get_count': len(SEEN), 'result': 'PASS' if passed else 'FAIL', 'rows': rows}
+              safe = json.dumps(result, sort_keys=True, indent=2)
+              print('W43_HTTP_RESULT_BEGIN\n' + safe + '\nW43_HTTP_RESULT_END')
+              with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
+                  output.write('## W4.3 fixed Candidate HTTP read-only result\n\n```json\n' + safe + '\n```\n')
+              return 0 if passed else 1
+
+          if __name__ == '__main__':
+              try:
+                  exit_code = main()
+              except BaseException:
+                  print('W43_HTTP_DIAGNOSTIC_STOP: UNKNOWN')
+                  exit_code = 1
+              sys.exit(exit_code)
+          PYCODE
