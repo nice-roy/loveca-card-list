@@ -1,0 +1,226 @@
+# REVIEW CANDIDATE ONLY — not installed, not approved for execution.
+name: Pages Reconcile
+run-name: Reconcile 6993075950 ${{ inputs.recovery_evidence_sha256 }} ${{ inputs.control_sha }}
+'on':
+  workflow_dispatch:
+    inputs:
+      control_sha:
+        description: Exact reviewed new main control SHA; differs from published source
+        required: true
+        type: string
+      recovery_evidence_sha256:
+        description: SHA256 of separately approved recovery text bytes; not old readiness v1
+        required: true
+        type: string
+      confirm:
+        description: RECONCILE-ONLY; no publish and no old-record changes
+        required: true
+        type: string
+permissions: {}
+concurrency:
+  group: loveca-pages-project-deploy
+  cancel-in-progress: false
+env:
+  TRUSTED_SHA: ${{ github.workflow_sha }}
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      deployments: read
+    if: github.repository == 'nice-roy/loveca-card-list' && github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
+      && github.actor == 'nice-roy' && github.triggering_actor == 'nice-roy' && github.run_attempt == 1 && inputs.confirm
+      == 'RECONCILE-ONLY' && inputs.control_sha == github.sha && github.workflow_sha == github.sha
+    steps:
+    - name: Fetch immutable control; no source checkout
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: "python3 - <<'PYCONTROL'\nimport base64, json, os, pathlib, re, urllib.request\ntry:\n    sha = os.environ['TRUSTED_SHA']\n\
+        \    assert re.fullmatch(r'[0-9a-f]{40}', sha) and sha == os.environ['GITHUB_SHA']\n    root = pathlib.Path(os.environ['RUNNER_TEMP'])\
+        \ / 'pages-reconcile-control'\n    root.mkdir(mode=0o700)\n    class NoRedirect(urllib.request.HTTPRedirectHandler):\n\
+        \        def redirect_request(self, *args, **kwargs): return None\n    opener = urllib.request.build_opener(NoRedirect)\n\
+        \    files = {'pages-preview': ('guard.py', 'artifact.py'),\n             'pages-release': ('package.py', 'ledger.py',\
+        \ 'reconcile.py', 'reconcile_http.py')}\n    for directory, names in files.items():\n        for name in names:\n\
+        \            url = 'https://api.github.com/repos/nice-roy/loveca-card-list/contents/.github/' + directory + '/' +\
+        \ name + '?ref=' + sha\n            req = urllib.request.Request(url, method='GET', headers={\n                'Authorization':\
+        \ 'Bearer ' + os.environ['GH_TOKEN'],\n                'Accept': 'application/vnd.github+json'})\n            with\
+        \ opener.open(req, timeout=30) as response:\n                assert response.status == 200\n                raw =\
+        \ response.read(2 * 1024 * 1024 + 1)\n            assert len(raw) <= 2 * 1024 * 1024\n            value = json.loads(raw)\n\
+        \            assert value['type'] == 'file' and value['encoding'] == 'base64'\n            (root / name).write_bytes(base64.b64decode(value['content']))\n\
+        except BaseException:\n    raise SystemExit('Recovery control fetch STOP; no raw error') from None\nPYCONTROL\n"
+    - name: review
+      id: stage
+      env:
+        GH_TOKEN: ${{ github.token }}
+        VITE_SYNC_API_URL: ${{ vars.VITE_SYNC_API_URL }}
+      run: python3 "$RUNNER_TEMP/pages-reconcile-control/reconcile.py" review
+  approval:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      deployments: read
+    if: github.repository == 'nice-roy/loveca-card-list' && github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
+      && github.actor == 'nice-roy' && github.triggering_actor == 'nice-roy' && github.run_attempt == 1 && inputs.confirm
+      == 'RECONCILE-ONLY' && inputs.control_sha == github.sha && github.workflow_sha == github.sha
+    steps:
+    - name: Fetch immutable control; no source checkout
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: "python3 - <<'PYCONTROL'\nimport base64, json, os, pathlib, re, urllib.request\ntry:\n    sha = os.environ['TRUSTED_SHA']\n\
+        \    assert re.fullmatch(r'[0-9a-f]{40}', sha) and sha == os.environ['GITHUB_SHA']\n    root = pathlib.Path(os.environ['RUNNER_TEMP'])\
+        \ / 'pages-reconcile-control'\n    root.mkdir(mode=0o700)\n    class NoRedirect(urllib.request.HTTPRedirectHandler):\n\
+        \        def redirect_request(self, *args, **kwargs): return None\n    opener = urllib.request.build_opener(NoRedirect)\n\
+        \    files = {'pages-preview': ('guard.py', 'artifact.py'),\n             'pages-release': ('package.py', 'ledger.py',\
+        \ 'reconcile.py', 'reconcile_http.py')}\n    for directory, names in files.items():\n        for name in names:\n\
+        \            url = 'https://api.github.com/repos/nice-roy/loveca-card-list/contents/.github/' + directory + '/' +\
+        \ name + '?ref=' + sha\n            req = urllib.request.Request(url, method='GET', headers={\n                'Authorization':\
+        \ 'Bearer ' + os.environ['GH_TOKEN'],\n                'Accept': 'application/vnd.github+json'})\n            with\
+        \ opener.open(req, timeout=30) as response:\n                assert response.status == 200\n                raw =\
+        \ response.read(2 * 1024 * 1024 + 1)\n            assert len(raw) <= 2 * 1024 * 1024\n            value = json.loads(raw)\n\
+        \            assert value['type'] == 'file' and value['encoding'] == 'base64'\n            (root / name).write_bytes(base64.b64decode(value['content']))\n\
+        except BaseException:\n    raise SystemExit('Recovery control fetch STOP; no raw error') from None\nPYCONTROL\n"
+    - name: approval
+      id: stage
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: python3 "$RUNNER_TEMP/pages-reconcile-control/reconcile.py" approval
+    needs:
+    - review
+    environment:
+      name: pages-production
+      deployment: false
+    outputs:
+      binding: ${{ steps.stage.outputs.binding }}
+  verify-current:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      deployments: read
+    if: github.repository == 'nice-roy/loveca-card-list' && github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
+      && github.actor == 'nice-roy' && github.triggering_actor == 'nice-roy' && github.run_attempt == 1 && inputs.confirm
+      == 'RECONCILE-ONLY' && inputs.control_sha == github.sha && github.workflow_sha == github.sha
+    steps:
+    - name: Fetch immutable control; no source checkout
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: "python3 - <<'PYCONTROL'\nimport base64, json, os, pathlib, re, urllib.request\ntry:\n    sha = os.environ['TRUSTED_SHA']\n\
+        \    assert re.fullmatch(r'[0-9a-f]{40}', sha) and sha == os.environ['GITHUB_SHA']\n    root = pathlib.Path(os.environ['RUNNER_TEMP'])\
+        \ / 'pages-reconcile-control'\n    root.mkdir(mode=0o700)\n    class NoRedirect(urllib.request.HTTPRedirectHandler):\n\
+        \        def redirect_request(self, *args, **kwargs): return None\n    opener = urllib.request.build_opener(NoRedirect)\n\
+        \    files = {'pages-preview': ('guard.py', 'artifact.py'),\n             'pages-release': ('package.py', 'ledger.py',\
+        \ 'reconcile.py', 'reconcile_http.py')}\n    for directory, names in files.items():\n        for name in names:\n\
+        \            url = 'https://api.github.com/repos/nice-roy/loveca-card-list/contents/.github/' + directory + '/' +\
+        \ name + '?ref=' + sha\n            req = urllib.request.Request(url, method='GET', headers={\n                'Authorization':\
+        \ 'Bearer ' + os.environ['GH_TOKEN'],\n                'Accept': 'application/vnd.github+json'})\n            with\
+        \ opener.open(req, timeout=30) as response:\n                assert response.status == 200\n                raw =\
+        \ response.read(2 * 1024 * 1024 + 1)\n            assert len(raw) <= 2 * 1024 * 1024\n            value = json.loads(raw)\n\
+        \            assert value['type'] == 'file' and value['encoding'] == 'base64'\n            (root / name).write_bytes(base64.b64decode(value['content']))\n\
+        except BaseException:\n    raise SystemExit('Recovery control fetch STOP; no raw error') from None\nPYCONTROL\n"
+    - name: verify-current
+      id: stage
+      env:
+        GH_TOKEN: ${{ github.token }}
+        VITE_SYNC_API_URL: ${{ vars.VITE_SYNC_API_URL }}
+        APPROVAL_BINDING: ${{ needs.approval.outputs.binding }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_PAGES_READ_TOKEN }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        PAGES_VARIABLES_READ_TOKEN: ${{ secrets.PAGES_VARIABLES_READ_TOKEN }}
+      run: python3 "$RUNNER_TEMP/pages-reconcile-control/reconcile.py" verify-current
+    needs:
+    - approval
+    environment:
+      name: pages-preview
+      deployment: false
+    outputs:
+      capsule: ${{ steps.stage.outputs.capsule }}
+      capsule_sha256: ${{ steps.stage.outputs.capsule_sha256 }}
+  record:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      deployments: write
+    if: github.repository == 'nice-roy/loveca-card-list' && github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
+      && github.actor == 'nice-roy' && github.triggering_actor == 'nice-roy' && github.run_attempt == 1 && inputs.confirm
+      == 'RECONCILE-ONLY' && inputs.control_sha == github.sha && github.workflow_sha == github.sha
+    steps:
+    - name: Fetch immutable control; no source checkout
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: "python3 - <<'PYCONTROL'\nimport base64, json, os, pathlib, re, urllib.request\ntry:\n    sha = os.environ['TRUSTED_SHA']\n\
+        \    assert re.fullmatch(r'[0-9a-f]{40}', sha) and sha == os.environ['GITHUB_SHA']\n    root = pathlib.Path(os.environ['RUNNER_TEMP'])\
+        \ / 'pages-reconcile-control'\n    root.mkdir(mode=0o700)\n    class NoRedirect(urllib.request.HTTPRedirectHandler):\n\
+        \        def redirect_request(self, *args, **kwargs): return None\n    opener = urllib.request.build_opener(NoRedirect)\n\
+        \    files = {'pages-preview': ('guard.py', 'artifact.py'),\n             'pages-release': ('package.py', 'ledger.py',\
+        \ 'reconcile.py', 'reconcile_http.py')}\n    for directory, names in files.items():\n        for name in names:\n\
+        \            url = 'https://api.github.com/repos/nice-roy/loveca-card-list/contents/.github/' + directory + '/' +\
+        \ name + '?ref=' + sha\n            req = urllib.request.Request(url, method='GET', headers={\n                'Authorization':\
+        \ 'Bearer ' + os.environ['GH_TOKEN'],\n                'Accept': 'application/vnd.github+json'})\n            with\
+        \ opener.open(req, timeout=30) as response:\n                assert response.status == 200\n                raw =\
+        \ response.read(2 * 1024 * 1024 + 1)\n            assert len(raw) <= 2 * 1024 * 1024\n            value = json.loads(raw)\n\
+        \            assert value['type'] == 'file' and value['encoding'] == 'base64'\n            (root / name).write_bytes(base64.b64decode(value['content']))\n\
+        except BaseException:\n    raise SystemExit('Recovery control fetch STOP; no raw error') from None\nPYCONTROL\n"
+    - name: record
+      id: stage
+      env:
+        GH_TOKEN: ${{ github.token }}
+        APPROVAL_BINDING: ${{ needs.approval.outputs.binding }}
+        VERIFIED_CAPSULE: ${{ needs.verify-current.outputs.capsule }}
+        CAPSULE_SHA256: ${{ needs.verify-current.outputs.capsule_sha256 }}
+      run: python3 "$RUNNER_TEMP/pages-reconcile-control/reconcile.py" record
+    needs:
+    - approval
+    - verify-current
+    outputs:
+      record_id: ${{ steps.stage.outputs.record_id }}
+  audit-current:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      deployments: read
+    if: github.repository == 'nice-roy/loveca-card-list' && github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
+      && github.actor == 'nice-roy' && github.triggering_actor == 'nice-roy' && github.run_attempt == 1 && inputs.confirm
+      == 'RECONCILE-ONLY' && inputs.control_sha == github.sha && github.workflow_sha == github.sha
+    steps:
+    - name: Fetch immutable control; no source checkout
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: "python3 - <<'PYCONTROL'\nimport base64, json, os, pathlib, re, urllib.request\ntry:\n    sha = os.environ['TRUSTED_SHA']\n\
+        \    assert re.fullmatch(r'[0-9a-f]{40}', sha) and sha == os.environ['GITHUB_SHA']\n    root = pathlib.Path(os.environ['RUNNER_TEMP'])\
+        \ / 'pages-reconcile-control'\n    root.mkdir(mode=0o700)\n    class NoRedirect(urllib.request.HTTPRedirectHandler):\n\
+        \        def redirect_request(self, *args, **kwargs): return None\n    opener = urllib.request.build_opener(NoRedirect)\n\
+        \    files = {'pages-preview': ('guard.py', 'artifact.py'),\n             'pages-release': ('package.py', 'ledger.py',\
+        \ 'reconcile.py', 'reconcile_http.py')}\n    for directory, names in files.items():\n        for name in names:\n\
+        \            url = 'https://api.github.com/repos/nice-roy/loveca-card-list/contents/.github/' + directory + '/' +\
+        \ name + '?ref=' + sha\n            req = urllib.request.Request(url, method='GET', headers={\n                'Authorization':\
+        \ 'Bearer ' + os.environ['GH_TOKEN'],\n                'Accept': 'application/vnd.github+json'})\n            with\
+        \ opener.open(req, timeout=30) as response:\n                assert response.status == 200\n                raw =\
+        \ response.read(2 * 1024 * 1024 + 1)\n            assert len(raw) <= 2 * 1024 * 1024\n            value = json.loads(raw)\n\
+        \            assert value['type'] == 'file' and value['encoding'] == 'base64'\n            (root / name).write_bytes(base64.b64decode(value['content']))\n\
+        except BaseException:\n    raise SystemExit('Recovery control fetch STOP; no raw error') from None\nPYCONTROL\n"
+    - name: audit-current
+      id: stage
+      env:
+        GH_TOKEN: ${{ github.token }}
+        VITE_SYNC_API_URL: ${{ vars.VITE_SYNC_API_URL }}
+        APPROVAL_BINDING: ${{ needs.approval.outputs.binding }}
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_PAGES_READ_TOKEN }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        PAGES_VARIABLES_READ_TOKEN: ${{ secrets.PAGES_VARIABLES_READ_TOKEN }}
+        RECOVERY_RECORD_ID: ${{ needs.record.outputs.record_id }}
+      run: python3 "$RUNNER_TEMP/pages-reconcile-control/reconcile.py" audit-current
+    needs:
+    - approval
+    - record
+    environment:
+      name: pages-preview
+      deployment: false
