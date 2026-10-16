@@ -53,7 +53,7 @@ test('every historically verified Card Labo link remains attached to the same ph
   }
 });
 test('all 291 physical live-card versions have a stable retained, A, B, or C audit result',()=>{
-  const liveCards=cards.filter(card=>card.cardType==='live');
+  const liveCards=cards.slice(0,1817).filter(card=>card.cardType==='live'); // Historical link audit; no links invented for C1.
   const audited=[...liveAudit.retainedHistorical,...liveAudit.A,...liveAudit.B,...liveAudit.C];
   assert.equal(liveCards.length,291);
   assert.equal(liveAudit.counts.total,291);
@@ -135,9 +135,9 @@ test('grouped cards show purchase links once on the card surface and not again i
   assert.doesNotMatch(versionDetailsSection,/カードラボで購入/);
 });
 test('pool adds only member/live audited records and keeps card images absent',()=>{
-  assert.equal(cards.length,1817);
-  assert.equal(cards.filter(c=>c.cardType==='member').length,1526);
-  assert.equal(cards.filter(c=>c.cardType==='live').length,291);
+  assert.equal(cards.length,1913);
+  assert.equal(cards.filter(c=>c.cardType==='member').length,1582);
+  assert.equal(cards.filter(c=>c.cardType==='live').length,331);
   assert.equal(cards.filter(c=>!['member','live'].includes(c.cardType)).length,0);
   assert.deepEqual(cards.slice(0,before.length).map(c=>c.image),before.map(c=>c.image));
   assert.ok(cards.slice(before.length).every(c=>c.image.url===null&&c.image.alt===null));

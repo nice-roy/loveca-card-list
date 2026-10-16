@@ -1,0 +1,6712 @@
+{
+  "asOf": "2026-10-16",
+  "products": [
+    {
+      "code": "PBLL02",
+      "label": "プレミアムブースター ラブライブ！DUO",
+      "expansion": {
+        "id": "PBLL02",
+        "name": "プレミアムブースター ラブライブ！DUO",
+        "release_date": "2026.10.03",
+        "slug": "PBLL02",
+        "url": "https://llofficial-cardgame.com/products/pbll_duo/"
+      },
+      "total": 113,
+      "included": 96,
+      "energy": 17,
+      "existing": 0,
+      "missing": [
+        {
+          "id": 2798,
+          "cardNumber": "PL!-bp3-019-SRL",
+          "name": "僕らのLIVE 君とのLIFE",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2799,
+          "cardNumber": "PL!-bp3-020-SRL",
+          "name": "Snow halation",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2800,
+          "cardNumber": "PL!-bp3-021-SRL",
+          "name": "愛してるばんざーい!",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2787,
+          "cardNumber": "PL!-bp3-022-SECL",
+          "name": "ユメノトビラ",
+          "rarity": "SECL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2801,
+          "cardNumber": "PL!-bp3-022-SRL",
+          "name": "ユメノトビラ",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2802,
+          "cardNumber": "PL!-bp3-023-SRL",
+          "name": "ミはμ'sicのミ",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2803,
+          "cardNumber": "PL!-bp3-024-SRL",
+          "name": "夏色えがおで1,2,Jump!",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2804,
+          "cardNumber": "PL!-bp3-025-SRL",
+          "name": "タカラモノズ",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2805,
+          "cardNumber": "PL!-bp3-026-SRL",
+          "name": "Oh,Love&Peace!",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2806,
+          "cardNumber": "PL!-bp4-019-SRL",
+          "name": "Angelic Angel",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2807,
+          "cardNumber": "PL!-bp4-020-SRL",
+          "name": "Love wing bell",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2808,
+          "cardNumber": "PL!-bp4-021-SRL",
+          "name": "?←HEARTBEAT",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2809,
+          "cardNumber": "PL!-bp4-022-SRL",
+          "name": "No brand girls",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2810,
+          "cardNumber": "PL!-bp4-023-SRL",
+          "name": "もぎゅっと\"love\"で接近中！",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2811,
+          "cardNumber": "PL!-bp4-024-SRL",
+          "name": "小夜啼鳥恋詩",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2812,
+          "cardNumber": "PL!-bp4-025-SRL",
+          "name": "微熱からMystery",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2813,
+          "cardNumber": "PL!-bp4-026-SRL",
+          "name": "ダイヤモンドプリンセスの憂鬱",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2814,
+          "cardNumber": "PL!-bp5-019-SRL",
+          "name": "それは僕たちの奇跡",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2815,
+          "cardNumber": "PL!-bp5-020-SRL",
+          "name": "Wonder zone",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2816,
+          "cardNumber": "PL!-bp5-021-SRL",
+          "name": "SUNNY DAY SONG",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2817,
+          "cardNumber": "PL!-bp5-022-SRL",
+          "name": "A song for You! You? You!!",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2818,
+          "cardNumber": "PL!-bp5-023-SRL",
+          "name": "乙姫心で恋宮殿",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2792,
+          "cardNumber": "PL!-pb1-028-SRL",
+          "name": "WAO-WAO Powerful day!",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2793,
+          "cardNumber": "PL!-pb1-029-SRL",
+          "name": "知らないLove＊教えてLove",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2794,
+          "cardNumber": "PL!-pb1-030-SRL",
+          "name": "Cutie Panther",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2786,
+          "cardNumber": "PL!-pb1-031-SECL",
+          "name": "輝夜の城で踊りたい",
+          "rarity": "SECL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2795,
+          "cardNumber": "PL!-pb1-031-SRL",
+          "name": "輝夜の城で踊りたい",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2796,
+          "cardNumber": "PL!-pb1-032-SRL",
+          "name": "SENTIMENTAL StepS",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2797,
+          "cardNumber": "PL!-pb1-033-SRL",
+          "name": "KiRa-KiRa Sensation!",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2778,
+          "cardNumber": "PL!-pb2-000-DUO",
+          "name": "星空 凛&小泉花陽",
+          "rarity": "DUO",
+          "type": "メンバー"
+        },
+        {
+          "id": 2759,
+          "cardNumber": "PL!-pb2-000-R",
+          "name": "星空 凛&小泉花陽",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2760,
+          "cardNumber": "PL!-pb2-001-PP",
+          "name": "高坂穂乃果",
+          "rarity": "PP",
+          "type": "メンバー"
+        },
+        {
+          "id": 2723,
+          "cardNumber": "PL!-pb2-001-R",
+          "name": "高坂穂乃果",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2761,
+          "cardNumber": "PL!-pb2-002-PP",
+          "name": "絢瀬絵里",
+          "rarity": "PP",
+          "type": "メンバー"
+        },
+        {
+          "id": 2724,
+          "cardNumber": "PL!-pb2-002-R",
+          "name": "絢瀬絵里",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2762,
+          "cardNumber": "PL!-pb2-003-PP",
+          "name": "南ことり",
+          "rarity": "PP",
+          "type": "メンバー"
+        },
+        {
+          "id": 2725,
+          "cardNumber": "PL!-pb2-003-R",
+          "name": "南ことり",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2763,
+          "cardNumber": "PL!-pb2-004-PP",
+          "name": "園田海未",
+          "rarity": "PP",
+          "type": "メンバー"
+        },
+        {
+          "id": 2726,
+          "cardNumber": "PL!-pb2-004-R",
+          "name": "園田海未",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2764,
+          "cardNumber": "PL!-pb2-005-PP",
+          "name": "星空 凛",
+          "rarity": "PP",
+          "type": "メンバー"
+        },
+        {
+          "id": 2727,
+          "cardNumber": "PL!-pb2-005-R",
+          "name": "星空 凛",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2765,
+          "cardNumber": "PL!-pb2-006-PP",
+          "name": "西木野真姫",
+          "rarity": "PP",
+          "type": "メンバー"
+        },
+        {
+          "id": 2728,
+          "cardNumber": "PL!-pb2-006-R",
+          "name": "西木野真姫",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2766,
+          "cardNumber": "PL!-pb2-007-PP",
+          "name": "東條 希",
+          "rarity": "PP",
+          "type": "メンバー"
+        },
+        {
+          "id": 2729,
+          "cardNumber": "PL!-pb2-007-R",
+          "name": "東條 希",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2767,
+          "cardNumber": "PL!-pb2-008-PP",
+          "name": "小泉花陽",
+          "rarity": "PP",
+          "type": "メンバー"
+        },
+        {
+          "id": 2730,
+          "cardNumber": "PL!-pb2-008-R",
+          "name": "小泉花陽",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2768,
+          "cardNumber": "PL!-pb2-009-PP",
+          "name": "矢澤にこ",
+          "rarity": "PP",
+          "type": "メンバー"
+        },
+        {
+          "id": 2731,
+          "cardNumber": "PL!-pb2-009-R",
+          "name": "矢澤にこ",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2769,
+          "cardNumber": "PL!-pb2-010-P＋",
+          "name": "高坂穂乃果",
+          "rarity": "P+",
+          "type": "メンバー"
+        },
+        {
+          "id": 2732,
+          "cardNumber": "PL!-pb2-010-R",
+          "name": "高坂穂乃果",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2770,
+          "cardNumber": "PL!-pb2-011-P＋",
+          "name": "絢瀬絵里",
+          "rarity": "P+",
+          "type": "メンバー"
+        },
+        {
+          "id": 2733,
+          "cardNumber": "PL!-pb2-011-R",
+          "name": "絢瀬絵里",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2771,
+          "cardNumber": "PL!-pb2-012-P＋",
+          "name": "南ことり",
+          "rarity": "P+",
+          "type": "メンバー"
+        },
+        {
+          "id": 2734,
+          "cardNumber": "PL!-pb2-012-R",
+          "name": "南ことり",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2772,
+          "cardNumber": "PL!-pb2-013-P＋",
+          "name": "園田海未",
+          "rarity": "P+",
+          "type": "メンバー"
+        },
+        {
+          "id": 2735,
+          "cardNumber": "PL!-pb2-013-R",
+          "name": "園田海未",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2773,
+          "cardNumber": "PL!-pb2-014-P＋",
+          "name": "星空 凛",
+          "rarity": "P+",
+          "type": "メンバー"
+        },
+        {
+          "id": 2736,
+          "cardNumber": "PL!-pb2-014-R",
+          "name": "星空 凛",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2774,
+          "cardNumber": "PL!-pb2-015-P＋",
+          "name": "西木野真姫",
+          "rarity": "P+",
+          "type": "メンバー"
+        },
+        {
+          "id": 2737,
+          "cardNumber": "PL!-pb2-015-R",
+          "name": "西木野真姫",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2775,
+          "cardNumber": "PL!-pb2-016-P＋",
+          "name": "東條 希",
+          "rarity": "P+",
+          "type": "メンバー"
+        },
+        {
+          "id": 2738,
+          "cardNumber": "PL!-pb2-016-R",
+          "name": "東條 希",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2776,
+          "cardNumber": "PL!-pb2-017-P＋",
+          "name": "小泉花陽",
+          "rarity": "P+",
+          "type": "メンバー"
+        },
+        {
+          "id": 2739,
+          "cardNumber": "PL!-pb2-017-R",
+          "name": "小泉花陽",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2777,
+          "cardNumber": "PL!-pb2-018-P＋",
+          "name": "矢澤にこ",
+          "rarity": "P+",
+          "type": "メンバー"
+        },
+        {
+          "id": 2740,
+          "cardNumber": "PL!-pb2-018-R",
+          "name": "矢澤にこ",
+          "rarity": "R",
+          "type": "メンバー"
+        },
+        {
+          "id": 2741,
+          "cardNumber": "PL!-pb2-019-N",
+          "name": "高坂穂乃果",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2742,
+          "cardNumber": "PL!-pb2-020-N",
+          "name": "絢瀬絵里",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2743,
+          "cardNumber": "PL!-pb2-021-N",
+          "name": "南ことり",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2744,
+          "cardNumber": "PL!-pb2-022-N",
+          "name": "園田海未",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2745,
+          "cardNumber": "PL!-pb2-023-N",
+          "name": "星空 凛",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2746,
+          "cardNumber": "PL!-pb2-024-N",
+          "name": "西木野真姫",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2747,
+          "cardNumber": "PL!-pb2-025-N",
+          "name": "東條 希",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2748,
+          "cardNumber": "PL!-pb2-026-N",
+          "name": "小泉花陽",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2749,
+          "cardNumber": "PL!-pb2-027-N",
+          "name": "矢澤にこ",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2750,
+          "cardNumber": "PL!-pb2-028-N",
+          "name": "高坂穂乃果",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2751,
+          "cardNumber": "PL!-pb2-029-N",
+          "name": "絢瀬絵里",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2752,
+          "cardNumber": "PL!-pb2-030-N",
+          "name": "南ことり",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2753,
+          "cardNumber": "PL!-pb2-031-N",
+          "name": "園田海未",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2754,
+          "cardNumber": "PL!-pb2-032-N",
+          "name": "星空 凛",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2755,
+          "cardNumber": "PL!-pb2-033-N",
+          "name": "西木野真姫",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2756,
+          "cardNumber": "PL!-pb2-034-N",
+          "name": "東條 希",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2757,
+          "cardNumber": "PL!-pb2-035-N",
+          "name": "小泉花陽",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2758,
+          "cardNumber": "PL!-pb2-036-N",
+          "name": "矢澤にこ",
+          "rarity": "N",
+          "type": "メンバー"
+        },
+        {
+          "id": 2779,
+          "cardNumber": "PL!-pb2-037-L",
+          "name": "Shangri-La Shower",
+          "rarity": "L",
+          "type": "ライブ"
+        },
+        {
+          "id": 2780,
+          "cardNumber": "PL!-pb2-038-L",
+          "name": "嵐のなかの恋だから",
+          "rarity": "L",
+          "type": "ライブ"
+        },
+        {
+          "id": 2781,
+          "cardNumber": "PL!-pb2-039-L",
+          "name": "僕たちはひとつの光",
+          "rarity": "L",
+          "type": "ライブ"
+        },
+        {
+          "id": 2782,
+          "cardNumber": "PL!-pb2-040-L",
+          "name": "Love marginal",
+          "rarity": "L",
+          "type": "ライブ"
+        },
+        {
+          "id": 2783,
+          "cardNumber": "PL!-pb2-041-L",
+          "name": "春情ロマンティック",
+          "rarity": "L",
+          "type": "ライブ"
+        },
+        {
+          "id": 2784,
+          "cardNumber": "PL!-pb2-042-L",
+          "name": "PSYCHIC FIRE",
+          "rarity": "L",
+          "type": "ライブ"
+        },
+        {
+          "id": 2788,
+          "cardNumber": "PL!-sd1-019-SRL",
+          "name": "START:DASH!!",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2785,
+          "cardNumber": "PL!-sd1-020-SECL",
+          "name": "きっと青春が聞こえる",
+          "rarity": "SECL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2789,
+          "cardNumber": "PL!-sd1-020-SRL",
+          "name": "きっと青春が聞こえる",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2790,
+          "cardNumber": "PL!-sd1-021-SRL",
+          "name": "これからのSomeday",
+          "rarity": "SRL",
+          "type": "ライブ"
+        },
+        {
+          "id": 2791,
+          "cardNumber": "PL!-sd1-022-SRL",
+          "name": "僕らは今のなかで",
+          "rarity": "SRL",
+          "type": "ライブ"
+        }
+      ],
+      "masterOnly": [],
+      "rarityDifferences": [],
+      "officialCards": [
+        {
+          "cardNumber": "PL!-bp3-019-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp3-020-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp3-021-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp3-022-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp3-022-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp3-023-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp3-024-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp3-025-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp3-026-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp4-019-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp4-020-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp4-021-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp4-022-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp4-023-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp4-024-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp4-025-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp4-026-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-019-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-020-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-021-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-022-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-023-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb1-028-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb1-029-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb1-030-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb1-031-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb1-031-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb1-032-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb1-033-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb2-000-DUO",
+          "rarity": "DUO",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-000-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-001-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-001-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-002-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-003-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-003-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-004-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-005-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-005-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-006-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-007-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-007-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-008-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-009-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-010-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-010-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-011-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-011-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-012-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-012-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-013-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-013-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-014-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-014-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-015-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-015-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-016-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-016-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-017-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-017-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-018-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-018-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-019-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-020-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-021-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-022-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-023-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-024-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-025-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-026-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-027-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-028-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-029-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-030-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-031-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-032-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-033-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-034-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-035-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-036-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-pb2-037-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb2-038-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb2-039-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb2-040-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb2-041-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-pb2-042-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-sd1-019-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-sd1-020-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-sd1-020-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-sd1-021-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-sd1-022-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    },
+    {
+      "code": "BP07",
+      "label": "ブースターパック MELLOW MOMENT",
+      "expansion": {
+        "id": "BP07",
+        "name": "ブースターパック MELLOW MOMENT",
+        "release_date": "2026.08.08",
+        "slug": "BP07",
+        "url": "https://llofficial-cardgame.com/products/bp07_mellowmoment/"
+      },
+      "total": 193,
+      "included": 148,
+      "energy": 45,
+      "existing": 148,
+      "missing": [],
+      "masterOnly": [],
+      "rarityDifferences": [
+        {
+          "number": "LL-bp7-001-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp7-001-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-001-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp7-002-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-002-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp7-003-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-003-P＋",
+          "before": null,
+          "official": "P+"
+        },
+        {
+          "number": "PL!SP-bp7-003-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp7-003-SEC",
+          "before": null,
+          "official": "SEC"
+        },
+        {
+          "number": "PL!SP-bp7-004-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-004-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp7-005-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-005-P＋",
+          "before": null,
+          "official": "P+"
+        },
+        {
+          "number": "PL!SP-bp7-005-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp7-005-SEC",
+          "before": null,
+          "official": "SEC"
+        },
+        {
+          "number": "PL!SP-bp7-006-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-006-P＋",
+          "before": null,
+          "official": "P+"
+        },
+        {
+          "number": "PL!SP-bp7-006-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp7-006-SEC",
+          "before": null,
+          "official": "SEC"
+        },
+        {
+          "number": "PL!SP-bp7-007-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-007-P＋",
+          "before": null,
+          "official": "P+"
+        },
+        {
+          "number": "PL!SP-bp7-007-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp7-007-SEC",
+          "before": null,
+          "official": "SEC"
+        },
+        {
+          "number": "PL!SP-bp7-008-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-008-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp7-009-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-009-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp7-010-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-010-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp7-011-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp7-011-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp7-012-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-013-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-014-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-015-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-016-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-017-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-018-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-019-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-020-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-021-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-022-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp7-023-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp7-023-SECL",
+          "before": null,
+          "official": "SECL"
+        },
+        {
+          "number": "PL!SP-bp7-024-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp7-024-SECL",
+          "before": null,
+          "official": "SECL"
+        },
+        {
+          "number": "PL!SP-bp7-025-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp7-026-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp7-027-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp7-028-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-pb1-025-SECL",
+          "before": null,
+          "official": "SECL"
+        }
+      ],
+      "officialCards": [
+        {
+          "cardNumber": "LL-bp7-001-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp1-026-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp7-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-001-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-003-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-003-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-003-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-005-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-006-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-006-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-006-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-007-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-007-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-007-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-009-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-010-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-010-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-011-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-011-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-011-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-011-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-012-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-012-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-019-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-020-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-021-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-022-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-023-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-024-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp7-025-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp7-025-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp7-026-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp7-026-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp7-027-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp7-028-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp7-029-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp7-030-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp7-031-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp2-023-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp7-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-001-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-003-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-003-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-003-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-005-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-005-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-005-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-007-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-007-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-007-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-009-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-010-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-011-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-012-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp7-019-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp7-020-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp7-020-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp7-021-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp7-022-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp7-022-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp7-023-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp7-024-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp7-025-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-001-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-003-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-003-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-003-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-005-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-005-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-005-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-006-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-006-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-006-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-007-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-007-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-007-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-009-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-010-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-010-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-011-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-011-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-012-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-019-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-020-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-021-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-022-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-023-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-023-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-024-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-024-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-025-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-026-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-027-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp7-028-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb1-025-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    },
+    {
+      "code": "NSD02",
+      "label": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "expansion": {
+        "id": "NSD02",
+        "name": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+        "release_date": "2026.08.08",
+        "slug": "NSD02",
+        "url": "https://llofficial-cardgame.com/products/sd06llnj/"
+      },
+      "total": 43,
+      "included": 41,
+      "energy": 2,
+      "existing": 41,
+      "missing": [],
+      "masterOnly": [],
+      "rarityDifferences": [],
+      "officialCards": [
+        {
+          "cardNumber": "PL!N-sd1-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd1-001-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd1-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd1-004-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd1-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd1-006-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd1-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd1-008-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd1-026-P",
+          "rarity": "P",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-sd1-026-SD2",
+          "rarity": "SD2",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-sd2-001-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-002-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-003-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-004-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-005-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-006-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-007-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-008-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-009-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-010-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-011-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-012-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-013-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-014-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-015-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-016-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-017-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-018-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-019-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-020-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-021-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-022-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-023-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-024-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd2-025-P",
+          "rarity": "P",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-sd2-025-SD2",
+          "rarity": "SD2",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-sd2-026-P",
+          "rarity": "P",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-sd2-026-SD2",
+          "rarity": "SD2",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-sd2-027-P",
+          "rarity": "P",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-sd2-027-SD2",
+          "rarity": "SD2",
+          "cardKind": "ライブ"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    },
+    {
+      "code": "PBSP02",
+      "label": "プレミアムブースター ラブライブ！スーパースター!! DUO",
+      "expansion": {
+        "id": "PBSP02",
+        "name": "プレミアムブースター ラブライブ！スーパースター!! DUO",
+        "release_date": "2026.06.27",
+        "slug": "PBSP02",
+        "url": "https://llofficial-cardgame.com/products/pbsp_duo/"
+      },
+      "total": 123,
+      "included": 103,
+      "energy": 20,
+      "existing": 103,
+      "missing": [],
+      "masterOnly": [],
+      "rarityDifferences": [
+        {
+          "number": "PL!SP-bp1-023-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp1-024-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp1-025-SECL",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp1-025-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp1-026-SECL",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp1-026-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp1-027-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp2-023-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp2-024-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp2-025-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp2-026-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp2-027-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp4-023-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp4-024-SECL",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp4-024-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp4-025-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp4-026-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp4-027-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp4-028-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp4-029-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-bp4-030-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-pb1-023-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-pb1-024-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-pb1-025-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-pb1-026-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-pb2-000-DUO",
+          "before": null,
+          "official": "DUO"
+        },
+        {
+          "number": "PL!SP-pb2-000-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-001-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-001-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-002-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-002-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-003-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-003-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-004-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-004-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-005-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-005-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-006-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-006-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-007-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-007-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-008-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-008-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-009-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-009-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-010-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-010-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-011-PP",
+          "before": null,
+          "official": "PP"
+        },
+        {
+          "number": "PL!SP-pb2-011-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-012-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-012-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-013-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-013-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-014-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-014-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-015-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-015-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-016-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-016-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-017-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-017-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-018-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-018-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-019-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-019-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-020-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-020-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-021-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-021-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-022-P＋",
+          "before": null,
+          "official": "P＋"
+        },
+        {
+          "number": "PL!SP-pb2-022-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-pb2-023-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-024-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-025-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-026-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-027-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-028-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-029-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-030-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-031-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-032-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-033-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-034-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-035-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-036-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-037-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-038-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-039-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-040-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-041-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-042-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-043-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-044-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-pb2-045-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-pb2-047-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-pb2-048-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-pb2-049-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-pb2-050-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-sd1-023-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-sd1-024-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-sd1-025-SRL",
+          "before": null,
+          "official": "SRL"
+        },
+        {
+          "number": "PL!SP-sd1-026-SRL",
+          "before": null,
+          "official": "SRL"
+        }
+      ],
+      "officialCards": [
+        {
+          "cardNumber": "PL!SP-bp1-023-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp1-024-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp1-025-SECL",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp1-025-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp1-026-SECL",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp1-026-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp1-027-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp2-023-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp2-024-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp2-025-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp2-026-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp2-027-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp4-023-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp4-024-SECL",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp4-024-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp4-025-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp4-026-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp4-027-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp4-028-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp4-029-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp4-030-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb1-023-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb1-024-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb1-025-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb1-026-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-000-DUO",
+          "rarity": "DUO",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-000-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-001-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-001-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-002-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-003-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-003-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-004-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-005-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-005-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-006-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-007-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-007-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-008-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-009-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-010-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-010-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-011-PP",
+          "rarity": "PP",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-011-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-012-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-012-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-013-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-013-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-014-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-014-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-015-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-015-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-016-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-016-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-017-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-017-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-018-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-018-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-019-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-019-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-020-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-020-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-021-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-021-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-022-P＋",
+          "rarity": "P＋",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-022-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-023-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-024-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-025-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-026-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-027-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-028-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-029-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-030-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-031-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-032-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-033-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-034-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-035-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-036-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-037-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-038-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-039-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-040-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-041-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-042-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-043-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-044-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-045-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-046-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-047-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-048-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-049-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-pb2-050-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-023-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-024-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-025-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-026-SRL",
+          "rarity": "SRL",
+          "cardKind": "ライブ"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    },
+    {
+      "code": "BP06",
+      "label": "ブースターパック Royal Holiday",
+      "expansion": {
+        "id": "BP06",
+        "name": "ブースターパック Royal Holiday",
+        "release_date": "2026.05.30",
+        "slug": "BP06",
+        "url": "https://llofficial-cardgame.com/products/BP06"
+      },
+      "total": 167,
+      "included": 130,
+      "energy": 37,
+      "existing": 130,
+      "missing": [],
+      "masterOnly": [],
+      "rarityDifferences": [],
+      "officialCards": [
+        {
+          "cardNumber": "LL-bp6-001-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp4-022-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp6-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-001-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-001-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-001-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-003-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-003-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-003-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-005-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-006-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-006-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-006-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-007-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-007-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-007-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-009-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-010-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-011-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-012-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp6-019-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp6-020-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp6-021-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp6-022-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp6-023-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp6-024-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-001-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-001-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-001-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-003-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-005-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-005-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-005-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-006-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-006-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-006-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-007-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-010-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-011-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-012-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-013-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-014-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-015-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-016-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-019-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-020-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-021-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-022-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-023-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-024-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-025-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-026-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-027-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-028-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-029-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-030-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-031-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp6-032-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-018-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp2-024-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp6-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-001-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-002-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-002-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-002-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-003-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-004-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-004-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-004-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-005-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-007-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-009-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-009-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-009-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-009-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-010-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-011-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-012-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp6-019-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp6-020-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp6-021-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp6-022-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp6-023-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp6-024-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    },
+    {
+      "code": "SPSD02",
+      "label": "スタートデッキ ラブライブ！スーパースター!! cheer",
+      "expansion": {
+        "id": "SPSD02",
+        "name": "スタートデッキ ラブライブ！スーパースター!! cheer",
+        "release_date": "2026.05.30",
+        "slug": "SPSD02",
+        "url": "https://llofficial-cardgame.com/products/sd06llspcheer/"
+      },
+      "total": 41,
+      "included": 39,
+      "energy": 2,
+      "existing": 39,
+      "missing": [],
+      "masterOnly": [],
+      "rarityDifferences": [
+        {
+          "number": "PL!SP-sd1-003-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-sd1-003-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd1-011-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-sd1-011-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd1-019-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-sd1-019-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd1-020-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-sd1-020-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd1-024-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-sd1-024-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-001-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-002-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-sd2-002-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-003-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-004-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-005-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-006-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-007-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-008-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-009-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-010-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-011-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-012-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-013-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-014-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-015-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-016-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-017-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-018-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-019-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-020-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-021-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-022-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-023-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-sd2-023-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-024-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-sd2-024-SD2",
+          "before": null,
+          "official": "SD2"
+        },
+        {
+          "number": "PL!SP-sd2-025-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-sd2-025-SD2",
+          "before": null,
+          "official": "SD2"
+        }
+      ],
+      "officialCards": [
+        {
+          "cardNumber": "PL!SP-sd1-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-003-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-011-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-011-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-019-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-019-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-020-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-020-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-024-P",
+          "rarity": "P",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-024-SD2",
+          "rarity": "SD2",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-001-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-002-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-003-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-004-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-005-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-006-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-007-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-008-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-009-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-010-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-011-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-012-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-013-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-014-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-015-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-016-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-017-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-018-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-019-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-020-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-021-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-022-SD2",
+          "rarity": "SD2",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-023-P",
+          "rarity": "P",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-023-SD2",
+          "rarity": "SD2",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-024-P",
+          "rarity": "P",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-024-SD2",
+          "rarity": "SD2",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-025-P",
+          "rarity": "P",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-sd2-025-SD2",
+          "rarity": "SD2",
+          "cardKind": "ライブ"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    },
+    {
+      "code": "CLHS01",
+      "label": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "expansion": {
+        "id": "CLHS01",
+        "name": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+        "release_date": "2026.05.30",
+        "slug": "CLHS01",
+        "url": "https://llofficial-cardgame.com/products/cp_hs/"
+      },
+      "total": 16,
+      "included": 12,
+      "energy": 4,
+      "existing": 12,
+      "missing": [],
+      "masterOnly": [],
+      "rarityDifferences": [],
+      "officialCards": [
+        {
+          "cardNumber": "PL!HS-cl1-001-CL",
+          "rarity": "CL",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-002-CL",
+          "rarity": "CL",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-003-CL",
+          "rarity": "CL",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-004-CL",
+          "rarity": "CL",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-005-CL",
+          "rarity": "CL",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-006-CL",
+          "rarity": "CL",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-007-CL",
+          "rarity": "CL",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-008-CL",
+          "rarity": "CL",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-009-CL",
+          "rarity": "CL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-010-CL",
+          "rarity": "CL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-011-CL",
+          "rarity": "CL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-cl1-012-CL",
+          "rarity": "CL",
+          "cardKind": "ライブ"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    },
+    {
+      "code": "PBHS",
+      "label": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "expansion": {
+        "id": "PBHS",
+        "name": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+        "release_date": "2026.05.01",
+        "slug": "PBHS",
+        "url": "https://llofficial-cardgame.com/products/pbllhs/"
+      },
+      "total": 88,
+      "included": 49,
+      "energy": 39,
+      "existing": 49,
+      "missing": [],
+      "masterOnly": [],
+      "rarityDifferences": [],
+      "officialCards": [
+        {
+          "cardNumber": "PL!HS-bp2-022-L＋",
+          "rarity": "L+",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp2-024-L＋",
+          "rarity": "L+",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp2-026-L＋",
+          "rarity": "L+",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-001-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-001-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-002-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-003-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-003-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-004-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-005-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-005-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-006-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-007-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-007-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-008-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-009-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-010-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-010-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-011-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-011-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-012-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-012-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-013-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-013-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-014-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-014-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-015-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-015-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-016-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-016-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-019-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-020-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-021-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-022-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-023-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-024-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-025-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-026-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-027-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-028-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-029-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-pb1-030-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    },
+    {
+      "code": "BP05",
+      "label": "ブースターパック Anniversary 2026",
+      "expansion": {
+        "id": "BP05",
+        "name": "ブースターパック Anniversary 2026",
+        "release_date": "2026.02.28",
+        "slug": "BP05",
+        "url": "https://llofficial-cardgame.com/products/anniversary2026"
+      },
+      "total": 368,
+      "included": 278,
+      "energy": 90,
+      "existing": 278,
+      "missing": [],
+      "masterOnly": [],
+      "rarityDifferences": [
+        {
+          "number": "PL!SP-bp2-024-SECL",
+          "before": null,
+          "official": "SECL"
+        },
+        {
+          "number": "PL!SP-bp5-001-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-001-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-001-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp5-001-SEC",
+          "before": null,
+          "official": "SEC"
+        },
+        {
+          "number": "PL!SP-bp5-002-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-002-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-002-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp5-002-SEC",
+          "before": null,
+          "official": "SEC"
+        },
+        {
+          "number": "PL!SP-bp5-003-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-003-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-003-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp5-003-SEC",
+          "before": null,
+          "official": "SEC"
+        },
+        {
+          "number": "PL!SP-bp5-004-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-004-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-004-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp5-004-SEC",
+          "before": null,
+          "official": "SEC"
+        },
+        {
+          "number": "PL!SP-bp5-005-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-005-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-005-R＋",
+          "before": null,
+          "official": "R+"
+        },
+        {
+          "number": "PL!SP-bp5-005-SEC",
+          "before": null,
+          "official": "SEC"
+        },
+        {
+          "number": "PL!SP-bp5-006-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-006-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-006-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp5-007-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-007-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-007-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp5-008-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-008-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-008-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp5-009-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-009-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-009-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp5-010-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-010-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-010-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp5-011-AR",
+          "before": null,
+          "official": "AR"
+        },
+        {
+          "number": "PL!SP-bp5-011-P",
+          "before": null,
+          "official": "P"
+        },
+        {
+          "number": "PL!SP-bp5-011-R",
+          "before": null,
+          "official": "R"
+        },
+        {
+          "number": "PL!SP-bp5-012-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-013-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-014-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-015-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-016-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-017-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-018-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-019-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-020-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-021-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-022-N",
+          "before": null,
+          "official": "N"
+        },
+        {
+          "number": "PL!SP-bp5-023-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp5-024-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp5-025-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-bp5-026-L",
+          "before": null,
+          "official": "L"
+        },
+        {
+          "number": "PL!SP-sd1-019-RM",
+          "before": null,
+          "official": "RM"
+        },
+        {
+          "number": "PL!SP-sd1-020-RM",
+          "before": null,
+          "official": "RM"
+        }
+      ],
+      "officialCards": [
+        {
+          "cardNumber": "LL-bp5-001-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "LL-bp5-002-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp3-012-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp3-020-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-001-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-001-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-001-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-002-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-003-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-003-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-003-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-004-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-004-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-004-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-005-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-005-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-006-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-007-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-007-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-008-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-009-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-009-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-010-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-011-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-012-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-019-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-020-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-021-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-022-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-023-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-024-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!-bp5-111-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-111-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-222-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-222-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-333-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-bp5-333-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!-sd1-005-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp1-002-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp1-019-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-001-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-001-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-001-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-002-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-002-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-002-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-003-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-003-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-003-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-004-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-005-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-005-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-006-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-007-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-007-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-008-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-009-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-010-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-011-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-012-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-017-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-018-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-019-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-020-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-021-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-bp5-022-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-PR-014-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-PR-018-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-PR-019-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-PR-021-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp3-028-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp5-001-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-001-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-001-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-002-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-002-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-003-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-003-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-004-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-005-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-005-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-005-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-006-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-007-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-007-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-007-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-008-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-009-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-009-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-010-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-010-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-010-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-011-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-011-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-011-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-012-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-012-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-012-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-012-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-019-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-020-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-021-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-022-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-023-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-024-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-bp5-025-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp5-026-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp5-027-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp5-028-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp5-029-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-bp5-030-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!N-PR-009-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-PR-012-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-PR-014-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!N-sd1-008-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-001-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-001-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-001-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-002-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-002-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-002-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-003-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-003-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-004-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-004-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-005-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-005-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-005-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-006-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-007-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-007-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-008-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-009-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-009-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-010-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-011-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-012-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-019-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp5-020-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp5-021-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp5-021-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp5-022-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp5-023-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!S-bp5-111-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-111-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-222-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-bp5-222-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-PR-025-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!S-PR-027-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp2-024-SECL",
+          "rarity": "SECL",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-001-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-001-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-001-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-001-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-002-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-002-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-002-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-002-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-003-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-003-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-003-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-003-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-004-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-004-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-004-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-004-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-005-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-005-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-005-R＋",
+          "rarity": "R+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-005-SEC",
+          "rarity": "SEC",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-006-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-006-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-006-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-007-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-007-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-007-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-008-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-008-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-008-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-009-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-009-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-009-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-010-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-010-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-010-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-011-AR",
+          "rarity": "AR",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-011-P",
+          "rarity": "P",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-011-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-012-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-013-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-014-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-015-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-016-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-017-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-018-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-019-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-020-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-021-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-022-N",
+          "rarity": "N",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-023-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-024-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-025-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-026-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-027-L",
+          "rarity": "L",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-111-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-111-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-222-P＋",
+          "rarity": "P+",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-bp5-222-R",
+          "rarity": "R",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-019-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!SP-sd1-020-RM",
+          "rarity": "RM",
+          "cardKind": "メンバー"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    },
+    {
+      "code": "HSSD01",
+      "label": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "expansion": {
+        "id": "HSSD01",
+        "name": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+        "release_date": "2026.02.28",
+        "slug": "HSSD01",
+        "url": "https://llofficial-cardgame.com/products/sd05llhs/"
+      },
+      "total": 29,
+      "included": 20,
+      "energy": 9,
+      "existing": 20,
+      "missing": [],
+      "masterOnly": [],
+      "rarityDifferences": [],
+      "officialCards": [
+        {
+          "cardNumber": "PL!HS-sd1-001-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-002-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-003-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-004-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-005-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-006-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-007-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-008-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-009-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-010-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-011-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-012-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-013-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-014-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-015-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-016-SD",
+          "rarity": "SD",
+          "cardKind": "メンバー"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-017-SD",
+          "rarity": "SD",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-018-SD",
+          "rarity": "SD",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-019-SD",
+          "rarity": "SD",
+          "cardKind": "ライブ"
+        },
+        {
+          "cardNumber": "PL!HS-sd1-020-SD",
+          "rarity": "SD",
+          "cardKind": "ライブ"
+        }
+      ],
+      "auditScope": "card-number membership, product assignment, rarity presence; existing effects/stats not re-audited"
+    }
+  ]
+}
