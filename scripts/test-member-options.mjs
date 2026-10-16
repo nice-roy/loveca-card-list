@@ -7,7 +7,7 @@ test('all current member options have explicit display metadata', () => {
   assert.deepEqual(missingMemberMetadata(references.members), []);
 });
 
-for (const [groupId, expectedYears] of [['liella', ['1年生', '2年生', '3年生', '複数メンバー']], ['aqours', ['1年生', '2年生', '3年生']], ['muse', ['1年生', '2年生', '3年生']]]) {
+for (const [groupId, expectedYears] of [['liella', ['1年生', '2年生', '3年生', '複数メンバー']], ['aqours', ['1年生', '2年生', '3年生']], ['muse', ['1年生', '2年生', '3年生', '複数メンバー']]]) {
   test(`${String(groupId)} options are grouped by school year in ascending order`, () => {
     const options = references.members.filter((member) => member.groupId === groupId);
     const groups = groupMemberOptions(options, groupId, references.groups);
@@ -33,7 +33,7 @@ test('official member order is retained inside each school year', () => {
 for (const [groupId, expectedUnits] of [
   ['liella', ['CatChu!', 'KALEIDOSCORE', '5yncri5e!', '複数メンバー']],
   ['aqours', ['CYaRon!', 'AZALEA', 'Guilty Kiss']],
-  ['muse', ['Printemps', 'lily white', 'BiBi']],
+  ['muse', ['Printemps', 'lily white', 'BiBi', '複数メンバー']],
 ]) {
   test(`${String(groupId)} options use explicit official unit order`, () => {
     const options = references.members.filter((member) => member.groupId === groupId);

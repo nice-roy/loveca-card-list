@@ -516,6 +516,11 @@
       "groupIds": [
         "hasunosora"
       ]
+    },
+    {
+      "id": "member:5a3c6de9d0df",
+      "label": "星空 凛&小泉花陽",
+      "groupId": "muse"
     }
   ],
   "products": [
@@ -606,6 +611,10 @@
     {
       "id": "product:df614dd1f5bd",
       "label": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ"
+    },
+    {
+      "id": "product:79a3699c3a78",
+      "label": "プレミアムブースター ラブライブ！DUO"
     }
   ]
 }

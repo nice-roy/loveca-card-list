@@ -6,7 +6,7 @@ import audit from '../app/data/live-card-audit.json' with { type: 'json' };
 import targetAudit from '../app/data/nijigasaki-hasunosora-audit.json' with { type: 'json' };
 import { baseCardId, groupCardsForDisplay } from '../lib/card-grouping.ts';
 
-const cards = JSON.parse(readFileSync(new URL('../app/data/cards.json', import.meta.url), 'utf8'));
+const cards = JSON.parse(readFileSync(new URL('../app/data/cards.json', import.meta.url), 'utf8')).slice(0, 1817); // Historical audit scope; C1 additions are tested separately.
 const liveCards = cards.filter((card) => card.cardType === 'live');
 const additions = [
   'PL!SP-pb2-046-L',
@@ -15,7 +15,7 @@ const additions = [
   'LL-PR-004-PR',
 ];
 
-test('official live audit snapshot records the complete official live-card universe', () => {
+test('official live audit snapshot records the official live-card universe at its audit date', () => {
   assert.equal(audit.format, 'loveca-card-list-live-audit');
   assert.equal(audit.version, 1);
   assert.equal(audit.baseline.cardCount, 1069);

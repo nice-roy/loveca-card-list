@@ -2,7 +2,7 @@ import {expect, test} from '@playwright/test';
 
 test.beforeEach(async ({page}) => {
   await page.goto('/');
-  await expect(page.getByLabel('登録カード総数')).toContainText('1817');
+  await expect(page.getByLabel('登録カード総数')).toContainText('1913');
 });
 
 test('基本表示と「その他」の分類を操作できる', async ({page}) => {
@@ -12,7 +12,7 @@ test('基本表示と「その他」の分類を操作できる', async ({page})
   for (const label of expectedGroups) {
     await expect(groupNavigation.getByRole('button', {name: new RegExp(`^${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:\\s|$)`)})).toBeVisible();
   }
-  await expect(page.getByLabel('登録カード総数')).toContainText('メンバー 1526 · ライブ 291');
+  await expect(page.getByLabel('登録カード総数')).toContainText('メンバー 1582 · ライブ 331');
 
   await groupNavigation.getByRole('button', {name: /^その他(?:\s|$)/}).click();
   const otherNavigation = page.getByRole('navigation', {name: 'その他のグループを切り替え'});
@@ -135,7 +135,7 @@ test('クラウド同期ダイアログを通信なしで開ける', async ({pag
 
 test('Production候補にmock同期UI routeを公開しない', async ({page}) => {
   await page.goto('/sync-ui-preview');
-  await expect(page.getByLabel('登録カード総数')).toContainText('1817');
+  await expect(page.getByLabel('登録カード総数')).toContainText('1913');
   await expect(page.getByRole('heading', {name: 'クラウド同期UI 安全確認'})).toHaveCount(0);
 });
 
