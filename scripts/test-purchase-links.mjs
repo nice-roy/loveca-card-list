@@ -8,10 +8,12 @@ import {applyAuditedPurchaseLinks} from '../lib/purchase-links.ts';
 
 const rawCards = JSON.parse(fs.readFileSync('app/data/cards.json','utf8'));
 const auditedLiveLinks = JSON.parse(fs.readFileSync('app/data/live-purchase-links.json','utf8'));
-const cards = applyAuditedPurchaseLinks(rawCards,auditedLiveLinks);
+const auditedDuoLinks = JSON.parse(fs.readFileSync('app/data/duo-purchase-links.json','utf8'));
+const cards = applyAuditedPurchaseLinks(rawCards,[...auditedLiveLinks,...auditedDuoLinks]);
 const before = JSON.parse(execFileSync('git',['show','5ea459c6326ac7a0c7dbec5638ac36f7a6282b3e:app/data/cards.json'],{encoding:'utf8',maxBuffer:10*1024*1024}));
 const audit = JSON.parse(fs.readFileSync('docs/purchase-links-audit.json','utf8'));
 const liveAudit = JSON.parse(fs.readFileSync('docs/live-purchase-links-audit.json','utf8'));
+const duoAudit = JSON.parse(fs.readFileSync('docs/duo-purchase-links-audit.json','utf8'));
 const verifiedCards = JSON.parse(execFileSync('git',['show','73927d6824c108cb7a47400dc619994b9d7e4c52:app/data/cards.json'],{encoding:'utf8',maxBuffer:100*1024*1024}));
 const groupAudit = JSON.parse(fs.readFileSync('app/data/nijigasaki-hasunosora-audit.json','utf8'));
 const pageSource = fs.readFileSync('app/page.tsx','utf8');
@@ -28,6 +30,7 @@ test('every Card Labo link is a directly verified HTTPS product URL attached to 
   const auditedLinks = new Set([
     ...audit.registered.map(record=>`${record.cardId}:${record.url}`),
     ...liveAudit.B.map(record=>`${record.cardId}:${record.url}`),
+    ...duoAudit.verified.map(record=>`${record.cardId}:${record.url}`),
   ]);
   let count = 0;
   for(const card of cards){
@@ -38,7 +41,7 @@ test('every Card Labo link is a directly verified HTTPS product URL attached to 
       count++;
     }
   }
-  assert.equal(count,audit.registered.length+liveAudit.B.length);
+  assert.equal(count,audit.registered.length+liveAudit.B.length+duoAudit.verified.length);
   assert.equal(audit.registered.length+audit.unregistered.length,783);
 });
 test('every historically verified Card Labo link remains attached to the same physical card version',()=>{
@@ -116,7 +119,7 @@ test('grouped display exposes every verified physical-version purchase link with
   const grouped=groupCardsForDisplay(cards);
   const linkedGroups=grouped.filter(group=>group.cards.some(card=>card.purchaseLinks?.some(link=>link.shopId==='cardlabo')));
   const displayed=linkedGroups.flatMap(group=>cardlaboLinksForDisplay(group.cards));
-  const verifiedCount=audit.registered.length+liveAudit.B.length;
+  const verifiedCount=audit.registered.length+liveAudit.B.length+duoAudit.verified.length;
   assert.equal(displayed.length,verifiedCount);
   assert.equal(new Set(displayed.map(link=>`${link.cardId}:${link.url}`)).size,verifiedCount);
   assert.ok(linkedGroups.some(group=>group.cards.length>1&&cardlaboLinksForDisplay(group.cards).length>1));
