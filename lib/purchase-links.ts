@@ -3,6 +3,10 @@ import type { Card, PurchaseLink } from '../app/data/schema';
 export type AuditedPurchaseLink = PurchaseLink & {
   cardId: string;
   cardNumber: string;
+  // Historical records are live-only. New audits can bind a member/live record
+  // to its exact type and product without changing the card master.
+  cardType?: Card['cardType'];
+  productId?: string;
 };
 
 export function applyAuditedPurchaseLinks(cards: Card[], records: AuditedPurchaseLink[]): Card[] {
@@ -16,7 +20,8 @@ export function applyAuditedPurchaseLinks(cards: Card[], records: AuditedPurchas
   const result = cards.map((card) => {
     const record = byId.get(card.id);
     if (!record) return card;
-    if (card.cardType !== 'live' || card.cardNumber !== record.cardNumber) {
+    if (card.cardType !== (record.cardType ?? 'live') || card.cardNumber !== record.cardNumber
+      || (record.productId !== undefined && card.productId !== record.productId)) {
       throw new Error(`Audited purchase link is attached to the wrong physical card: ${record.cardNumber}`);
     }
     const cardlaboLinks = (card.purchaseLinks ?? []).filter((link) => link.shopId === 'cardlabo');
