@@ -16,6 +16,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { CloudSyncDialog } from '@/components/cloud-sync-dialog';
 import { CloudSyncEntry } from '@/components/cloud-sync-entry';
+import { productFilterOption } from '@/lib/product-filter';
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 import { baseCardId, cardlaboLinksForDisplay, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
 import { parseCandidateImportText } from '@/lib/candidate-import';
@@ -377,7 +378,7 @@ export default function Home() {
   const memberOptionGroups = useMemo(() => groupMemberOptions(availableMembers, groupId, references.groups, memberDisplayMode), [availableMembers, groupId, memberDisplayMode]);
   const availableProducts = useMemo(() => {
     const availableProductIds = getProductIdsForGroup(groupId);
-    return references.products.filter((product) => availableProductIds.has(product.id));
+    return references.products.filter((product) => availableProductIds.has(product.id)).map(productFilterOption);
   }, [groupId]);
   const availableCosts = useMemo(() => numericOptions(cards, groupId, 'cost'), [groupId]);
   const availableScores = useMemo(() => numericOptions(cards, groupId, 'score'), [groupId]);
