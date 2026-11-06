@@ -1,5 +1,5 @@
 import {expect, test} from '@playwright/test';
-import cards from '../app/data/cards.json';
+import cards from '../app/data/cards.json' with {type: 'json'};
 
 test('収録商品の略号で区別して複数選択・解除できる', async ({page}) => {
   const liella = 'Li-PB1｜プレミアムブースター ラブライブ！スーパースター!!';
