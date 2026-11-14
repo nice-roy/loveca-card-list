@@ -7,7 +7,6 @@ for (const width of [1365, 390]) {
     test.setTimeout(60000);
     await page.setViewportSize({ width, height: 720 });
     const errors: string[] = [];
-    page.on('console', message => { if (message.text().startsWith('SCROLL_APP')) console.log(message.text()); });
     const external: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
     await context.routeWebSocket('**/*', ws => { external.push('websocket'); ws.close(); });
@@ -51,9 +50,11 @@ for (const width of [1365, 390]) {
       const openingPosition = await page.locator('.effect-read-more[data-scroll-at-open]').getAttribute('data-scroll-at-open');
       expect(openingPosition).not.toBeNull();
       const scrollBefore = Number(openingPosition);
-      console.log('SCROLL_TEST', width, iteration, scrollBefore);
       const dialog = page.getByRole('dialog', { name, exact: true });
       await expect(dialog).toBeVisible();
+      await dialog.evaluate(async el => {
+        await Promise.all(el.getAnimations().map(animation => animation.finished));
+      });
       await expect(dialog).toContainText(number);
       await expect(dialog.locator('.effect-detail-text')).toContainText(ending);
       await expect(dialog.getByLabel(icon, { exact: true })).toBeVisible();

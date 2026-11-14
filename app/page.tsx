@@ -264,17 +264,16 @@ function CardEffect({ name, number, text }: { name: string; number: string; text
     <Dialog onOpenChange={(open) => {
       if (open) {
         openingScroll.current = { left: window.scrollX, top: window.scrollY };
-        console.log('SCROLL_APP open', JSON.stringify(openingScroll.current));
         // overflow:hidden does not stop an already-running smooth scroll.
         // Freeze the opening position before the modal locks the background.
         window.scrollTo({ ...openingScroll.current, behavior: 'instant' });
-        console.log('SCROLL_APP stopped', window.scrollY);
       }
     }} onOpenChangeComplete={(open) => {
-      if (!open && openingScroll.current) {
-        // Restore after the scroll lock and closing transition have finished.
+      if (openingScroll.current) {
+        // A queued compositor scroll may land during mounting. Reconcile once
+        // the opening/closing transition (and scroll-lock change) has finished.
         window.scrollTo({ ...openingScroll.current, behavior: 'instant' });
-        openingScroll.current = null;
+        if (!open) openingScroll.current = null;
       }
     }}>
       {isTruncated && <DialogTrigger render={<button className="effect-read-more" type="button" />} aria-label={`${name}の効果を全文読む`}>全文を読む <ChevronDown aria-hidden="true" /></DialogTrigger>}
@@ -282,7 +281,6 @@ function CardEffect({ name, number, text }: { name: string; number: string; text
         // Mounting the popup can flush a pending compositor scroll. Reapply the
         // saved position here and focus without starting another scroll.
         if (openingScroll.current) window.scrollTo({ ...openingScroll.current, behavior: 'instant' });
-        console.log('SCROLL_APP focus', JSON.stringify(openingScroll.current), window.scrollY);
         closeButtonRef.current?.focus({ preventScroll: true });
         return false;
       }}>
