@@ -6,6 +6,13 @@ test('同期コードのコピー操作は整形済みコードを渡して成�
   page.on('pageerror', error => errors.push(error.message));
   await context.route('**/*', route => {
     if (new URL(route.request().url()).origin === 'http://127.0.0.1:4173') return route.continue();
+    // Production候補では画面を開くと履歴取得が始まる。実Workerへは送らない。
+    if (process.env.VITE_SYNC_API_URL
+      && route.request().url() === `${process.env.VITE_SYNC_API_URL}/sync/history`
+      && route.request().method() === 'POST') {
+      expect(route.request().postDataJSON()).toEqual({code: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'});
+      return route.fulfill({status: 200, contentType: 'application/json', body: JSON.stringify({history: [], revision: 1})});
+    }
     external.push(route.request().url());
     return route.abort();
   });
