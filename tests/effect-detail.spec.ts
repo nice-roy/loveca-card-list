@@ -38,7 +38,10 @@ for (const width of [1365, 390]) {
       });
       const storageBefore = await page.evaluate(() => JSON.stringify({ ...localStorage }));
       await trigger.click();
-      const scrollBefore = Number(await trigger.getAttribute('data-scroll-at-open'));
+      // The modal makes the background inaccessible to role locators while open.
+      const openingPosition = await page.locator('.effect-read-more[data-scroll-at-open]').getAttribute('data-scroll-at-open');
+      expect(openingPosition).not.toBeNull();
+      const scrollBefore = Number(openingPosition);
       const dialog = page.getByRole('dialog', { name, exact: true });
       await expect(dialog).toBeVisible();
       await expect(dialog).toContainText(number);
