@@ -241,6 +241,7 @@ function EffectText({ text, className }: { text: string; className?: string }) {
 
 function CardEffect({ name, number, text }: { name: string; number: string; text: string }) {
   const previewRef = useRef<HTMLDivElement>(null);
+  const openingScroll = useRef<{ left: number; top: number } | null>(null);
   const [isTruncated, setIsTruncated] = useState(false);
 
   useEffect(() => {
@@ -259,7 +260,20 @@ function CardEffect({ name, number, text }: { name: string; number: string; text
 
   return <div className="card-effect" ref={previewRef}>
     <EffectText className="effect-text" text={text} />
-    <Dialog>
+    <Dialog onOpenChange={(open) => {
+      if (open) {
+        openingScroll.current = { left: window.scrollX, top: window.scrollY };
+        // overflow:hidden does not stop an already-running smooth scroll.
+        // Freeze the opening position before the modal locks the background.
+        window.scrollTo({ ...openingScroll.current, behavior: 'instant' });
+      }
+    }} onOpenChangeComplete={(open) => {
+      if (!open && openingScroll.current) {
+        // Restore after the scroll lock and closing transition have finished.
+        window.scrollTo({ ...openingScroll.current, behavior: 'instant' });
+        openingScroll.current = null;
+      }
+    }}>
       {isTruncated && <DialogTrigger render={<button className="effect-read-more" type="button" />} aria-label={`${name}の効果を全文読む`}>全文を読む <ChevronDown aria-hidden="true" /></DialogTrigger>}
       <DialogContent className="effect-detail-dialog" showCloseButton={false}>
         <DialogHeader className="effect-detail-header">

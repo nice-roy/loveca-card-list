@@ -22,10 +22,10 @@ for (const width of [1365, 390]) {
     const search = page.getByRole('searchbox', { name: 'カード名、カード番号、効果テキストで検索' });
     const card = page.getByRole('article');
 
-    for (const [number, name, ending, icon] of [
+    for (const [iteration, [number, name, ending, icon]] of [
       ['LL-bp5-001-L', 'Live with a smile!', 'このカードのスコアを＋１する。', '桃ハート'],
       ['PL!-bp8-001-R', '高坂穂乃果', '減らす。', '無色ハート'],
-    ].flatMap(item => [item,item,item])) {
+    ].flatMap(item => [item,item,item]).entries()) {
       await search.fill(number);
       await expect(card).toHaveCount(1);
       const trigger = card.getByRole('button', { name: `${name}の効果を全文読む`, exact: true });
@@ -39,7 +39,15 @@ for (const width of [1365, 390]) {
         }, { once: true });
       });
       const storageBefore = await page.evaluate(() => JSON.stringify({ ...localStorage }));
-      await snap('before-click'); await trigger.click();
+      await snap('before-click');
+      if (iteration % 3 === 2) {
+        // Reproduce opening while a previous focus/navigation scroll is running.
+        await trigger.evaluate(button => {
+          (button as HTMLElement).focus({ preventScroll: true });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        await trigger.press('Enter');
+      } else await trigger.click();
       // The modal makes the background inaccessible to role locators while open.
       const openingPosition = await page.locator('.effect-read-more[data-scroll-at-open]').getAttribute('data-scroll-at-open');
       expect(openingPosition).not.toBeNull();
@@ -59,6 +67,7 @@ for (const width of [1365, 390]) {
       await page.keyboard.press('Tab');
       expect(await dialog.evaluate(el => el.contains(document.activeElement))).toBe(true);
       await dialog.locator('.effect-detail-scroll').evaluate(el => { el.scrollTop = el.scrollHeight; });
+      expect(Math.abs(await page.evaluate(() => window.scrollY) - scrollBefore)).toBeLessThanOrEqual(2);
       await snap('before-close'); if (name === 'Live with a smile!') await page.keyboard.press('Escape');
       else await dialog.getByRole('button', { name: '閉じる', exact: true }).click();
       await expect(dialog).toBeHidden();
