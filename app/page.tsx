@@ -188,12 +188,19 @@ function compareNullable(left: string | number | null, right: string | number | 
   return direction === 'asc' ? result : -result;
 }
 
+function SpecialBladeBadge({ kind }: { kind: 'all' | 'draw' | 'score' }) {
+  const label = { all: 'ALLブレード', draw: 'ドロー', score: 'スコア' }[kind];
+  return <span className="special-heart" aria-label={label} title={kind === 'all' ? '桃・赤・黄・緑・青・紫のいずれか1色として扱います。橙は含みません。' : undefined}>{label}</span>;
+}
+
 function Hearts({ values, blade = false }: { values: { color: string | null; count: number }[]; blade?: boolean }) {
   if (!values.length) return <span className="muted-dash">—</span>;
   return <span className="heart-list">{values.map((value, index) => (
     <span className="heart-value" key={`${value.color}-${index}`}>
-      <HeartSymbol color={value.color ?? 'any'} className={`${blade ? 'blade-heart' : ''} ${colorClass[value.color ?? 'any']}`} />
-      <span className="heart-color-label">{HEART_COLOR_LABELS[(value.color ?? 'any') as HeartColor] ?? '色不明'}</span>
+      {blade && value.color === 'all' ? <SpecialBladeBadge kind="all" /> : <>
+        <HeartSymbol color={value.color ?? 'any'} className={`${blade ? 'blade-heart' : ''} ${colorClass[value.color ?? 'any']}`} />
+        <span className="heart-color-label">{HEART_COLOR_LABELS[(value.color ?? 'any') as HeartColor] ?? '色不明'}</span>
+      </>}
       <strong>×{value.count}</strong>
     </span>
   ))}</span>;
@@ -203,14 +210,13 @@ function LiveHearts({ live }: { live: NonNullable<Card['live']> }) {
   if (live.bladeHearts === undefined || live.specialHeart === undefined) return <span className="muted-dash">未確認</span>;
   return <span className="live-heart-list">
     {live.bladeHearts.length > 0 && <Hearts blade values={live.bladeHearts} />}
-    {live.specialHeart && <span className="special-heart" aria-label={live.specialHeart === 'draw' ? 'ドローハート' : 'スコアアップハート'}>
-      {live.specialHeart === 'draw' ? 'ドロー' : 'スコアアップ'}
-    </span>}
+    {live.specialHeart && <SpecialBladeBadge kind={live.specialHeart} />}
     {!live.bladeHearts.length && !live.specialHeart && <span className="muted-dash">—</span>}
   </span>;
 }
 
 function EffectIconDisplay({ icon }: { icon: EffectIcon }) {
+  if (icon.type === 'blade' && icon.all) return <SpecialBladeBadge kind="all" />;
   const label = icon.type === 'heart'
     ? heartDisplayLabel(icon.color)
     : icon.color ? heartDisplayLabel(icon.color, true) : 'ブレード';

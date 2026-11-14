@@ -38,17 +38,22 @@ for (const width of [1365,390]) {
     // Distinguish colorless from ALL, and verify both old products and BP08.
     for(const [number,text] of [
       ['PL!-bp8-019-L','無色×2'],
-      ['PL!SP-bp2-025-SRL','ALL×1'],
-      ['LL-PR-004-PR','ALL×1'],
-      ['PL!SP-bp1-023-L','スコアアップ'],
-      ['PL!-bp8-020-L','スコアアップ'],
+      ['PL!SP-bp2-025-SRL','ALLブレード×1'],
+      ['LL-PR-004-PR','ALLブレード×1'],
+      ['PL!SP-bp1-023-L','スコア'],
+      ['PL!-bp8-020-L','スコア'],
       ['PL!-bp8-024-L','紫×1ドロー'],
     ]) {
       await search.fill(number);
       await expect(card).toHaveCount(1);
       await expect(card.locator('.live-heart-list')).toHaveText(text);
+      if(text==='ALLブレード×1') {
+        const badge=card.locator('.live-heart-list').getByLabel('ALLブレード',{exact:true});
+        await expect(badge).toHaveAttribute('title',/橙は含みません/);
+        await expect(card.locator('.live-heart-list svg')).toHaveCount(0);
+      }
     }
-    await expect(card.getByLabel('ドローハート',{exact:true})).toBeVisible();
+    await expect(card.getByLabel('ドロー',{exact:true})).toBeVisible();
     await card.getByRole('button',{name:'デッキに追加',exact:true}).click();
     if(width<768) await toolbar.getByRole('button',{name:/^デッキ/}).click();
     else await page.getByRole('button',{name:'デッキを開く、現在1枚',exact:true}).click();
