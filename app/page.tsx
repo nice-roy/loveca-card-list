@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Copy, ExternalLink, Layers3, ListPlus, Minus, Plus, RotateCcw, Search, SlidersHorizontal, Sparkles, Trash2, X } from 'lucide-react';
 import cardsJson from './data/cards.json';
 import livePurchaseLinksJson from './data/live-purchase-links.json';
@@ -11,7 +11,7 @@ import referencesJson from './data/reference-data.json';
 import type { Card, ReferenceData, SortKey } from './data/schema';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -232,6 +232,44 @@ function EffectText({ text, className }: { text: string; className?: string }) {
       ? <span key={index}>{fragment.value}</span>
       : <EffectIconDisplay icon={fragment.icon} key={index} />,
   )}</p>;
+}
+
+function CardEffect({ name, number, text }: { name: string; number: string; text: string }) {
+  const previewRef = useRef<HTMLDivElement>(null);
+  const [isTruncated, setIsTruncated] = useState(false);
+
+  useEffect(() => {
+    const paragraph = previewRef.current?.querySelector('p');
+    if (!paragraph) return;
+    let disposed = false;
+    const measure = () => {
+      if (!disposed) setIsTruncated(paragraph.scrollHeight > paragraph.clientHeight + 1);
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(paragraph);
+    measure();
+    void document.fonts.ready.then(measure);
+    return () => { disposed = true; observer.disconnect(); };
+  }, [text]);
+
+  return <div className="card-effect" ref={previewRef}>
+    <EffectText className="effect-text" text={text} />
+    <Dialog>
+      {isTruncated && <DialogTrigger render={<button className="effect-read-more" type="button" />} aria-label={`${name}の効果を全文読む`}>全文を読む <ChevronDown aria-hidden="true" /></DialogTrigger>}
+      <DialogContent className="effect-detail-dialog" showCloseButton={false}>
+        <DialogHeader className="effect-detail-header">
+          <span className="effect-detail-label">効果全文</span>
+          <DialogTitle>{name}</DialogTitle>
+          <DialogDescription><code>{number}</code></DialogDescription>
+          <DialogClose aria-label="効果全文を閉じる" className="effect-detail-close" render={<Button size="icon-sm" type="button" variant="ghost" />}><X aria-hidden="true" /></DialogClose>
+        </DialogHeader>
+        <div aria-label="効果全文" className="effect-detail-scroll" tabIndex={0}>
+          <EffectText className="effect-detail-text" text={text} />
+        </div>
+        <DialogFooter className="effect-detail-footer"><DialogClose render={<Button type="button" variant="outline" />}>閉じる</DialogClose></DialogFooter>
+      </DialogContent>
+    </Dialog>
+  </div>;
 }
 
 function InventoryStepper({ label, count, onChange }: { label: string; count: number; onChange: (count: number) => void }) {
@@ -1037,7 +1075,7 @@ export default function Home() {
           <div className="card-body"><Badge className="type-badge" variant="secondary">{card.cardType === 'member' ? 'MEMBER' : 'LIVE'}</Badge><div className="card-heading"><div><h2>{card.name}</h2><code>{isGrouped ? group.baseCardId : card.cardNumber}</code></div>{card.member && <span className="metric"><small>COST</small>{card.member.cost ?? '—'}</span>}{card.live && <span className="metric score"><small>SCORE</small>{card.live.score ?? '—'}</span>}</div>
             {isGrouped && <div className="version-summary"><span>バージョン</span>{group.cards.map((version) => <Badge key={version.id} variant="outline">{cardVersion(version.cardNumber) ?? version.cardNumber}</Badge>)}</div>}
             <p className="product-name">{productIdsInGroup.size === 1 ? productById.get(card.productId) : '収録商品はバージョン別'}</p><dl className="stats">{card.member && <><div><dt>基本ハート</dt><dd><Hearts values={card.member.hearts} /></dd></div><div><dt>ブレードハート</dt><dd><Hearts blade values={card.member.bladeHearts} /></dd></div><div><dt>ブレード</dt><dd>{card.member.yell.count ?? '—'}</dd></div></>}{card.live && <><div><dt>必要ハート</dt><dd><Hearts values={card.live.requiredHearts} /></dd></div><div><dt>ブレードハート</dt><dd><LiveHearts live={card.live} /></dd></div></>}</dl>
-            {card.effectText && <EffectText className="effect-text" text={card.effectText} />}
+            {card.effectText && <CardEffect name={card.name} number={isGrouped ? group.baseCardId : card.cardNumber} text={card.effectText} />}
             {groupIdenticalCards ? <><div className={`inventory-total${ownedTotal > 0 ? ' owned' : ''}`}><span>所持合計</span><strong>{ownedTotal}</strong><span>枚</span></div>{!isGrouped && <InventoryStepper count={inventory[card.id] ?? 0} label={card.cardNumber} onChange={(count) => updateInventory(card.id, count)} />}</> : <InventoryStepper count={inventory[card.id] ?? 0} label={card.cardNumber} onChange={(count) => updateInventory(card.id, count)} />}
             <div className="builder-actions"><Button aria-pressed={isCandidate} className={isCandidate ? 'candidate-active' : ''} onClick={() => toggleCandidate(builderId)} size="sm" variant="outline">{isCandidate ? <Check /> : <Bookmark />}{isCandidate ? '候補中' : '候補'}</Button><Button disabled={(deck[builderId] ?? 0) >= MAX_DECK_QUANTITY} onClick={() => updateDeck(builderId, 1)} size="sm"><ListPlus />{(deck[builderId] ?? 0) >= MAX_DECK_QUANTITY ? '4枚採用中' : 'デッキに追加'}</Button></div>
             {isGrouped && <div className="card-links grouped-card-links">{card.officialUrl && <a className="official-link" href={card.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{cardSurfacePurchaseLinks.map((link) => <a className="purchase-link" key={`${link.cardId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入{cardSurfacePurchaseLinks.length > 1 ? `（${link.versionLabel}）` : ''} <ExternalLink /></a>)}</div>}
