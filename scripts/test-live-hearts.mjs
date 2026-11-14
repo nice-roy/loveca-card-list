@@ -4,12 +4,55 @@ import test from 'node:test';
 import { digest, importLiveHearts, parseLiveHearts } from './import-live-hearts.mjs';
 import { applyAuditedLiveHearts } from '../lib/live-hearts.ts';
 import { baseCardId } from '../lib/card-grouping.ts';
+import { createAiConsultationText } from '../lib/deck-builder.ts';
 
 const read = path => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
 const cards = read('../app/data/cards.json');
 const references = read('../app/data/reference-data.json');
 const snapshot = read('../docs/live-hearts/official-live-hearts.json');
 const records = read('../app/data/live-hearts.json');
+
+test('AI copy preserves audited ALL, orange, colorless, score and draw for adopted and candidate lives', () => {
+  const enriched = applyAuditedLiveHearts(cards, records);
+  const examples = [
+    ['PL!-bp8-019-L', '無色×2'],
+    ['PL!-bp3-026-SECL', 'ALLブレード×1'],
+    ['PL!-bp8-023-L', '橙×1'],
+    ['PL!-bp8-020-L', 'スコア×1'],
+    ['PL!-bp8-024-L', '紫×1 / ドロー×1'],
+  ];
+  for (const [number, expected] of examples) {
+    const card = enriched.find(card => card.cardNumber === number);
+    assert.ok(card, number);
+    const entry = { id: baseCardId(number), quantity: 2, card };
+    for (const text of [createAiConsultationText([entry]), createAiConsultationText([], [entry])]) {
+      assert.ok(text.includes(`  ブレードハート：${expected}\n`), number);
+      assert.match(text, /桃・赤・黄・緑・青・紫のいずれか1色のハート1個/);
+      assert.match(text, /橙には対応しません。無色とALLブレードは別/);
+      assert.doesNotMatch(text, /ブレードハート：(?:未確認|なし)|orange×|all×|any×/);
+    }
+  }
+  assert.ok(enriched.filter(card => card.live).every(card =>
+    !createAiConsultationText([{id: card.id, quantity: 1, card}]).includes('ブレードハート：未確認')));
+});
+
+test('AI copy distinguishes unverified live hearts from verified absence without mutating cards', () => {
+  const original = cards.find(card => card.live);
+  const variants = [
+    [original, '未確認'],
+    [{...original, live:{...original.live, bladeHearts:[]}}, '未確認'],
+    [{...original, live:{...original.live, specialHeart:null}}, '未確認'],
+    [{...original, live:{...original.live, bladeHearts:[], specialHeart:null}}, 'なし'],
+  ];
+  const before = digest(variants);
+  for (const [card, expected] of variants) {
+    const entry = {id:card.id, quantity:1, card};
+    for (const text of [createAiConsultationText([entry]), createAiConsultationText([], [entry])]) {
+      assert.ok(text.includes(`  ブレードハート：${expected}\n`));
+    }
+  }
+  assert.equal(digest(variants), before);
+});
 
 test('all 364 stored live versions match the complete official list and required hearts', () => {
   assert.equal(snapshot.officialTotal, 2882);

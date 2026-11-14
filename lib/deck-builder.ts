@@ -140,6 +140,8 @@ const heartColorLabels: Record<string, string> = {
   green: '緑',
   blue: '青',
   purple: '紫',
+  orange: '橙',
+  all: 'ALLブレード',
   any: '無色',
 };
 
@@ -160,7 +162,7 @@ const effectBladeTokenLabels: Record<string, string> = {
   heart04: '緑ブレード',
   heart05: '青ブレード',
   heart06: '紫ブレード',
-  heart0: 'ALLブレード',
+  heart0: '無色ブレード',
 };
 
 // Legacy Liella effect text was flattened from structured icon markup into ♥/◇.
@@ -181,6 +183,7 @@ export function formatEffectTextForAi(card: Card) {
   if (!card.effectText) return '記載なし';
   const sourceText = verifiedEffectIconMarkup[card.effectText] ?? card.effectText;
   const converted = sourceText
+    .replace(/\[全ブレード\]/g, '[ALLブレード]')
     .replace(/(heart0[1-6]|heart0)ブレード/g, (_, token: string) => `[${effectBladeTokenLabels[token]}]`)
     .replace(/♥ブレード/g, '[色不明ブレード]')
     .replace(/heart0[1-6]|heart0/g, (token) => `[${effectHeartTokenLabels[token]}]`)
@@ -192,6 +195,13 @@ export function formatEffectTextForAi(card: Card) {
 function formatHearts(values: { color: string | null; count: number }[]) {
   if (!values.length) return 'なし';
   return values.map((value) => `${heartColorLabels[value.color ?? 'any'] ?? value.color ?? '無色'}×${value.count}`).join(' / ');
+}
+
+function formatLiveBladeHearts(live: Card['live']) {
+  if (!live || live.bladeHearts === undefined || live.specialHeart === undefined) return '未確認';
+  const parts = live.bladeHearts.length ? [formatHearts(live.bladeHearts)] : [];
+  if (live.specialHeart) parts.push(`${live.specialHeart === 'draw' ? 'ドロー' : 'スコア'}×1`);
+  return parts.join(' / ') || 'なし';
 }
 
 function splitDeckEntries(entries: DeckEntry[]) {
@@ -259,6 +269,7 @@ export function createAiConsultationText(
     `  所持：${ownedQuantity(entry.id)}枚`,
     `  不足：${shortageQuantity(entry)}枚`,
     `  必要ハート：${formatHearts(entry.card.live?.requiredHearts ?? [])}`,
+    `  ブレードハート：${formatLiveBladeHearts(entry.card.live)}`,
     `  効果：${formatEffectTextForAi(entry.card)}`,
   ].join('\n')).join('\n\n') : '（なし）';
   const candidateMembers = candidates.filter((entry) => entry.card.cardType === 'member');
@@ -277,6 +288,7 @@ export function createAiConsultationText(
     `  所持：${ownedQuantity(entry.id)}枚`,
     `  SCORE：${entry.card.live?.score ?? '不明'}`,
     `  必要ハート：${formatHearts(entry.card.live?.requiredHearts ?? [])}`,
+    `  ブレードハート：${formatLiveBladeHearts(entry.card.live)}`,
     `  効果：${formatEffectTextForAi(entry.card)}`,
   ].join('\n')).join('\n\n');
   const candidatePrompt = candidates.length ? [
@@ -303,6 +315,8 @@ export function createAiConsultationText(
     '・その理由',
     'を提案してください。',
     '不明なカード効果を推測しないでください。',
+    'ブレードハートの表記：ALLブレード1個は、桃・赤・黄・緑・青・紫のいずれか1色のハート1個として扱います。橙には対応しません。無色とALLブレードは別のものです。',
+    'ドローとスコアは特別なブレードハートです。色付きハートの個数と混同しないでください。未確認の情報は推測しないでください。',
     '所持枚数・不足枚数も記載しています。現在の採用カードをできるだけ尊重しつつ、所持カードを優先した案と、必要に応じて買い足す案を比較してください。',
     '所持枚数が不足しているカードを提案する場合は、何枚追加で必要になるかも考慮してください。ただし、所持0枚のカードを提案禁止にはしないでください。デッキ完成度を優先する場合は未所持カードを提案して構いません。',
     '可能であれば、所持カードを優先する案とデッキ性能を優先する案の差がある場合は、その違いも説明してください。',

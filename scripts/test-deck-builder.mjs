@@ -153,7 +153,8 @@ test('transfer import rejects malformed, unknown, invalid count, and duplicate d
 });
 
 test('AI effect text converts only icons supported by token or structured color data', () => {
-  assert.equal(formatEffectTextForAi({ effectText: 'heart02heart02とheart0、heart03ブレードとheart0ブレード', member: null, live: null }), '赤ハート×2と無色ハート、黄ブレードとALLブレード');
+  assert.equal(formatEffectTextForAi({ effectText: 'heart02heart02とheart0、heart03ブレードとheart0ブレード', member: null, live: null }), '赤ハート×2と無色ハート、黄ブレードと無色ブレード');
+  assert.equal(formatEffectTextForAi({ effectText: '[全ブレード]と[ALLブレード]と[橙ブレードハート]', member: null, live: null }), 'ALLブレードとALLブレードと橙ブレードハート');
   assert.equal(formatEffectTextForAi({ effectText: '♥を得る。', member: null, live: { requiredHearts: [{ color: 'yellow', count: 1 }] } }), '色不明ハートを得る。');
 });
 
