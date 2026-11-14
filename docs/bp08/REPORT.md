@@ -36,12 +36,14 @@
 ## 検証・未完了事項
 
 - `npm run check`: 単体テスト126件成功、UTF-8/JSON検査成功、Vite build成功。従来と同種の500KB超バンドル警告あり。
-- ローカル画面テストは実行環境でChromium起動時のsocketが許可されず、アプリ起動前に停止。アプリのテスト成功とは数えていない。GitHubの既存Quality workflowで画面テストを確認する。
+- ローカル画面テストは実行環境でChromium起動時のsocketが許可されず、アプリ起動前に停止。アプリのテスト成功とは数えていない。GitHubの既存Quality workflowで全25画面テスト（新規PC・390px幅2件を含む）が成功した。
 - GitHubブラウザは未サインインで、`PAGES_PREVIEW_ENABLED` の管理画面での現在値確認は未完了。変数は変更していない。既存PreviewはQuality成功後に条件に応じて自動起動し得る。
-- PRのQuality・Preview結果、利用者による表示確認、Production承認・公開後確認は未完了。
+- PR #28: https://github.com/nice-roy/loveca-card-list/pull/28 。実装commit `62fd71436b6c76f1d257e2dbf0bd2287354d8cb6` のQuality run `43578841080` は成功（単体126件・画面25件・build）。
+- 最初のPreview run `43578982854` はDraft PRを拒否する既存gateで停止、build/deployは未実行。検証後にReadyへ変更し、この記録更新で起動するQuality／Previewを確認する。最新の実行結果とPreview URLはPR本文へ記録する。
+- 利用者による表示確認、Production承認・公開後確認は未完了。
 
 ## 禁止事項と次の1操作
 
 mainへの直接push、無承認のProduction公開、Secret・Environment・Variable・PAT・Cloudflare設定の変更は禁止。全workflow（quality.ymlを含む）・同期Worker・D1・保存形式・既存カード・既存購入リンクは変更していない。
 
-次の1操作: 専用branchのDraft PRで既存Qualityの結果を確認する。Production公開は、検証結果と公開対象を提示してユーザーの別途明示承認を受けてから。
+次の1操作: 専用branchのPRで既存Quality／Previewの結果を確認し、確認用URLを提示する。Production公開は、検証結果と公開対象を提示してユーザーの別途明示承認を受けてから。
