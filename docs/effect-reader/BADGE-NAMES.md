@@ -24,5 +24,6 @@
 
 - 成果物：`app/page.tsx` の共通バッジ、`tests/live-hearts.spec.ts` のPC／スマホ既存検証更新、本記録。
 - 検証結果と最新PreviewはPR #28本文を正本とする。マスター／補完データ／所持・同期形式は変更しない。
+- 名称統一のQualityは130単体・29画面成功。続くPreviewの再検証で、既存全文テストのスクロール差24pxが1件検出された。クリック前の自動スクロール途中を基準にしないよう、実際のクリックイベント直前の位置を記録し、復帰完了を待つ検証に修正。許容差2pxは維持し、アプリやworkflowを変更して検査を回避しない。
 - 禁止事項：main直push、無承認Production公開、Secret／Environment／Variable／PAT／Cloudflare設定変更。workflow・quality.yml・Worker・D1は未変更。
 - 次の1操作：ユーザーが最新Previewの名称を確認する。AI相談コピー改善、未収録4版の追加、虹色配色、本番公開はそれぞれ未承認のまま保留。

@@ -29,9 +29,16 @@ for (const width of [1365, 390]) {
       const trigger = card.getByRole('button', { name: `${name}の効果を全文読む`, exact: true });
       await expect(trigger).toBeVisible();
       await trigger.scrollIntoViewIfNeeded();
-      const scrollBefore = await page.evaluate(() => window.scrollY);
+      // Record the actual opening position, after Playwright's click auto-scroll.
+      // The page uses smooth scrolling, so a pre-click snapshot can still be moving.
+      await trigger.evaluate(button => {
+        button.addEventListener('click', () => {
+          button.setAttribute('data-scroll-at-open', String(window.scrollY));
+        }, { once: true });
+      });
       const storageBefore = await page.evaluate(() => JSON.stringify({ ...localStorage }));
       await trigger.click();
+      const scrollBefore = Number(await trigger.getAttribute('data-scroll-at-open'));
       const dialog = page.getByRole('dialog', { name, exact: true });
       await expect(dialog).toBeVisible();
       await expect(dialog).toContainText(number);
@@ -51,7 +58,7 @@ for (const width of [1365, 390]) {
       else await dialog.getByRole('button', { name: '閉じる', exact: true }).click();
       await expect(dialog).toBeHidden();
       await expect(trigger).toBeFocused();
-      expect(Math.abs(await page.evaluate(() => window.scrollY) - scrollBefore)).toBeLessThanOrEqual(2);
+      await expect.poll(async () => Math.abs(await page.evaluate(() => window.scrollY) - scrollBefore)).toBeLessThanOrEqual(2);
       await expect(search).toHaveValue(number);
       expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).toBe(storageBefore);
     }
