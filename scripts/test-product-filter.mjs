@@ -24,13 +24,8 @@ test('product search accepts names, full-width codes and multiple terms without 
   for (const query of ['ＢＰ８', 'bp8', 'まじかる']) {
     assert.deepEqual(groupProductOptions(options, query, 'numberDesc').flatMap(group => group.options.map(option => option.code)), ['BP8']);
   }
-  assert.deepEqual(groupProductOptions(options, 'li DUO', 'nameAsc')[0].options.map(option => option.code), ['Li-PB2']);
+  assert.deepEqual(groupProductOptions(options, 'li DUO', 'numberAsc')[0].options.map(option => option.code), ['Li-PB2']);
   assert.equal(groupProductOptions(options, '存在しない商品', 'numberDesc').length, 0);
   assert.equal(JSON.stringify(options), before);
 });
 
-test('product name sorting applies across categories in either direction', () => {
-  const examples = ['りんご', 'いちご', 'バナナ'].map((name, index) => productFilterOption({ id: `test-${index}`, label: name }));
-  assert.deepEqual(groupProductOptions(examples, '', 'nameAsc')[0].options.map(option => option.name), ['いちご', 'バナナ', 'りんご']);
-  assert.deepEqual(groupProductOptions(examples, '', 'nameDesc')[0].options.map(option => option.name), ['りんご', 'バナナ', 'いちご']);
-});

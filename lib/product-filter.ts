@@ -27,14 +27,12 @@ const filterCodes: Readonly<Partial<Record<string, string>>> = {
 };
 
 export type ProductOption = { id: string; label: string; name: string; code: string | null };
-export type ProductSort = 'numberDesc' | 'numberAsc' | 'nameAsc' | 'nameDesc';
+export type ProductSort = 'numberDesc' | 'numberAsc';
 export type ProductOptionGroup = { id: string; label: string | null; options: ProductOption[] };
 
 export const PRODUCT_SORT_OPTIONS: { value: ProductSort; label: string }[] = [
   { value: 'numberDesc', label: '種類別・番号の大きい順' },
   { value: 'numberAsc', label: '種類別・番号の小さい順' },
-  { value: 'nameAsc', label: '商品名：昇順' },
-  { value: 'nameDesc', label: '商品名：降順' },
 ];
 
 const categories = [
@@ -71,9 +69,6 @@ export function groupProductOptions(options: ProductOption[], query: string, sor
   const terms = query.trim().split(/\s+/).filter(Boolean).map(normalizeProductSearch);
   const matches = options.filter((option) => terms.every((term) => normalizeProductSearch(option.label).includes(term)));
   const compareName = (left: ProductOption, right: ProductOption) => left.name.localeCompare(right.name, 'ja', { numeric: true });
-  if (sort === 'nameAsc' || sort === 'nameDesc') {
-    return [{ id: 'name', label: null, options: matches.sort((a, b) => compareName(a, b) * (sort === 'nameAsc' ? 1 : -1)) }];
-  }
   return categories.map((category) => ({
     ...category,
     options: matches.filter((option) => productOrder(option).category === category.id).sort((a, b) => {

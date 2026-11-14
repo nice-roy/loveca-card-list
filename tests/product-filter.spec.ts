@@ -47,10 +47,7 @@ for (const width of [1365, 390]) {
     await expect(list.getByRole('checkbox').first()).toHaveAttribute('aria-label', /^BP8｜/);
     await sort.selectOption('numberAsc');
     await expect(list.getByRole('checkbox').first()).toHaveAttribute('aria-label', /^BP1｜/);
-    await sort.selectOption('nameAsc');
-    await expect(list.getByRole('checkbox').first()).toHaveAttribute('aria-label', 'PRカード');
-    await sort.selectOption('nameDesc');
-    await expect(list.getByRole('checkbox').last()).toHaveAttribute('aria-label', 'PRカード');
+    await expect(sort.getByRole('option')).toHaveText(['種類別・番号の大きい順', '種類別・番号の小さい順']);
     await search.fill('ＢＰ８');
     await expect(list.getByRole('checkbox')).toHaveCount(1);
     await list.getByRole('checkbox').check();
@@ -79,7 +76,7 @@ for (const width of [1365, 390]) {
     await expect(dialog).toBeHidden();
     await page.getByRole('button', {name: '収録商品 2件選択中', exact: true}).click();
     await expect(search).toHaveValue('');
-    await expect(sort).toHaveValue('nameDesc');
+    await expect(sort).toHaveValue('numberAsc');
     await expect(list.getByRole('checkbox', {checked: true})).toHaveCount(2);
     await dialog.getByRole('button', {name: 'すべて解除', exact: true}).click();
     await expect(list.getByRole('checkbox', {checked: true})).toHaveCount(0);
