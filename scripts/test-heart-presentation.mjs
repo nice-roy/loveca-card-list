@@ -45,10 +45,11 @@ test('effect display converts every official heart token into an explicit colore
     { type: 'heart', color: 'any' },
     { type: 'blade', color: 'blue', all: false },
     { type: 'blade', color: null, all: false },
-    { type: 'blade', color: 'any', all: true },
+    { type: 'blade', color: 'all', all: true },
   ]);
   assert.equal(heartDisplayLabel('yellow'), '黄ハート');
-  assert.equal(heartDisplayLabel('any', true), 'ALLブレード');
+  assert.equal(heartDisplayLabel('all', true), 'ALLブレード');
+  assert.equal(heartDisplayLabel('any', true), '無色ブレード');
 });
 
 test('all effect tokens are consumed by the display transformation', () => {

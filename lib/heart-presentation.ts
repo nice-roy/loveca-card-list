@@ -1,4 +1,4 @@
-export type HeartColor = 'pink' | 'red' | 'yellow' | 'green' | 'blue' | 'purple' | 'orange' | 'any';
+export type HeartColor = 'pink' | 'red' | 'yellow' | 'green' | 'blue' | 'purple' | 'orange' | 'any' | 'all';
 
 export const HEART_COLOR_LABELS: Record<HeartColor, string> = {
   pink: '桃',
@@ -9,6 +9,7 @@ export const HEART_COLOR_LABELS: Record<HeartColor, string> = {
   purple: '紫',
   orange: '橙',
   any: '無色',
+  all: 'ALL',
 };
 
 const tokenColors: Record<string, HeartColor> = {
@@ -50,7 +51,7 @@ export function splitEffectTextForDisplay(text: string): EffectFragment[] {
     else if (bladeToken) fragments.push({ type: 'icon', icon: bladeIcon(tokenColors[bladeToken]) });
     else if (bracketHeartToken) fragments.push({ type: 'icon', icon: heartIcon(bracketHeartToken) });
     else if (value.startsWith('heart')) fragments.push({ type: 'icon', icon: heartIcon(value) });
-    else if (/^\[(ALL|全)ブレード\]$/.test(value)) fragments.push({ type: 'icon', icon: bladeIcon('any', true) });
+    else if (/^\[(ALL|全)ブレード\]$/.test(value)) fragments.push({ type: 'icon', icon: bladeIcon('all', true) });
     else if (value === '[橙ブレードハート]') fragments.push({ type: 'icon', icon: bladeIcon('orange') });
     else if (value === '[ブレード]') fragments.push({ type: 'icon', icon: bladeIcon() });
     else if (value === '◇') fragments.push({ type: 'icon', icon: heartIcon('heart0') });
@@ -62,6 +63,6 @@ export function splitEffectTextForDisplay(text: string): EffectFragment[] {
 }
 
 export function heartDisplayLabel(color: HeartColor, blade = false) {
-  if (blade && color === 'any') return 'ALLブレード';
+  if (blade && color === 'all') return 'ALLブレード';
   return `${HEART_COLOR_LABELS[color]}${blade ? 'ブレード' : 'ハート'}`;
 }

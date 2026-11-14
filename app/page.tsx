@@ -6,6 +6,7 @@ import cardsJson from './data/cards.json';
 import livePurchaseLinksJson from './data/live-purchase-links.json';
 import duoPurchaseLinksJson from './data/duo-purchase-links.json';
 import bp08PurchaseLinksJson from './data/bp08-purchase-links.json';
+import liveHeartsJson from './data/live-hearts.json';
 import referencesJson from './data/reference-data.json';
 import type { Card, ReferenceData, SortKey } from './data/schema';
 import { Badge } from '@/components/ui/badge';
@@ -17,6 +18,8 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { CloudSyncDialog } from '@/components/cloud-sync-dialog';
 import { CloudSyncEntry } from '@/components/cloud-sync-entry';
+import { HeartSymbol } from '@/components/heart-symbol';
+import { applyAuditedLiveHearts, type LiveHeartRecord } from '@/lib/live-hearts';
 import { productFilterOption } from '@/lib/product-filter';
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 import { baseCardId, cardlaboLinksForDisplay, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
@@ -35,7 +38,7 @@ import { applyAuditedPurchaseLinks, type AuditedPurchaseLink } from '@/lib/purch
 import { clearSyncConnectionStorage, CloudSyncError, createSyncBaseline, createCloudSync, getSyncApiUrl, isSyncPayloadDirty, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncBaseline, type SyncHistorySummary, type SyncMetadata } from '@/lib/cloud-sync';
 import { getCloudSyncEntryStatus } from '@/lib/cloud-sync-status';
 
-const cards = applyAuditedPurchaseLinks(cardsJson as Card[], [...livePurchaseLinksJson, ...duoPurchaseLinksJson, ...bp08PurchaseLinksJson] as AuditedPurchaseLink[]);
+const cards = applyAuditedPurchaseLinks(applyAuditedLiveHearts(cardsJson as Card[], liveHeartsJson as LiveHeartRecord[]), [...livePurchaseLinksJson, ...duoPurchaseLinksJson, ...bp08PurchaseLinksJson] as AuditedPurchaseLink[]);
 const references = referencesJson as ReferenceData;
 const selectableGroupIds = new Set(['all', 'other', ...references.groups.filter((group) => group.enabled).map((group) => group.id)]);
 const TOP_GROUP_IDS = ['muse', 'aqours', 'nijigasaki', 'liella', 'hasunosora'] as const;
@@ -63,7 +66,7 @@ const liveSortOptions: { value: SortKey; label: string }[] = [
   { value: 'scoreAsc', label: 'スコア：低い順' },
   { value: 'scoreDesc', label: 'スコア：高い順' },
 ];
-const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', orange: 'heart-orange', any: 'heart-any' };
+const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', orange: 'heart-orange', any: 'heart-any', all: 'heart-all' };
 const syncApiUrl = getSyncApiUrl();
 
 function readBuilderState() {
@@ -189,11 +192,22 @@ function Hearts({ values, blade = false }: { values: { color: string | null; cou
   if (!values.length) return <span className="muted-dash">—</span>;
   return <span className="heart-list">{values.map((value, index) => (
     <span className="heart-value" key={`${value.color}-${index}`}>
-      <span aria-hidden="true" className={`${blade ? 'blade-heart' : 'heart'} ${colorClass[value.color ?? 'any']}`}>{blade ? '◆' : value.color === 'any' ? '◇' : '♥'}</span>
+      <HeartSymbol color={value.color ?? 'any'} className={`${blade ? 'blade-heart' : ''} ${colorClass[value.color ?? 'any']}`} />
       <span className="heart-color-label">{HEART_COLOR_LABELS[(value.color ?? 'any') as HeartColor] ?? '色不明'}</span>
       <strong>×{value.count}</strong>
     </span>
   ))}</span>;
+}
+
+function LiveHearts({ live }: { live: NonNullable<Card['live']> }) {
+  if (live.bladeHearts === undefined || live.specialHeart === undefined) return <span className="muted-dash">未確認</span>;
+  return <span className="live-heart-list">
+    {live.bladeHearts.length > 0 && <Hearts blade values={live.bladeHearts} />}
+    {live.specialHeart && <span className="special-heart" aria-label={live.specialHeart === 'draw' ? 'ドローハート' : 'スコアアップハート'}>
+      {live.specialHeart === 'draw' ? 'ドロー' : 'スコアアップ'}
+    </span>}
+    {!live.bladeHearts.length && !live.specialHeart && <span className="muted-dash">—</span>}
+  </span>;
 }
 
 function EffectIconDisplay({ icon }: { icon: EffectIcon }) {
@@ -205,7 +219,9 @@ function EffectIconDisplay({ icon }: { icon: EffectIcon }) {
     ? icon.all ? 'ALL' : icon.color ? HEART_COLOR_LABELS[icon.color] : ''
     : HEART_COLOR_LABELS[color as HeartColor] ?? '色不明';
   return <span className="effect-icon" aria-label={label} title={label}>
-    <span aria-hidden="true" className={`${icon.type === 'blade' ? 'blade-heart' : 'heart'} ${colorClass[color]}`}>{icon.type === 'blade' ? '◆' : color === 'any' ? '◇' : '♥'}</span>
+    {icon.type === 'blade' && !icon.color
+      ? <span aria-hidden="true" className={`blade-heart ${colorClass[color]}`}>◆</span>
+      : <HeartSymbol color={color} className={`${icon.type === 'blade' ? 'blade-heart' : ''} ${colorClass[color]}`} />}
     <span>{suffix}</span>
   </span>;
 }
@@ -936,7 +952,7 @@ export default function Home() {
       const memberName = card.memberIds.map((memberId) => memberById.get(memberId)).filter(Boolean).join('・') || card.name;
       const ownership = ownershipById.get(id) as DeckOwnershipStatus;
       return <article className={`deck-row ${card.cardType}`} key={id}>
-      <details className="deck-card-details"><summary><div className="deck-card-heading"><strong>{card.cardType === 'member' ? memberName : card.name}</strong><code>{id}</code></div><div className="deck-key-info">{card.member && <><span className="deck-main-metric"><small>COST</small><strong>{card.member.cost ?? '—'}</strong></span><span><small>基本ハート</small><Hearts values={card.member.hearts} /></span><span><small>ブレードハート</small><Hearts blade values={card.member.bladeHearts} /></span><span><small>ブレード</small><strong>{card.member.yell.count ?? '—'}</strong></span></>}{card.live && <><span className="deck-main-metric live"><small>SCORE</small><strong>{card.live.score ?? '—'}</strong></span><span><small>必要ハート</small><Hearts values={card.live.requiredHearts} /></span></>}</div>{card.effectText && <EffectText className="deck-effect-preview" text={card.effectText} />}<span className={`deck-ownership-status${ownership.shortageQuantity > 0 ? ' shortage' : ' complete'}`}>{ownership.shortageQuantity > 0 ? <><strong>不足 {ownership.shortageQuantity}枚</strong><span>所持 {ownership.ownedQuantity} / 必要 {quantity}</span></> : <><strong><Check /> 所持済み</strong><span>所持 {ownership.ownedQuantity} / 必要 {quantity}</span></>}</span><span className="deck-detail-hint">詳細を見る <ChevronDown /></span></summary><div className="deck-detail-body"><div className="deck-full-effect"><span>効果</span>{card.effectText ? <EffectText text={card.effectText} /> : <p>—</p>}</div><div className="deck-version-list">{versions.map((version) => <section className="deck-version" key={version.id}><div><strong>{cardVersion(version.cardNumber) ?? version.rarity ?? '通常版'}</strong><code>{version.cardNumber}</code></div><p><span>収録商品</span>{productById.get(version.productId) ?? '—'}</p><div className="card-links">{version.officialUrl && <a className="official-link" href={version.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{version.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div></section>)}</div></div></details>
+      <details className="deck-card-details"><summary><div className="deck-card-heading"><strong>{card.cardType === 'member' ? memberName : card.name}</strong><code>{id}</code></div><div className="deck-key-info">{card.member && <><span className="deck-main-metric"><small>COST</small><strong>{card.member.cost ?? '—'}</strong></span><span><small>基本ハート</small><Hearts values={card.member.hearts} /></span><span><small>ブレードハート</small><Hearts blade values={card.member.bladeHearts} /></span><span><small>ブレード</small><strong>{card.member.yell.count ?? '—'}</strong></span></>}{card.live && <><span className="deck-main-metric live"><small>SCORE</small><strong>{card.live.score ?? '—'}</strong></span><span><small>必要ハート</small><Hearts values={card.live.requiredHearts} /></span><span><small>ブレードハート</small><LiveHearts live={card.live} /></span></>}</div>{card.effectText && <EffectText className="deck-effect-preview" text={card.effectText} />}<span className={`deck-ownership-status${ownership.shortageQuantity > 0 ? ' shortage' : ' complete'}`}>{ownership.shortageQuantity > 0 ? <><strong>不足 {ownership.shortageQuantity}枚</strong><span>所持 {ownership.ownedQuantity} / 必要 {quantity}</span></> : <><strong><Check /> 所持済み</strong><span>所持 {ownership.ownedQuantity} / 必要 {quantity}</span></>}</span><span className="deck-detail-hint">詳細を見る <ChevronDown /></span></summary><div className="deck-detail-body"><div className="deck-full-effect"><span>効果</span>{card.effectText ? <EffectText text={card.effectText} /> : <p>—</p>}</div><div className="deck-version-list">{versions.map((version) => <section className="deck-version" key={version.id}><div><strong>{cardVersion(version.cardNumber) ?? version.rarity ?? '通常版'}</strong><code>{version.cardNumber}</code></div><p><span>収録商品</span>{productById.get(version.productId) ?? '—'}</p><div className="card-links">{version.officialUrl && <a className="official-link" href={version.officialUrl} target="_blank" rel="noreferrer">公式カード情報 <ExternalLink /></a>}{version.purchaseLinks?.filter((link) => link.shopId === 'cardlabo' && /^https:\/\/www\.c-labo-online\.jp\/product\/\d+$/.test(link.url)).map((link) => <a className="purchase-link" key={`${link.shopId}:${link.url}`} href={link.url} target="_blank" rel="noopener noreferrer">カードラボで購入 <ExternalLink /></a>)}</div></section>)}</div></div></details>
       <div className="quantity-control" aria-label={`${card.name}の採用枚数`}>
         <button aria-label={`${card.name}を1枚減らす`} onClick={() => decreaseDeck(id, quantity)} type="button"><Minus /></button>
         <output aria-label={`${quantity}枚`}>{quantity}</output>
@@ -1020,7 +1036,7 @@ export default function Home() {
         return <article className={`card-item ${card.cardType}${shownOwnedCount > 0 ? ' inventory-owned' : ''}`} key={isGrouped ? `${group.baseCardId}:${card.id}` : card.id}>
           <div className="card-body"><Badge className="type-badge" variant="secondary">{card.cardType === 'member' ? 'MEMBER' : 'LIVE'}</Badge><div className="card-heading"><div><h2>{card.name}</h2><code>{isGrouped ? group.baseCardId : card.cardNumber}</code></div>{card.member && <span className="metric"><small>COST</small>{card.member.cost ?? '—'}</span>}{card.live && <span className="metric score"><small>SCORE</small>{card.live.score ?? '—'}</span>}</div>
             {isGrouped && <div className="version-summary"><span>バージョン</span>{group.cards.map((version) => <Badge key={version.id} variant="outline">{cardVersion(version.cardNumber) ?? version.cardNumber}</Badge>)}</div>}
-            <p className="product-name">{productIdsInGroup.size === 1 ? productById.get(card.productId) : '収録商品はバージョン別'}</p><dl className="stats">{card.member && <><div><dt>基本ハート</dt><dd><Hearts values={card.member.hearts} /></dd></div><div><dt>ブレードハート</dt><dd><Hearts blade values={card.member.bladeHearts} /></dd></div><div><dt>ブレード</dt><dd>{card.member.yell.count ?? '—'}</dd></div></>}{card.live && <div><dt>必要ハート</dt><dd><Hearts values={card.live.requiredHearts} /></dd></div>}</dl>
+            <p className="product-name">{productIdsInGroup.size === 1 ? productById.get(card.productId) : '収録商品はバージョン別'}</p><dl className="stats">{card.member && <><div><dt>基本ハート</dt><dd><Hearts values={card.member.hearts} /></dd></div><div><dt>ブレードハート</dt><dd><Hearts blade values={card.member.bladeHearts} /></dd></div><div><dt>ブレード</dt><dd>{card.member.yell.count ?? '—'}</dd></div></>}{card.live && <><div><dt>必要ハート</dt><dd><Hearts values={card.live.requiredHearts} /></dd></div><div><dt>ブレードハート</dt><dd><LiveHearts live={card.live} /></dd></div></>}</dl>
             {card.effectText && <EffectText className="effect-text" text={card.effectText} />}
             {groupIdenticalCards ? <><div className={`inventory-total${ownedTotal > 0 ? ' owned' : ''}`}><span>所持合計</span><strong>{ownedTotal}</strong><span>枚</span></div>{!isGrouped && <InventoryStepper count={inventory[card.id] ?? 0} label={card.cardNumber} onChange={(count) => updateInventory(card.id, count)} />}</> : <InventoryStepper count={inventory[card.id] ?? 0} label={card.cardNumber} onChange={(count) => updateInventory(card.id, count)} />}
             <div className="builder-actions"><Button aria-pressed={isCandidate} className={isCandidate ? 'candidate-active' : ''} onClick={() => toggleCandidate(builderId)} size="sm" variant="outline">{isCandidate ? <Check /> : <Bookmark />}{isCandidate ? '候補中' : '候補'}</Button><Button disabled={(deck[builderId] ?? 0) >= MAX_DECK_QUANTITY} onClick={() => updateDeck(builderId, 1)} size="sm"><ListPlus />{(deck[builderId] ?? 0) >= MAX_DECK_QUANTITY ? '4枚採用中' : 'デッキに追加'}</Button></div>

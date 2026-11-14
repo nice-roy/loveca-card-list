@@ -125,6 +125,10 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: 
 .stats dt { color: #917b88; font-size: .64rem; font-weight: 800; } .stats dd { margin: 0; font-size: .75rem; }
 .heart-list,.heart-value { display: inline-flex; align-items: center; flex-wrap: wrap; } .heart-list { gap: 7px; } .heart-value { gap: 3px; }
 .heart,.blade-heart { font-family: "Segoe UI Symbol",sans-serif; font-size: 1rem; line-height: 1; } .blade-heart { font-size: .82rem; }
+.heart-symbol { display: inline-block; width: 1em; height: 1em; flex: 0 0 auto; vertical-align: -.12em; }
+.heart-all { color: #7653a5; }
+.live-heart-list { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.special-heart { display: inline-flex; align-items: center; border: 1px solid #d8c9de; border-radius: 999px; padding: 2px 6px; color: #705184; background: #f8f2fb; font-size: .68rem; font-weight: 750; white-space: nowrap; }
 .heart-pink { color: #e76aae; } .heart-red { color: #d94055; } .heart-yellow { color: #d7a900; } .heart-green { color: #2fa05b; } .heart-blue { color: #3887d1; } .heart-purple { color: #9255c2; } .heart-orange { color: #dc6b13; } .heart-any { color: #756a72; }
 .heart-color-label { color: #705e67; font-size: .68rem; font-weight: 750; }
 .effect-icon { display: inline-flex; align-items: center; gap: 1px; margin: 0 1px; white-space: nowrap; font-size: .86em; font-weight: 800; vertical-align: baseline; } .effect-icon .heart,.effect-icon .blade-heart { font-size: .95em; } .effect-icon > span:last-child { color: #705e67; font-size: .82em; }
