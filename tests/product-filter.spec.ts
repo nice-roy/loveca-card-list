@@ -54,7 +54,8 @@ for (const width of [1365, 390]) {
     await search.fill('ＢＰ８');
     await expect(list.getByRole('checkbox')).toHaveCount(1);
     await list.getByRole('checkbox').check();
-    await search.fill('Li');
+    // "Li" also matches Royal Holiday; use the product-code prefix here.
+    await search.fill('Li-');
     await expect(list.getByRole('checkbox')).toHaveCount(4);
     const liella = 'Li-PB1｜プレミアムブースター ラブライブ！スーパースター!!';
     await list.getByRole('checkbox', {name: liella, exact: true}).check();
