@@ -9,7 +9,9 @@ import {applyAuditedPurchaseLinks} from '../lib/purchase-links.ts';
 const rawCards = JSON.parse(fs.readFileSync('app/data/cards.json','utf8'));
 const auditedLiveLinks = JSON.parse(fs.readFileSync('app/data/live-purchase-links.json','utf8'));
 const auditedDuoLinks = JSON.parse(fs.readFileSync('app/data/duo-purchase-links.json','utf8'));
-const cards = applyAuditedPurchaseLinks(rawCards,[...auditedLiveLinks,...auditedDuoLinks]);
+const auditedBp08Links = JSON.parse(fs.readFileSync('app/data/bp08-purchase-links.json','utf8'));
+const bp08Audit = JSON.parse(fs.readFileSync('docs/bp08/purchase-links-audit.json','utf8'));
+const cards = applyAuditedPurchaseLinks(rawCards,[...auditedLiveLinks,...auditedDuoLinks,...auditedBp08Links]);
 const before = JSON.parse(execFileSync('git',['show','5ea459c6326ac7a0c7dbec5638ac36f7a6282b3e:app/data/cards.json'],{encoding:'utf8',maxBuffer:10*1024*1024}));
 const audit = JSON.parse(fs.readFileSync('docs/purchase-links-audit.json','utf8'));
 const liveAudit = JSON.parse(fs.readFileSync('docs/live-purchase-links-audit.json','utf8'));
@@ -31,6 +33,7 @@ test('every Card Labo link is a directly verified HTTPS product URL attached to 
     ...audit.registered.map(record=>`${record.cardId}:${record.url}`),
     ...liveAudit.B.map(record=>`${record.cardId}:${record.url}`),
     ...duoAudit.verified.map(record=>`${record.cardId}:${record.url}`),
+    ...bp08Audit.verified.map(record=>`${record.cardId}:${record.url}`),
   ]);
   let count = 0;
   for(const card of cards){
@@ -41,7 +44,7 @@ test('every Card Labo link is a directly verified HTTPS product URL attached to 
       count++;
     }
   }
-  assert.equal(count,audit.registered.length+liveAudit.B.length+duoAudit.verified.length);
+  assert.equal(count,audit.registered.length+liveAudit.B.length+duoAudit.verified.length+bp08Audit.verified.length);
   assert.equal(audit.registered.length+audit.unregistered.length,783);
 });
 test('every historically verified Card Labo link remains attached to the same physical card version',()=>{
@@ -119,7 +122,7 @@ test('grouped display exposes every verified physical-version purchase link with
   const grouped=groupCardsForDisplay(cards);
   const linkedGroups=grouped.filter(group=>group.cards.some(card=>card.purchaseLinks?.some(link=>link.shopId==='cardlabo')));
   const displayed=linkedGroups.flatMap(group=>cardlaboLinksForDisplay(group.cards));
-  const verifiedCount=audit.registered.length+liveAudit.B.length+duoAudit.verified.length;
+  const verifiedCount=audit.registered.length+liveAudit.B.length+duoAudit.verified.length+bp08Audit.verified.length;
   assert.equal(displayed.length,verifiedCount);
   assert.equal(new Set(displayed.map(link=>`${link.cardId}:${link.url}`)).size,verifiedCount);
   assert.ok(linkedGroups.some(group=>group.cards.length>1&&cardlaboLinksForDisplay(group.cards).length>1));
@@ -138,9 +141,9 @@ test('grouped cards show purchase links once on the card surface and not again i
   assert.doesNotMatch(versionDetailsSection,/カードラボで購入/);
 });
 test('pool adds only member/live audited records and keeps card images absent',()=>{
-  assert.equal(cards.length,1913);
-  assert.equal(cards.filter(c=>c.cardType==='member').length,1582);
-  assert.equal(cards.filter(c=>c.cardType==='live').length,331);
+  assert.equal(cards.length,2054);
+  assert.equal(cards.filter(c=>c.cardType==='member').length,1690);
+  assert.equal(cards.filter(c=>c.cardType==='live').length,364);
   assert.equal(cards.filter(c=>!['member','live'].includes(c.cardType)).length,0);
   assert.deepEqual(cards.slice(0,before.length).map(c=>c.image),before.map(c=>c.image));
   assert.ok(cards.slice(before.length).every(c=>c.image.url===null&&c.image.alt===null));

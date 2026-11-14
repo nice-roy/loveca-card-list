@@ -8,6 +8,7 @@ const filterCodes: Readonly<Partial<Record<string, string>>> = {
   'product:a8d4041e8b82': "BP5", // ブースターパック Anniversary 2026
   'product:d41d2ca57378': "BP6", // ブースターパック Royal Holiday
   'product:763068a8ed9b': "BP7", // ブースターパック MELLOW MOMENT
+  'product:1141b059d897': "BP8", // ブースターパック まじかる♡とり～と
   'product:8cf67415f883': "μ's-PB1", // プレミアムブースター ラブライブ！
   'product:79a3699c3a78': "μ's-PB2", // プレミアムブースター ラブライブ！DUO
   'product:dd9764e60c7d': "Aq-PB1", // プレミアムブースター ラブライブ！サンシャイン!!

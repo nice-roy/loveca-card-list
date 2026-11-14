@@ -85,6 +85,7 @@ const memberDisplayMetadata: MemberDisplayMetadata[] = [
   { name: '小泉花陽', group: 'muse', schoolYear: 1, sortOrder: 8, kind: 'single', units: ['printemps'] },
   { name: '矢澤にこ', group: 'muse', schoolYear: 3, sortOrder: 9, kind: 'single', units: ['bibi'] },
   { name: '星空 凛&小泉花陽', group: 'muse', schoolYear: null, sortOrder: 101, kind: 'multiple', participantGroups: ['muse'] },
+  { name: '矢澤にこ&宮下 愛&セラス 柳田 リリエンフェルト', group: 'muse', schoolYear: null, sortOrder: 102, kind: 'multiple', participantGroups: ['muse', 'nijigasaki', 'hasunosora'] },
 
   // ライバル3組は公式に学年・サブユニット分類を当てはめない。公式のユニット内掲載順だけを保持する。
   { name: '綺羅ツバサ', group: 'a-rise', schoolYear: null, sortOrder: 1, kind: 'single' },

@@ -521,6 +521,16 @@
       "id": "member:5a3c6de9d0df",
       "label": "星空 凛&小泉花陽",
       "groupId": "muse"
+    },
+    {
+      "id": "member:780ba204bd35",
+      "label": "矢澤にこ&宮下 愛&セラス 柳田 リリエンフェルト",
+      "groupId": "muse",
+      "groupIds": [
+        "muse",
+        "nijigasaki",
+        "hasunosora"
+      ]
     }
   ],
   "products": [
@@ -615,6 +625,10 @@
     {
       "id": "product:79a3699c3a78",
       "label": "プレミアムブースター ラブライブ！DUO"
+    },
+    {
+      "id": "product:1141b059d897",
+      "label": "ブースターパック まじかる♡とり～と"
     }
   ]
 }

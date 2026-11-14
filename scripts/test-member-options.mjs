@@ -20,7 +20,7 @@ test('all-groups view follows group order and separates cross-group combinations
   assert.deepEqual(groups.map((group) => group.label), ['Liella!', 'Aqours', "μ's", 'A-RISE', 'Saint Snow', 'Sunny Passion', '虹ヶ咲', '蓮ノ空', 'グループ横断・複数メンバー']);
   assert.equal(groups[0].sections.at(-1)?.label, '複数メンバー');
   assert.deepEqual(groups[0].sections.at(-1)?.options.map((option) => option.label), ['嵐 千砂都＆鬼塚夏美']);
-  assert.equal(groups.at(-1)?.sections[0].options.length, 6);
+  assert.equal(groups.at(-1)?.sections[0].options.length, 7);
 });
 
 test('official member order is retained inside each school year', () => {
@@ -47,7 +47,7 @@ test('unit mode retains member ids and separates cross-group combinations in all
   assert.deepEqual(groups.map((group) => group.label), ['Liella!', 'Aqours', "μ's", 'A-RISE', 'Saint Snow', 'Sunny Passion', '虹ヶ咲', '蓮ノ空', 'グループ横断・複数メンバー']);
   assert.deepEqual(groups[0].sections[0].options.map((option) => option.label), ['澁谷かのん', '平安名すみれ', '米女メイ']);
   assert.equal(groups[0].sections.at(-1)?.label, '複数メンバー');
-  assert.equal(groups.at(-1)?.sections[0].options.length, 6);
+  assert.equal(groups.at(-1)?.sections[0].options.length, 7);
 });
 
 test('rival members use safe school-year and unit fallbacks without invented classifications', () => {

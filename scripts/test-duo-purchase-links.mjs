@@ -48,7 +48,7 @@ test('DUO audit covers all 96 physical versions with independently verified dire
 });
 
 test('only verified DUO purchaseLinks are added; every original field, order and old link is retained', () => {
-  assert.equal(cards.length, 1913);
+  assert.equal(cards.length, 2054);
   assert.deepEqual(cards.slice(0, 1817), before.slice(0, 1817));
   for (let i = 1817; i < cards.length; i++) {
     const { purchaseLinks, ...rest } = cards[i];

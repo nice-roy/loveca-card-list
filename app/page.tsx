@@ -5,6 +5,7 @@ import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Copy, ExternalLink, Lay
 import cardsJson from './data/cards.json';
 import livePurchaseLinksJson from './data/live-purchase-links.json';
 import duoPurchaseLinksJson from './data/duo-purchase-links.json';
+import bp08PurchaseLinksJson from './data/bp08-purchase-links.json';
 import referencesJson from './data/reference-data.json';
 import type { Card, ReferenceData, SortKey } from './data/schema';
 import { Badge } from '@/components/ui/badge';
@@ -34,7 +35,7 @@ import { applyAuditedPurchaseLinks, type AuditedPurchaseLink } from '@/lib/purch
 import { clearSyncConnectionStorage, CloudSyncError, createSyncBaseline, createCloudSync, getSyncApiUrl, isSyncPayloadDirty, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncBaseline, type SyncHistorySummary, type SyncMetadata } from '@/lib/cloud-sync';
 import { getCloudSyncEntryStatus } from '@/lib/cloud-sync-status';
 
-const cards = applyAuditedPurchaseLinks(cardsJson as Card[], [...livePurchaseLinksJson, ...duoPurchaseLinksJson] as AuditedPurchaseLink[]);
+const cards = applyAuditedPurchaseLinks(cardsJson as Card[], [...livePurchaseLinksJson, ...duoPurchaseLinksJson, ...bp08PurchaseLinksJson] as AuditedPurchaseLink[]);
 const references = referencesJson as ReferenceData;
 const selectableGroupIds = new Set(['all', 'other', ...references.groups.filter((group) => group.enabled).map((group) => group.id)]);
 const TOP_GROUP_IDS = ['muse', 'aqours', 'nijigasaki', 'liella', 'hasunosora'] as const;
@@ -62,7 +63,7 @@ const liveSortOptions: { value: SortKey; label: string }[] = [
   { value: 'scoreAsc', label: 'スコア：低い順' },
   { value: 'scoreDesc', label: 'スコア：高い順' },
 ];
-const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', any: 'heart-any' };
+const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', orange: 'heart-orange', any: 'heart-any' };
 const syncApiUrl = getSyncApiUrl();
 
 function readBuilderState() {
