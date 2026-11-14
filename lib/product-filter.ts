@@ -26,7 +26,62 @@ const filterCodes: Readonly<Partial<Record<string, string>>> = {
   'product:5c25e2c8b9cd': "HS-CL1", // コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ
 };
 
-export function productFilterOption(product: { id: string; label: string }) {
+export type ProductOption = { id: string; label: string; name: string; code: string | null };
+export type ProductSort = 'numberDesc' | 'numberAsc' | 'nameAsc' | 'nameDesc';
+export type ProductOptionGroup = { id: string; label: string | null; options: ProductOption[] };
+
+export const PRODUCT_SORT_OPTIONS: { value: ProductSort; label: string }[] = [
+  { value: 'numberDesc', label: '種類別・番号の大きい順' },
+  { value: 'numberAsc', label: '種類別・番号の小さい順' },
+  { value: 'nameAsc', label: '商品名：昇順' },
+  { value: 'nameDesc', label: '商品名：降順' },
+];
+
+const categories = [
+  { id: 'booster', label: 'ブースターパック' },
+  { id: 'premium', label: 'プレミアムブースター' },
+  { id: 'starter', label: 'スタートデッキ' },
+  { id: 'other', label: 'その他・PR' },
+];
+const seriesOrder = ["μ's", 'Aq', 'N', 'Li', 'HS'];
+
+export function productFilterOption(product: { id: string; label: string }): ProductOption {
   const code = filterCodes[product.id];
-  return code ? { ...product, label: `${code}｜${product.label}` } : product;
+  return { ...product, name: product.label, code: code ?? null, label: code ? `${code}｜${product.label}` : product.label };
+}
+
+function productOrder(option: ProductOption) {
+  const code = option.code ?? '';
+  const booster = code.match(/^BP(\d+)$/);
+  if (booster) return { category: 'booster', series: -1, number: Number(booster[1]) };
+  const seriesProduct = code.match(/^(μ's|Aq|N|Li|HS)-(PB|SD)(\d+)$/);
+  if (seriesProduct) return {
+    category: seriesProduct[2] === 'PB' ? 'premium' : 'starter',
+    series: seriesOrder.indexOf(seriesProduct[1]),
+    number: Number(seriesProduct[3]),
+  };
+  return { category: 'other', series: option.name === 'PRカード' ? 1 : 0, number: 0 };
+}
+
+function normalizeProductSearch(value: string) {
+  return value.normalize('NFKC').toLocaleLowerCase('ja').replace(/[\s｜|]+/g, '');
+}
+
+export function groupProductOptions(options: ProductOption[], query: string, sort: ProductSort): ProductOptionGroup[] {
+  const terms = query.trim().split(/\s+/).filter(Boolean).map(normalizeProductSearch);
+  const matches = options.filter((option) => terms.every((term) => normalizeProductSearch(option.label).includes(term)));
+  const compareName = (left: ProductOption, right: ProductOption) => left.name.localeCompare(right.name, 'ja', { numeric: true });
+  if (sort === 'nameAsc' || sort === 'nameDesc') {
+    return [{ id: 'name', label: null, options: matches.sort((a, b) => compareName(a, b) * (sort === 'nameAsc' ? 1 : -1)) }];
+  }
+  return categories.map((category) => ({
+    ...category,
+    options: matches.filter((option) => productOrder(option).category === category.id).sort((a, b) => {
+      const left = productOrder(a);
+      const right = productOrder(b);
+      return left.series - right.series
+        || (left.number - right.number) * (sort === 'numberAsc' ? 1 : -1)
+        || compareName(a, b);
+    }),
+  })).filter((group) => group.options.length > 0);
 }

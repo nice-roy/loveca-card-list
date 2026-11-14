@@ -19,7 +19,9 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { CloudSyncDialog } from '@/components/cloud-sync-dialog';
 import { CloudSyncEntry } from '@/components/cloud-sync-entry';
 import { HeartSymbol } from '@/components/heart-symbol';
+import { ProductFilter } from '@/components/product-filter';
 import { applyAuditedLiveHearts, type LiveHeartRecord } from '@/lib/live-hearts';
+import { applyAuditedCardCorrections } from '@/lib/card-data-corrections';
 import { productFilterOption } from '@/lib/product-filter';
 import { matchesNumericFilter, numericOptions, retainAvailableIds } from '@/lib/numeric-filters';
 import { baseCardId, cardlaboLinksForDisplay, cardVersion, groupCardsForDisplay } from '@/lib/card-grouping';
@@ -35,10 +37,10 @@ import { CARD_TYPE_STORAGE_KEY, normalizeCardTypeFilter, type CardTypeFilter } f
 import { GROUP_STORAGE_KEY, normalizeGroupPreference } from '@/lib/group-preference';
 import { heartDisplayLabel, HEART_COLOR_LABELS, splitEffectTextForDisplay, type EffectIcon, type HeartColor } from '@/lib/heart-presentation';
 import { applyAuditedPurchaseLinks, type AuditedPurchaseLink } from '@/lib/purchase-links';
-import { clearSyncConnectionStorage, CloudSyncError, createSyncBaseline, createCloudSync, getSyncApiUrl, isSyncPayloadDirty, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncBaseline, type SyncHistorySummary, type SyncMetadata } from '@/lib/cloud-sync';
+import { clearSyncConnectionStorage, CloudSyncError, createSyncBaseline, createCloudSync, formatSyncCode, getSyncApiUrl, isSyncPayloadDirty, loadCloudSync, loadCloudSyncHistory, normalizeSyncBaseline, normalizeSyncCode, normalizeSyncMetadata, restoreCloudSyncHistory, saveCloudSync, SYNC_BASELINE_STORAGE_KEY, SYNC_CODE_STORAGE_KEY, SYNC_META_STORAGE_KEY, type SyncBaseline, type SyncHistorySummary, type SyncMetadata } from '@/lib/cloud-sync';
 import { getCloudSyncEntryStatus } from '@/lib/cloud-sync-status';
 
-const cards = applyAuditedPurchaseLinks(applyAuditedLiveHearts(cardsJson as Card[], liveHeartsJson as LiveHeartRecord[]), [...livePurchaseLinksJson, ...duoPurchaseLinksJson, ...bp08PurchaseLinksJson] as AuditedPurchaseLink[]);
+const cards = applyAuditedPurchaseLinks(applyAuditedCardCorrections(applyAuditedLiveHearts(cardsJson as Card[], liveHeartsJson as LiveHeartRecord[])), [...livePurchaseLinksJson, ...duoPurchaseLinksJson, ...bp08PurchaseLinksJson] as AuditedPurchaseLink[]);
 const references = referencesJson as ReferenceData;
 const selectableGroupIds = new Set(['all', 'other', ...references.groups.filter((group) => group.enabled).map((group) => group.id)]);
 const TOP_GROUP_IDS = ['muse', 'aqours', 'nijigasaki', 'liella', 'hasunosora'] as const;
@@ -1075,7 +1077,7 @@ export default function Home() {
           {cardType !== 'live' && <MultiSelect emptyLabel="すべてのメンバー" id="member-filter" label="メンバー" memberDisplayMode={memberDisplayMode} onChange={updateMemberIds} onMemberDisplayModeChange={setMemberDisplayMode} optionGroups={memberOptionGroups} options={availableMembers} selectedIds={memberIds} />}
           {cardType === 'member' && <MultiSelect key="cost" emptyLabel="すべてのコスト" id="cost-filter" label="コスト" onChange={updateCostIds} options={availableCosts} selectedIds={costIds} />}
           {cardType === 'live' && <MultiSelect key="score" emptyLabel="すべてのスコア" id="score-filter" label="スコア" onChange={updateScoreIds} options={availableScores} selectedIds={scoreIds} />}
-          <MultiSelect className="product-filter" emptyLabel="すべての商品" id="product-filter" label="収録商品" onChange={updateProductIds} options={availableProducts} selectedIds={productIds} />
+          <ProductFilter onChange={updateProductIds} options={availableProducts} selectedIds={productIds} />
           <label className="filter-field"><span className="filter-label">所持状態</span><NativeSelect className="select-control" value={inventoryFilter} onChange={(event) => { setInventoryFilter(event.target.value as InventoryFilter); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="owned">所持のみ</NativeSelectOption><NativeSelectOption value="unowned">未所持のみ</NativeSelectOption></NativeSelect></label>
           </div>
           <div aria-label="並び順パネル" className={`mobile-panel-section mobile-sort-field${mobileControlPanel === 'sort' ? ' mobile-open' : ''}`} id="mobile-sort-panel" role="region">
