@@ -6,7 +6,6 @@ for (const width of [1365, 390]) {
   test(`truncated member and live effects can be read without losing the list at ${width}px`, async ({ page, context }) => {
     test.setTimeout(60000);
     await page.setViewportSize({ width, height: 720 });
-    const snap = async (stage:string) => console.log('SCROLL_DIAG',JSON.stringify(await page.evaluate(stage=>({stage,y:scrollY,max:document.documentElement.scrollHeight-innerHeight,html:document.documentElement.getAttribute('style'),body:document.body.getAttribute('style'),active:document.activeElement?.outerHTML.slice(0,100),card:document.querySelector('article')?.getBoundingClientRect().toJSON(),trigger:document.querySelector('.effect-read-more')?.getBoundingClientRect().toJSON()}), stage)));
     const errors: string[] = [];
     const external: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
@@ -25,7 +24,7 @@ for (const width of [1365, 390]) {
     for (const [iteration, [number, name, ending, icon]] of [
       ['LL-bp5-001-L', 'Live with a smile!', 'このカードのスコアを＋１する。', '桃ハート'],
       ['PL!-bp8-001-R', '高坂穂乃果', '減らす。', '無色ハート'],
-    ].flatMap(item => [item,item,item]).entries()) {
+    ].flatMap(item => [item, item, item]).entries()) {
       await search.fill(number);
       await expect(card).toHaveCount(1);
       const trigger = card.getByRole('button', { name: `${name}の効果を全文読む`, exact: true });
@@ -39,7 +38,6 @@ for (const width of [1365, 390]) {
         }, { once: true });
       });
       const storageBefore = await page.evaluate(() => JSON.stringify({ ...localStorage }));
-      await snap('before-click');
       if (iteration % 3 === 2) {
         // Reproduce opening while a previous focus/navigation scroll is running.
         await trigger.evaluate(button => {
@@ -51,7 +49,7 @@ for (const width of [1365, 390]) {
       // The modal makes the background inaccessible to role locators while open.
       const openingPosition = await page.locator('.effect-read-more[data-scroll-at-open]').getAttribute('data-scroll-at-open');
       expect(openingPosition).not.toBeNull();
-      const scrollBefore = Number(openingPosition); console.log('CLICK_Y',scrollBefore); await snap('after-click');
+      const scrollBefore = Number(openingPosition);
       const dialog = page.getByRole('dialog', { name, exact: true });
       await expect(dialog).toBeVisible();
       await expect(dialog).toContainText(number);
@@ -68,10 +66,10 @@ for (const width of [1365, 390]) {
       expect(await dialog.evaluate(el => el.contains(document.activeElement))).toBe(true);
       await dialog.locator('.effect-detail-scroll').evaluate(el => { el.scrollTop = el.scrollHeight; });
       expect(Math.abs(await page.evaluate(() => window.scrollY) - scrollBefore)).toBeLessThanOrEqual(2);
-      await snap('before-close'); if (name === 'Live with a smile!') await page.keyboard.press('Escape');
+      if (name === 'Live with a smile!') await page.keyboard.press('Escape');
       else await dialog.getByRole('button', { name: '閉じる', exact: true }).click();
       await expect(dialog).toBeHidden();
-      await expect(trigger).toBeFocused(); await snap('after-close');
+      await expect(trigger).toBeFocused();
       await expect.poll(async () => Math.abs(await page.evaluate(() => window.scrollY) - scrollBefore)).toBeLessThanOrEqual(2);
       await expect(search).toHaveValue(number);
       expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).toBe(storageBefore);

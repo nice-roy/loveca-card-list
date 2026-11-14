@@ -241,6 +241,7 @@ function EffectText({ text, className }: { text: string; className?: string }) {
 
 function CardEffect({ name, number, text }: { name: string; number: string; text: string }) {
   const previewRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const openingScroll = useRef<{ left: number; top: number } | null>(null);
   const [isTruncated, setIsTruncated] = useState(false);
 
@@ -275,12 +276,18 @@ function CardEffect({ name, number, text }: { name: string; number: string; text
       }
     }}>
       {isTruncated && <DialogTrigger render={<button className="effect-read-more" type="button" />} aria-label={`${name}の効果を全文読む`}>全文を読む <ChevronDown aria-hidden="true" /></DialogTrigger>}
-      <DialogContent className="effect-detail-dialog" showCloseButton={false}>
+      <DialogContent className="effect-detail-dialog" showCloseButton={false} initialFocus={() => {
+        // Mounting the popup can flush a pending compositor scroll. Reapply the
+        // saved position here and focus without starting another scroll.
+        if (openingScroll.current) window.scrollTo({ ...openingScroll.current, behavior: 'instant' });
+        closeButtonRef.current?.focus({ preventScroll: true });
+        return false;
+      }}>
         <DialogHeader className="effect-detail-header">
           <span className="effect-detail-label">効果全文</span>
           <DialogTitle>{name}</DialogTitle>
           <DialogDescription><code>{number}</code></DialogDescription>
-          <DialogClose aria-label="効果全文を閉じる" className="effect-detail-close" render={<Button size="icon-sm" type="button" variant="ghost" />}><X aria-hidden="true" /></DialogClose>
+          <DialogClose ref={closeButtonRef} aria-label="効果全文を閉じる" className="effect-detail-close" render={<Button size="icon-sm" type="button" variant="ghost" />}><X aria-hidden="true" /></DialogClose>
         </DialogHeader>
         <div aria-label="効果全文" className="effect-detail-scroll" tabIndex={0}>
           <EffectText className="effect-detail-text" text={text} />
