@@ -217,6 +217,7 @@ function LiveHearts({ live }: { live: NonNullable<Card['live']> }) {
 
 function EffectIconDisplay({ icon }: { icon: EffectIcon }) {
   if (icon.type === 'blade' && icon.all) return <SpecialBladeBadge kind="all" />;
+  if (icon.type === 'blade' && !icon.color) return <span className="special-heart" aria-label="ブレード" title="ブレード">ブレード</span>;
   const label = icon.type === 'heart'
     ? heartDisplayLabel(icon.color)
     : icon.color ? heartDisplayLabel(icon.color, true) : 'ブレード';
@@ -225,9 +226,7 @@ function EffectIconDisplay({ icon }: { icon: EffectIcon }) {
     ? icon.all ? 'ALL' : icon.color ? HEART_COLOR_LABELS[icon.color] : ''
     : HEART_COLOR_LABELS[color as HeartColor] ?? '色不明';
   return <span className="effect-icon" aria-label={label} title={label}>
-    {icon.type === 'blade' && !icon.color
-      ? <span aria-hidden="true" className={`blade-heart ${colorClass[color]}`}>◆</span>
-      : <HeartSymbol color={color} className={`${icon.type === 'blade' ? 'blade-heart' : ''} ${colorClass[color]}`} />}
+    <HeartSymbol color={color} className={`${icon.type === 'blade' ? 'blade-heart' : ''} ${colorClass[color]}`} />
     <span>{suffix}</span>
   </span>;
 }

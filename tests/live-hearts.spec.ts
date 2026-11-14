@@ -52,6 +52,17 @@ for (const width of [1365,390]) {
         await expect(badge).toHaveAttribute('title',/橙は含みません/);
         await expect(card.locator('.live-heart-list svg')).toHaveCount(0);
       }
+      if(number==='LL-PR-004-PR') {
+        // Ordinary blades in effects must be readable and distinct from ALL hearts.
+        await expect(card.locator('.effect-text').getByLabel('ブレード',{exact:true})).toHaveText('ブレード');
+        await expect(card.locator('.effect-text')).not.toContainText('◆');
+        await card.getByRole('button',{name:'愛♡スクリ～ム！の効果を全文読む',exact:true}).click();
+        const reader=page.getByRole('dialog',{name:'愛♡スクリ～ム！',exact:true});
+        await expect(reader.getByLabel('ブレード',{exact:true})).toHaveText('ブレード');
+        await expect(reader.locator('.effect-detail-text')).not.toContainText('◆');
+        await page.keyboard.press('Escape');
+        await expect(reader).toBeHidden();
+      }
     }
     await expect(card.getByLabel('ドロー',{exact:true})).toBeVisible();
     await card.getByRole('button',{name:'デッキに追加',exact:true}).click();
@@ -61,6 +72,11 @@ for (const width of [1365,390]) {
     await expect(deckDetails).toContainText('ブレードハート');
     await expect(deckDetails.locator('.live-heart-list')).toHaveText('紫×1ドロー');
     await expect(deckDetails.locator('.heart-any path').first()).toHaveAttribute('fill','none');
+    const deckCard=page.locator('.deck-card-details');
+    await expect(deckCard.locator('.deck-effect-preview').getByLabel('ブレード',{exact:true})).toHaveText('ブレード');
+    await deckCard.locator('summary').click();
+    await expect(deckCard.locator('.deck-full-effect').getByLabel('ブレード',{exact:true})).toHaveText('ブレード');
+    await expect(deckCard).not.toContainText('◆');
     await page.keyboard.press('Escape');
     if(width<768 && !await search.isVisible()) await toolbar.getByRole('button',{name:'検索',exact:true}).click();
 
