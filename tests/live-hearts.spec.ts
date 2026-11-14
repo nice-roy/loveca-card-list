@@ -16,6 +16,8 @@ for (const width of [1365,390]) {
     });
     await page.goto('/');
     await page.getByRole('checkbox',{name:'同一カードをまとめる'}).uncheck();
+    const toolbar=page.getByRole('toolbar',{name:'カード一覧の操作'});
+    if(width<768) await toolbar.getByRole('button',{name:'検索',exact:true}).click();
     const search=page.getByRole('searchbox',{name:'カード名、カード番号、効果テキストで検索'});
     const card=page.getByRole('article');
     await search.fill('PL!-bp8-023-L');
@@ -48,12 +50,14 @@ for (const width of [1365,390]) {
     }
     await expect(card.getByLabel('ドローハート',{exact:true})).toBeVisible();
     await card.getByRole('button',{name:'デッキに追加',exact:true}).click();
-    await page.getByRole('button',{name:'デッキを開く、現在1枚',exact:true}).click();
+    if(width<768) await toolbar.getByRole('button',{name:/^デッキ/}).click();
+    else await page.getByRole('button',{name:'デッキを開く、現在1枚',exact:true}).click();
     const deckDetails=page.locator('.deck-key-info');
     await expect(deckDetails).toContainText('ブレードハート');
     await expect(deckDetails.locator('.live-heart-list')).toHaveText('紫×1ドロー');
     await expect(deckDetails.locator('.heart-any path').first()).toHaveAttribute('fill','none');
     await page.keyboard.press('Escape');
+    if(width<768 && !await search.isVisible()) await toolbar.getByRole('button',{name:'検索',exact:true}).click();
 
     // Member effect text uses the very same hollow symbol, without changing the saved text.
     await search.fill('PL!-bp8-001-R');
