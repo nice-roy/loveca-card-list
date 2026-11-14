@@ -28,4 +28,3 @@ test('product search accepts names, full-width codes and multiple terms without 
   assert.equal(groupProductOptions(options, '存在しない商品', 'numberDesc').length, 0);
   assert.equal(JSON.stringify(options), before);
 });
-
