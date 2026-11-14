@@ -85263,5 +85263,5827 @@
       ],
       "score": 4
     }
+  },
+  {
+    "id": "loveca-card:ll-bp8-001-r＋",
+    "cardNumber": "LL-bp8-001-R＋",
+    "name": "矢澤にこ&宮下 愛&セラス 柳田 リリエンフェルト",
+    "cardType": "member",
+    "groupIds": [
+      "muse",
+      "nijigasaki",
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:780ba204bd35"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=LL-bp8-001-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【登場】/【ライブ成功時】自分のデッキの上からカードを6枚見る。その中からメンバーカードを1枚公開し、このメンバーの下に置いてもよい。残りを控え室に置く。\n【常時】このメンバーは、このメンバーの下に置かれている「矢澤にこ」、「宮下 愛」、「セラス 柳田 リリエンフェルト」のメンバーカードが持つ【起動】能力と【ライブ開始時】能力をすべて得る。",
+    "tags": [],
+    "member": {
+      "cost": 15,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 7
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp3-026-secl",
+    "cardNumber": "PL!-bp3-026-SECL",
+    "name": "Oh,Love&Peace!",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp3-026-SECL&sort=no&view=text",
+    "effectText": "【ライブ開始時】手札を2枚控え室に置いてもよい：ライブ終了時まで、自分のステージにいるメンバー1人は、[ブレード][ブレード][ブレード]を得る。\n【ライブ成功時】自分のステージにいるメンバーが持つハートの総数が、相手のステージにいるメンバーが持つハートの総数より多い場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 5
+        },
+        {
+          "color": "purple",
+          "count": 2
+        },
+        {
+          "color": "any",
+          "count": 6
+        }
+      ],
+      "score": 6
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-001-p",
+    "cardNumber": "PL!-bp8-001-P",
+    "name": "高坂穂乃果",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:5f0e308791d5"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-001-P&sort=no&view=text",
+    "effectText": "【常時】自分の成功ライブカード置き場にあるカードのスコアの合計が６以上であるかぎり、自分のライブカード置き場にあるすべての元々のスコアが４以下の『μ's』のライブカードの必要ハートを[heart0]減らす。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-001-r",
+    "cardNumber": "PL!-bp8-001-R",
+    "name": "高坂穂乃果",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:5f0e308791d5"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-001-R&sort=no&view=text",
+    "effectText": "【常時】自分の成功ライブカード置き場にあるカードのスコアの合計が６以上であるかぎり、自分のライブカード置き場にあるすべての元々のスコアが４以下の『μ's』のライブカードの必要ハートを[heart0]減らす。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-002-p",
+    "cardNumber": "PL!-bp8-002-P",
+    "name": "絢瀬絵里",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:9a4f1ba7e151"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-002-P&sort=no&view=text",
+    "effectText": "【自動】このメンバーがステージから控え室に置かれたとき、このカードをデッキの一番下に置いてもよい。そうしたとき、相手のステージにいる元々持つハートの数が4つ以下のメンバー1人をウェイトにする。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-002-r",
+    "cardNumber": "PL!-bp8-002-R",
+    "name": "絢瀬絵里",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:9a4f1ba7e151"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-002-R&sort=no&view=text",
+    "effectText": "【自動】このメンバーがステージから控え室に置かれたとき、このカードをデッキの一番下に置いてもよい。そうしたとき、相手のステージにいる元々持つハートの数が4つ以下のメンバー1人をウェイトにする。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-003-p",
+    "cardNumber": "PL!-bp8-003-P",
+    "name": "南ことり",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:cf0d636df13a"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-003-P&sort=no&view=text",
+    "effectText": "【常時】自分のステージにいる『μ's』のメンバーは、「【常時】ウェイト状態のこのメンバーが『μ's』のメンバーとバトンタッチするときに減る値は、このメンバーのコストに1足した値に等しくなる。」を得る。\n【起動】[ターン1回]このメンバーをウェイトにし、手札を1枚控え室に置く：自分のデッキの上からカードを2枚見る。その中から1枚を手札に加え、残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-003-p＋",
+    "cardNumber": "PL!-bp8-003-P＋",
+    "name": "南ことり",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:cf0d636df13a"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-003-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】自分のステージにいる『μ's』のメンバーは、「【常時】ウェイト状態のこのメンバーが『μ's』のメンバーとバトンタッチするときに減る値は、このメンバーのコストに1足した値に等しくなる。」を得る。\n【起動】[ターン1回]このメンバーをウェイトにし、手札を1枚控え室に置く：自分のデッキの上からカードを2枚見る。その中から1枚を手札に加え、残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-003-r＋",
+    "cardNumber": "PL!-bp8-003-R＋",
+    "name": "南ことり",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:cf0d636df13a"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-003-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】自分のステージにいる『μ's』のメンバーは、「【常時】ウェイト状態のこのメンバーが『μ's』のメンバーとバトンタッチするときに減る値は、このメンバーのコストに1足した値に等しくなる。」を得る。\n【起動】[ターン1回]このメンバーをウェイトにし、手札を1枚控え室に置く：自分のデッキの上からカードを2枚見る。その中から1枚を手札に加え、残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-003-sec",
+    "cardNumber": "PL!-bp8-003-SEC",
+    "name": "南ことり",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:cf0d636df13a"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-003-SEC&sort=no&view=text",
+    "effectText": "【常時】自分のステージにいる『μ's』のメンバーは、「【常時】ウェイト状態のこのメンバーが『μ's』のメンバーとバトンタッチするときに減る値は、このメンバーのコストに1足した値に等しくなる。」を得る。\n【起動】[ターン1回]このメンバーをウェイトにし、手札を1枚控え室に置く：自分のデッキの上からカードを2枚見る。その中から1枚を手札に加え、残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-004-p",
+    "cardNumber": "PL!-bp8-004-P",
+    "name": "園田海未",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:79d2cd9a88dd"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-004-P&sort=no&view=text",
+    "effectText": "【起動】[ターン1回]控え室にあるブレードハートを持たない『μ's』のメンバーカード2枚を好きな順番でデッキの下に置く：ライブ終了時まで、このメンバーのコストを＋２する。",
+    "tags": [],
+    "member": {
+      "cost": 7,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-004-r",
+    "cardNumber": "PL!-bp8-004-R",
+    "name": "園田海未",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:79d2cd9a88dd"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-004-R&sort=no&view=text",
+    "effectText": "【起動】[ターン1回]控え室にあるブレードハートを持たない『μ's』のメンバーカード2枚を好きな順番でデッキの下に置く：ライブ終了時まで、このメンバーのコストを＋２する。",
+    "tags": [],
+    "member": {
+      "cost": 7,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-005-p",
+    "cardNumber": "PL!-bp8-005-P",
+    "name": "星空 凛",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:c2569e35db99"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-005-P&sort=no&view=text",
+    "effectText": "【自動】このメンバーがステージから控え室に置かれたとき、このカードをデッキの一番下に置いてもよい。そうしたとき、自分の控え室から必要ハートに[heart03]を含むライブカードを1枚手札に加え、手札を1枚控え室に置く。\n【ライブ開始時】ライブ終了時まで、エールによって公開される自分のカードが持つ[桃ブレードハート]、[赤ブレードハート]、[緑ブレードハート]、[青ブレードハート]、[紫ブレードハート]、[ALLブレード]は、すべて[黄ブレードハート]になる。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-005-p＋",
+    "cardNumber": "PL!-bp8-005-P＋",
+    "name": "星空 凛",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:c2569e35db99"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-005-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【自動】このメンバーがステージから控え室に置かれたとき、このカードをデッキの一番下に置いてもよい。そうしたとき、自分の控え室から必要ハートに[heart03]を含むライブカードを1枚手札に加え、手札を1枚控え室に置く。\n【ライブ開始時】ライブ終了時まで、エールによって公開される自分のカードが持つ[桃ブレードハート]、[赤ブレードハート]、[緑ブレードハート]、[青ブレードハート]、[紫ブレードハート]、[ALLブレード]は、すべて[黄ブレードハート]になる。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-005-r＋",
+    "cardNumber": "PL!-bp8-005-R＋",
+    "name": "星空 凛",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:c2569e35db99"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-005-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【自動】このメンバーがステージから控え室に置かれたとき、このカードをデッキの一番下に置いてもよい。そうしたとき、自分の控え室から必要ハートに[heart03]を含むライブカードを1枚手札に加え、手札を1枚控え室に置く。\n【ライブ開始時】ライブ終了時まで、エールによって公開される自分のカードが持つ[桃ブレードハート]、[赤ブレードハート]、[緑ブレードハート]、[青ブレードハート]、[紫ブレードハート]、[ALLブレード]は、すべて[黄ブレードハート]になる。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-005-sec",
+    "cardNumber": "PL!-bp8-005-SEC",
+    "name": "星空 凛",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:c2569e35db99"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-005-SEC&sort=no&view=text",
+    "effectText": "【自動】このメンバーがステージから控え室に置かれたとき、このカードをデッキの一番下に置いてもよい。そうしたとき、自分の控え室から必要ハートに[heart03]を含むライブカードを1枚手札に加え、手札を1枚控え室に置く。\n【ライブ開始時】ライブ終了時まで、エールによって公開される自分のカードが持つ[桃ブレードハート]、[赤ブレードハート]、[緑ブレードハート]、[青ブレードハート]、[紫ブレードハート]、[ALLブレード]は、すべて[黄ブレードハート]になる。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-006-p",
+    "cardNumber": "PL!-bp8-006-P",
+    "name": "西木野真姫",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:d9d493d85036"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-006-P&sort=no&view=text",
+    "effectText": "【起動】[E][E]このカードを控え室からデッキの一番下に置く：自分の控え室から『μ's』のライブカードを1枚手札に加える。この能力は、このカードが控え室にある場合のみ起動できる。",
+    "tags": [],
+    "member": {
+      "cost": 15,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 3
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-006-r",
+    "cardNumber": "PL!-bp8-006-R",
+    "name": "西木野真姫",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:d9d493d85036"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-006-R&sort=no&view=text",
+    "effectText": "【起動】[E][E]このカードを控え室からデッキの一番下に置く：自分の控え室から『μ's』のライブカードを1枚手札に加える。この能力は、このカードが控え室にある場合のみ起動できる。",
+    "tags": [],
+    "member": {
+      "cost": 15,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 3
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-007-p",
+    "cardNumber": "PL!-bp8-007-P",
+    "name": "東條 希",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:bd0e44532f6b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-007-P&sort=no&view=text",
+    "effectText": "【登場】自分のデッキの上からカードを4枚控え室に置く。それらの中に『μ's』のライブカードがある場合、ライブ終了時まで、[ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-007-r",
+    "cardNumber": "PL!-bp8-007-R",
+    "name": "東條 希",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:bd0e44532f6b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-007-R&sort=no&view=text",
+    "effectText": "【登場】自分のデッキの上からカードを4枚控え室に置く。それらの中に『μ's』のライブカードがある場合、ライブ終了時まで、[ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-008-p",
+    "cardNumber": "PL!-bp8-008-P",
+    "name": "小泉花陽",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:a6c32fc4b309"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-008-P&sort=no&view=text",
+    "effectText": "【ライブ成功時】手札を1枚控え室に置いてもよい：エールにより公開された自分のカードの中から『μ's』のカードを1枚手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-008-r",
+    "cardNumber": "PL!-bp8-008-R",
+    "name": "小泉花陽",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:a6c32fc4b309"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-008-R&sort=no&view=text",
+    "effectText": "【ライブ成功時】手札を1枚控え室に置いてもよい：エールにより公開された自分のカードの中から『μ's』のカードを1枚手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-009-p",
+    "cardNumber": "PL!-bp8-009-P",
+    "name": "矢澤にこ",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:41872c3ed00c"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-009-P&sort=no&view=text",
+    "effectText": "【常時】このメンバーの下に置かれているコストの異なるメンバーカード1枚につき、このメンバーのコストを＋２し、[heart01][ブレード]を得る。\n【起動】[ターン2回][E][E]：自分の手札からメンバーカード1枚をこのメンバーの下に置く。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-009-p＋",
+    "cardNumber": "PL!-bp8-009-P＋",
+    "name": "矢澤にこ",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:41872c3ed00c"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-009-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】このメンバーの下に置かれているコストの異なるメンバーカード1枚につき、このメンバーのコストを＋２し、[heart01][ブレード]を得る。\n【起動】[ターン2回][E][E]：自分の手札からメンバーカード1枚をこのメンバーの下に置く。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-009-r＋",
+    "cardNumber": "PL!-bp8-009-R＋",
+    "name": "矢澤にこ",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:41872c3ed00c"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-009-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】このメンバーの下に置かれているコストの異なるメンバーカード1枚につき、このメンバーのコストを＋２し、[heart01][ブレード]を得る。\n【起動】[ターン2回][E][E]：自分の手札からメンバーカード1枚をこのメンバーの下に置く。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-009-sec",
+    "cardNumber": "PL!-bp8-009-SEC",
+    "name": "矢澤にこ",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:41872c3ed00c"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-009-SEC&sort=no&view=text",
+    "effectText": "【常時】このメンバーの下に置かれているコストの異なるメンバーカード1枚につき、このメンバーのコストを＋２し、[heart01][ブレード]を得る。\n【起動】[ターン2回][E][E]：自分の手札からメンバーカード1枚をこのメンバーの下に置く。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-010-n",
+    "cardNumber": "PL!-bp8-010-N",
+    "name": "高坂穂乃果",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:5f0e308791d5"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-010-N&sort=no&view=text",
+    "effectText": "【起動】[ターン1回]このメンバーをウェイトにする：自分の控え室にあるカードを2枚まで好きな順番でデッキの下に置く。（ウェイト状態のメンバーが持つ[ブレード]は、エールで公開する枚数を増やさない。）",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-011-n",
+    "cardNumber": "PL!-bp8-011-N",
+    "name": "絢瀬絵里",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:9a4f1ba7e151"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-011-N&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分の成功ライブカード置き場にあるカードのスコアの合計が６以上の場合、相手のステージにいる元々持つ[ブレード]の数が3つ以下のメンバー1人をウェイトにする。（ウェイト状態のメンバーが持つ[ブレード]は、エールで公開する枚数を増やさない。）",
+    "tags": [],
+    "member": {
+      "cost": 5,
+      "hearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-012-n",
+    "cardNumber": "PL!-bp8-012-N",
+    "name": "南ことり",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:cf0d636df13a"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-012-N&sort=no&view=text",
+    "effectText": "【起動】[ターン1回]このメンバーをウェイトにし、手札を2枚控え室に置く：自分の控え室から『μ's』のライブカードを1枚手札に加える。（ウェイト状態のメンバーが持つ[ブレード]は、エールで公開する枚数を増やさない。）",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-013-n",
+    "cardNumber": "PL!-bp8-013-N",
+    "name": "園田海未",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:79d2cd9a88dd"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-013-N&sort=no&view=text",
+    "effectText": "【常時】自分のカードの効果によって成功ライブカード置き場にあるライブカードのスコアの合計を参照するとき、自分の成功ライブカード置き場にカードがあるかぎり、その合計の値を＋２する。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-014-n",
+    "cardNumber": "PL!-bp8-014-N",
+    "name": "星空 凛",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:c2569e35db99"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-014-N&sort=no&view=text",
+    "effectText": "【登場】控え室にあるブレードハートを持たない『μ's』のメンバーカード2枚を好きな順番でデッキの下に置いてもよい：カードを1枚引く。",
+    "tags": [],
+    "member": {
+      "cost": 7,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-015-n",
+    "cardNumber": "PL!-bp8-015-N",
+    "name": "西木野真姫",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:d9d493d85036"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-015-N&sort=no&view=text",
+    "effectText": "【ライブ成功時】カードを1枚引き、手札を1枚控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-016-n",
+    "cardNumber": "PL!-bp8-016-N",
+    "name": "東條 希",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:bd0e44532f6b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-016-N&sort=no&view=text",
+    "effectText": "-",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-017-n",
+    "cardNumber": "PL!-bp8-017-N",
+    "name": "小泉花陽",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:a6c32fc4b309"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-017-N&sort=no&view=text",
+    "effectText": "【登場】手札のブレードハートを持たないメンバーカードを1枚公開してもよい：これにより公開したカードを自分のデッキの一番下に置く。その後、自分のデッキの上からカードを5枚見る。その中から『μ's』のカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-018-n",
+    "cardNumber": "PL!-bp8-018-N",
+    "name": "矢澤にこ",
+    "cardType": "member",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [
+      "member:41872c3ed00c"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-018-N&sort=no&view=text",
+    "effectText": "【ライブ開始時】[E]支払ってもよい：ライブ終了時まで、[ブレード][ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": null
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!-bp8-019-l",
+    "cardNumber": "PL!-bp8-019-L",
+    "name": "友情ノーチェンジ",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-019-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】このターン、自分のライブカード置き場に置かれたカードの枚数が1枚以下の場合、このカードのスコアを＋２する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 1
+        }
+      ],
+      "score": 1
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-020-l",
+    "cardNumber": "PL!-bp8-020-L",
+    "name": "ぶる～べりぃ♡とれいん",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-020-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにいるウェイト状態の「南 ことり」1人をアクティブにする。そうしたとき、相手のステージにいるコスト4以下のメンバー1人をウェイトにする。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 1
+        }
+      ],
+      "score": 1
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-021-l",
+    "cardNumber": "PL!-bp8-021-L",
+    "name": "それは僕たちの奇跡",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-021-L&sort=no&view=text",
+    "effectText": "【自動】このカードが成功ライブカード置き場に置かれたとき、自分の成功ライブカード置き場にあるカードが1枚以下の場合、自分のデッキの上からカードを4枚見る。その中から『μ's』のメンバーカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 2
+        },
+        {
+          "color": "any",
+          "count": 2
+        }
+      ],
+      "score": 2
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-021-secl",
+    "cardNumber": "PL!-bp8-021-SECL",
+    "name": "それは僕たちの奇跡",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-021-SECL&sort=no&view=text",
+    "effectText": "【自動】このカードが成功ライブカード置き場に置かれたとき、自分の成功ライブカード置き場にあるカードが1枚以下の場合、自分のデッキの上からカードを4枚見る。その中から『μ's』のメンバーカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 2
+        },
+        {
+          "color": "any",
+          "count": 2
+        }
+      ],
+      "score": 2
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-022-l",
+    "cardNumber": "PL!-bp8-022-L",
+    "name": "Hello,星を数えて",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-022-L&sort=no&view=text",
+    "effectText": "【ライブ成功時】エールにより公開された自分のカードの中に[黄ブレードハート]を持つカードが5枚以上ある場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 3
+        }
+      ],
+      "score": 3
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-023-l",
+    "cardNumber": "PL!-bp8-023-L",
+    "name": "Snow halation",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-023-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】ライブ終了時まで、エールによって公開される自分のコスト4以下のブレードハートを持たないメンバーカードは[橙ブレードハート]を持つ。\n【ライブ成功時】エールにより公開された自分のカードの中に[橙ブレードハート]を持つカードが6枚以上ある場合、このカードのスコアを＋２する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 2
+        },
+        {
+          "color": "any",
+          "count": 6
+        }
+      ],
+      "score": 5
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-023-secl",
+    "cardNumber": "PL!-bp8-023-SECL",
+    "name": "Snow halation",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-023-SECL&sort=no&view=text",
+    "effectText": "【ライブ開始時】ライブ終了時まで、エールによって公開される自分のコスト4以下のブレードハートを持たないメンバーカードは[橙ブレードハート]を持つ。\n【ライブ成功時】エールにより公開された自分のカードの中に[橙ブレードハート]を持つカードが6枚以上ある場合、このカードのスコアを＋２する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 2
+        },
+        {
+          "color": "any",
+          "count": 6
+        }
+      ],
+      "score": 5
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-024-l",
+    "cardNumber": "PL!-bp8-024-L",
+    "name": "SUNNY DAY SONG",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-024-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにいる『μ's』のメンバー1人を選ぶ。ライブ終了時まで、そのメンバーは、相手のステージにいるそのメンバーと名前の異なるメンバー1人につき、[ブレード]を得る。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 3
+        },
+        {
+          "color": "yellow",
+          "count": 3
+        },
+        {
+          "color": "purple",
+          "count": 3
+        },
+        {
+          "color": "any",
+          "count": 5
+        }
+      ],
+      "score": 6
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-024-secl",
+    "cardNumber": "PL!-bp8-024-SECL",
+    "name": "SUNNY DAY SONG",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-024-SECL&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにいる『μ's』のメンバー1人を選ぶ。ライブ終了時まで、そのメンバーは、相手のステージにいるそのメンバーと名前の異なるメンバー1人につき、[ブレード]を得る。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 3
+        },
+        {
+          "color": "yellow",
+          "count": 3
+        },
+        {
+          "color": "purple",
+          "count": 3
+        },
+        {
+          "color": "any",
+          "count": 5
+        }
+      ],
+      "score": 6
+    }
+  },
+  {
+    "id": "loveca-card:pl!-bp8-025-l",
+    "cardNumber": "PL!-bp8-025-L",
+    "name": "にこぷり♡女子道",
+    "cardType": "live",
+    "groupIds": [
+      "muse"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp8-025-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにいる「矢澤にこ」1人を選ぶ。自分と相手のステージの中で、そのメンバーが、ほかのすべてのメンバーより多くのハートを持つ場合、このカードのスコアを＋１する。その後、多くの[ブレード]を持つ場合、コストが高い場合についても同じことを行う。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 5
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 2
+        },
+        {
+          "color": "any",
+          "count": 7
+        }
+      ],
+      "score": 7
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp5-020-secl",
+    "cardNumber": "PL!HS-bp5-020-SECL",
+    "name": "バアドケージ",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp5-020-SECL&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにコスト10以上の『蓮ノ空』のメンバーが2人以上いる場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "blue",
+          "count": 2
+        },
+        {
+          "color": "any",
+          "count": 1
+        }
+      ],
+      "score": 1
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-001-p",
+    "cardNumber": "PL!HS-bp8-001-P",
+    "name": "日野下花帆",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:e648cb6458c7"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-001-P&sort=no&view=text",
+    "effectText": "【登場】自分のデッキの上からカードを3枚控え室に置く。それらがすべて『スリーズブーケ』のカードの場合、エネルギーを2枚アクティブにする。\n【自動】[ターン1回]自分の控え室にあるカードがデッキに置かれたとき、ライブ終了時まで、[ブレード][ブレード][ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 2
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-001-r",
+    "cardNumber": "PL!HS-bp8-001-R",
+    "name": "日野下花帆",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:e648cb6458c7"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-001-R&sort=no&view=text",
+    "effectText": "【登場】自分のデッキの上からカードを3枚控え室に置く。それらがすべて『スリーズブーケ』のカードの場合、エネルギーを2枚アクティブにする。\n【自動】[ターン1回]自分の控え室にあるカードがデッキに置かれたとき、ライブ終了時まで、[ブレード][ブレード][ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 2
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-002-p",
+    "cardNumber": "PL!HS-bp8-002-P",
+    "name": "村野さやか",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:d5ea1baf5509"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-002-P&sort=no&view=text",
+    "effectText": "【常時】このメンバーのコスト５につき、[ブレード]を得る。\n【ライブ開始時】手札を1枚控え室に置いてもよい：ライブ終了時まで、このメンバーのコストを＋５する。その後、このメンバーのコストが２０以上の場合、このメンバーをアクティブにし、カードを1枚引く。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": null
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-002-r",
+    "cardNumber": "PL!HS-bp8-002-R",
+    "name": "村野さやか",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:d5ea1baf5509"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-002-R&sort=no&view=text",
+    "effectText": "【常時】このメンバーのコスト５につき、[ブレード]を得る。\n【ライブ開始時】手札を1枚控え室に置いてもよい：ライブ終了時まで、このメンバーのコストを＋５する。その後、このメンバーのコストが２０以上の場合、このメンバーをアクティブにし、カードを1枚引く。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 2
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": null
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-003-p",
+    "cardNumber": "PL!HS-bp8-003-P",
+    "name": "大沢瑠璃乃",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:1629b94f2426"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-003-P&sort=no&view=text",
+    "effectText": "【登場】自分と相手はそれぞれ自身の手札の枚数が6枚になるまで手札を控え室に置く。\n【常時】自分の手札が7枚より少ないかぎり、その差に等しい数の[ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 10,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 3
+        },
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-003-r",
+    "cardNumber": "PL!HS-bp8-003-R",
+    "name": "大沢瑠璃乃",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:1629b94f2426"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-003-R&sort=no&view=text",
+    "effectText": "【登場】自分と相手はそれぞれ自身の手札の枚数が6枚になるまで手札を控え室に置く。\n【常時】自分の手札が7枚より少ないかぎり、その差に等しい数の[ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 10,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 3
+        },
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-004-p",
+    "cardNumber": "PL!HS-bp8-004-P",
+    "name": "百生吟子",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:65608c4752e8"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-004-P&sort=no&view=text",
+    "effectText": "【登場】カードを1枚引く。「日野下花帆」とバトンタッチして登場した場合、さらにカードを1枚引く。\n【起動】[ターン1回]手札を1枚控え室に置く：これにより控え室に置いたカードがコスト13以下の『蓮ノ空』のメンバーカードの場合、ライブ終了時まで、このメンバーは、そのカードが持つ【登場】能力1つを得る。その【登場】能力をコストを支払わずに発動させる。",
+    "tags": [],
+    "member": {
+      "cost": 17,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 4
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-004-p＋",
+    "cardNumber": "PL!HS-bp8-004-P＋",
+    "name": "百生吟子",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:65608c4752e8"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-004-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【登場】カードを1枚引く。「日野下花帆」とバトンタッチして登場した場合、さらにカードを1枚引く。\n【起動】[ターン1回]手札を1枚控え室に置く：これにより控え室に置いたカードがコスト13以下の『蓮ノ空』のメンバーカードの場合、ライブ終了時まで、このメンバーは、そのカードが持つ【登場】能力1つを得る。その【登場】能力をコストを支払わずに発動させる。",
+    "tags": [],
+    "member": {
+      "cost": 17,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 4
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-004-r＋",
+    "cardNumber": "PL!HS-bp8-004-R＋",
+    "name": "百生吟子",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:65608c4752e8"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-004-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【登場】カードを1枚引く。「日野下花帆」とバトンタッチして登場した場合、さらにカードを1枚引く。\n【起動】[ターン1回]手札を1枚控え室に置く：これにより控え室に置いたカードがコスト13以下の『蓮ノ空』のメンバーカードの場合、ライブ終了時まで、このメンバーは、そのカードが持つ【登場】能力1つを得る。その【登場】能力をコストを支払わずに発動させる。",
+    "tags": [],
+    "member": {
+      "cost": 17,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 4
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-004-sec",
+    "cardNumber": "PL!HS-bp8-004-SEC",
+    "name": "百生吟子",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:65608c4752e8"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-004-SEC&sort=no&view=text",
+    "effectText": "【登場】カードを1枚引く。「日野下花帆」とバトンタッチして登場した場合、さらにカードを1枚引く。\n【起動】[ターン1回]手札を1枚控え室に置く：これにより控え室に置いたカードがコスト13以下の『蓮ノ空』のメンバーカードの場合、ライブ終了時まで、このメンバーは、そのカードが持つ【登場】能力1つを得る。その【登場】能力をコストを支払わずに発動させる。",
+    "tags": [],
+    "member": {
+      "cost": 17,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 4
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-005-p",
+    "cardNumber": "PL!HS-bp8-005-P",
+    "name": "徒町小鈴",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:e27560ac3a8c"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-005-P&sort=no&view=text",
+    "effectText": "【常時】自分のステージに『DOLLCHESTRA』のメンバーがいないかぎり、このカードをプレイできない。\n【自動】自分のステージにほかの『DOLLCHESTRA』のメンバーがいないとき、このメンバーを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 0,
+      "hearts": [],
+      "bladeHearts": [
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-005-r",
+    "cardNumber": "PL!HS-bp8-005-R",
+    "name": "徒町小鈴",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:e27560ac3a8c"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-005-R&sort=no&view=text",
+    "effectText": "【常時】自分のステージに『DOLLCHESTRA』のメンバーがいないかぎり、このカードをプレイできない。\n【自動】自分のステージにほかの『DOLLCHESTRA』のメンバーがいないとき、このメンバーを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 0,
+      "hearts": [],
+      "bladeHearts": [
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-006-p",
+    "cardNumber": "PL!HS-bp8-006-P",
+    "name": "安養寺姫芽",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:849356dfa6d4"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-006-P&sort=no&view=text",
+    "effectText": "【登場】手札の『蓮ノ空』のカードを1枚控え室に置いてもよい：以下から1つを選ぶ。\n・[heart01]か[heart04]か[heart05]か[heart06]のうち、1つを選ぶ。ライブ終了時まで、選んだハートを1つ得る。\n・自分のデッキの上からカードを3枚見る。その中から好きな枚数を好きな順番でデッキの上に置き、残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-006-r",
+    "cardNumber": "PL!HS-bp8-006-R",
+    "name": "安養寺姫芽",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:849356dfa6d4"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-006-R&sort=no&view=text",
+    "effectText": "【登場】手札の『蓮ノ空』のカードを1枚控え室に置いてもよい：以下から1つを選ぶ。\n・[heart01]か[heart04]か[heart05]か[heart06]のうち、1つを選ぶ。ライブ終了時まで、選んだハートを1つ得る。\n・自分のデッキの上からカードを3枚見る。その中から好きな枚数を好きな順番でデッキの上に置き、残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-007-p",
+    "cardNumber": "PL!HS-bp8-007-P",
+    "name": "セラス 柳田 リリエンフェルト",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:eb0b95da4a0f"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-007-P&sort=no&view=text",
+    "effectText": "【常時】自分のステージにアクティブ状態の「桂城 泉」がいるかぎり、自分と相手のステージにいるコスト4以下のメンバーの【起動】能力は起動できない。\n【登場】自分のデッキの上からカードを5枚見る。その中から必要ハートに[heart06]を含むライブカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 4
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-007-p＋",
+    "cardNumber": "PL!HS-bp8-007-P＋",
+    "name": "セラス 柳田 リリエンフェルト",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:eb0b95da4a0f"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-007-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】自分のステージにアクティブ状態の「桂城 泉」がいるかぎり、自分と相手のステージにいるコスト4以下のメンバーの【起動】能力は起動できない。\n【登場】自分のデッキの上からカードを5枚見る。その中から必要ハートに[heart06]を含むライブカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 4
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-007-r＋",
+    "cardNumber": "PL!HS-bp8-007-R＋",
+    "name": "セラス 柳田 リリエンフェルト",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:eb0b95da4a0f"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-007-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】自分のステージにアクティブ状態の「桂城 泉」がいるかぎり、自分と相手のステージにいるコスト4以下のメンバーの【起動】能力は起動できない。\n【登場】自分のデッキの上からカードを5枚見る。その中から必要ハートに[heart06]を含むライブカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 4
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-007-sec",
+    "cardNumber": "PL!HS-bp8-007-SEC",
+    "name": "セラス 柳田 リリエンフェルト",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:eb0b95da4a0f"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-007-SEC&sort=no&view=text",
+    "effectText": "【常時】自分のステージにアクティブ状態の「桂城 泉」がいるかぎり、自分と相手のステージにいるコスト4以下のメンバーの【起動】能力は起動できない。\n【登場】自分のデッキの上からカードを5枚見る。その中から必要ハートに[heart06]を含むライブカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 4
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-008-p",
+    "cardNumber": "PL!HS-bp8-008-P",
+    "name": "桂城 泉",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:d1dda3ba0578"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-008-P&sort=no&view=text",
+    "effectText": "【常時】自分のステージに「セラス 柳田 リリエンフェルト」がいるかぎり、このメンバーは、相手のカードの効果によってはウェイトしない。\n【起動】[ターン1回]手札を1枚控え室に置く：自分のステージにいるこのメンバー以外の『Edel Note』のメンバー1人を控え室に置く。そうしたとき、自分の控え室から、これによりステージから控え室に置いたメンバーカードを1枚、そのメンバーがいたエリアに登場させる。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-008-p＋",
+    "cardNumber": "PL!HS-bp8-008-P＋",
+    "name": "桂城 泉",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:d1dda3ba0578"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-008-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】自分のステージに「セラス 柳田 リリエンフェルト」がいるかぎり、このメンバーは、相手のカードの効果によってはウェイトしない。\n【起動】[ターン1回]手札を1枚控え室に置く：自分のステージにいるこのメンバー以外の『Edel Note』のメンバー1人を控え室に置く。そうしたとき、自分の控え室から、これによりステージから控え室に置いたメンバーカードを1枚、そのメンバーがいたエリアに登場させる。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-008-r＋",
+    "cardNumber": "PL!HS-bp8-008-R＋",
+    "name": "桂城 泉",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:d1dda3ba0578"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-008-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】自分のステージに「セラス 柳田 リリエンフェルト」がいるかぎり、このメンバーは、相手のカードの効果によってはウェイトしない。\n【起動】[ターン1回]手札を1枚控え室に置く：自分のステージにいるこのメンバー以外の『Edel Note』のメンバー1人を控え室に置く。そうしたとき、自分の控え室から、これによりステージから控え室に置いたメンバーカードを1枚、そのメンバーがいたエリアに登場させる。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-008-sec",
+    "cardNumber": "PL!HS-bp8-008-SEC",
+    "name": "桂城 泉",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:d1dda3ba0578"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-008-SEC&sort=no&view=text",
+    "effectText": "【常時】自分のステージに「セラス 柳田 リリエンフェルト」がいるかぎり、このメンバーは、相手のカードの効果によってはウェイトしない。\n【起動】[ターン1回]手札を1枚控え室に置く：自分のステージにいるこのメンバー以外の『Edel Note』のメンバー1人を控え室に置く。そうしたとき、自分の控え室から、これによりステージから控え室に置いたメンバーカードを1枚、そのメンバーがいたエリアに登場させる。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-009-n",
+    "cardNumber": "PL!HS-bp8-009-N",
+    "name": "日野下花帆",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:e648cb6458c7"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-009-N&sort=no&view=text",
+    "effectText": "【登場】自分の控え室からコスト9以下のメンバーカード1枚をデッキの一番上に置いてもよい。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-010-n",
+    "cardNumber": "PL!HS-bp8-010-N",
+    "name": "村野さやか",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:d5ea1baf5509"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-010-N&sort=no&view=text",
+    "effectText": "【ライブ開始時】手札を1枚控え室に置いてもよい：自分のステージにいる『蓮ノ空』のメンバーのコストが合計25以上の場合、自分の控え室から『DOLLCHESTRA』のライブカード1枚を手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-011-n",
+    "cardNumber": "PL!HS-bp8-011-N",
+    "name": "大沢瑠璃乃",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:1629b94f2426"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-011-N&sort=no&view=text",
+    "effectText": "【登場】このメンバーよりコストが低いメンバーからバトンタッチして登場した場合、自分の控え室から『みらくらぱーく！』のライブカード1枚を手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-012-n",
+    "cardNumber": "PL!HS-bp8-012-N",
+    "name": "百生吟子",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:65608c4752e8"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-012-N&sort=no&view=text",
+    "effectText": "【登場】自分の控え室にあるすべてのメンバーカードをシャッフルし、デッキの下に置く。これにより『スリーズブーケ』のメンバーカードが3枚以上デッキの下に置かれた場合、ライブ終了時まで、[heart04][heart04]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 7,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-013-n",
+    "cardNumber": "PL!HS-bp8-013-N",
+    "name": "徒町小鈴",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:e27560ac3a8c"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-013-N&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のライブカード置き場に『DOLLCHESTRA』のカードがある場合、ライブ終了時まで、[ブレード][ブレード][ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "blue",
+          "count": 4
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-014-n",
+    "cardNumber": "PL!HS-bp8-014-N",
+    "name": "安養寺姫芽",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:849356dfa6d4"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-014-N&sort=no&view=text",
+    "effectText": "【登場】自分のステージにほかの『蓮ノ空』のメンバーがいる場合、カードを1枚引く。\n【自動】このメンバーがステージから控え室に置かれたとき、手札を2枚控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-015-n",
+    "cardNumber": "PL!HS-bp8-015-N",
+    "name": "セラス 柳田 リリエンフェルト",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:eb0b95da4a0f"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-015-N&sort=no&view=text",
+    "effectText": "【登場】このメンバーをウェイトにしてもよい：自分のデッキの上からカードを2枚見る。その中から好きな枚数を好きな順番でデッキの上に置き、残りを控え室に置く。（ウェイト状態のメンバーが持つ[ブレード]は、エールで公開する枚数を増やさない。）",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-016-n",
+    "cardNumber": "PL!HS-bp8-016-N",
+    "name": "桂城 泉",
+    "cardType": "member",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [
+      "member:d1dda3ba0578"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-016-N&sort=no&view=text",
+    "effectText": "【ライブ成功時】手札を2枚控え室に置いてもよい：自分の控え室からスコア3以下の『蓮ノ空』のライブカードを1枚手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-017-l",
+    "cardNumber": "PL!HS-bp8-017-L",
+    "name": "Bloom the smile, Bloom the dream!",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-017-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のライブカード置き場にカードが2枚以上あり、かつ『蓮ノ空』のみの場合、このカードを手札に戻し、手札を1枚控え室に置く。そうしたとき、自分のライブカード置き場にあるカード1枚のスコアを＋１し、必要ハートを[heart0][heart0]増やす。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "any",
+          "count": 4
+        }
+      ],
+      "score": 0
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-017-secl",
+    "cardNumber": "PL!HS-bp8-017-SECL",
+    "name": "Bloom the smile, Bloom the dream!",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-017-SECL&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のライブカード置き場にカードが2枚以上あり、かつ『蓮ノ空』のみの場合、このカードを手札に戻し、手札を1枚控え室に置く。そうしたとき、自分のライブカード置き場にあるカード1枚のスコアを＋１し、必要ハートを[heart0][heart0]増やす。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "any",
+          "count": 4
+        }
+      ],
+      "score": 0
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-018-l",
+    "cardNumber": "PL!HS-bp8-018-L",
+    "name": "Holiday∞Holiday",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-018-L&sort=no&view=text",
+    "effectText": "【自動】[ターン1回]エールによって公開された自分のカードが、自分のカードの効果によっていずれかの領域に移動したとき、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "green",
+          "count": 4
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 2
+        }
+      ],
+      "score": 3
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-018-secl",
+    "cardNumber": "PL!HS-bp8-018-SECL",
+    "name": "Holiday∞Holiday",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-018-SECL&sort=no&view=text",
+    "effectText": "【自動】[ターン1回]エールによって公開された自分のカードが、自分のカードの効果によっていずれかの領域に移動したとき、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "green",
+          "count": 4
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 2
+        }
+      ],
+      "score": 3
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-019-l",
+    "cardNumber": "PL!HS-bp8-019-L",
+    "name": "不思議と君とライブラリー",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-019-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】[E]支払ってもよい：自分の控え室にあるすべてのコスト9以下のメンバーカードをシャッフルし、デッキの下に置く。\n【ライブ開始時】自分のステージに『スリーズブーケ』のメンバーがおり、かつ自分のデッキにカードが35枚以上ある場合、このカードのスコアを＋２する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 6
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 6
+        }
+      ],
+      "score": 6
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-020-l",
+    "cardNumber": "PL!HS-bp8-020-L",
+    "name": "アイシイ",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-020-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】メンバー2人をウェイトにしてもよい：このカードの必要ハートを[heart0][heart0][heart0]減らす。これによりウェイトにしたメンバーは、次のターンのアクティブフェイズにアクティブしない。\n【ライブ開始時】ライブ終了時まで、『DOLLCHESTRA』のメンバー1人のコストを＋５する。その後、自分のステージにいる『蓮ノ空』のメンバーのコストが合計30以上の場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 5
+        },
+        {
+          "color": "purple",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 5
+        }
+      ],
+      "score": 5
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-021-l",
+    "cardNumber": "PL!HS-bp8-021-L",
+    "name": "みらくりえーしょん",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-021-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにいる『みらくらぱーく！』のメンバー1人を手札に戻してもよい。そうしたとき、自分の手札から、これにより手札に戻したメンバーと同じコストを持つ『みらくらぱーく！』のメンバーカード1枚を、自分のステージのメンバーのいないエリアに登場させる。これにより登場したメンバーの【登場】能力は発動しない。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 3
+        },
+        {
+          "color": "any",
+          "count": 2
+        }
+      ],
+      "score": 2
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-021-secl",
+    "cardNumber": "PL!HS-bp8-021-SECL",
+    "name": "みらくりえーしょん",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-021-SECL&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにいる『みらくらぱーく！』のメンバー1人を手札に戻してもよい。そうしたとき、自分の手札から、これにより手札に戻したメンバーと同じコストを持つ『みらくらぱーく！』のメンバーカード1枚を、自分のステージのメンバーのいないエリアに登場させる。これにより登場したメンバーの【登場】能力は発動しない。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 3
+        },
+        {
+          "color": "any",
+          "count": 2
+        }
+      ],
+      "score": 2
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-022-l",
+    "cardNumber": "PL!HS-bp8-022-L",
+    "name": "トモダチになれる場所",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-022-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分は、相手がカードを1枚引くことを選んでもよい。そうしたとき、ライブ終了時まで、自分のステージにいるコスト10以上の『みらくらぱーく！』のメンバー1人は、[heart01]を得る。\n【ライブ成功時】自分の控え室から『蓮ノ空』のライブカードを1枚手札に加える。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 3
+        },
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 3
+        }
+      ],
+      "score": 3
+    }
+  },
+  {
+    "id": "loveca-card:pl!hs-bp8-023-l",
+    "cardNumber": "PL!HS-bp8-023-L",
+    "name": "EdelinieN",
+    "cardType": "live",
+    "groupIds": [
+      "hasunosora"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!HS-bp8-023-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分の成功ライブカード置き場にある『Edel Note』のカード1枚につき、このカードのスコアを＋３し、必要ハートを[heart06][heart06][heart06][heart0][heart0][heart0]増やす。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "purple",
+          "count": 4
+        },
+        {
+          "color": "any",
+          "count": 2
+        }
+      ],
+      "score": 3
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp3-030-secl",
+    "cardNumber": "PL!N-bp3-030-SECL",
+    "name": "Love U my friends",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp3-030-SECL&sort=no&view=text",
+    "effectText": "【ライブ成功時】エールにより公開された自分のカードの中に[ALLブレード]を持つカードが1枚以上ある場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "score": 3
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-001-p",
+    "cardNumber": "PL!N-bp8-001-P",
+    "name": "上原歩夢",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:581c94b9816e"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-001-P&sort=no&view=text",
+    "effectText": "【登場】このメンバーと自分のステージにいるほかの『虹ヶ咲』のメンバー1人の下に、自分のエネルギー置き場にあるエネルギーをそれぞれ1枚まで置く。\n【ライブ成功時】自分のステージにいるメンバー1人の下にあるエネルギーカード1枚を、自分のエネルギー置き場にウェイト状態で置いてもよい。そうしたとき、カードを1枚引き、手札を1枚控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-001-p＋",
+    "cardNumber": "PL!N-bp8-001-P＋",
+    "name": "上原歩夢",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:581c94b9816e"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-001-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【登場】このメンバーと自分のステージにいるほかの『虹ヶ咲』のメンバー1人の下に、自分のエネルギー置き場にあるエネルギーをそれぞれ1枚まで置く。\n【ライブ成功時】自分のステージにいるメンバー1人の下にあるエネルギーカード1枚を、自分のエネルギー置き場にウェイト状態で置いてもよい。そうしたとき、カードを1枚引き、手札を1枚控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-001-r＋",
+    "cardNumber": "PL!N-bp8-001-R＋",
+    "name": "上原歩夢",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:581c94b9816e"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-001-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【登場】このメンバーと自分のステージにいるほかの『虹ヶ咲』のメンバー1人の下に、自分のエネルギー置き場にあるエネルギーをそれぞれ1枚まで置く。\n【ライブ成功時】自分のステージにいるメンバー1人の下にあるエネルギーカード1枚を、自分のエネルギー置き場にウェイト状態で置いてもよい。そうしたとき、カードを1枚引き、手札を1枚控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-001-sec",
+    "cardNumber": "PL!N-bp8-001-SEC",
+    "name": "上原歩夢",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:581c94b9816e"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-001-SEC&sort=no&view=text",
+    "effectText": "【登場】このメンバーと自分のステージにいるほかの『虹ヶ咲』のメンバー1人の下に、自分のエネルギー置き場にあるエネルギーをそれぞれ1枚まで置く。\n【ライブ成功時】自分のステージにいるメンバー1人の下にあるエネルギーカード1枚を、自分のエネルギー置き場にウェイト状態で置いてもよい。そうしたとき、カードを1枚引き、手札を1枚控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-002-p",
+    "cardNumber": "PL!N-bp8-002-P",
+    "name": "中須かすみ",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:32dce771f8b5"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-002-P&sort=no&view=text",
+    "effectText": "【起動】[E]このカードを控え室からデッキの一番下に置く：ライブ終了時まで、自分のステージにいる『虹ヶ咲』のメンバー1人は、[heart03]を得る。この能力は、このカードが控え室にある場合のみ起動できる。",
+    "tags": [],
+    "member": {
+      "cost": 17,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "green",
+          "count": 2
+        },
+        {
+          "color": "blue",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 7
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-002-r",
+    "cardNumber": "PL!N-bp8-002-R",
+    "name": "中須かすみ",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:32dce771f8b5"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-002-R&sort=no&view=text",
+    "effectText": "【起動】[E]このカードを控え室からデッキの一番下に置く：ライブ終了時まで、自分のステージにいる『虹ヶ咲』のメンバー1人は、[heart03]を得る。この能力は、このカードが控え室にある場合のみ起動できる。",
+    "tags": [],
+    "member": {
+      "cost": 17,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "green",
+          "count": 2
+        },
+        {
+          "color": "blue",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 7
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-003-p",
+    "cardNumber": "PL!N-bp8-003-P",
+    "name": "桜坂しずく",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:bbcca659db8f"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-003-P&sort=no&view=text",
+    "effectText": "【ライブ成功時】自分のデッキの上からカードを5枚見る。その中からブレードハートを持たない『虹ヶ咲』のメンバーカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 7,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-003-r",
+    "cardNumber": "PL!N-bp8-003-R",
+    "name": "桜坂しずく",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:bbcca659db8f"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-003-R&sort=no&view=text",
+    "effectText": "【ライブ成功時】自分のデッキの上からカードを5枚見る。その中からブレードハートを持たない『虹ヶ咲』のメンバーカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 7,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-004-p",
+    "cardNumber": "PL!N-bp8-004-P",
+    "name": "朝香果林",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:b8342f0b641b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-004-P&sort=no&view=text",
+    "effectText": "【起動】[E][E]このカードを手札から控え室に置く：自分の控え室からブレードハートを持つメンバーカードを1枚手札に加える。この能力は、このカードが手札にある場合のみ起動できる。\n【ライブ開始時】手札の『虹ヶ咲』のメンバーカード1枚を公開してもよい：これにより公開したカードをデッキの一番上に置く。その後、好きなハートの色を1つ指定する。ライブ終了時まで、そのハートを1つ得る。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-004-p＋",
+    "cardNumber": "PL!N-bp8-004-P＋",
+    "name": "朝香果林",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:b8342f0b641b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-004-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【起動】[E][E]このカードを手札から控え室に置く：自分の控え室からブレードハートを持つメンバーカードを1枚手札に加える。この能力は、このカードが手札にある場合のみ起動できる。\n【ライブ開始時】手札の『虹ヶ咲』のメンバーカード1枚を公開してもよい：これにより公開したカードをデッキの一番上に置く。その後、好きなハートの色を1つ指定する。ライブ終了時まで、そのハートを1つ得る。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-004-r＋",
+    "cardNumber": "PL!N-bp8-004-R＋",
+    "name": "朝香果林",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:b8342f0b641b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-004-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【起動】[E][E]このカードを手札から控え室に置く：自分の控え室からブレードハートを持つメンバーカードを1枚手札に加える。この能力は、このカードが手札にある場合のみ起動できる。\n【ライブ開始時】手札の『虹ヶ咲』のメンバーカード1枚を公開してもよい：これにより公開したカードをデッキの一番上に置く。その後、好きなハートの色を1つ指定する。ライブ終了時まで、そのハートを1つ得る。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-004-sec",
+    "cardNumber": "PL!N-bp8-004-SEC",
+    "name": "朝香果林",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:b8342f0b641b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-004-SEC&sort=no&view=text",
+    "effectText": "【起動】[E][E]このカードを手札から控え室に置く：自分の控え室からブレードハートを持つメンバーカードを1枚手札に加える。この能力は、このカードが手札にある場合のみ起動できる。\n【ライブ開始時】手札の『虹ヶ咲』のメンバーカード1枚を公開してもよい：これにより公開したカードをデッキの一番上に置く。その後、好きなハートの色を1つ指定する。ライブ終了時まで、そのハートを1つ得る。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-005-p",
+    "cardNumber": "PL!N-bp8-005-P",
+    "name": "宮下 愛",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:a0b76d95b625"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-005-P&sort=no&view=text",
+    "effectText": "【常時】手札にあるこのメンバーカードのコストは、自分のエネルギーデッキのカード1枚につき、1増える。\n【常時】自分のステージにいるすべての『虹ヶ咲』のメンバーと相手のステージにいるすべてのメンバーは[heart02]を得る。\n【起動】[E][ターン1回]エネルギー置き場にあるエネルギー1枚をこのメンバーの下に置く：自分の控え室から『虹ヶ咲』のメンバーカード1枚を手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 10,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "red",
+          "count": 2
+        },
+        {
+          "color": "blue",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-005-p＋",
+    "cardNumber": "PL!N-bp8-005-P＋",
+    "name": "宮下 愛",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:a0b76d95b625"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-005-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】手札にあるこのメンバーカードのコストは、自分のエネルギーデッキのカード1枚につき、1増える。\n【常時】自分のステージにいるすべての『虹ヶ咲』のメンバーと相手のステージにいるすべてのメンバーは[heart02]を得る。\n【起動】[E][ターン1回]エネルギー置き場にあるエネルギー1枚をこのメンバーの下に置く：自分の控え室から『虹ヶ咲』のメンバーカード1枚を手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 10,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "red",
+          "count": 2
+        },
+        {
+          "color": "blue",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-005-r＋",
+    "cardNumber": "PL!N-bp8-005-R＋",
+    "name": "宮下 愛",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:a0b76d95b625"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-005-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【常時】手札にあるこのメンバーカードのコストは、自分のエネルギーデッキのカード1枚につき、1増える。\n【常時】自分のステージにいるすべての『虹ヶ咲』のメンバーと相手のステージにいるすべてのメンバーは[heart02]を得る。\n【起動】[E][ターン1回]エネルギー置き場にあるエネルギー1枚をこのメンバーの下に置く：自分の控え室から『虹ヶ咲』のメンバーカード1枚を手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 10,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "red",
+          "count": 2
+        },
+        {
+          "color": "blue",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-005-sec",
+    "cardNumber": "PL!N-bp8-005-SEC",
+    "name": "宮下 愛",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:a0b76d95b625"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-005-SEC&sort=no&view=text",
+    "effectText": "【常時】手札にあるこのメンバーカードのコストは、自分のエネルギーデッキのカード1枚につき、1増える。\n【常時】自分のステージにいるすべての『虹ヶ咲』のメンバーと相手のステージにいるすべてのメンバーは[heart02]を得る。\n【起動】[E][ターン1回]エネルギー置き場にあるエネルギー1枚をこのメンバーの下に置く：自分の控え室から『虹ヶ咲』のメンバーカード1枚を手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 10,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "red",
+          "count": 2
+        },
+        {
+          "color": "blue",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 6
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-006-p",
+    "cardNumber": "PL!N-bp8-006-P",
+    "name": "近江彼方",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:0d9d956af84b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-006-P&sort=no&view=text",
+    "effectText": "【登場】手札を1枚控え室に置いてもよい：自分のデッキの上からカードを5枚見る。その中から『虹ヶ咲』のメンバーカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 5,
+      "hearts": [
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-006-r",
+    "cardNumber": "PL!N-bp8-006-R",
+    "name": "近江彼方",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:0d9d956af84b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-006-R&sort=no&view=text",
+    "effectText": "【登場】手札を1枚控え室に置いてもよい：自分のデッキの上からカードを5枚見る。その中から『虹ヶ咲』のメンバーカードを1枚公開して手札に加えてもよい。残りを控え室に置く。",
+    "tags": [],
+    "member": {
+      "cost": 5,
+      "hearts": [
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-007-p",
+    "cardNumber": "PL!N-bp8-007-P",
+    "name": "優木せつ菜",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:e5340af679a7"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-007-P&sort=no&view=text",
+    "effectText": "【ライブ開始時】[heart01]か[heart02]か[heart03]のうち、1つを選ぶ。ライブ終了時まで、自分のステージにいるエネルギーカードが下にある『虹ヶ咲』のメンバー1人につき、選んだハートを1つ得る。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [],
+      "bladeHearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-007-r",
+    "cardNumber": "PL!N-bp8-007-R",
+    "name": "優木せつ菜",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:e5340af679a7"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-007-R&sort=no&view=text",
+    "effectText": "【ライブ開始時】[heart01]か[heart02]か[heart03]のうち、1つを選ぶ。ライブ終了時まで、自分のステージにいるエネルギーカードが下にある『虹ヶ咲』のメンバー1人につき、選んだハートを1つ得る。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [],
+      "bladeHearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-008-p",
+    "cardNumber": "PL!N-bp8-008-P",
+    "name": "エマ・ヴェルデ",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:15fdc26429ae"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-008-P&sort=no&view=text",
+    "effectText": "【起動】このカードを手札から公開する：このカードをデッキの一番下に置く。その後、自分のステージに『虹ヶ咲』のメンバーがいる場合、相手のステージにいるコスト2以下のメンバー1人をウェイトにする。この能力は、このカードが手札にある場合のみ起動できる。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "green",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-008-r",
+    "cardNumber": "PL!N-bp8-008-R",
+    "name": "エマ・ヴェルデ",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:15fdc26429ae"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-008-R&sort=no&view=text",
+    "effectText": "【起動】このカードを手札から公開する：このカードをデッキの一番下に置く。その後、自分のステージに『虹ヶ咲』のメンバーがいる場合、相手のステージにいるコスト2以下のメンバー1人をウェイトにする。この能力は、このカードが手札にある場合のみ起動できる。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "green",
+          "count": 2
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-009-p",
+    "cardNumber": "PL!N-bp8-009-P",
+    "name": "天王寺璃奈",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:931bb0f0cc09"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-009-P&sort=no&view=text",
+    "effectText": "【起動】[ターン1回]手札を1枚デッキの一番下に置く：カードを2枚引く。\n【ライブ開始時】デッキの一番下のカードを控え室に置いてもよい：これにより控え室に置いたカードがライブカードの場合、自分のライブカード置き場にあるスコア２以下の『虹ヶ咲』のライブカード1枚をデッキの一番上に置く。そうしたとき、自分の控え室からライブカード1枚を表向きでライブカード置き場に置く。",
+    "tags": [],
+    "member": {
+      "cost": 15,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 7
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-009-p＋",
+    "cardNumber": "PL!N-bp8-009-P＋",
+    "name": "天王寺璃奈",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:931bb0f0cc09"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-009-P%EF%BC%8B&sort=no&view=text",
+    "effectText": "【起動】[ターン1回]手札を1枚デッキの一番下に置く：カードを2枚引く。\n【ライブ開始時】デッキの一番下のカードを控え室に置いてもよい：これにより控え室に置いたカードがライブカードの場合、自分のライブカード置き場にあるスコア２以下の『虹ヶ咲』のライブカード1枚をデッキの一番上に置く。そうしたとき、自分の控え室からライブカード1枚を表向きでライブカード置き場に置く。",
+    "tags": [],
+    "member": {
+      "cost": 15,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 7
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-009-r＋",
+    "cardNumber": "PL!N-bp8-009-R＋",
+    "name": "天王寺璃奈",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:931bb0f0cc09"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R+",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-009-R%EF%BC%8B&sort=no&view=text",
+    "effectText": "【起動】[ターン1回]手札を1枚デッキの一番下に置く：カードを2枚引く。\n【ライブ開始時】デッキの一番下のカードを控え室に置いてもよい：これにより控え室に置いたカードがライブカードの場合、自分のライブカード置き場にあるスコア２以下の『虹ヶ咲』のライブカード1枚をデッキの一番上に置く。そうしたとき、自分の控え室からライブカード1枚を表向きでライブカード置き場に置く。",
+    "tags": [],
+    "member": {
+      "cost": 15,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 7
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-009-sec",
+    "cardNumber": "PL!N-bp8-009-SEC",
+    "name": "天王寺璃奈",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:931bb0f0cc09"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "SEC",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-009-SEC&sort=no&view=text",
+    "effectText": "【起動】[ターン1回]手札を1枚デッキの一番下に置く：カードを2枚引く。\n【ライブ開始時】デッキの一番下のカードを控え室に置いてもよい：これにより控え室に置いたカードがライブカードの場合、自分のライブカード置き場にあるスコア２以下の『虹ヶ咲』のライブカード1枚をデッキの一番上に置く。そうしたとき、自分の控え室からライブカード1枚を表向きでライブカード置き場に置く。",
+    "tags": [],
+    "member": {
+      "cost": 15,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 2
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 7
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-010-p",
+    "cardNumber": "PL!N-bp8-010-P",
+    "name": "三船栞子",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:e19d4a5b6144"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-010-P&sort=no&view=text",
+    "effectText": "【ライブ成功時】エールにより公開された自分のカードの中にブレードハートを持たない『虹ヶ咲』のメンバーカードが3枚以上ある場合、ライブの合計スコアを＋１する。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 5
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-010-r",
+    "cardNumber": "PL!N-bp8-010-R",
+    "name": "三船栞子",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:e19d4a5b6144"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-010-R&sort=no&view=text",
+    "effectText": "【ライブ成功時】エールにより公開された自分のカードの中にブレードハートを持たない『虹ヶ咲』のメンバーカードが3枚以上ある場合、ライブの合計スコアを＋１する。",
+    "tags": [],
+    "member": {
+      "cost": 9,
+      "hearts": [
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 5
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-011-p",
+    "cardNumber": "PL!N-bp8-011-P",
+    "name": "ミア・テイラー",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:e41b2e5f2d23"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-011-P&sort=no&view=text",
+    "effectText": "【自動】[ターン1回]自分のデッキがリフレッシュしたとき、カードを2枚引き、手札を1枚控え室に置く。\n【ライブ成功時】自分のデッキの上からカードを5枚控え室に置いてもよい。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-011-r",
+    "cardNumber": "PL!N-bp8-011-R",
+    "name": "ミア・テイラー",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:e41b2e5f2d23"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-011-R&sort=no&view=text",
+    "effectText": "【自動】[ターン1回]自分のデッキがリフレッシュしたとき、カードを2枚引き、手札を1枚控え室に置く。\n【ライブ成功時】自分のデッキの上からカードを5枚控え室に置いてもよい。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-012-p",
+    "cardNumber": "PL!N-bp8-012-P",
+    "name": "鐘 嵐珠",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:d0fce7d114cf"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "P",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-012-P&sort=no&view=text",
+    "effectText": "【ライブ成功時】カードを1枚引く。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 3
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-012-r",
+    "cardNumber": "PL!N-bp8-012-R",
+    "name": "鐘 嵐珠",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:d0fce7d114cf"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "R",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-012-R&sort=no&view=text",
+    "effectText": "【ライブ成功時】カードを1枚引く。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 3
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-013-n",
+    "cardNumber": "PL!N-bp8-013-N",
+    "name": "上原歩夢",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:581c94b9816e"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-013-N&sort=no&view=text",
+    "effectText": "-",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-014-n",
+    "cardNumber": "PL!N-bp8-014-N",
+    "name": "中須かすみ",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:32dce771f8b5"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-014-N&sort=no&view=text",
+    "effectText": "【ライブ開始時】控え室にあるブレードハートを持たないメンバーカードを1枚デッキの一番下に置いてもよい：ライブ終了時まで、[ブレード][ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 5,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": null
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-015-n",
+    "cardNumber": "PL!N-bp8-015-N",
+    "name": "桜坂しずく",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:bbcca659db8f"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-015-N&sort=no&view=text",
+    "effectText": "-",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 3
+        },
+        {
+          "color": "blue",
+          "count": 3
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-016-n",
+    "cardNumber": "PL!N-bp8-016-N",
+    "name": "朝香果林",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:b8342f0b641b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-016-N&sort=no&view=text",
+    "effectText": "【登場】相手のステージにいる元々持つ[ブレード]の数が2つ以下のメンバー1人をウェイトにする。（ウェイト状態のメンバーが持つ[ブレード]は、エールで公開する枚数を増やさない。）",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-017-n",
+    "cardNumber": "PL!N-bp8-017-N",
+    "name": "宮下 愛",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:a0b76d95b625"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-017-N&sort=no&view=text",
+    "effectText": "【起動】このメンバーをステージから控え室に置く：自分の控え室からライブカードを1枚手札に加える。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-018-n",
+    "cardNumber": "PL!N-bp8-018-N",
+    "name": "近江彼方",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:0d9d956af84b"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-018-N&sort=no&view=text",
+    "effectText": "【ライブ開始時】手札のコスト11以上のブレードハートを持たない『虹ヶ咲』のメンバーカードを1枚公開してもよい：これにより公開したカードをデッキの一番下に置く。その後、相手のステージにいるコスト11以下のメンバー1人をウェイトにする。（ウェイト状態のメンバーが持つ[ブレード]は、エールで公開する枚数を増やさない。）",
+    "tags": [],
+    "member": {
+      "cost": 7,
+      "hearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "purple",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-019-n",
+    "cardNumber": "PL!N-bp8-019-N",
+    "name": "優木せつ菜",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:e5340af679a7"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-019-N&sort=no&view=text",
+    "effectText": "【ライブ開始時】好きなハートの色を1つ指定する。自分のステージに『虹ヶ咲』のメンバーが3人以上おり、かつ、それらのメンバーが持つハートの中にその色のハートがない場合、ライブ終了時まで、そのハートを1つ得る。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [],
+      "bladeHearts": [
+        {
+          "color": "red",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 3
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-020-n",
+    "cardNumber": "PL!N-bp8-020-N",
+    "name": "エマ・ヴェルデ",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:15fdc26429ae"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-020-N&sort=no&view=text",
+    "effectText": "-",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-021-n",
+    "cardNumber": "PL!N-bp8-021-N",
+    "name": "天王寺璃奈",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:931bb0f0cc09"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-021-N&sort=no&view=text",
+    "effectText": "【起動】[ターン1回]手札を2枚控え室に置く：自分のライブカード置き場にカードがない場合、自分の控え室から『虹ヶ咲』のライブカードを1枚、表向きでライブカード置き場に置く。次のライブカードセットフェイズで自分がライブカード置き場に置けるカード枚数の上限が1枚減る。",
+    "tags": [],
+    "member": {
+      "cost": 11,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 2
+        },
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 4
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-022-n",
+    "cardNumber": "PL!N-bp8-022-N",
+    "name": "三船栞子",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:e19d4a5b6144"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-022-N&sort=no&view=text",
+    "effectText": "【常時】自分のステージにいるほかの『虹ヶ咲』のメンバー1人につき、[ブレード]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 13,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "green",
+          "count": 2
+        },
+        {
+          "color": "blue",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "green",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 5
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-023-n",
+    "cardNumber": "PL!N-bp8-023-N",
+    "name": "ミア・テイラー",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:e41b2e5f2d23"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-023-N&sort=no&view=text",
+    "effectText": "【ライブ開始時】手札の『虹ヶ咲』のカードを1枚控え室に置いてもよい：ライブ終了時まで、[heart03]を得る。",
+    "tags": [],
+    "member": {
+      "cost": 2,
+      "hearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "yellow",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 1
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-024-n",
+    "cardNumber": "PL!N-bp8-024-N",
+    "name": "鐘 嵐珠",
+    "cardType": "member",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [
+      "member:d0fce7d114cf"
+    ],
+    "productId": "product:1141b059d897",
+    "rarity": "N",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-024-N&sort=no&view=text",
+    "effectText": "【自動】このメンバーがステージから控え室に置かれたとき、このメンバーが『虹ヶ咲』のメンバーとバトンタッチしていた場合、自分のエネルギーデッキから、エネルギーカード1枚をこのバトンタッチで登場したメンバーの下に置く。",
+    "tags": [],
+    "member": {
+      "cost": 4,
+      "hearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "bladeHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        }
+      ],
+      "yell": {
+        "count": 2
+      }
+    },
+    "live": null
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-025-l",
+    "cardNumber": "PL!N-bp8-025-L",
+    "name": "虹色Passions！",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-025-L&sort=no&view=text",
+    "effectText": "【ライブ成功時】自分のステージにいるエネルギーカードが下にある『虹ヶ咲』のメンバー1人につき、カードを1枚引く。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 6
+        }
+      ],
+      "score": 4
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-025-secl",
+    "cardNumber": "PL!N-bp8-025-SECL",
+    "name": "虹色Passions！",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-025-SECL&sort=no&view=text",
+    "effectText": "【ライブ成功時】自分のステージにいるエネルギーカードが下にある『虹ヶ咲』のメンバー1人につき、カードを1枚引く。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "red",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 6
+        }
+      ],
+      "score": 4
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-026-l",
+    "cardNumber": "PL!N-bp8-026-L",
+    "name": "Solitude Rain",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-026-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにいる『虹ヶ咲』のメンバー1人を選ぶ。ライブ終了時まで、そのメンバーが持つ[heart02]と[heart05]は、すべて[heart06]になる。これにより5つ以上のハートが[heart06]になった場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "purple",
+          "count": 7
+        },
+        {
+          "color": "any",
+          "count": 6
+        }
+      ],
+      "score": 6
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-026-secl",
+    "cardNumber": "PL!N-bp8-026-SECL",
+    "name": "Solitude Rain",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-026-SECL&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のステージにいる『虹ヶ咲』のメンバー1人を選ぶ。ライブ終了時まで、そのメンバーが持つ[heart02]と[heart05]は、すべて[heart06]になる。これにより5つ以上のハートが[heart06]になった場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "purple",
+          "count": 7
+        },
+        {
+          "color": "any",
+          "count": 6
+        }
+      ],
+      "score": 6
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-027-l",
+    "cardNumber": "PL!N-bp8-027-L",
+    "name": "約束になれ僕らの歌",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-027-L&sort=no&view=text",
+    "effectText": "【ライブ成功時】以下から1つを選ぶ。\n・自分の控え室にある『虹ヶ咲』のカード1枚をデッキの一番上に置く。\n・自分のエネルギーデッキから、エネルギーカード1枚を自分のステージにいる『虹ヶ咲』のメンバーの下に置く。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 1
+        },
+        {
+          "color": "yellow",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 4
+        }
+      ],
+      "score": 2
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-028-l",
+    "cardNumber": "PL!N-bp8-028-L",
+    "name": "Dress Code",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-028-L&sort=no&view=text",
+    "effectText": "【ライブ開始時】自分のデッキの一番上のカードを控え室に置く。これにより控え室に置いたカードがメンバーカードの場合、そのメンバーカードが持つハートの色が、自分のステージにいるすべてのメンバーが持つハートの色の中にすべて含まれる場合、その含まれるハートの色1つにつき、このカードの必要ハートを[heart0]減らす。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "blue",
+          "count": 1
+        },
+        {
+          "color": "any",
+          "count": 10
+        }
+      ],
+      "score": 4
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-029-l",
+    "cardNumber": "PL!N-bp8-029-L",
+    "name": "Circle of Love",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-029-L&sort=no&view=text",
+    "effectText": "【ライブ成功時】自分が持つ余剰ハートの[heart02]2つにつき、このカードのスコアを＋１する。その後、自分は余剰ハートをすべて失う。この能力ではスコアは＋３までしか増えない。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "red",
+          "count": 2
+        },
+        {
+          "color": "any",
+          "count": 1
+        }
+      ],
+      "score": 1
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-030-l",
+    "cardNumber": "PL!N-bp8-030-L",
+    "name": "Stay",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-030-L&sort=no&view=text",
+    "effectText": "【自動】このカードが控え室からライブカード置き場に置かれたとき、このカードの必要ハートを[heart0][heart0][heart0]減らす。\n【ライブ成功時】自分のデッキの上からカードを5枚控え室に置く。それらの中にコスト9以上のブレードハートを持たない『虹ヶ咲』のメンバーカードがある場合、このカードのスコアを＋１する。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 3
+        },
+        {
+          "color": "yellow",
+          "count": 3
+        },
+        {
+          "color": "green",
+          "count": 2
+        },
+        {
+          "color": "any",
+          "count": 6
+        }
+      ],
+      "score": 6
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-031-l",
+    "cardNumber": "PL!N-bp8-031-L",
+    "name": "Eutopia",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "L",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-031-L&sort=no&view=text",
+    "effectText": "【ライブ成功時】自分と相手のステージの中で、ほかのすべてのメンバーより多くのハートを持つメンバーは、ライブ終了時まで、「【常時】ライブの合計スコアを＋１する。」を得る。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 4
+        }
+      ],
+      "score": 1
+    }
+  },
+  {
+    "id": "loveca-card:pl!n-bp8-031-secl",
+    "cardNumber": "PL!N-bp8-031-SECL",
+    "name": "Eutopia",
+    "cardType": "live",
+    "groupIds": [
+      "nijigasaki"
+    ],
+    "memberIds": [],
+    "productId": "product:1141b059d897",
+    "rarity": "SECL",
+    "image": {
+      "url": null,
+      "alt": null
+    },
+    "officialUrl": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!N-bp8-031-SECL&sort=no&view=text",
+    "effectText": "【ライブ成功時】自分と相手のステージの中で、ほかのすべてのメンバーより多くのハートを持つメンバーは、ライブ終了時まで、「【常時】ライブの合計スコアを＋１する。」を得る。",
+    "tags": [],
+    "member": null,
+    "live": {
+      "requiredHearts": [
+        {
+          "color": "pink",
+          "count": 4
+        }
+      ],
+      "score": 1
+    }
   }
 ]

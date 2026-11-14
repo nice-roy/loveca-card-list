@@ -33,7 +33,12 @@ export type Card = {
     bladeHearts: HeartValue[];
     yell: { count: number | null };
   } | null;
-  live: { requiredHearts: HeartValue[]; score: number | null } | null;
+  live: {
+    requiredHearts: HeartValue[];
+    score: number | null;
+    bladeHearts?: HeartValue[];
+    specialHeart?: 'draw' | 'score' | null;
+  } | null;
 };
 
 type ReferenceItem = { id: string; label: string };

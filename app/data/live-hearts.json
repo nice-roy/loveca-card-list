@@ -1,0 +1,3362 @@
+[
+  {
+    "cardNumber": "PL!SP-bp4-023-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-bp4-023-SRL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-bp7-028-L",
+    "bladeHearts": [
+      {
+        "color": "any",
+        "count": 2
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp2-027-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp2-027-SRL",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp5-024-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-bp1-027-L",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp1-027-SRL",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp4-024-L",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp4-024-SECL",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp4-024-SRL",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp5-025-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-pb1-024-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-pb1-024-SRL",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-pb1-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-pb1-025-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-pb1-025-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-pb2-048-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp2-024-L",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp2-024-SECL",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp2-024-SRL",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp4-028-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp4-028-SRL",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp5-023-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp7-027-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-pb2-049-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp2-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp2-025-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp2-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp2-026-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp4-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp4-026-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp4-029-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp4-029-SRL",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-pb1-026-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-pb1-026-L＋",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-pb1-026-SRL",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-pb2-045-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-sd1-026-SD",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-sd1-026-SRL",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-sd2-025-P",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-sd2-025-SD2",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!SP-bp1-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp1-026-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp1-026-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp7-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp7-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-pb1-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-pb1-023-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-sd1-025-SD",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-sd1-025-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-sd2-024-P",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-sd2-024-SD2",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp1-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp1-024-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp1-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp1-025-L＋",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp1-025-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp1-025-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp4-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp4-025-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp4-030-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp4-030-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp7-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp7-024-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-pb2-050-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-sd1-024-P",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-sd1-024-SD",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-sd1-024-SD2",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-sd1-024-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp1-023-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-bp1-023-SRL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-bp2-023-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-bp2-023-SRL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-bp4-027-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp4-027-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp5-026-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-bp7-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-bp7-023-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-pb2-047-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-sd1-023-SD",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-sd1-023-SRL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-sd2-023-P",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-sd2-023-SD2",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!S-bp2-023-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp7-019-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp7-020-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp7-020-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp7-021-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-bp7-022-L",
+    "bladeHearts": [
+      {
+        "color": "any",
+        "count": 2
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp7-022-SECL",
+    "bladeHearts": [
+      {
+        "color": "any",
+        "count": 2
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp7-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp7-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp7-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp2-024-SECL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!S-bp6-019-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp6-020-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp6-021-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!S-bp6-022-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-bp6-023-L",
+    "bladeHearts": [
+      {
+        "color": "green",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-bp6-024-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-bp5-019-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-bp5-020-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp5-021-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp5-021-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-sd1-019-SD",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!S-sd1-020-SD",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-sd1-021-SD",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-sd1-022-SD",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!S-bp3-019-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp3-020-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!S-bp3-021-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp3-022-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-bp3-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp3-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp3-025-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-pb1-019-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-pb1-020-L",
+    "bladeHearts": [
+      {
+        "color": "green",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-pb1-021-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!S-pb1-022-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-pb1-022-L＋",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-pb1-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-pb1-023-L＋",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-pb1-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp2-019-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-bp2-020-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp2-021-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp2-022-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!S-bp2-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp2-024-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!S-bp2-025-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!S-bp2-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-PR-022-PR",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-PR-023-PR",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-PR-024-PR",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-022-SECL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-bp6-019-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp6-020-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp6-021-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp6-022-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-bp6-023-L",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp6-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-020-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp5-019-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp5-020-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp5-021-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp5-022-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp5-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-019-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-020-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-021-L",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp4-022-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-bp4-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-025-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp4-026-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-bp3-020-L＋",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb1-028-L",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-pb1-029-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-pb1-030-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-pb1-031-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb1-032-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb1-033-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp3-019-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-bp3-020-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-021-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp3-022-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp3-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-sd1-019-SD",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-sd1-020-SD",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-sd1-021-SD",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-sd1-022-SD",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp5-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp5-022-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!S-bp5-023-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!SP-bp5-027-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!SP-pb2-046-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "LL-bp5-001-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "LL-bp5-002-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "LL-PR-004-PR",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp1-026-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp7-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp7-025-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp7-026-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp7-026-SECL",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp7-027-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp7-028-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-bp7-029-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp7-030-L",
+    "bladeHearts": [
+      {
+        "color": "any",
+        "count": 2
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp7-031-L",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-sd1-026-P",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-sd1-026-SD2",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-sd2-025-P",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-sd2-025-SD2",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-sd2-026-P",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-sd2-026-SD2",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-sd2-027-P",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-sd2-027-SD2",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp3-028-SECL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-bp5-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp5-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp5-027-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp5-028-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-bp5-029-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-bp5-030-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp4-032-L＋",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-pb1-037-L",
+    "bladeHearts": [
+      {
+        "color": "green",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-pb1-038-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-pb1-039-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-pb1-040-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-pb1-041-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-pb1-041-L＋",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-pb1-042-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp4-025-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp4-026-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp4-027-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp4-028-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp4-029-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp4-030-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp4-031-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-bp4-032-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp3-025-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp3-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp3-027-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp3-028-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-bp3-029-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp3-030-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp3-031-L",
+    "bladeHearts": [
+      {
+        "color": "green",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp3-032-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp1-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp1-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp1-027-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp1-028-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp1-029-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-sd1-025-SD",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!N-sd1-026-SD",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-sd1-027-SD",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-sd1-028-SD",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-bp6-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp6-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp6-027-L",
+    "bladeHearts": [
+      {
+        "color": "green",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-bp6-028-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp6-029-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp6-030-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp6-031-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!HS-bp6-032-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-cl1-009-CL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-cl1-010-CL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-cl1-011-CL",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-cl1-012-CL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-sd1-018-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp2-022-L＋",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp2-024-L＋",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp2-026-L＋",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-pb1-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-pb1-026-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-pb1-027-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!HS-pb1-028-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-pb1-029-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-pb1-030-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp1-019-SECL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!HS-bp5-017-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp5-018-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp5-019-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp5-020-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!HS-bp5-021-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp5-022-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-sd1-017-SD",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-sd1-018-SD",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-sd1-019-SD",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-sd1-020-SD",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!HS-bp2-019-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!HS-bp2-020-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp2-021-L",
+    "bladeHearts": [
+      {
+        "color": "green",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-bp2-022-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp2-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp2-024-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp2-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp2-026-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-bp1-019-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!HS-bp1-020-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp1-021-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp1-022-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-bp1-023-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-PR-010-PR",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-PR-011-PR",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-PR-012-PR",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-PR-028-PR",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-019-SRL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-bp3-020-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-021-SRL",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp3-022-SECL",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp3-022-SRL",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp3-023-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-024-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-025-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp3-026-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-019-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-020-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-021-SRL",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp4-022-SRL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-bp4-023-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-024-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp4-025-SRL",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp4-026-SRL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-bp5-019-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp5-020-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp5-021-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp5-022-SRL",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp5-023-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb1-028-SRL",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-pb1-029-SRL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-pb1-030-SRL",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-pb1-031-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb1-031-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb1-032-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb1-033-SRL",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-pb2-037-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb2-038-L",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-pb2-039-L",
+    "bladeHearts": [
+      {
+        "color": "any",
+        "count": 2
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb2-040-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-pb2-041-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-pb2-042-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-sd1-019-SRL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-sd1-020-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-sd1-020-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-sd1-021-SRL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-sd1-022-SRL",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp3-026-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp8-019-L",
+    "bladeHearts": [
+      {
+        "color": "any",
+        "count": 2
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp8-020-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!-bp8-021-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp8-021-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp8-022-L",
+    "bladeHearts": [
+      {
+        "color": "yellow",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp8-023-L",
+    "bladeHearts": [
+      {
+        "color": "orange",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp8-023-SECL",
+    "bladeHearts": [
+      {
+        "color": "orange",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!-bp8-024-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp8-024-SECL",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!-bp8-025-L",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!HS-bp5-020-SECL",
+    "bladeHearts": [],
+    "specialHeart": "score"
+  },
+  {
+    "cardNumber": "PL!HS-bp8-017-L",
+    "bladeHearts": [
+      {
+        "color": "any",
+        "count": 2
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp8-017-SECL",
+    "bladeHearts": [
+      {
+        "color": "any",
+        "count": 2
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp8-018-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp8-018-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp8-019-L",
+    "bladeHearts": [
+      {
+        "color": "green",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!HS-bp8-020-L",
+    "bladeHearts": [
+      {
+        "color": "blue",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp8-021-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp8-021-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp8-022-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!HS-bp8-023-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp3-030-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp8-025-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp8-025-SECL",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp8-026-L",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp8-026-SECL",
+    "bladeHearts": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "specialHeart": "draw"
+  },
+  {
+    "cardNumber": "PL!N-bp8-027-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp8-028-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp8-029-L",
+    "bladeHearts": [
+      {
+        "color": "red",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp8-030-L",
+    "bladeHearts": [
+      {
+        "color": "all",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp8-031-L",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  },
+  {
+    "cardNumber": "PL!N-bp8-031-SECL",
+    "bladeHearts": [
+      {
+        "color": "pink",
+        "count": 1
+      }
+    ],
+    "specialHeart": null
+  }
+]

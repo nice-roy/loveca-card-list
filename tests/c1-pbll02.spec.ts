@@ -9,7 +9,7 @@ test('C1 cards show six to nine blades and retain distinct reprint versions', as
     return route.abort();
   });
   await page.goto('/');
-  await expect(page.getByLabel('登録カード総数')).toContainText('1913');
+  await expect(page.getByLabel('登録カード総数')).toContainText('2054');
   const search = page.getByRole('searchbox', { name: 'カード名、カード番号、効果テキストで検索' });
   for (const [number, blades] of [['PL!-pb2-016-R', '6'], ['PL!-pb2-000-DUO', '7'], ['PL!-pb2-018-R', '8'], ['PL!-pb2-001-R', '9']]) {
     await search.fill(number);

@@ -15,6 +15,9 @@ type MemberDisplayMetadata = {
 
 type UnitDisplayMetadata = { id: string; label: string; sortOrder: number };
 
+// 上部の作品タブと同じ順序。その他のグループはその後に並べる。
+const mainGroupOrder = ['muse', 'aqours', 'nijigasaki', 'liella', 'hasunosora'];
+
 // ユニット名・順序・所属は公式のユニット情報を表示用に明示管理する。
 const unitsByGroup: Record<string, UnitDisplayMetadata[]> = {
   liella: [
@@ -85,6 +88,7 @@ const memberDisplayMetadata: MemberDisplayMetadata[] = [
   { name: '小泉花陽', group: 'muse', schoolYear: 1, sortOrder: 8, kind: 'single', units: ['printemps'] },
   { name: '矢澤にこ', group: 'muse', schoolYear: 3, sortOrder: 9, kind: 'single', units: ['bibi'] },
   { name: '星空 凛&小泉花陽', group: 'muse', schoolYear: null, sortOrder: 101, kind: 'multiple', participantGroups: ['muse'] },
+  { name: '矢澤にこ&宮下 愛&セラス 柳田 リリエンフェルト', group: 'muse', schoolYear: null, sortOrder: 102, kind: 'multiple', participantGroups: ['muse', 'nijigasaki', 'hasunosora'] },
 
   // ライバル3組は公式に学年・サブユニット分類を当てはめない。公式のユニット内掲載順だけを保持する。
   { name: '綺羅ツバサ', group: 'a-rise', schoolYear: null, sortOrder: 1, kind: 'single' },
@@ -167,7 +171,14 @@ export function groupMemberOptions(options: MemberOption[], selectedGroupId: str
     return [{ id: selectedGroupId, label: null, sections: sectionsFor(options, true, displayMode, selectedGroupId) }];
   }
 
-  const result = groups.filter((group) => group.enabled).flatMap((group) => {
+  const orderedGroups = groups.filter((group) => group.enabled).sort((left, right) => {
+    const rank = (id: string) => {
+      const index = mainGroupOrder.indexOf(id);
+      return index === -1 ? mainGroupOrder.length : index;
+    };
+    return rank(left.id) - rank(right.id);
+  });
+  const result = orderedGroups.flatMap((group) => {
     const groupOptions = options.filter((option) => (option.groupIds ?? [option.groupId]).includes(group.id));
     const sections = sectionsFor(groupOptions, false, displayMode, group.id);
     return sections.length ? [{ id: group.id, label: group.label, sections }] : [];

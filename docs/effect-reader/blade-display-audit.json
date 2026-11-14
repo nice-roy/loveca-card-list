@@ -1,0 +1,2404 @@
+{
+  "baselineSha": "7ba7e48f7c7ac297b86611344d8a741f3bab7a2e",
+  "masterCount": 2054,
+  "affectedVariants": 342,
+  "memberVariants": 298,
+  "liveVariants": 44,
+  "totalBladeIcons": 523,
+  "cards": [
+    {
+      "cardNumber": "PL!SP-bp4-024-L",
+      "name": "ノンフィクション!!",
+      "cardType": "live",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!SP-bp4-024-SECL",
+      "name": "ノンフィクション!!",
+      "cardType": "live",
+      "product": "プレミアムブースター ラブライブ！スーパースター!! DUO",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!SP-bp4-024-SRL",
+      "name": "ノンフィクション!!",
+      "cardType": "live",
+      "product": "プレミアムブースター ラブライブ！スーパースター!! DUO",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!SP-bp1-024-L",
+      "name": "Tiny Stars",
+      "cardType": "live",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!SP-bp1-024-SRL",
+      "name": "Tiny Stars",
+      "cardType": "live",
+      "product": "プレミアムブースター ラブライブ！スーパースター!! DUO",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp2-023-SECL",
+      "name": "MY舞☆TONIGHT",
+      "cardType": "live",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-001-R",
+      "name": "高海千歌",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp7-001-P",
+      "name": "高海千歌",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp7-003-R＋",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-003-P",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-003-P＋",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-003-SEC",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-005-R＋",
+      "name": "渡辺 曜",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-005-P",
+      "name": "渡辺 曜",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-005-P＋",
+      "name": "渡辺 曜",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-005-SEC",
+      "name": "渡辺 曜",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-007-R＋",
+      "name": "国木田花丸",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-007-P",
+      "name": "国木田花丸",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-007-P＋",
+      "name": "国木田花丸",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-007-SEC",
+      "name": "国木田花丸",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-009-R",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-009-P",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp7-011-N",
+      "name": "桜内梨子",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp7-012-N",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp6-006-R",
+      "name": "津島善子",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!S-bp6-006-P",
+      "name": "津島善子",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!S-bp6-009-R＋",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp6-009-P",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp6-009-P＋",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp6-009-SEC",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp6-013-N",
+      "name": "黒澤ダイヤ",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp6-018-N",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-002-R＋",
+      "name": "桜内梨子",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-002-P",
+      "name": "桜内梨子",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-002-AR",
+      "name": "桜内梨子",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-002-SEC",
+      "name": "桜内梨子",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-004-R",
+      "name": "黒澤ダイヤ",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-004-P",
+      "name": "黒澤ダイヤ",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-004-AR",
+      "name": "黒澤ダイヤ",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-009-R",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp5-009-P",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp5-009-AR",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp5-016-N",
+      "name": "国木田花丸",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-sd1-009-SD",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！サンシャイン!!",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-sd1-022-SD",
+      "name": "Jump up HIGH!!",
+      "cardType": "live",
+      "product": "スタートデッキ ラブライブ！サンシャイン!!",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp3-003-R＋",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp3-003-P",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp3-003-P＋",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp3-003-SEC",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp3-012-N",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp3-017-N",
+      "name": "小原鞠莉",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp3-021-L",
+      "name": "想いよひとつになれ",
+      "cardType": "live",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp3-024-L",
+      "name": "Deep Resonance",
+      "cardType": "live",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp3-025-L",
+      "name": "SUKI for you, DREAM for you!",
+      "cardType": "live",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-pb1-005-R",
+      "name": "渡辺 曜",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！サンシャイン!!",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!S-pb1-005-P＋",
+      "name": "渡辺 曜",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！サンシャイン!!",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!S-pb1-006-R",
+      "name": "津島善子",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！サンシャイン!!",
+      "bladeIcons": 4
+    },
+    {
+      "cardNumber": "PL!S-pb1-006-P＋",
+      "name": "津島善子",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！サンシャイン!!",
+      "bladeIcons": 4
+    },
+    {
+      "cardNumber": "PL!S-pb1-009-R",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！サンシャイン!!",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!S-pb1-009-P＋",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！サンシャイン!!",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!S-pb1-016-N",
+      "name": "国木田花丸",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！サンシャイン!!",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-pb1-017-N",
+      "name": "小原鞠莉",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！サンシャイン!!",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-pb1-018-N",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！サンシャイン!!",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp2-001-R",
+      "name": "高海千歌",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!S-bp2-001-P",
+      "name": "高海千歌",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!S-bp2-023-L",
+      "name": "MY舞☆TONIGHT",
+      "cardType": "live",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp2-025-L",
+      "name": "青空Jumping Heart",
+      "cardType": "live",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-pb1-005-PR",
+      "name": "渡辺 曜",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!S-PR-013-PR",
+      "name": "高海千歌",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-PR-016-PR",
+      "name": "黒澤ダイヤ",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-PR-019-PR",
+      "name": "国木田花丸",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-PR-020-PR",
+      "name": "小原鞠莉",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-PR-021-PR",
+      "name": "黒澤ルビィ",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-PR-029-PR",
+      "name": "渡辺 曜",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-PR-030-PR",
+      "name": "津島善子",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-PR-031-PR",
+      "name": "国木田花丸",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-PR-037-PR",
+      "name": "松浦果南",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-PR-039-PR",
+      "name": "渡辺 曜",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp4-022-SECL",
+      "name": "No brand girls",
+      "cardType": "live",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp6-001-R＋",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp6-001-P",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp6-001-P＋",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp6-001-SEC",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp6-006-R＋",
+      "name": "西木野真姫",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!-bp6-006-P",
+      "name": "西木野真姫",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!-bp6-006-P＋",
+      "name": "西木野真姫",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!-bp6-006-SEC",
+      "name": "西木野真姫",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!-bp6-009-R",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp6-009-P",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp6-010-N",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-005-R＋",
+      "name": "星空 凛",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-005-P",
+      "name": "星空 凛",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-005-P＋",
+      "name": "星空凛",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-005-SEC",
+      "name": "星空凛",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-010-N",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp4-011-N",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp4-014-N",
+      "name": "星空 凛",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp4-017-N",
+      "name": "小泉花陽",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-018-N",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp4-020-L",
+      "name": "Love wing bell",
+      "cardType": "live",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-022-L",
+      "name": "No brand girls",
+      "cardType": "live",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-024-L",
+      "name": "小夜啼鳥恋詩",
+      "cardType": "live",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb1-002-R",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb1-002-P＋",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb1-009-R",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb1-009-P＋",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb1-010-R",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb1-010-P＋",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-001-R",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-001-P",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-002-R",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp3-002-P",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp3-003-R",
+      "name": "南ことり",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-003-P",
+      "name": "南ことり",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-006-R",
+      "name": "西木野真姫",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp3-006-P",
+      "name": "西木野真姫",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp3-014-N",
+      "name": "星空 凛",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-017-N",
+      "name": "小泉花陽",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-018-N",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-023-L",
+      "name": "ミはμ'sicのミ",
+      "cardType": "live",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-026-L",
+      "name": "Oh,Love&Peace!",
+      "cardType": "live",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!-sd1-001-SD",
+      "name": "高坂 穂乃果",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-014-PR",
+      "name": "星空 凛",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-PR-007-PR",
+      "name": "東條 希",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-PR-009-PR",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-PR-021-PR",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-PR-023-PR",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp5-024-L",
+      "name": "Private Wars",
+      "cardType": "live",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!S-bp5-022-L",
+      "name": "SELF CONTROL!!",
+      "cardType": "live",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-111-R",
+      "name": "鹿角聖良",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!S-bp5-111-P＋",
+      "name": "鹿角聖良",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "LL-PR-004-PR",
+      "name": "愛♡スクリ～ム！",
+      "cardType": "live",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-003-R＋",
+      "name": "桜坂しずく",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-003-P",
+      "name": "桜坂しずく",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-003-P＋",
+      "name": "桜坂しずく",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-003-SEC",
+      "name": "桜坂しずく",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-004-R",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-004-P",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-006-R＋",
+      "name": "近江彼方",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp7-006-P",
+      "name": "近江彼方",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp7-006-P＋",
+      "name": "近江彼方",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp7-006-SEC",
+      "name": "近江彼方",
+      "cardType": "member",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp7-025-L",
+      "name": "Colorful Dreams! Colorful Smiles!",
+      "cardType": "live",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-025-SECL",
+      "name": "Colorful Dreams! Colorful Smiles!",
+      "cardType": "live",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-026-L",
+      "name": "Just Believe!!!",
+      "cardType": "live",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-026-SECL",
+      "name": "Just Believe!!!",
+      "cardType": "live",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp7-027-L",
+      "name": "オードリー",
+      "cardType": "live",
+      "product": "ブースターパック MELLOW MOMENT",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-sd1-001-P",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-sd1-001-SD2",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-sd1-004-P",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-sd1-004-SD2",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-sd2-004-SD2",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-sd2-006-SD2",
+      "name": "近江彼方",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-sd2-008-SD2",
+      "name": "エマ・ヴェルデ",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-sd2-010-SD2",
+      "name": "三船栞子",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-sd2-013-SD2",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-sd2-015-SD2",
+      "name": "桜坂しずく",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-sd2-019-SD2",
+      "name": "優木せつ菜",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-sd2-021-SD2",
+      "name": "天王寺璃奈",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-sd2-026-P",
+      "name": "Fire Bird",
+      "cardType": "live",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-sd2-026-SD2",
+      "name": "Fire Bird",
+      "cardType": "live",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会 cheer",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp5-004-R",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp5-004-P",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp5-004-AR",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp5-015-N",
+      "name": "桜坂しずく",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-pb1-001-R",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-pb1-001-P＋",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-pb1-003-R",
+      "name": "桜坂しずく",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-pb1-003-P＋",
+      "name": "桜坂しずく",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-pb1-004-R",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-pb1-004-P＋",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-pb1-011-R",
+      "name": "ミア・テイラー",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-pb1-011-P＋",
+      "name": "ミア・テイラー",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp4-005-R",
+      "name": "宮下 愛",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp4-005-P",
+      "name": "宮下 愛",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp4-013-N",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp4-016-N",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp4-026-L",
+      "name": "DIVE!",
+      "cardType": "live",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp4-029-L",
+      "name": "Rise Up High!",
+      "cardType": "live",
+      "product": "ブースターパック SAPPHIRE MOON",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp3-001-R＋",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp3-001-P",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp3-001-P＋",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp3-001-SEC",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp3-006-R",
+      "name": "近江彼方",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp3-006-P",
+      "name": "近江彼方",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp3-011-R",
+      "name": "ミア・テイラー",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp3-011-P",
+      "name": "ミア・テイラー",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp3-017-N",
+      "name": "宮下 愛",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp3-022-N",
+      "name": "三船栞子",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp3-023-N",
+      "name": "ミア・テイラー",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "LL-bp3-001-R＋",
+      "name": "園田海未&津島善子&天王寺璃奈",
+      "cardType": "member",
+      "product": "ブースターパック　夏、はじまる。",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!N-bp1-001-R",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp1-001-P",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp1-005-R",
+      "name": "宮下 愛",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp1-005-P",
+      "name": "宮下 愛",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp1-012-R＋",
+      "name": "鐘 嵐珠",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp1-012-P",
+      "name": "鐘 嵐珠",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp1-012-P＋",
+      "name": "鐘 嵐珠",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp1-012-SEC",
+      "name": "鐘 嵐珠",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-PR-020-PR",
+      "name": "エマ・ヴェルデ",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-PR-022-PR",
+      "name": "エマ・ヴェルデ",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-PR-024-PR",
+      "name": "桜坂しずく",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-sd1-001-SD",
+      "name": "上原歩夢",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-sd1-004-SD",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-sd1-028-SD",
+      "name": "Dream with You",
+      "cardType": "live",
+      "product": "スタートデッキ ラブライブ！虹ヶ咲学園スクールアイドル同好会",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp6-002-R",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp6-002-P",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp6-004-R",
+      "name": "百生 吟子",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp6-004-P",
+      "name": "百生 吟子",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp6-005-R＋",
+      "name": "徒町 小鈴",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp6-005-P",
+      "name": "徒町 小鈴",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp6-005-P＋",
+      "name": "徒町 小鈴",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp6-005-SEC",
+      "name": "徒町 小鈴",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp6-009-R",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp6-013-R",
+      "name": "徒町 小鈴",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp6-014-R",
+      "name": "安養寺 姫芽",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp6-018-N",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp6-031-L",
+      "name": "ファンファーレ！！！",
+      "cardType": "live",
+      "product": "ブースターパック Royal Holiday",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-cl1-003-CL",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-cl1-005-CL",
+      "name": "徒町 小鈴",
+      "cardType": "member",
+      "product": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-cl1-006-CL",
+      "name": "安養寺 姫芽",
+      "cardType": "member",
+      "product": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-cl1-010-CL",
+      "name": "AWOKE",
+      "cardType": "live",
+      "product": "コレクション クリアポケット ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-pb1-001-R",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-pb1-001-P＋",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-pb1-003-R",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-pb1-003-P＋",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-pb1-005-R",
+      "name": "徒町小鈴",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-pb1-005-P＋",
+      "name": "徒町小鈴",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-pb1-006-R",
+      "name": "安養寺姫芽",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-pb1-006-P＋",
+      "name": "安養寺姫芽",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-pb1-008-R",
+      "name": "桂城 泉",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-pb1-008-P＋",
+      "name": "桂城 泉",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-pb1-009-R",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-pb1-009-P＋",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-pb1-012-R",
+      "name": "百生吟子",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-pb1-012-P＋",
+      "name": "百生吟子",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-pb1-015-R",
+      "name": "セラス 柳田 リリエンフェルト",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-pb1-015-P＋",
+      "name": "セラス 柳田 リリエンフェルト",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-pb1-022-N",
+      "name": "安養寺姫芽",
+      "cardType": "member",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-pb1-030-L",
+      "name": "Edelied",
+      "cardType": "live",
+      "product": "プレミアムブースター 蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-001-R＋",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-001-P",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-001-AR",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-001-SEC",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-002-R＋",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp5-002-P",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp5-002-AR",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp5-002-SEC",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp5-004-R",
+      "name": "百生 吟子",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-004-P",
+      "name": "百生 吟子",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-004-AR",
+      "name": "百生 吟子",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-007-R",
+      "name": "セラス 柳田 リリエンフェルト",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-007-P",
+      "name": "セラス 柳田 リリエンフェルト",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-007-AR",
+      "name": "セラス 柳田 リリエンフェルト",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-013-N",
+      "name": "徒町 小鈴",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp5-014-N",
+      "name": "安養寺 姫芽",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp5-016-N",
+      "name": "桂城 泉",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-PR-018-RM",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "ブースターパック Anniversary 2026",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-sd1-002-SD",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-sd1-003-SD",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-sd1-005-SD",
+      "name": "徒町小鈴",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-sd1-006-SD",
+      "name": "安養寺 姫芽",
+      "cardType": "member",
+      "product": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-sd1-020-SD",
+      "name": "Link to the FUTURE（104期Ver.）",
+      "cardType": "live",
+      "product": "スタートデッキ ラブライブ！蓮ノ空女学院スクールアイドルクラブ",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp2-002-R＋",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-bp2-002-P",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-bp2-002-P＋",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-bp2-002-SEC",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-bp2-005-R＋",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp2-005-P",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp2-005-P＋",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp2-005-SEC",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp2-006-R",
+      "name": "藤島 慈",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp2-006-P",
+      "name": "藤島 慈",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp2-007-R＋",
+      "name": "百生 吟子",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp2-007-P",
+      "name": "百生 吟子",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp2-007-P＋",
+      "name": "百生 吟子",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp2-007-SEC",
+      "name": "百生 吟子",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp2-008-R",
+      "name": "徒町 小鈴",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp2-008-P",
+      "name": "徒町 小鈴",
+      "cardType": "member",
+      "product": "ブースターパック NEXT STEP",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-bp1-004-R＋",
+      "name": "夕霧綴理",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp1-004-P",
+      "name": "夕霧綴理",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp1-004-P＋",
+      "name": "夕霧綴理",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp1-004-SEC",
+      "name": "夕霧綴理",
+      "cardType": "member",
+      "product": "ブースターパック vol.1",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-PR-001-PR",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-PR-002-PR",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-PR-005-PR",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-PR-016-PR",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-PR-017-PR",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-PR-018-PR",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-PR-022-PR",
+      "name": "セラス 柳田 リリエンフェルト",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!HS-PR-035-PR",
+      "name": "百生吟子",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-PR-040-PR",
+      "name": "安養寺姫芽",
+      "cardType": "member",
+      "product": "PRカード",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp3-023-SRL",
+      "name": "ミはμ'sicのミ",
+      "cardType": "live",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-026-SRL",
+      "name": "Oh,Love&Peace!",
+      "cardType": "live",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!-bp4-020-SRL",
+      "name": "Love wing bell",
+      "cardType": "live",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-022-SRL",
+      "name": "No brand girls",
+      "cardType": "live",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp4-024-SRL",
+      "name": "小夜啼鳥恋詩",
+      "cardType": "live",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-004-PP",
+      "name": "園田海未",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-004-R",
+      "name": "園田海未",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-005-PP",
+      "name": "星空 凛",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-005-R",
+      "name": "星空 凛",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-010-P＋",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-010-R",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-011-P＋",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-011-R",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-016-P＋",
+      "name": "東條 希",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-016-R",
+      "name": "東條 希",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-019-N",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!-pb2-021-N",
+      "name": "南ことり",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-023-N",
+      "name": "星空 凛",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-025-N",
+      "name": "東條 希",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-026-N",
+      "name": "小泉花陽",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-028-N",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-029-N",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-pb2-030-N",
+      "name": "南ことり",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-pb2-033-N",
+      "name": "西木野真姫",
+      "cardType": "member",
+      "product": "プレミアムブースター ラブライブ！DUO",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp3-026-SECL",
+      "name": "Oh,Love&Peace!",
+      "cardType": "live",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!-bp8-007-P",
+      "name": "東條 希",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-007-R",
+      "name": "東條 希",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-009-P",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-009-P＋",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-009-R＋",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-009-SEC",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-010-N",
+      "name": "高坂穂乃果",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-011-N",
+      "name": "絢瀬絵里",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp8-012-N",
+      "name": "南ことり",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-018-N",
+      "name": "矢澤にこ",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!-bp8-024-L",
+      "name": "SUNNY DAY SONG",
+      "cardType": "live",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-024-SECL",
+      "name": "SUNNY DAY SONG",
+      "cardType": "live",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!-bp8-025-L",
+      "name": "にこぷり♡女子道",
+      "cardType": "live",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp8-001-P",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-bp8-001-R",
+      "name": "日野下花帆",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-bp8-002-P",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp8-002-R",
+      "name": "村野さやか",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp8-003-P",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp8-003-R",
+      "name": "大沢瑠璃乃",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!HS-bp8-013-N",
+      "name": "徒町小鈴",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 3
+    },
+    {
+      "cardNumber": "PL!HS-bp8-015-N",
+      "name": "セラス 柳田 リリエンフェルト",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp8-014-N",
+      "name": "中須かすみ",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp8-016-N",
+      "name": "朝香果林",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 2
+    },
+    {
+      "cardNumber": "PL!N-bp8-018-N",
+      "name": "近江彼方",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    },
+    {
+      "cardNumber": "PL!N-bp8-022-N",
+      "name": "三船栞子",
+      "cardType": "member",
+      "product": "ブースターパック まじかる♡とり～と",
+      "bladeIcons": 1
+    }
+  ]
+}

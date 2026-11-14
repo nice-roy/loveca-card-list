@@ -10,8 +10,11 @@ import { matchesNumericFilter } from '../lib/numeric-filters.ts';
 import { missingMemberMetadata } from '../lib/member-options.ts';
 
 const read = p => JSON.parse(readFileSync(new URL(p, import.meta.url), 'utf8'));
-const cards = read('../app/data/cards.json');
+// Historical C1 audit covers the first 1913 cards and its original references.
+const cards = read('../app/data/cards.json').slice(0, 1913);
 const refs = read('../app/data/reference-data.json');
+refs.products = refs.products.filter(p => p.id !== 'product:1141b059d897');
+refs.members = refs.members.filter(m => m.label !== '矢澤にこ&宮下 愛&セラス 柳田 リリエンフェルト');
 const source = read('../docs/c1/official-pbll02.json');
 const audit = read('../docs/c1/limited-audit.json');
 const additions = cards.slice(1817);

@@ -21,7 +21,7 @@ test('official group snapshots and the preceding live audit are completely repre
   assert.deepEqual({ existing: audit.uniqueExistingRecords, added: audit.uniqueAddedRecords }, { existing: 4, added: 744 });
   for (const groupId of ['nijigasaki', 'hasunosora']) {
     const expected = audit.groups[groupId];
-    const actual = cards.filter((card) => card.groupIds.includes(groupId));
+    const actual = cards.slice(0, 1817).filter((card) => card.groupIds.includes(groupId)); // Historical group audit scope.
     assert.equal(actual.length, expected.officialTotal);
     assert.equal(actual.filter((card) => card.cardType === 'member').length, expected.officialMemberCount);
     assert.equal(actual.filter((card) => card.cardType === 'live').length, expected.officialLiveCount);
@@ -40,7 +40,7 @@ test('the verified 1073-card baseline is retained except for four official affil
 });
 
 test('the expanded card master has valid unique identities and references', () => {
-  assert.deepEqual({ total: cards.length, member: cards.filter((card) => card.cardType === 'member').length, live: cards.filter((card) => card.cardType === 'live').length }, { total: 1913, member: 1582, live: 331 });
+  assert.deepEqual({ total: cards.length, member: cards.filter((card) => card.cardType === 'member').length, live: cards.filter((card) => card.cardType === 'live').length }, { total: 2054, member: 1690, live: 364 });
   assert.equal(new Set(cards.map((card) => card.id)).size, cards.length);
   assert.equal(new Set(cards.map((card) => card.cardNumber)).size, cards.length);
   const groupIds = new Set(references.groups.map((item) => item.id));

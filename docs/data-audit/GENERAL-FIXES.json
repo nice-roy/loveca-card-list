@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-15",
+  "baseSha": "314b365b40c7026df25fca999dc55b4c7f270df2",
+  "heartCorrection": {
+    "cardNumber": "PL!-bp4-002-SEC",
+    "field": "member.bladeHearts",
+    "before": [
+      {
+        "color": "purple",
+        "count": 2
+      }
+    ],
+    "after": [
+      {
+        "color": "purple",
+        "count": 1
+      }
+    ],
+    "source": "https://llofficial-cardgame.com/cardlist/searchresults/?cardno=PL!-bp4-002-SEC&sort=no&view=text",
+    "verification": "前段の公式ページDOM照合で b_heart06 アイコン1個を確認。"
+  },
+  "lineBreakCorrections": [
+    "PL!N-bp1-026-L",
+    "PL!N-bp1-027-L",
+    "PL!N-bp1-028-L",
+    "PL!N-bp1-029-L",
+    "PL!N-sd1-028-SD",
+    "PL!HS-bp1-021-L",
+    "PL!HS-bp1-022-L",
+    "PL!HS-bp1-023-L"
+  ],
+  "lineBreakChange": "文字列の <br> と直後の改行を、改行1個に置換。効果の文言・記号・ルール説明は変更しない。"
+}
