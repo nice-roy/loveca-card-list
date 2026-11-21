@@ -1078,7 +1078,18 @@ export default function Home() {
           {cardType === 'member' && <MultiSelect key="cost" emptyLabel="すべてのコスト" id="cost-filter" label="コスト" onChange={updateCostIds} options={availableCosts} selectedIds={costIds} />}
           {cardType === 'live' && <MultiSelect key="score" emptyLabel="すべてのスコア" id="score-filter" label="スコア" onChange={updateScoreIds} options={availableScores} selectedIds={scoreIds} />}
           <ProductFilter onChange={updateProductIds} options={availableProducts} selectedIds={productIds} />
-          <label className="filter-field"><span className="filter-label">所持状態</span><NativeSelect className="select-control" value={inventoryFilter} onChange={(event) => { setInventoryFilter(event.target.value as InventoryFilter); setVisibleCount(PAGE_SIZE); }}><NativeSelectOption value="all">すべて</NativeSelectOption><NativeSelectOption value="owned">所持のみ</NativeSelectOption><NativeSelectOption value="unowned">未所持のみ</NativeSelectOption></NativeSelect></label>
+          <label className="filter-field">
+            <span className="filter-label">所持状態</span>
+            <NativeSelect className="select-control" value={inventoryFilter} onChange={(event) => { setInventoryFilter(event.target.value as InventoryFilter); setVisibleCount(PAGE_SIZE); }}>
+              <NativeSelectOption value="all">すべて</NativeSelectOption>
+              <NativeSelectOption value="owned">所持のみ</NativeSelectOption>
+              <NativeSelectOption value="4+">4枚以上所持</NativeSelectOption>
+              <NativeSelectOption value="3">3枚所持</NativeSelectOption>
+              <NativeSelectOption value="2">2枚所持</NativeSelectOption>
+              <NativeSelectOption value="1">1枚所持</NativeSelectOption>
+              <NativeSelectOption value="unowned">未所持のみ</NativeSelectOption>
+            </NativeSelect>
+          </label>
           </div>
           <div aria-label="並び順パネル" className={`mobile-panel-section mobile-sort-field${mobileControlPanel === 'sort' ? ' mobile-open' : ''}`} id="mobile-sort-panel" role="region">
           <div className="mobile-panel-heading"><strong>並び順</strong><button aria-label="並び順を閉じる" onClick={() => setMobileControlPanel(null)} type="button"><X /></button></div>

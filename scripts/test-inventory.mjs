@@ -38,3 +38,21 @@ test('owned filter uses base totals only while identical cards are grouped', () 
   assert.equal(matchesInventoryFilter('unowned', 'regular', 'BASE-001', false, inventory, totals), true);
   assert.equal(matchesInventoryFilter('all', 'regular', 'BASE-001', false, inventory, totals), true);
 });
+
+test('quantity filters match exact counts through three and include all counts from four up', () => {
+  const inventory = { regular: 3, parallel: 1, pair: 2, stack: 5 };
+  const bases = new Map([['regular', 'A'], ['parallel', 'A'], ['pair', 'B'], ['stack', 'C'], ['missing', 'D']]);
+  const totals = inventoryTotalsByBase(inventory, bases);
+  function matchingVersions(filter, grouped) {
+    return [...bases.keys()].filter(id => matchesInventoryFilter(filter, id, bases.get(id), grouped, inventory, totals));
+  }
+
+  assert.deepEqual(matchingVersions('4+', true), ['regular', 'parallel', 'stack']);
+  assert.deepEqual(matchingVersions('4+', false), ['stack']);
+  assert.deepEqual(matchingVersions('3', true), []);
+  assert.deepEqual(matchingVersions('3', false), ['regular']);
+  assert.deepEqual(matchingVersions('2', true), ['pair']);
+  assert.deepEqual(matchingVersions('2', false), ['pair']);
+  assert.deepEqual(matchingVersions('1', true), []);
+  assert.deepEqual(matchingVersions('1', false), ['parallel']);
+});
