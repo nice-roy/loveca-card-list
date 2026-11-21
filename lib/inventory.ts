@@ -2,7 +2,7 @@ export const INVENTORY_STORAGE_KEY = 'loveca-card-list:inventory:v1';
 export const MAX_OWNED_QUANTITY = 99;
 
 export type InventoryQuantities = Record<string, number>;
-export type InventoryFilter = 'all' | 'owned' | 'unowned';
+export type InventoryFilter = 'all' | 'owned' | 'unowned' | '4+' | '3' | '2' | '1';
 
 export function normalizeInventory(value: unknown, validVersionIds: Set<string>): InventoryQuantities {
   const source = value && typeof value === 'object' && !Array.isArray(value) && 'cards' in value
@@ -42,6 +42,9 @@ export function inventoryTotalsByBase(inventory: InventoryQuantities, versionToB
 
 export function matchesInventoryFilter(filter: InventoryFilter, versionId: string, baseId: string, groupIdenticalCards: boolean, inventory: InventoryQuantities, totalsByBase: Map<string, number>) {
   if (filter === 'all') return true;
-  const owned = groupIdenticalCards ? (totalsByBase.get(baseId) ?? 0) > 0 : (inventory[versionId] ?? 0) > 0;
-  return filter === 'owned' ? owned : !owned;
+  const quantity = (groupIdenticalCards ? totalsByBase.get(baseId) : inventory[versionId]) ?? 0;
+  if (filter === 'owned') return quantity > 0;
+  if (filter === 'unowned') return quantity === 0;
+  if (filter === '4+') return quantity >= 4;
+  return quantity === Number(filter);
 }
