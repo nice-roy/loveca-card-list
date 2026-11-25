@@ -1,0 +1,4 @@
+# Keep the verified bytes across Windows and Linux checkouts.
+camera/engine-inputs/** -text
+scripts/opencv-static-bindings.mjs text eol=lf
+scripts/read-camera-index.mjs text eol=lf

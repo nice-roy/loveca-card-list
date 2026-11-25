@@ -6,7 +6,7 @@ export async function readCameraIndex(response, url, signal) {
   const entries = [];
   for (let i = 0; i < partCount; i++) {
     const part = await fetch(new URL('reference-' + i + '.json', url), {
-      signal, credentials: 'omit', redirect: 'error', cache: 'no-store',
+      signal, credentials: 'same-origin', redirect: 'error', cache: 'no-store',
     });
     if (!part.ok) throw Error('照合データの一部を読み込めませんでした。');
     const rows = await part.json();
