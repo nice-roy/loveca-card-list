@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
+  define: { 'import.meta.env.CAMERA_BUNDLED': 'false' },
   css: { postcss: { plugins: [tailwindcss()] } },
   resolve: { alias: { '@': fileURLToPath(new URL('.', import.meta.url)) } },
   plugins: [react()],

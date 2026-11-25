@@ -9,6 +9,7 @@
     "dev": "vite",
     "validate:utf8": "node scripts/validate-utf8.mjs",
     "build": "npm run validate:utf8 && vite build",
+    "build:camera-candidate": "node scripts/build-camera-candidate.mjs",
     "start": "vite preview",
     "test": "node --experimental-strip-types --test scripts/test-*.mjs",
     "test:ui": "npm run build && playwright test",

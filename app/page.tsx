@@ -1,6 +1,8 @@
+/// <reference types="vite/client" />
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import type { Addition } from '@/components/camera-inventory';
 import { ArrowUpDown, Bot, Bookmark, Check, ChevronDown, Copy, ExternalLink, Layers3, ListPlus, Minus, Plus, RotateCcw, Search, SlidersHorizontal, Sparkles, Trash2, X } from 'lucide-react';
 import cardsJson from './data/cards.json';
 import livePurchaseLinksJson from './data/live-purchase-links.json';
@@ -70,6 +72,8 @@ const liveSortOptions: { value: SortKey; label: string }[] = [
 ];
 const colorClass: Record<string, string> = { pink: 'heart-pink', red: 'heart-red', yellow: 'heart-yellow', green: 'heart-green', blue: 'heart-blue', purple: 'heart-purple', orange: 'heart-orange', any: 'heart-any', all: 'heart-all' };
 const syncApiUrl = getSyncApiUrl();
+const cameraEnabled = import.meta.env.CAMERA_BUNDLED === true;
+const CameraInventory = cameraEnabled ? lazy(() => import('@/components/camera-inventory').then(module => ({ default: module.CameraInventory }))) : null;
 
 function readBuilderState() {
   try {
@@ -398,6 +402,8 @@ export default function Home() {
   const [candidateOnly, setCandidateOnly] = useState(false);
   const [inventoryFilter, setInventoryFilter] = useState<InventoryFilter>('all');
   const [inventory, setInventory] = useState<InventoryQuantities>(readInventory);
+  const cameraOpen = cameraEnabled && /^\/camera(?:\/index\.html|\/)?$/.test(window.location.pathname);
+  const inventoryFromStorage = useRef<InventoryQuantities | null>(cameraEnabled ? inventory : null);
   const [initialBuilderState] = useState(readBuilderState);
   const [candidateIds, setCandidateIds] = useState<Set<string>>(() => new Set(initialBuilderState.candidates));
   const [decks, setDecks] = useState<SavedDeck[]>(initialBuilderState.decks);
@@ -535,12 +541,49 @@ export default function Home() {
   }, [groupId]);
 
   useEffect(() => {
+    if (cameraEnabled && inventoryFromStorage.current === inventory) return;
     try {
       localStorage.setItem(INVENTORY_STORAGE_KEY, JSON.stringify({ version: 1, cards: inventory }));
     } catch {
       // Inventory remains usable for the current page even if storage is unavailable.
     }
   }, [inventory]);
+
+  useEffect(() => {
+    if (!cameraEnabled) return;
+    const reloadInventory = () => {
+      const next = readInventory();
+      inventoryFromStorage.current = next;
+      setInventory(next);
+    };
+    const refresh = (event: StorageEvent) => {
+      if (event.storageArea === localStorage && (event.key === null || event.key === INVENTORY_STORAGE_KEY)) reloadInventory();
+    };
+    const restore = (event: PageTransitionEvent) => { if (event.persisted) reloadInventory(); };
+    window.addEventListener('storage', refresh);
+    window.addEventListener('pageshow', restore);
+    return () => { window.removeEventListener('storage', refresh); window.removeEventListener('pageshow', restore); };
+  }, []);
+
+  async function addPhotographedCards(items: Addition[]) {
+    const commit = () => {
+      const raw = localStorage.getItem(INVENTORY_STORAGE_KEY);
+      const current = raw ? normalizeInventory(JSON.parse(raw), validVersionIds) : {};
+      const next = { ...current };
+      for (const { id, before, qty } of items) {
+        if (!validVersionIds.has(id) || !Number.isInteger(qty) || qty < 1 || (current[id] ?? 0) !== before || before + qty > MAX_OWNED_QUANTITY) {
+          inventoryFromStorage.current = current; setInventory(current);
+          throw new Error('所持枚数が変わりました。版ごとの合計をもう一度確認してください。');
+        }
+        next[id] = before + qty;
+      }
+      try { localStorage.setItem(INVENTORY_STORAGE_KEY, JSON.stringify({ version: 1, cards: next })); }
+      catch { throw new Error('端末に保存できませんでした。空き容量とブラウザーの保存設定を確認してください。'); }
+      inventoryFromStorage.current = next; setInventory(next); setImportedStateForUndo(null);
+    };
+    if (navigator.locks) await navigator.locks.request(INVENTORY_STORAGE_KEY, commit);
+    else commit();
+  }
 
   useEffect(() => {
     try {
@@ -1036,7 +1079,9 @@ export default function Home() {
     <header className="site-header"><div className="header-inner">
       <a className="brand" href="#top" aria-label="ラブカ 全カードリスト トップ"><span className="brand-mark" aria-hidden="true"><Layers3 /></span><span><strong>ラブカ</strong><small>ALL CARD LIST</small></span></a>
       <p className="scope-note">メンバー＋ライブカード</p>
+      {cameraEnabled && <Button onClick={() => window.location.assign('/camera/')} type="button" variant="outline">写真から所持に追加</Button>}
     </div></header>
+    {CameraInventory && cameraOpen && <Suspense fallback={<p role="status">撮影画面を開いています。</p>}><CameraInventory cards={cards} inventory={inventory} onCommit={addPhotographedCards} onClose={() => window.location.replace('/')} /></Suspense>}
 
     <section className="intro" id="top"><div>
       <p className="eyebrow"><Sparkles /> LOVE LIVE! OFFICIAL CARD GAME</p>
