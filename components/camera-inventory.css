@@ -1,0 +1,64 @@
+.camera-dialog{margin:auto;width:min(680px,calc(100% - 20px));max-height:92dvh;overflow:auto;overscroll-behavior:contain;padding:clamp(16px,3vw,32px);border:1px solid #e0dce6;border-radius:18px;background:#fff;color:#242235;box-shadow:0 12px 66px #18152d33;font:inherit}
+.camera-dialog::backdrop{background:#1915249c}
+.camera-dialog header,.cam-line,.cam-row-title{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.camera-dialog header{justify-content:space-between;margin-bottom:18px}
+.camera-dialog h2{font-size:1.4rem;font-weight:750}.camera-dialog h3,.camera-dialog legend{font-weight:700}.camera-dialog h3{font-size:1.13rem}
+.camera-dialog fieldset{min-width:0;border:0;margin:8px 0;padding:0}.camera-dialog p{margin:10px 0;line-height:1.55}
+.camera-dialog label{display:grid;gap:4px;font-size:.87rem;font-weight:600;max-width:100%}
+.camera-dialog button,.camera-dialog select,.camera-dialog input,.camera-dialog .cam-file{background:white;color:#382635;border:1px solid #d6cfd6;border-radius:9px;padding:8px 12px;min-height:42px;font:inherit;max-width:100%}
+.camera-dialog button,.camera-dialog .cam-file{cursor:pointer}.camera-dialog button:disabled{opacity:.5;cursor:default}
+.camera-dialog :focus-visible{outline:3px solid #9852bd;outline-offset:2px}
+.camera-dialog .cam-primary,.camera-dialog [aria-pressed=true]{background:#77385d;color:white;border-color:#77385d}
+.cam-line{margin:10px 0;align-items:end}.cam-video,.cam-photo{width:100%;max-width:100%;border-radius:10px}
+.cam-photo{position:relative;background:#292631;overflow:hidden}.cam-photo canvas{display:block;width:100%;height:auto}
+.cam-photo svg{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y pinch-zoom;cursor:crosshair}.cam-photo rect{fill:#53ffd815;stroke:#5fffd5;stroke-width:2;vector-effect:non-scaling-stroke}.cam-photo rect.active{stroke:#ffca56}
+.cam-photo text{fill:white;font-weight:bold;paint-order:stroke;stroke:#19262e;stroke-width:2}
+.cam-file{position:relative;overflow:hidden}.cam-file input{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}.cam-file:focus-within{outline:3px solid #9852bd}
+.cam-rows,.cam-search ul{list-style:none;padding:0}.cam-rows>li,.cam-summary>div{border-top:1px solid #e5e0e6;padding:14px 0}
+.cam-row-title{margin-bottom:8px}.cam-row-title img{width:65px;height:72px;object-fit:contain;background:#f8f6f8;border-radius:5px}
+.cam-rows input[type=number]{width:6rem}.cam-search{background:#f7f4f7;border-radius:10px;padding:12px}.cam-search input{width:100%}.cam-search ul{max-height:180px;overflow:auto}.cam-search li button{width:100%;text-align:left;margin-top:3px}
+.camera-dialog .cam-quiet{border:0;text-decoration:underline;background:transparent}.cam-alert{background:#fff5dc;padding:10px;border-radius:8px}.cam-alert button{margin:4px}.cam-summary{background:#faf7fa;border-radius:12px;padding:16px}.cam-success strong{font-size:1.45em}.cam-sr{position:absolute;clip-path:inset(100%);width:1px;height:1px;overflow:hidden}
+.cam-summary > .cam-bulk { border-top: 0; padding-top: 0; }
+.cam-quantity label { margin-bottom: 4px; }
+.cam-rotate { margin-top: 10px; }
+.camera-dialog button { touch-action: manipulation; }
+.cam-stepper { display: inline-grid; grid-template-columns: 44px 3.2rem 44px; }
+.camera-dialog .cam-stepper > * { width: 100%; min-height: 44px; border-radius: 0; text-align: center; }
+.camera-dialog .cam-stepper button { padding: 0; background: #faf5f8; color: #77385d; font-size: 1.25rem; }
+.cam-stepper button:first-child { border-radius: 9px 0 0 9px; }
+.cam-stepper button:last-child { border-radius: 0 9px 9px 0; }
+.camera-dialog .cam-stepper input { border-inline: 0; padding: 4px; appearance: textfield; }
+.cam-stepper input::-webkit-inner-spin-button { appearance: none; }
+.camera-dialog [hidden] { display: none; }
+.cam-viewfinder { display: grid; gap: 8px; }
+.cam-viewfinder video { min-width: 0; min-height: 0; object-fit: contain; background: #17141a; }
+.cam-shutter { display: flex; gap: 8px; justify-content: center; }
+@media (max-width: 740px), (pointer: coarse) and (max-height: 500px) {
+  .camera-dialog {
+    box-sizing: border-box;
+    position: fixed;
+    inset: 0;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right))
+      max(16px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+  }
+  .camera-dialog select, .camera-dialog input { font-size: 16px; }
+  .camera-dialog[open]:has(.cam-viewfinder:not([hidden])) { display: flex; flex-direction: column; }
+  .camera-dialog:has(.cam-viewfinder:not([hidden])) > div:last-child {
+    display: flex; flex-direction: column; min-height: 0; flex: 1;
+  }
+  .cam-viewfinder { flex: 1; min-height: 0; grid-template-rows: minmax(0, 1fr) auto; }
+  .cam-viewfinder video { width: 100%; height: 100%; }
+  .cam-viewfinder:not([hidden]) ~ p:empty { display: none; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .cam-viewfinder { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: minmax(0, 1fr); }
+  .cam-shutter { flex-direction: column; }
+}

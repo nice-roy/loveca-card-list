@@ -39,9 +39,18 @@ def csp(value):
             "form-action 'none'; frame-ancestors 'none'")
 
 
-def headers(value):
-    return ('/*\n  Content-Security-Policy: ' + csp(value) +
-            '\n  X-Content-Type-Options: nosniff\n').encode()
+def camera_csp(value):
+    return (csp(value).replace("script-src 'self'", "script-src 'self' 'wasm-unsafe-eval'")
+            .replace("img-src 'self' data:", "img-src 'self' data: blob:")
+            .replace("connect-src " + origin(value), "connect-src 'self'"))
+
+
+def headers(value, camera=False):
+    text = '/*\n  Content-Security-Policy: ' + csp(value) + '\n  X-Content-Type-Options: nosniff\n'
+    if camera:
+        for route in ('/camera/', '/camera', '/camera/index.html'):
+            text += route + '\n  ! Content-Security-Policy\n  Content-Security-Policy: ' + camera_csp(value) + '\n'
+    return text.encode()
 
 
 def canonical_json(data):
@@ -91,7 +100,8 @@ def context():
 
 def check_content(files):
     value = origin()
-    require(dict(files).get('_headers') == headers(value), 'Trusted header mismatch')
+    contents = dict(files)
+    require(contents.get('_headers') == headers(value, 'camera/index.html' in contents), 'Trusted header mismatch')
     require(any(value.encode() in data for name, data in files
                 if name.endswith(('.js', '.mjs'))), 'Approved endpoint absent from JS bundle')
 
@@ -103,7 +113,7 @@ def pack():
     payload = artifact.verify_zip(artifact.download_zip(m['id']), m['digest'],
                                   os.environ['RAW_ARTIFACT_DIGEST'])
     files = artifact.inspect_tar(payload)  # Reject any source-provided _headers.
-    files.append(('_headers', headers(value)))
+    files.append(('_headers', headers(value, 'camera/index.html' in dict(files))))
     check_content(files)
     root = Path(os.environ['RUNNER_TEMP']) / 'release-package'
     root.mkdir()
@@ -127,7 +137,8 @@ def verify(artifact_id, run_id, digest, manifest_digest, destination=None):
     require(sha(z['manifest.json']) == manifest_digest, 'Manifest hash mismatch')
     manifest = strict_json(z['manifest.json'])
     require(z['manifest.json'] == canonical_json(manifest), 'Non-canonical manifest')
-    files = artifact.inspect_tar(z['final.tar'], trusted_headers=headers(origin()))
+    camera = any(f['path'] == 'camera/index.html' for f in manifest['files'])
+    files = artifact.inspect_tar(z['final.tar'], trusted_headers=headers(origin(), camera))
     check_content(files)
     require(manifest == {**context(), 'files': records(files)}, 'File set/context mismatch')
     if destination is not None:

@@ -34,6 +34,8 @@ def http_verify(base, manifest):
         require(all(re.fullmatch(r'[A-Za-z0-9_][A-Za-z0-9_.-]*', p)
                     for p in f['path'].split('/')), 'Unsafe HTTP path')
         path = '/' if f['path'] == 'index.html' else '/' + f['path']
+        if f['path'] == 'camera/index.html':
+            path = '/camera/'
         with tempfile.TemporaryDirectory(prefix='pages-http-') as directory:
             body_path = Path(directory) / 'body'
             header_path = Path(directory) / 'headers'
@@ -83,7 +85,8 @@ def http_verify(base, manifest):
                     if name in ('content-security-policy', 'x-content-type-options'):
                         require(name not in headers, 'HTTP_HEADERS_STOP')
                         headers[name] = value.lstrip(b' \t').decode('iso-8859-1')
-                require(headers.get('content-security-policy') == package.csp(package.origin())
+                expected_csp = package.camera_csp if path == '/camera/' else package.csp
+                require(headers.get('content-security-policy') == expected_csp(package.origin())
                         and headers.get('x-content-type-options') == 'nosniff', 'Live CSP/header mismatch')
 
     with ThreadPoolExecutor(max_workers=4) as pool:

@@ -23,7 +23,7 @@ for (const width of [1365, 390]) {
 
     for (const [iteration, [number, name, ending, icon]] of [
       ['LL-bp5-001-L', 'Live with a smile!', 'このカードのスコアを＋１する。', '桃ハート'],
-      ['PL!-bp8-001-R', '高坂穂乃果', '減らす。', '無色ハート'],
+      ['PL!-bp8-005-P＋', '星空 凛', 'になる。', '黄ハート'],
     ].flatMap(item => [item, item, item]).entries()) {
       await search.fill(number);
       await expect(card).toHaveCount(1);

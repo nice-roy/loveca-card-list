@@ -1,0 +1,15 @@
+{
+  "src/grid-config.mjs": "c14afc51e8998ac31480676639da40b3373ab3e02f89ab275ac75c757e7c1efc",
+  "src/grid-regions.mjs": "ac024ef5e8e178e14083c8e79999258b02887e9aac369654711f5cb2c4f001cc",
+  "src/image-engine.mjs": "abac66ca91dbeaa04147a437f2ee9d889412b122212e75eedbe8c98ea9127690",
+  "src/visual-features.mjs": "3b98c661dde064ca88bb8911bd53ace721498889e7e349f600b8d5c78865455b",
+  "src/multi-engine.mjs": "e28b8dd8d5571db04beb04477b3c5deebd0e852705517da036e1ac10804d7d72",
+  "src/region-detector.mjs": "b5c6102f5a9bcf40d6b25b55e6f91ecffce4a41ffdf9fc2263f82200177cdcbc",
+  "data/reference-index.json": "c625fd8a2f53bf39bba378d9b645752099526845e487ed09959300499c7a07c9",
+  "vendor/opencv/opencv.js": "bd0c3e6448043de04f6a64a12cb7b759f78c3ab8f7c35c9f2e0f71c88bb17103",
+  "src/live-signals.mjs": "24086f8a9e4ca251e2069eafdcef9310020c6040ce610503100989a0d2c290df",
+  "src/live-candidates.mjs": "eb02d1a16e67624af9f85930ea41e7398b533fea679d72848e5f101c027aba9c",
+  "src/live-assets.mjs": "8225ad48c1b92f666fd6f0cb2afe104c09b1f1c4e031163837a9f02f03c8c315",
+  "data/live-signals-model.json": "4f30de02b4ac2bdcd81e0840cfdf045958f0417edfd1a5f045b464b4fee7cfa4",
+  "licenses/OPENCV-JS.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+}
