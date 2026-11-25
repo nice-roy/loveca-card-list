@@ -59,7 +59,7 @@ async function verify(directory, policy, kind) {
     await svg.tap({ position: { x: box.width * 3630/3840, y: box.height * 2060/2160 } });
     await dialog.getByRole('button', { name: '6枚を照合' }).click();
     await dialog.getByRole('heading', { name: '版と追加枚数を確認' }).waitFor({ timeout: 180_000 });
-    assert.equal(parts.size, 5);
+    assert.equal(parts.size, 6);
     for (const [i, edition] of expected.entries()) {
       const select = dialog.getByRole('combobox', { name: (i+1) + '番の版', exact: true });
       const option = select.locator('option').filter({ hasText: edition }).first();

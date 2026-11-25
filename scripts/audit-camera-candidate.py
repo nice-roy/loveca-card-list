@@ -31,7 +31,7 @@ for i in range(part_count):
 if header != json.loads((Path(sys.argv[1]) / index_name).read_bytes()):
     raise ValueError("Reconstructed index differs from the source.")
 cards = {c["id"]: c["cardNumber"] for c in json.loads((root / "app/data/cards.json").read_bytes())}
-if not all(cards.get(e["cardId"]) == e["cardNumber"] for e in header["entries"]):
+if len(header["entries"]) != len(cards) or {e["cardId"]: e["cardNumber"] for e in header["entries"]} != cards:
     raise ValueError("Edition identity mismatch.")
 normal = root / "dist"
 if not (normal / "index.html").exists() or any(normal.rglob("*camera*")):
